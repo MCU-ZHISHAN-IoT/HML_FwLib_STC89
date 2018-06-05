@@ -1,0 +1,9 @@
+#Author:Weilun Fong | wlf(at)zhishan-iot.ga
+#Description:record HML error code type
+#E-mail:mcu(at)zhishan-iot.ga
+
+ERROR_CODE LIST >>
+ -0x01(@macro.h)
+	User need to specify a frequency value of extern crystal oscillator via macro definitions;The default frequency value is 11059200L
+ -0x02(@macro.h)
+	User need to specify a model of the MCU;The default model is MCU_STC89C52RC
