@@ -1,5 +1,5 @@
 #FwLib       :HML_FwLib_STC89
-#Description :record file about HML_FwLib_8051
+#Description :record file about HML_FwLib_STC89
 #E-mail      :mcu(at)zhishant-iot.ga
 #Organization:ZHISHAN-IoT(https://zhishan-iot.ga)
 #Page        :https://hw.zhishant-iot.ga/page/hml/detail/fwlib_stc89.html
@@ -8,12 +8,12 @@
 >Version :v0.0.0(beta)
  Alias   :
  Date    :2018-03-21
- Note    :The first version of HML_FwLib_8051!
+ Note    :The first version of HML_FwLib_STC89!
  
 >Version :v0.0.0
  Alias   :
  Date    :2018-03-28
- Note    :The first stable version of HML_FwLib_8051!
+ Note    :The first stable version of HML_FwLib_STC89!
  
 >Version :v0.0.1
  Alias   :
@@ -35,5 +35,4 @@ Weilun Fong (wlf@zhishan-iot.ga)
 >Editor
  Liang Wu (waleema@zhishan-iot.ga)
 >MCU developer:
- Jiabin Hsu (zsiothsu@zhishan-iot.ga)
- 
+Jiabin Hsu (zsiothsu@zhishan-iot.ga)
