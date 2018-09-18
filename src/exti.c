@@ -1,15 +1,17 @@
 /*
  * @Author:
- *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.ga
- *  #Weilun Fong | wlf(at)zhishan-iot.ga
- * @E-mail:mcu(at)zhishan-iot.ga
+ *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
+ *  #Weilun Fong | wlf(at)zhishan-iot.tk
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:operations for EXTI resource
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
- * @Version:V0
+ * @Version:V1
  */
 
 #include "exti.h"
+ 
+#ifdef ___COMPILE_EXTI___ 
 
 /*
  * @Protype:void EXTI_config(PERIPH_EXTI exti,EXTI_configTypeDef ec)
@@ -44,13 +46,13 @@ void EXTI_cmd(PERIPH_EXTI exti,Action a)
 }
 
 /*
- * @Protype:void EXTI_cmd(PERIPH_EXTI exti,Action a)
+ * @Protype:void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod)
  * @Parameter:
  *  (1)exti:target EXTI module
  *  (2)mod:expected work mode
  * @Note:set work mode EXTI module
  */
-void EXTI_setMode(PERIPH_EXTI exti,EXTI_MOD mod)
+void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod)
 {
 	switch(exti)
 	{
@@ -63,13 +65,13 @@ void EXTI_setMode(PERIPH_EXTI exti,EXTI_MOD mod)
 }
 
 /*
- * @Protype:void EXTI_setPriority(PERIPH_EXTI exti,INTR_PIOR p)
+ * @Protype:void EXTI_setPriority(PERIPH_EXTI exti,INTR_priority p)
  * @Parameter:
  *  (1)exti:target EXTI module
  *  (2)p:expected intterrupt priority class
  * @Note:set priority of EXTI module
  */
-void EXTI_setPriority(PERIPH_EXTI exti,INTR_PIOR p)
+void EXTI_setPriority(PERIPH_EXTI exti,INTR_priority p)
 {
 	switch(exti)
 	{
@@ -104,3 +106,5 @@ void EXTI_setPriority(PERIPH_EXTI exti,INTR_PIOR p)
 		default:break;
 	}
 }
+
+#endif

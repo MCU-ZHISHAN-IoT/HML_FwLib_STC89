@@ -28,23 +28,23 @@ typedef enum
 /* define pin */
 typedef enum
 {
-	PERIPH_GPIO_Pin_0 = 0x01,
-	PERIPH_GPIO_Pin_1 = 0x02,
-	PERIPH_GPIO_Pin_2 = 0x04,
-	PERIPH_GPIO_Pin_3 = 0x08,
-	PERIPH_GPIO_Pin_4 = 0x10,
-	PERIPH_GPIO_Pin_5 = 0x20,
-	PERIPH_GPIO_Pin_6 = 0x40,
-	PERIPH_GPIO_Pin_7 = 0x80
-}PERIPH_GPIO_Pin;
+	PERIPH_GPIO_PIN_0 = 0x01,
+	PERIPH_GPIO_PIN_1 = 0x02,
+	PERIPH_GPIO_PIN_2 = 0x04,
+	PERIPH_GPIO_PIN_3 = 0x08,
+	PERIPH_GPIO_PIN_4 = 0x10,
+	PERIPH_GPIO_PIN_5 = 0x20,
+	PERIPH_GPIO_PIN_6 = 0x40,
+	PERIPH_GPIO_PIN_7 = 0x80
+}PERIPH_GPIO_PIN;
 
 
 /* ---------- @function --------- */
-void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_Pin pin,FunctionalState f);
+void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f);
 void GPIO_configPort(PERIPH_GPIO gpio,unsigned char val);
-FunctionalState GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_Pin pin);
-void GPIO_resetBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_Pin pin);
-void GPIO_setBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_Pin pin);
-void GPIO_toggleBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_Pin pin);
+FunctionalState GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
+void GPIO_resetBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
+void GPIO_setBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
+void GPIO_toggleBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
 
 #endif /* ___GPIO_H___ */

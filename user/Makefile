@@ -3,7 +3,7 @@
 #Description:Makefile for HML_FwLib_STC89,it will generate a hex format file finally
 #E-mail     :mcu(at)zhishan-iot.ga
 #Make-tool  :GNU Make (http://www.gnu.org/software/make/manual/make.html)
-#Page       :http://hw.zhishan-iot.ga/page/hml/detail/fwlib_8051.html
+#Page       :http://hw.zhishan-iot.ga/page/hml/detail/fwlib_stc89.html
 #Vesrion    :v0.0.0
 
 #compiler#

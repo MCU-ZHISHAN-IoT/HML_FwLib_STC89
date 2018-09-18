@@ -1,15 +1,18 @@
 /*
  * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.ga
- * @E-mail:mcu(at)zhishan-iot.ga
+ *  #Weilun Fong | wlf(at)zhishan-iot.tk
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:provides some public functions
  * @Required-complier:SDCC
  * @Support-mcu:STC micro STC89 series
- * @Version:V0
+ * @Version:V1
  */
 
 
-#include "util.h"
+#include <stc89.h>
+#include "macro.h"
+
+#ifdef ___COMPILE_UTIL___
 
 /*
  * @Protype:void disableAllInterrupts(void)
@@ -67,3 +70,5 @@ void sleep(unsigned int t)
 	
 	#endif
 }
+
+#endif

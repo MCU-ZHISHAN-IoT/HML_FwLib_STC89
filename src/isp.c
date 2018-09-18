@@ -1,14 +1,16 @@
 /*
  * @Author:
- *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.ga
- * @E-mail:mcu(at)zhishan-iot.ga
+ *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:operations of ISP/IAP resource
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
- * @Version:V0
+ * @Version:V1
  */
  
 #include "isp.h"
+ 
+#ifdef ___COMPILE_ISP___
 
 /*
  * @Protype:void ISP_cmd(Action a)
@@ -29,11 +31,11 @@ void ISP_cmd(Action a)
  */
 bool ISP_eraseByte(unsigned int addr)
 {
-	if((ISP_beginAddress > addr) | (ISP_endAddress < addr)) return false;
+	if((ISP_ADDR_START > addr) | (ISP_ADDR_END < addr)) return false;
 	
 	ISP_cmd(ENABLE);
 	ISP_setAddress(addr);
-	ISP_setCommand(ISP_CMMD_erase);
+	ISP_setCommand(ISP_command_erase);
 	ISP_trig();
 	sleep(1);
 	ISP_idle();
@@ -50,7 +52,7 @@ void ISP_idle(void)
 {
 	ISP_cmd(DISABLE);
 	ISP_setAddress(0x0000);
-	ISP_setCommand(ISP_CMMD_idle);
+	ISP_setCommand(ISP_command_idle);
 	ISP_DATA = 0xFF;
 }
 
@@ -66,7 +68,7 @@ unsigned char ISP_readByte(unsigned int addr)
 	
 	ISP_cmd(ENABLE);
 	ISP_setAddress(addr);
-	ISP_setCommand(ISP_CMMD_read);
+	ISP_setCommand(ISP_command_read);
 	ISP_trig();
 	sleep(1);
 	data__ = ISP_DATA;
@@ -88,12 +90,12 @@ void ISP_setAddress(unsigned int addr)
 }
 
 /*
- * @Protype:void ISP_setCommand(ISP_CMMD cmd)
+ * @Protype:void ISP_setCommand(ISP_command cmd)
  * @Parameter:(1)addr:operating address
  * @Ret-val:
  * @Note:set commmand
  */
-void ISP_setCommand(ISP_CMMD cmd)
+void ISP_setCommand(ISP_command cmd)
 {
 	ISP_CMD = cmd;
 }
@@ -118,13 +120,15 @@ void ISP_trig(void)
  */
 void ISP_writeByte(unsigned int addr,unsigned char byte)
 {
-	if((ISP_beginAddress > addr) | (ISP_endAddress < addr)) return;
+	if((ISP_ADDR_START > addr) | (ISP_ADDR_END < addr)) return;
 	
 	ISP_cmd(ENABLE);
 	ISP_setAddress(addr);
-	ISP_setCommand(ISP_CMMD_write);
+	ISP_setCommand(ISP_command_write);
 	ISP_DATA = byte;
 	ISP_trig();
 	sleep(1);
 	ISP_idle();
 }
+
+#endif

@@ -49,7 +49,7 @@ void TIM_isr(void) __interrupt TF0_VECTOR
 	cnt++;
 	if(cnt == 10)
 	{
-		GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_Pin_2);
+		GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
 		cnt = 0;
 	}
 }

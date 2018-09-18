@@ -1,11 +1,11 @@
 /*
  * @Author:
- *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.ga
- * @E-mail:mcu(at)zhishan-iot.ga
+ *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:includes some definitions for operating timer_2 module
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
- * @Version:V0
+ * @Version:V1
  */
 
 #ifndef ___TIM2_H___
@@ -35,11 +35,11 @@ typedef enum
 
 typedef struct
 {
-	TIM2_function function;
-	Action        interruptState;
-	INTR_PIOR     interruptPriority;
-	TIM2_mode     mode;
-	unsigned int  value;
+	TIM2_function  function;
+	Action         interruptState;
+	INTR_priority  interruptPriority;
+	TIM2_mode      mode;
+	unsigned int   value;
 } TIM2_configTypeDef;
 
 /* ---------- @function --------- */
@@ -53,7 +53,7 @@ void TIM2_setFunction(TIM2_function f);
 void TIM2_setMode(TIM2_mode m);
 void TIM2_setValue(unsigned int val);
 void TIM2_INT_cmd(Action a);
-void TIM2_INT_setPriority(INTR_PIOR p);
+void TIM2_INT_setPriority(INTR_priority p);
 void TIM2_INT_T2EX_cmd(Action a);
 
 #endif /*___TIM2_H___*/

@@ -1,15 +1,17 @@
 /*
  * @Author:
-*  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.ga
- *  #Weilun Fong | wlf(at)zhishan-iot.ga
- * @E-mail:mcu(at)zhishan-iot.ga
+ *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
+ *  #Weilun Fong | wlf(at)zhishan-iot.tk
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:operations for uart resource
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
- * @Version:V0
+ * @Version:V1
  */
 
 #include "uart.h"
+
+#ifdef ___COMPILE_UART___
 
 /*
  * @Protype:void UART_cmd_multiBaudrate(Action a)
@@ -49,7 +51,8 @@ void UART_config(UART_configTypeDef *uc)
 	UART_cmd_multiBaudrate(uc->multiBaudrate);
 	UART_setMode(uc->mode);
 	UART_cmd_receive(uc->receiveState);
-	
+	UART_switchTim(uc->tim);
+
 	switch(uc->tim)
 	{
 		case PERIPH_TIM_1:
@@ -80,12 +83,12 @@ void UART_config(UART_configTypeDef *uc)
 }
 
 /*
- * @Protype:unsigned int UART_getTimerInitValue(unsigned int baud,PERIPH_TIM tim)
+ * @Protype:unsigned int UART_getTimerInitValue(uint32_t baud,PERIPH_TIM tim)
  * @Parameter:(1)baud:expected baudrate (2)tim:target timer module
  * @Ret-val:init value the baudrate required of timer counter register(if return 0x0000,it means overflow)
  * @Note:calculate timer counter register value
  */
-unsigned int UART_getTimerInitValue(unsigned int baud,PERIPH_TIM tim)
+unsigned int UART_getTimerInitValue(uint32_t baud,PERIPH_TIM tim)
 {
 	unsigned char tmp = 0x00;
 	
@@ -180,23 +183,37 @@ void UART_sendString(char *str)
 }
 
 /*
- * @Protype:void UART_setMode(UART_MODE m)
+ * @Protype:void UART_setMode(UART_mode m)
  * @Parameter:(1)m:expected work mode
  * @Ret-val:
  * @Note:set work mode of UART module
  */
-void UART_setMode(UART_MODE m)
+void UART_setMode(UART_mode m)
 {
 	SCON = (SCON & 0x3F) | ((unsigned char)m << 0x6);
 }
 
 /*
- * @Protype:void UART_INT_setPriority(INTR_PIOR p)
+ *@Protype:void UART_switchTim(PERIPH_TIM tim)
+ *@Parameter:(1)tim:target timer module
+ *@Ret-val:
+ *@Note:choose a timer to be baudrate productor
+ */
+void UART_switchTim(PERIPH_TIM tim)
+{
+	if(tim == PERIPH_TIM_1)
+		T2CON = T2CON & 0xCF;
+	if(tim == PERIPH_TIM2)
+		T2CON = (T2CON & 0xCF) | 0x30;
+}
+
+/*
+ * @Protype:void UART_INT_setPriority(INTR_priority p)
  * @Parameter:(1)p:expected intterrupt priority class
  * @Ret-val:
  * @Note:set priority of UART module
  */
-void UART_INT_setPriority(INTR_PIOR p)
+void UART_INT_setPriority(INTR_priority p)
 {
 	IP = (IP & 0xEF) | ((p & 0x01) << 0x4);
 	IPH = (IPH & 0xEF) | ((p & 0x02) << 0x3);
@@ -212,3 +229,5 @@ void UART_INT_cmd(Action a)
 {
 	ES = a;
 }
+
+#endif

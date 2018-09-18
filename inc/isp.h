@@ -1,11 +1,11 @@
 /*
  * @Author:
- *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.ga
- * @E-mail:mcu(at)zhishan-iot.ga
+ *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:includes some definitions for operating ISP/IAP module
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
- * @Version:V0
+ * @Version:V1
  */
 
 #ifndef ___ISP_H___
@@ -19,11 +19,11 @@
 
 typedef enum
 {
-	ISP_CMMD_idle  = 0x0,
-	ISP_CMMD_read  = 0x1,
-	ISP_CMMD_write = 0x2,
-	ISP_CMMD_erase = 0x3,
-} ISP_CMMD;
+	ISP_command_idle  = 0x0,
+	ISP_command_read  = 0x1,
+	ISP_command_write = 0x2,
+	ISP_command_erase = 0x3
+} ISP_command;
 
 /* ---------- addr define --------- */
 
@@ -31,29 +31,29 @@ typedef enum
     (MCU_MODEL == MCU_STC89LE51RC) || \
     (MCU_MODEL == MCU_STC89C52RC)  || \
     (MCU_MODEL == MCU_STC89LE52RC)
-	#define ISP_beginAddress 0x2000
-	#define ISP_endAddress 0x2FFF
+	#define ISP_ADDR_START 0x2000
+	#define ISP_ADDR_END 0x2FFF
 
 #else
-	#define ISP_endAddress 0xF3FF
-	#if (MCU_MODEL == MCU_STC89C54RD)    || \
-        (MCU_MODEL == MCU_STC89LE54RD)
-		#define ISP_beginAddress 0x4000
-	#elif (MCU_MODEL == MCU_STC89C58RD)  || \
-	      (MCU_MODEL == MCU_STC89LE58RD)
-		#define ISP_beginAddress 0x8000
-	#elif (MCU_MODEL == MCU_STC89C510RD) || \
-	      (MCU_MODEL == MCU_STC89LE510RD)
-		#define ISP_beginAddress 0xA000
-	#elif (MCU_MODEL == MCU_STC89C512RD) || \
-	      (MCU_MODEL == MCU_STC89LE512RD)
-		#define ISP_beginAddress 0xC000
-	#elif (MCU_MODEL == MCU_STC89C514RD) || \
-	      (MCU_MODEL == MCU_STC89LE514RD)
-		#define ISP_beginAddress 0xE000
+	#define ISP_ADDR_END 0xF3FF
+	#if (MCU_MODEL == MCU_STC89C54RDP)    || \
+        (MCU_MODEL == MCU_STC89LE54RDP)
+		#define ISP_ADDR_START 0x4000
+	#elif (MCU_MODEL == MCU_STC89C58RDP)  || \
+	      (MCU_MODEL == MCU_STC89LE58RDP)
+		#define ISP_ADDR_START 0x8000
+	#elif (MCU_MODEL == MCU_STC89C510RDP) || \
+	      (MCU_MODEL == MCU_STC89LE510RDP)
+		#define ISP_ADDR_START 0xA000
+	#elif (MCU_MODEL == MCU_STC89C512RDP) || \
+	      (MCU_MODEL == MCU_STC89LE512RDP)
+		#define ISP_ADDR_START 0xC000
+	#elif (MCU_MODEL == MCU_STC89C514RDP) || \
+	      (MCU_MODEL == MCU_STC89LE514RDP)
+		#define ISP_ADDR_START 0xE000
 	#endif /* else */
 
-#endif/* MCU_MODEL RC/RD */
+#endif/* MCU_MODEL RC/RDP */
 	
 /* ---------- @function --------- */
 void ISP_cmd(Action a);
@@ -61,7 +61,7 @@ bool ISP_eraseByte(unsigned int addr);
 void ISP_idle(void);
 unsigned char ISP_readByte(unsigned int addr);
 void ISP_setAddress(unsigned int addr);
-void ISP_setCommand(ISP_CMMD cmd);
+void ISP_setCommand(ISP_command cmd);
 void ISP_trig(void);
 void ISP_writeByte(unsigned int addr,unsigned char byte);
 

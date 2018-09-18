@@ -1,14 +1,16 @@
 /*
  * @Author:
- *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.ga
- * @E-mail:mcu(at)zhishan-iot.ga
+ *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:operations for watch dog resource
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
- * @Version:V0
+ * @Version:V1
  */
  
 #include "wdt.h"
+
+#ifdef ___COMPILE_WDT___
 
 /*
  * @Protype:void WDT_clear(void)
@@ -44,12 +46,14 @@ void WDT_cmd_idleCount(Action a)
 }
 
 /*
- * @Protype:void WDT_setPrescale(WDT_Prescale pre)
+ * @Protype:void WDT_setPrescale(WDT_prescale pre)
  * @Parameter:(1)pre:prescale factor
  * @Ret-val:
  * @Note:set prescale
  */
-void WDT_setPrescale(WDT_Prescale pre)
+void WDT_setPrescale(WDT_prescale pre)
 {
 	WDT_CONTR = (WDT_CONTR & 0xF8) | pre;
 }
+
+#endif

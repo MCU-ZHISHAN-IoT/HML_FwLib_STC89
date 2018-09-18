@@ -12,10 +12,10 @@
 
 void main()
 {
-	GPIO_resetBitValue(PERIPH_GPIO_4,PERIPH_GPIO_Pin_5);
+	GPIO_resetBitValue(PERIPH_GPIO_4,PERIPH_GPIO_PIN_5);
 	while(true)
 	{
 		sleep(500);
-		GPIO_toggleBitValue(PERIPH_GPIO_4,PERIPH_GPIO_Pin_5);
+		GPIO_toggleBitValue(PERIPH_GPIO_4,PERIPH_GPIO_PIN_5);
 	}
 }

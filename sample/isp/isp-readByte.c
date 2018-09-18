@@ -12,13 +12,13 @@
 
 void main(void)
 {
-	GPIO_configBitValue(PERIPH_GPIO_1,PERIPH_GPIO_Pin_0,SET);
+	GPIO_configBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0,SET);
 	ISP_cmd(ENABLE);
 	if(ISP_readByte(ISP_beginAddress) == 'T')
 	{
 		/* reset the module.if 'T' were writen successfully,
 		P1_0 will be lighted*/
-		GPIO_configBitValue(PERIPH_GPIO_1,PERIPH_GPIO_Pin_0,RESET);
+		GPIO_configBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0,RESET);
 		ISP_eraseByte(ISP_beginAddress);
 	}
 

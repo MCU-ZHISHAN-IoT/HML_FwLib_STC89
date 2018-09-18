@@ -1,15 +1,17 @@
 /*
  * @Author:
- *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.ga
- *  #Weilun Fong | wlf(at)zhishan-iot.ga
- * @E-mail:mcu(at)zhishan-iot.ga
+ *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
+ *  #Weilun Fong | wlf(at)zhishan-iot.tk
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:operations for timer resource
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
- * @Version:V0
+ * @Version:V1
  */
 
 #include "tim.h"
+
+#ifdef ___COMPILE_TIM___
 
 /*
  * @Protype:unsigned int TIM_calcValue(unsigned int time,TIM_mode m)
@@ -152,13 +154,13 @@ void TIM_setValue(PERIPH_TIM tim,unsigned int val)
 	{
 		case PERIPH_TIM_0:
 		{
-			TH0 = (unsigned char)(val >> 0x8);
-			TL0 = (unsigned char)val;
+			TH0 = (u8)((val >> 0x8) & 0x00FF);
+			TL0 = (u8)(val & 0x00FF);
 		} break;
 		case PERIPH_TIM_1:
 		{
-			TH1 = (unsigned char)(val >> 0x8);
-			TL1 = (unsigned char)val;
+			TH1 = (u8)((val >> 0x8) & 0x00FF);
+			TL1 = (u8)(val & 0x00FF);
 		} break;
 		default:break;
 	}
@@ -183,14 +185,14 @@ void TIM_INT_cmd(PERIPH_TIM tim,Action a)
 }
 
 /*
- * @Protype:void TIM_INT_setPriority(PERIPH_TIM tim,INTR_PIOR p)
+ * @Protype:void TIM_INT_setPriority(PERIPH_TIM tim,INTR_priority p)
  * @Parameter:
  * (1)tim:target timer module
  * (2)p:expected intterrupt priority class
  * @Ret-val:
  * @Note:set priority of TIM module
  */
-void TIM_INT_setPriority(PERIPH_TIM tim,INTR_PIOR p)
+void TIM_INT_setPriority(PERIPH_TIM tim,INTR_priority p)
 {
 	switch(tim)
 	{
@@ -207,3 +209,5 @@ void TIM_INT_setPriority(PERIPH_TIM tim,INTR_PIOR p)
 		default:break;
 	}
 }
+
+#endif

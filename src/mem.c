@@ -1,26 +1,28 @@
 /*
  * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.ga
- * @E-mail:mcu(at)zhishan-iot.ga
+ *  #Weilun Fong | wlf(at)zhishan-iot.tk
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:
  * #contains definitions that allow you to directly access the different memory areas of the STC90.
  * #have the similar functions like absacc.h in Keil
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
- * @Version:V0
+ * @Version:V1
  */
-
+ 
 #include "mem.h"
 
+#ifdef ___COMPILE_MEM___
+
 /*
- * @Protype:void MEM_cmd_internalExtendedRam(Action a)
+ * @Protype:void MEM_cmd_ale(Action a)
  * @Parameter:(1)a:expected state
  * @Ret-val:
  * @Note:
  *  > disable ALE:ALE is emitted a constant rate of 1/3 Fsoc(the oscillator frequency) in 6 clock mode,1/6 Fsoc in 12 clock mode
  *  > enable ALE:ALE is active only during a MOVX or MOVC instruction
  */
-void MEM_cmd_Ale(Action a)
+void MEM_cmd_ale(Action a)
 {
 	AUXR = (AUXR & 0xFE) | a;
 }
@@ -38,3 +40,5 @@ void MEM_cmd_internalExtendedRam(Action a)
 {
 	AUXR = (AUXR & 0xFD) | ((~a) << 0x1);
 }
+
+#endif

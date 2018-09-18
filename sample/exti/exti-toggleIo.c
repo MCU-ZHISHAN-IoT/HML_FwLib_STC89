@@ -43,5 +43,5 @@ void main(void)
  */
 void exti1_isr(void) __interrupt IE1_VECTOR
 {
-	GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_Pin_2);
+	GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
 }

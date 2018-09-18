@@ -8,8 +8,10 @@
  * @Support-mcu:STC micro STC89 series
  * @Version:V0
  */
- 
-#include "gpio.h"
+
+#include "gpio.h" 
+
+#ifdef ___COMPILE_GPIO___
 
 /*
  * @Protype:void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f)
@@ -20,7 +22,7 @@
  * @Ret-val:
  * @Note:config specified pin as expected state
  */
-void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_Pin pin,FunctionalState f)
+void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f)
 {
 	if(f==RESET)
 	{
@@ -61,7 +63,7 @@ void GPIO_configPort(PERIPH_GPIO gpio,unsigned char val)
  * @Ret-val:
  * @Note:get value of target pin
  */
-FunctionalState GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_Pin pin)
+FunctionalState GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
 {
 	unsigned char value=0;
 
@@ -92,7 +94,7 @@ FunctionalState GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_Pin pin)
  * @Ret-val:
  * @Note:reset value of target pin
  */
-void GPIO_resetBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_Pin pin)
+void GPIO_resetBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
 {
 	switch(gpio)
 	{
@@ -113,7 +115,7 @@ void GPIO_resetBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_Pin pin)
  * @Ret-val:
  * @Note:set value of target pin
  */
-void GPIO_setBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_Pin pin)
+void GPIO_setBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
 {
 	switch(gpio)
 	{
@@ -134,7 +136,7 @@ void GPIO_setBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_Pin pin)
  * @Ret-val:
  * @Note:change value of target pin into opposite state
  */
-void GPIO_toggleBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_Pin pin)
+void GPIO_toggleBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
 {
 	switch(gpio)
 	{
@@ -146,3 +148,5 @@ void GPIO_toggleBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_Pin pin)
 		default:break;
 	}
 }
+
+#endif

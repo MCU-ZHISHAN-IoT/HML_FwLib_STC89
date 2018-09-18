@@ -1,20 +1,17 @@
 /*
  * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.ga
- * @E-mail:mcu(at)zhishan-iot.ga
+ *  #Weilun Fong | wlf(at)zhishan-iot.tk
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:includes some public functions
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
- * @Version:V0
+ * @Version:V1
  */
 
 #ifndef ___UTIL_H___
 #define ___UTIL_H___
 
 #include "macro.h"
-#include "tim.h"
-#include "isp.h"
-
 
 /* ---------- @function --------- */
 void disableAllInterrupts(void);
