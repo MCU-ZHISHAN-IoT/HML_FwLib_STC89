@@ -1,6 +1,6 @@
 /*
  * @Author:
- *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.t
+ *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
  * @File-description:show how to use firmware library to make an interruption by TIM module, then toggle the state of IO
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series

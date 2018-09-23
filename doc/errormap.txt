@@ -1,7 +1,7 @@
 #Author      :Weilun Fong | wlf(at)zhishan-iot.tk
 #Description :record error code defined by HML
 #E-mail      :mcu(at)zhishan-iot.tk
-#FwLib       :HML_FwLib_Stc89
+#FwLib       :HML_FwLib_STC89
 #Version     :v1.0.0
 
 ERROR_CODE LIST >>

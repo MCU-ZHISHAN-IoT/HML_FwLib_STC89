@@ -13,9 +13,9 @@ Please visit our website for more information -> <a href="http://hw.zhishan-iot.
 We are a group of elecronic fans from <a href="http://zhishan-iot.tk"> ZHISHAN-IoT </a> .The members of development team are:
 </p>
 
-|member        |e-mail                         |
-|--------------|-------------------------------|
-| Jiabin Hsu   | zsiothsu(at)zhishan-iot.tk    |
-| Liang Wu     | waleema(at)zhishan-iot.tk     |
-| Weilun Fong  | wlf(at)zhishan-iot.tk         |
-| Amy Chung    | zhongliguo(at)zhishant-iot.tk |
+|member        |e-mail                        |
+|--------------|------------------------------|
+| Jiabin Hsu   | zsiothsu(at)zhishan-iot.tk   |
+| Liang Wu     | waleema(at)zhishan-iot.tk    |
+| Weilun Fong  | wlf(at)zhishan-iot.tk        |
+| Amy Chung    | zhongliguo(at)zhishant-iot.tk|

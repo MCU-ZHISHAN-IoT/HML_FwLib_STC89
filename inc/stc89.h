@@ -13,26 +13,26 @@
 #include <8051.h>
 
 /*  BYTE Register  */
-__sfr __at (0x8E) AUXR ;
-__sfr __at (0xA2) AUXR1 ;
-__sfr __at (0xA9) SADDR1 ;
-__sfr __at (0xB7) IPH ;
-__sfr __at (0xC0) XICON ;
-__sfr __at (0xC8) T2CON ;
-__sfr __at (0xC9) T2MOD ;
-__sfr __at (0xCA) RCAP2L ;
-__sfr __at (0xCB) RCAP2H ;
-__sfr __at (0xCC) TL2 ;
-__sfr __at (0xCD) TH2 ;
+__sfr __at (0x8E) AUXR      ;
+__sfr __at (0xA2) AUXR1     ;
+__sfr __at (0xA9) SADDR1    ;
+__sfr __at (0xB7) IPH       ;
+__sfr __at (0xC0) XICON     ;
+__sfr __at (0xC8) T2CON     ;
+__sfr __at (0xC9) T2MOD     ;
+__sfr __at (0xCA) RCAP2L    ;
+__sfr __at (0xCB) RCAP2H    ;
+__sfr __at (0xCC) TL2       ;
+__sfr __at (0xCD) TH2       ;
 
 __sfr __at (0xE1) WDT_CONTR ;
-__sfr __at (0xE2) ISP_DATA ;
+__sfr __at (0xE2) ISP_DATA  ;
 __sfr __at (0xE3) ISP_ADDRH ;
 __sfr __at (0xE4) ISP_ADDRL ;
-__sfr __at (0xE5) ISP_CMD ;
-__sfr __at (0xE6) ISP_TRIG ;
+__sfr __at (0xE5) ISP_CMD   ;
+__sfr __at (0xE6) ISP_TRIG  ;
 __sfr __at (0xE7) ISP_CONTR ;
-__sfr __at (0xE8) P4 ;
+__sfr __at (0xE8) P4        ;
 
 /*  BIT Register  */
 /* XICON */
@@ -53,15 +53,15 @@ __sbit __at (0xE8) P4_0 ;
 
 /* T2 */
 __sbit __at (0xC8) CPRL2 ;
-__sbit __at (0xC9) CT2 ;
-__sbit __at (0xCA) TR2 ;
+__sbit __at (0xC9) CT2   ;
+__sbit __at (0xCA) TR2   ;
 __sbit __at (0xCB) EXEN2 ;
-__sbit __at (0xCC) TCLK ;
-__sbit __at (0xCD) RCLK ;
-__sbit __at (0xCE) EXF2 ;
-__sbit __at (0xCF) TF2;
+__sbit __at (0xCC) TCLK  ;
+__sbit __at (0xCD) RCLK  ;
+__sbit __at (0xCE) EXF2  ;
+__sbit __at (0xCF) TF2   ;
 
-/* Interrupt numbers */
-#define TF2_VECTOR      5       /* 0x2b timer 2*/
+/* --- @interrupt vector --- */
+#define TF2_VECTOR 5    /* 0x2b timer 2*/
 
 #endif /* _STC89_H_ */

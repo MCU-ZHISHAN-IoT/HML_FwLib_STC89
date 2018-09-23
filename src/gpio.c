@@ -6,7 +6,7 @@
  * @File-description:operations for GPIO resource
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
- * @Version:V0
+ * @Version:V1
  */
 
 #include "gpio.h" 

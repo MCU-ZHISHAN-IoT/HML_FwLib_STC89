@@ -6,7 +6,7 @@
  * @File-description:includes some header files and modules definitions
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
- * @Version:V0
+ * @Version:V1
  */
  
 #ifndef ___CONF_H___

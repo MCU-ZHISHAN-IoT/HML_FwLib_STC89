@@ -2,7 +2,7 @@
 #Description :record file about HML_FwLib_STC89
 #E-mail      :mcu(at)zhishant-iot.tk
 #Organization:ZHISHAN-IoT(https://zhishan-iot.tk)
-#Page        :https://hw.zhishant-iot..tk/page/hml/detail/fwlib_stc89.html
+#Page        :https://hw.zhishant-iot.tk/page/hml/detail/fwlib_stc89.html
 
 #RELEASE RECORD
 >Version :v0.0.0(beta)
@@ -20,38 +20,33 @@
  Date    :2018-05-28
  Note    :(1)fix a bug about code order in <uart.c>
           (2)fix a bug of function TIM_setValue in <tim.c>
-		  (3)rewrite <mem.h>, fix a fatal bug!
-		  (4)rewrite /usr/Makefile
-		  (5)correct spelling mistakes in <uart.c>
-		  (6)fix fatal bug about interrupt priority
+          (3)rewrite <mem.h>, fix a fatal bug!
+          (4)rewrite /usr/Makefile
+          (5)correct spelling mistakes in <uart.c>
+          (6)fix fatal bug about interrupt priority
 
 >Version :v1.0.0
  Alias   :
  Date    :2018-09-17
  Note    :(1)rename [user] directory as [usr]
           (2)update /usr/Makefile
-		  (3)rename EXTI_MOD as EXTI_mode in <exti.h>, and modify name of related eunm value
-		  (4)rename INTR_PIOR as INTR_priority in <exti.h>, and modify name of related eunm value
-		  (5)rename UART_MODE as UART_mode in <uart.h>, and modify name of related eunm value
-		  (6)rename ISP_CMMD as ISP_command in <isp.h>, and modify name of related eunm value
-		  (7)rename ISO_beginAddress as ISP_ADDR_START in <isp.h>
-		  (7)rename ISP_endAddress as ISP_ADDR_END <isp.h>
-		  (8)rename function MEM_cmd_Ale as MEM_cmd_ale in <mem.h>
-		  (9)rename WDT_Prescale as WDT_prescale in <wdt.h>, and modify name of related eunm value
-		  (10)fix fatal bug in <uart.c>, this bug can cause user can't use TIM2 as baudrate generator
-		  (11)rename [sample] directory as [example]
-		  
-#DEVELOPER
-Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
-Weilun Fong (wlf@zhishan-iot.tk)
+          (3)rename EXTI_MOD as EXTI_mode in <exti.h>, and modify name of related eunm value
+          (4)rename INTR_PIOR as INTR_priority in <exti.h>, and modify name of related eunm value
+          (5)rename UART_MODE as UART_mode in <uart.h>, and modify name of related eunm value
+          (6)rename ISP_CMMD as ISP_command in <isp.h>, and modify name of related eunm value
+          (7)rename ISO_beginAddress as ISP_ADDR_START in <isp.h>
+          (8)rename ISP_endAddress as ISP_ADDR_END <isp.h>
+          (9)rename function MEM_cmd_Ale as MEM_cmd_ale in <mem.h>
+          (10)rename WDT_Prescale as WDT_prescale in <wdt.h>, and modify name of related eunm value
+          (11)fix fatal bug in <uart.c>, this bug can cause user can't use TIM2 as baudrate generator
+          (12)rename [sample] directory as [example]
+		  (13)the conditional compilation mechanism is introduced into the source code(select expected compile part <macro.h>)
+          (14)add new data type "byte" in <macro.h>
+          (15)modify data type of member variable of "baudrate" in structment UART_configTypeDef(unsigned int -> uint32_t)
+
+#TEAM
+Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
+Director  - Weilun Fong (wlf@zhishan-iot.tk)
+Testing   - Amy Chung   (zhongliguo@zhishant-iot.tk)
  
-#TEAM of HML
->Director: 
- Weilun Fong (wlf@zhishan-iot.tk)
->Editor
- Liang Wu (waleema@zhishan-iot.tk)
->MCU developer:
- Jiabin Hsu (zsiothsu@zhishan-iot.tk)
->Testing
- Amy Chung (zhongliguo@zhishant-iot.tk)
  

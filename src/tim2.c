@@ -1,6 +1,6 @@
 /*
  * @Author:
- *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
+ *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:operations for TIM2 module
  * @Required-compiler:SDCC

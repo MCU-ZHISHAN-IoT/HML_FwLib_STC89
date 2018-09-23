@@ -6,7 +6,7 @@
  * @File-description:includes some definitions for operating gpio module
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
- * @Version:V0
+ * @Version:V1
  */
  
 #ifndef ___GPIO_H___
