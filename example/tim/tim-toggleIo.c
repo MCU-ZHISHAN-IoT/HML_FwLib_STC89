@@ -10,7 +10,7 @@
 #include "conf.h"
  
 /*
- * @Protype:void sys_init(void)
+ * @Prototype:void sys_init(void)
  * @Parameter:None
  * @Ret-val:None
  * @Note:init MCU
@@ -22,8 +22,8 @@ void sys_init(void)
 	tc.function = TIM_FUNC_TIM;
 	tc.interruptState = ENABLE;
 	tc.interruptPriority = ENABLE;
-	tc.mode = TIM_MODE_1;
-	tc.value = TIM_calculateValue(50000,TIM_MODE_1);
+	tc.mode = TIM_mode_1;
+	tc.value = TIM_calculateValue(50000,TIM_mode_1);
 	
 	TIM_config(PERIPH_TIM_0,&tc);
 	TIM_cmd(PERIPH_TIM_0,ENABLE);
@@ -37,7 +37,7 @@ void main(void)
 }
 
 /*
- * @Protype:void TIM_isr(void)
+ * @Prototype:void TIM_isr(void)
  * @Parameter:None
  * @Ret-val:None
  * @Note:interrupt service function for TIM_0

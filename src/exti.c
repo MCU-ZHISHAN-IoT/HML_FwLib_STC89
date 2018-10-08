@@ -14,11 +14,11 @@
 #ifdef ___COMPILE_EXTI___ 
 
 /*
- * @Protype:void EXTI_config(PERIPH_EXTI exti,EXTI_configTypeDef ec)
+ * @Prototype:void EXTI_config(PERIPH_EXTI exti,EXTI_configTypeDef ec)
  * @Parameter:
  *  (1)exti:target EXTI module
- *  (2)ec:the pointer of config struct which includes all configuration information
- * @Note:config EXTI module
+ *  (2)ec:the pointer of configure struct which includes all configuration information
+ * @Note:configure EXTI module
  */
 void EXTI_config(PERIPH_EXTI exti,EXTI_configTypeDef *ec)
 {
@@ -27,7 +27,7 @@ void EXTI_config(PERIPH_EXTI exti,EXTI_configTypeDef *ec)
 }
 
 /*
- * @Protype:void EXTI_cmd(PERIPH_EXTI exti,Action a)
+ * @Prototype:void EXTI_cmd(PERIPH_EXTI exti,Action a)
  * @Parameter:
  *  (1)exti:target EXTI module
  *  (2)a:expected status
@@ -46,7 +46,7 @@ void EXTI_cmd(PERIPH_EXTI exti,Action a)
 }
 
 /*
- * @Protype:void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod)
+ * @Prototype:void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod)
  * @Parameter:
  *  (1)exti:target EXTI module
  *  (2)mod:expected work mode
@@ -65,10 +65,10 @@ void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod)
 }
 
 /*
- * @Protype:void EXTI_setPriority(PERIPH_EXTI exti,INTR_priority p)
+ * @Prototype:void EXTI_setPriority(PERIPH_EXTI exti,INTR_priority p)
  * @Parameter:
  *  (1)exti:target EXTI module
- *  (2)p:expected intterrupt priority class
+ *  (2)p:expected interrupt priority class
  * @Note:set priority of EXTI module
  */
 void EXTI_setPriority(PERIPH_EXTI exti,INTR_priority p)

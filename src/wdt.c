@@ -13,7 +13,7 @@
 #ifdef ___COMPILE_WDT___
 
 /*
- * @Protype:void WDT_clear(void)
+ * @Prototype:void WDT_clear(void)
  * @Parameter:
  * @Ret-val:
  * @Note:feeds the watch dog 
@@ -24,7 +24,7 @@ void WDT_clear(void)
 }
 
 /*
- * @Protype:void WDT_cmd(Action a)
+ * @Prototype:void WDT_cmd(Action a)
  * @Parameter:(1)a:expected action
  * @Ret-val:
  * @Note:lanuch or stop watch dog
@@ -35,7 +35,7 @@ void WDT_cmd(Action a)
 }
 
 /*
- * @Protype:void WDT_cmd_idleCount(Action a)
+ * @Prototype:void WDT_cmd_idleCount(Action a)
  * @Parameter:(1)a:expected action
  * @Ret-val:
  * @Note:enable or disable watch dog when idle mode
@@ -46,7 +46,7 @@ void WDT_cmd_idleCount(Action a)
 }
 
 /*
- * @Protype:void WDT_setPrescale(WDT_prescale pre)
+ * @Prototype:void WDT_setPrescale(WDT_prescale pre)
  * @Parameter:(1)pre:prescale factor
  * @Ret-val:
  * @Note:set prescale

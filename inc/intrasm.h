@@ -4,10 +4,10 @@
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:
  *  #provides prototypes for routines that instruct the compiler to generate intrinsic code
- *  #have similar functions like intrasm.h in Keil
+ *  #have similar functions like <intrasm.h> in Keil
  * @Required-complier:SDCC
- * @Support-mcu:8051 and its compitable MCUs
- * @Version:V1
+ * @Support-mcu:Intel MCS-51 based microprocessors
+ * @Version:V0
  */
 
 #ifndef ___INTRASM_H___

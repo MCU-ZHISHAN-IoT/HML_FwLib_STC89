@@ -10,7 +10,7 @@
 #include "conf.h"
  
 /*
- * @Protype:void sys_init(void)
+ * @Prototype:void sys_init(void)
  * @Parameter:None
  * @Ret-val:None
  * @Note:init MCU
@@ -22,7 +22,7 @@ void sys_init(void)
 	tc.function = TIM2_FUNC_TIM;
 	tc.interruptState = ENABLE;
 	tc.interruptPriority = ENABLE;
-	tc.mode = TIM2_MODE_TIM;
+	tc.mode = TIM2_mode_0;
 	tc.value = TIM2_calculateValue(50000);
 	
 	TIM2_config(&tc);
@@ -37,21 +37,21 @@ void main(void)
 }
 
 /*
- * @Protype:void TIM2_isr(void)
+ * @Prototype:void tim2_isr(void)
  * @Parameter:None
  * @Ret-val:None
  * @Note:interrupt service function for TIM2
  */
-void TIM2_isr(void) __interrupt TF2_VECTOR
+void tim2_isr(void) __interrupt TF2_VECTOR
 {
-	static int cnt = 0;
+	static u8 i = 0;
 	TIM2_clearFlag();
 	
 	/* per 500ms */
-	cnt++;
-	if(cnt == 10)
+	i++;
+	if(i == 10)
 	{
 		GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
-		cnt = 0;
+		i = 0;
 	}
 }

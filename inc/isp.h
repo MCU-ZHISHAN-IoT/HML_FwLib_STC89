@@ -17,6 +17,7 @@
 #include "util.h"
 #include "macro.h"
 
+/* mark command */
 typedef enum
 {
 	ISP_command_idle  = 0x0,
@@ -25,7 +26,7 @@ typedef enum
 	ISP_command_erase = 0x3
 } ISP_command;
 
-/* ---------- addr define --------- */
+/* ---------- @address define --------- */
 
 #if (MCU_MODEL == MCU_STC89C51RC)  || \
     (MCU_MODEL == MCU_STC89LE51RC) || \
@@ -51,11 +52,11 @@ typedef enum
 	#elif (MCU_MODEL == MCU_STC89C514RDP) || \
 	      (MCU_MODEL == MCU_STC89LE514RDP)
 		#define ISP_ADDR_START 0xE000
-	#endif /* else */
+	#endif
 
-#endif/* MCU_MODEL RC/RDP */
+#endif   /* MCU_MODEL RC/RDP */
 	
-/* ---------- @function --------- */
+/* ----- @function ----- */
 void ISP_cmd(Action a);
 bool ISP_eraseByte(unsigned int addr);
 void ISP_idle(void);
@@ -63,6 +64,6 @@ unsigned char ISP_readByte(unsigned int addr);
 void ISP_setAddress(unsigned int addr);
 void ISP_setCommand(ISP_command cmd);
 void ISP_trig(void);
-void ISP_writeByte(unsigned int addr,unsigned char byte);
+void ISP_writeByte(unsigned int addr,byte dat);
 
-#endif /*___ISP_H___*/
+#endif

@@ -11,28 +11,27 @@
 #ifndef ___TIM2_H___
 #define ___TIM2_H___
 
-#define _FRE_OSC_ 11059200L
-//#define _FRE_OSC_ 12000000L
-
+/* --- @header file --- */
 #include <stc89.h>
 #include <stdbool.h>
-
 #include "exti.h"
 #include "macro.h"
 
+/* mark work mode of TIM2 */
 typedef enum
 {
-	TIM2_MODE_TIM = 0x00, /* timer mode */
-	TIM2_MODE_catch = 0x01,  /* catch mode */
-	TIM2_MODE_baudrateProducer = 0x30 /* baudrateProducer */
+	TIM2_mode_0 = 0x00,  /* 16-bit timer mode(auto-reload) */
+	TIM2_mode_1 = 0x01,  /* 16-bit catch mode */
+	TIM2_mode_2 = 0x30   /* baud rate generator */
 } TIM2_mode;
 
 typedef enum
 {
-	TIM2_FUNC_CNT = 0x1, /* couter mode */
+	TIM2_FUNC_CNT = 0x1, /* counter mode */
 	TIM2_FUNC_TIM = 0x0  /* timer mode */
 } TIM2_function;
 
+/* define configure struct */
 typedef struct
 {
 	TIM2_function  function;
@@ -43,12 +42,12 @@ typedef struct
 } TIM2_configTypeDef;
 
 /* ---------- @function --------- */
-unsigned int TIM2_calculateValue(unsigned int time);/* (time/us) */
+unsigned int TIM2_calculateValue(unsigned int time);  /* (time/us) */
 void TIM2_clearFlag(void);
 void TIM2_cmd(Action a);
 void TIM2_config(TIM2_configTypeDef *tc);
-unsigned int TIM2_getValue();
-bool TIM2_isOverflow();
+unsigned int TIM2_getValue(void);
+bool TIM2_isOverflow(void);
 void TIM2_setFunction(TIM2_function f);
 void TIM2_setMode(TIM2_mode m);
 void TIM2_setValue(unsigned int val);

@@ -30,23 +30,32 @@
  Date    :2018-09-17
  Note    :(1)rename [user] directory as [usr]
           (2)update /usr/Makefile
-          (3)rename EXTI_MOD as EXTI_mode in <exti.h>, and modify name of related eunm value
-          (4)rename INTR_PIOR as INTR_priority in <exti.h>, and modify name of related eunm value
-          (5)rename UART_MODE as UART_mode in <uart.h>, and modify name of related eunm value
-          (6)rename ISP_CMMD as ISP_command in <isp.h>, and modify name of related eunm value
-          (7)rename ISO_beginAddress as ISP_ADDR_START in <isp.h>
+          (3)rename EXTI_MOD as EXTI_mode in <exti.h>, and modify name of related enum value
+          (4)rename INTR_PIOR as INTR_priority in <exti.h>, and modify name of related enum value
+          (5)rename UART_MODE as UART_mode in <uart.h>, and modify name of related enum value
+          (6)rename ISP_CMMD as ISP_command in <isp.h>, and modify name of related enum value
+          (7)rename ISP_beginAddress as ISP_ADDR_START in <isp.h>
           (8)rename ISP_endAddress as ISP_ADDR_END <isp.h>
           (9)rename function MEM_cmd_Ale as MEM_cmd_ale in <mem.h>
-          (10)rename WDT_Prescale as WDT_prescale in <wdt.h>, and modify name of related eunm value
-          (11)fix fatal bug in <uart.c>, this bug can cause user can't use TIM2 as baudrate generator
+          (10)rename WDT_Prescale as WDT_prescale in <wdt.h>, and modify name of related enum value
+          (11)fix fatal bug in <uart.c>, this bug can cause user can't use TIM2 as baud rate generator
           (12)rename [sample] directory as [example]
-		  (13)the conditional compilation mechanism is introduced into the source code(select expected compile part <macro.h>)
+          (13)the conditional compilation mechanism is introduced into the source code(select expected compile part <macro.h>)
           (14)add new data type "byte" in <macro.h>
-          (15)modify data type of member variable of "baudrate" in structment UART_configTypeDef(unsigned int -> uint32_t)
+          (15)modify data type of member variable of "baudrate" in struct UART_configTypeDef(unsigned int -> uint32_t)
 
+>Version :v1.0.1
+ Alias   :
+ Date    :2018-10-08
+ Note    :(1)rename function void ISP_writeByte(unsigned int addr,unsigned char dat) as void ISP_writeByte(unsigned int addr,byte dat) in <isp.h>
+          (2)rename function unsigned int TIM2_calculateValue(unsigned int time) as unsigned int TIM2_calculateValue(unsigned int t) in <tim2.h>
+          (3)rename tim, member of UART_configTypeDef, as baudGenerator
+          (4)modify function void UART_sendByte(unsigned char dat) as void UART_sendByte(byte dat) in <uart.h>
+          (5)rename function unsigned int UART_getTimerInitValue(uint32_t baud,PERIPH_TIM tim) as unsigned int unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim) in <uart.h>
+          (6)modify function void GPIO_configPortValue(PERIPH_GPIO gpio,unsigned char val) as void GPIO_configPortValue(PERIPH_GPIO gpio,byte val) in <gpio.h>
 #TEAM
-Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
-Director  - Weilun Fong (wlf@zhishan-iot.tk)
-Testing   - Amy Chung   (zhongliguo@zhishant-iot.tk)
+ Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
+ Director  - Weilun Fong (wlf@zhishan-iot.tk)
+ Testing   - Amy Chung   (zhongliguo@zhishant-iot.tk)
  
  

@@ -3,7 +3,7 @@
  *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.ga
  *  #Weilun Fong | wlf(at)zhishan-iot.ga
  * @E-mail:mcu(at)zhishan-iot.ga
- * @File-description:includes some definitions for operating gpio module
+ * @File-description:includes some definitions for operating GPIO module
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
  * @Version:V1
@@ -23,7 +23,7 @@ typedef enum
 	PERIPH_GPIO_2 = 0x2,
 	PERIPH_GPIO_3 = 0x3,
 	PERIPH_GPIO_4 = 0x4
-}PERIPH_GPIO;
+} PERIPH_GPIO;
 
 /* define pin */
 typedef enum
@@ -36,15 +36,15 @@ typedef enum
 	PERIPH_GPIO_PIN_5 = 0x20,
 	PERIPH_GPIO_PIN_6 = 0x40,
 	PERIPH_GPIO_PIN_7 = 0x80
-}PERIPH_GPIO_PIN;
+} PERIPH_GPIO_PIN;
 
 
 /* ---------- @function --------- */
 void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f);
-void GPIO_configPort(PERIPH_GPIO gpio,unsigned char val);
+void GPIO_configPort(PERIPH_GPIO gpio,byte val);
 FunctionalState GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
 void GPIO_resetBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
 void GPIO_setBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
 void GPIO_toggleBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
 
-#endif /* ___GPIO_H___ */
+#endif

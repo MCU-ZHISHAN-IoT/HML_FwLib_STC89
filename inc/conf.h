@@ -12,7 +12,7 @@
 #ifndef ___CONF_H___
 #define ___CONF_H___
 
-/* header files */
+/* ----- @header file ----- */
 #include  <stc89.h>
 
 #include "exti.h"
@@ -29,4 +29,4 @@
 #include "wdt.h"
 
 
-#endif /* ___CONF_H___ */
+#endif 

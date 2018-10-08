@@ -14,13 +14,14 @@
 #include <stc89.h>
 #include "macro.h"
 
+/* mark boot area */
 typedef enum
 {
 	RST_AP  = 0x0,
 	RST_ISP = 0x1
 } RST_bootarea;
 
-/* ---------- @function --------- */
+/* ----- @function --- */
 void RST_reset(RST_bootarea area);
 
 #endif /* ___RST_H___ */

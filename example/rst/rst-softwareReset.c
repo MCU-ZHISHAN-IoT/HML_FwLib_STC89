@@ -10,7 +10,7 @@
 #include "conf.h"
 
 /*
- * @Protype:void sys_init(void)
+ * @Prototype:void sys_init(void)
  * @Parameter:None
  * @Ret-val:None
  * @Note:init MCU
@@ -39,7 +39,7 @@ void main()
 }
 
 /*
- * @Protype:void exti1_isr(void)
+ * @Prototype:void exti1_isr(void)
  * @Parameter:None
  * @Ret-val:None
  * @Note:interrupt service function for EXTI1

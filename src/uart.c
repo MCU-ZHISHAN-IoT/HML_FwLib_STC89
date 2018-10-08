@@ -3,7 +3,7 @@
  *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
  *  #Weilun Fong | wlf(at)zhishan-iot.tk
  * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:operations for uart resource
+ * @File-description:operations for UART resource
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
  * @Version:V1
@@ -14,10 +14,10 @@
 #ifdef ___COMPILE_UART___
 
 /*
- * @Protype:void UART_cmd_multiBaudrate(Action a)
+ * @Prototype:void UART_cmd_multiBaudrate(Action a)
  * @Parameter:(1)a:expected action
  * @Ret-val:
- * @Note:disable or enable multi baudrate mode
+ * @Note:disable or enable multi baud rate mode
  */
 void UART_cmd_multiBaudrate(Action a)
 {
@@ -25,7 +25,7 @@ void UART_cmd_multiBaudrate(Action a)
 }
 
 /*
- * @Protype:void UART_cmd_receive(Action a)
+ * @Prototype:void UART_cmd_receive(Action a)
  * @Parameter:(1)a:expected action
  * @Ret-val:
  * @Note:disable or enable receive function of UART module
@@ -36,10 +36,10 @@ void UART_cmd_receive(Action a)
 }
 
 /*
- * @Protype:void UART_config(UART_configTypeDef *uc,PERIPH_TIM tim)
- * @Parameter:(1)uc:the pointer of config struct (2)tim:target timer module
+ * @Prototype:void UART_config(UART_configTypeDef *uc,PERIPH_TIM tim)
+ * @Parameter:(1)uc:the pointer of configure struct (2)tim:target timer module
  * @Ret-val:
- * @Note:config UART module
+ * @Note:configure UART module
  */
 void UART_config(UART_configTypeDef *uc)
 {
@@ -51,44 +51,45 @@ void UART_config(UART_configTypeDef *uc)
 	UART_cmd_multiBaudrate(uc->multiBaudrate);
 	UART_setMode(uc->mode);
 	UART_cmd_receive(uc->receiveState);
-	UART_switchTim(uc->tim);
+	UART_switchTim(uc->baudGenerator);
 
-	switch(uc->tim)
+	switch(uc->baudGenerator)
 	{
 		case PERIPH_TIM_1:
+		{
 			tc.function          = TIM_FUNC_TIM;
 			tc.interruptState    = DISABLE;
 			tc.interruptPriority = DISABLE;
-			tc.mode              = TIM_MODE_2;
-			tc.value             = UART_getTimerInitValue(uc->baudrate,PERIPH_TIM_1);
+			tc.mode              = TIM_mode_2;
+			tc.value             = UART_getBaudGeneratorInitValue(uc->baudrate,PERIPH_TIM_1);
 			TIM_config(PERIPH_TIM_1,&tc);
 			TIM_cmd(PERIPH_TIM_1,ENABLE);
-			break;
+		} break;
 			
-		case PERIPH_TIM2:
+		case PERIPH_TIM_2:
+		{
 			tc2.function          = TIM2_FUNC_TIM;
 			tc2.interruptState    = DISABLE;
 			tc2.interruptPriority = DISABLE;
-			tc2.mode              = TIM2_MODE_baudrateProducer;
-			tc2.value             = UART_getTimerInitValue(uc->baudrate,PERIPH_TIM2);
+			tc2.mode              = TIM2_mode_2;
+			tc2.value             = UART_getBaudGeneratorInitValue(uc->baudrate,PERIPH_TIM_2);
 			RCAP2L = tc2.value;
 			RCAP2H = (tc2.value >> 8);
 			TIM2_config(&tc2);
-			T2MOD = 0x02;
 			TIM2_cmd(ENABLE);
-			break;
+		} break;
 			
 		default:break;
 	}
 }
 
 /*
- * @Protype:unsigned int UART_getTimerInitValue(uint32_t baud,PERIPH_TIM tim)
- * @Parameter:(1)baud:expected baudrate (2)tim:target timer module
- * @Ret-val:init value the baudrate required of timer counter register(if return 0x0000,it means overflow)
+ * @Prototype:unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
+ * @Parameter:(1)baud:expected baud rate (2)tim:target timer module
+ * @Ret-val:initial value the baud rate required of timer counter register(if return 0x0000,it means overflow)
  * @Note:calculate timer counter register value
  */
-unsigned int UART_getTimerInitValue(uint32_t baud,PERIPH_TIM tim)
+unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
 {
 	unsigned char tmp = 0x00;
 	
@@ -96,11 +97,11 @@ unsigned int UART_getTimerInitValue(uint32_t baud,PERIPH_TIM tim)
 	switch(tim)
 	{
 		case PERIPH_TIM_1:
-			if(PCON & 0x80)     /* multi baudrate mode */
+			if(PCON & 0x80)     /* multi baud rate mode */
 			{
 				if(baud > _FRE_OSC_/12/16)
 				{
-					/* baudrate over max value */
+					/* baud rate over max value */
 					return 0x0000;
 				}
 				else 
@@ -121,7 +122,7 @@ unsigned int UART_getTimerInitValue(uint32_t baud,PERIPH_TIM tim)
 			}
 			break;
 		
-		case PERIPH_TIM2:
+		case PERIPH_TIM_2:
 			return tmp = (65536 - (_FRE_OSC_/32/baud));
 			break;
 		
@@ -131,7 +132,7 @@ unsigned int UART_getTimerInitValue(uint32_t baud,PERIPH_TIM tim)
 }
 
 /*
- * @Protype:FunctionalState UART_isReceived(void)
+ * @Prototype:FunctionalState UART_isReceived(void)
  * @Parameter:
  * @Ret-val:(1)SET:data have been received;(2)RESET:data haven't been received
  * @Note:
@@ -142,7 +143,7 @@ FunctionalState UART_isReceived(void)
 }
 
 /*
- * @Protype:FunctionalState UART_isTransmitted(void)
+ * @Prototype:FunctionalState UART_isTransmitted(void)
  * @Parameter:
  * @Ret-val:(1)SET:data have been transmitted;(2)RESET:data haven't been transmitted
  * @Note:
@@ -153,12 +154,12 @@ FunctionalState UART_isTransmitted(void)
 }
 
 /*
- * @Protype:void UART_sendByte(unsigned char dat)
+ * @Prototype:void UART_sendByte(byte dat)
  * @Parameter:(1)dat:one byte of data user want to send
  * @Ret-val:
  * @Note:send a byte via UART module
  */
-void UART_sendByte(unsigned char dat)
+void UART_sendByte(byte dat)
 {
 	SBUF = dat;
 	while(!TI);
@@ -166,10 +167,10 @@ void UART_sendByte(unsigned char dat)
 }
 
 /*
- * @Protype:void UART_sendString(char *str)
+ * @Prototype:void UART_sendString(char *str)
  * @Parameter:(1)str:the point of string user want to send
  * @Ret-val:
- * @Note:send a Ascii string via UART module
+ * @Note:send a ASCII string via UART module
  */
 void UART_sendString(char *str)
 {
@@ -183,7 +184,7 @@ void UART_sendString(char *str)
 }
 
 /*
- * @Protype:void UART_setMode(UART_mode m)
+ * @Prototype:void UART_setMode(UART_mode m)
  * @Parameter:(1)m:expected work mode
  * @Ret-val:
  * @Note:set work mode of UART module
@@ -194,36 +195,40 @@ void UART_setMode(UART_mode m)
 }
 
 /*
- *@Protype:void UART_switchTim(PERIPH_TIM tim)
+ *@Prototype:void UART_switchTim(PERIPH_TIM tim)
  *@Parameter:(1)tim:target timer module
  *@Ret-val:
- *@Note:choose a timer to be baudrate productor
+ *@Note:choose a timer to be baud rate generator
  */
 void UART_switchTim(PERIPH_TIM tim)
 {
 	if(tim == PERIPH_TIM_1)
+	{
 		T2CON = T2CON & 0xCF;
-	if(tim == PERIPH_TIM2)
-		T2CON = (T2CON & 0xCF) | 0x30;
+	}
+	if(tim == PERIPH_TIM_2)
+	{
+        T2CON = (T2CON & 0xCF) | 0x30;
+    }
 }
 
 /*
- * @Protype:void UART_INT_setPriority(INTR_priority p)
- * @Parameter:(1)p:expected intterrupt priority class
+ * @Prototype:void UART_INT_setPriority(INTR_priority p)
+ * @Parameter:(1)p:expected interrupt priority class
  * @Ret-val:
  * @Note:set priority of UART module
  */
 void UART_INT_setPriority(INTR_priority p)
 {
-	IP = (IP & 0xEF) | ((p & 0x01) << 0x4);
+	IP  = (IP & 0xEF)  | ((p & 0x01) << 0x4);
 	IPH = (IPH & 0xEF) | ((p & 0x02) << 0x3);
 }
 
 /*
- * @Protype:void UART_INT_cmd(Action a)
+ * @Prototype:void UART_INT_cmd(Action a)
  * @Parameter:(1)a:expected action
  * @Ret-val:
- * @Note:disable or enable intterupt function of UART module
+ * @Note:disable or enable interrupt function of UART module
  */
 void UART_INT_cmd(Action a)
 {

@@ -4,7 +4,7 @@
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:
  * #contains definitions that allow you to directly access the different memory areas of the STC90.
- * #have the similar functions like absacc.h in Keil
+ * #have the similar functions like <absacc.h> in Keil
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
  * @Version:V1
@@ -15,7 +15,7 @@
 #ifdef ___COMPILE_MEM___
 
 /*
- * @Protype:void MEM_cmd_ale(Action a)
+ * @Prototype:void MEM_cmd_ale(Action a)
  * @Parameter:(1)a:expected state
  * @Ret-val:
  * @Note:
@@ -28,7 +28,7 @@ void MEM_cmd_ale(Action a)
 }
 
 /*
- * @Protype:void MEM_cmd_internalExtendedRam(Action a)
+ * @Prototype:void MEM_cmd_internalExtendedRam(Action a)
  * @Parameter:(1)a:expected state
  * @Ret-val:
  * @Note:enable or disable internal extended RAM access

@@ -4,7 +4,7 @@
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:
  * #contains definitions that allow you to directly access the different memory areas of the STC90.
- * #have the similar functions like absacc.h in Keil
+ * #have the similar functions like <absacc.h> in Keil
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
  * @Version:V1
@@ -26,7 +26,7 @@
 #define __PWORD ((unsigned int volatile __pdata *) 0)
 #define __XWORD ((unsigned int volatile __xdata *) 0)
 
-/* ---------- @function --------- */
+/* ----- @function ----- */
 void MEM_cmd_ale(Action a);
 void MEM_cmd_internalExtendedRam(Action a);
 

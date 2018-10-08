@@ -3,7 +3,7 @@
  *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
  *  #Weilun Fong | wlf(at)zhishan-iot.tk
  * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:includes some definitions for operating exti module
+ * @File-description:includes some definitions for operating EXTI module
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
  * @Version:V1
@@ -46,10 +46,11 @@ typedef struct
 	INTR_priority priority;
 } EXTI_configTypeDef;
 
-/* ---------- @function --------- */
+/* ----- @function ----- */
 void EXTI_cmd(PERIPH_EXTI exti,Action a);
 void EXTI_config(PERIPH_EXTI exti,EXTI_configTypeDef *ec);
 void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod);
 void EXTI_setPriority(PERIPH_EXTI exti,INTR_priority p);
 
-#endif /* ___EXTI_H___ */
+#endif
+

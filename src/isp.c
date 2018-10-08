@@ -13,10 +13,10 @@
 #ifdef ___COMPILE_ISP___
 
 /*
- * @Protype:void ISP_cmd(Action a)
+ * @Prototype:void ISP_cmd(Action a)
  * @Parameter:(1)a:expected action
  * @Ret-val:
- * @Note:lanuch or stop ISP/IAP module
+ * @Note:launch or stop ISP/IAP module
  */
 void ISP_cmd(Action a)
 {
@@ -24,7 +24,7 @@ void ISP_cmd(Action a)
 }
 
 /*
- * @Protype:bool ISP_eraseByte(unsigned int addr)
+ * @Prototype:bool ISP_eraseByte(unsigned int addr)
  * @Parameter:(1)addr:operating address
  * @Ret-val:
  * @Note:clear the value of the register in the specified address
@@ -43,7 +43,7 @@ bool ISP_eraseByte(unsigned int addr)
 }
 
 /*
- * @Protype:void ISP_idle(void)
+ * @Prototype:void ISP_idle(void)
  * @Parameter:
  * @Ret-val:
  * @Note:Let ISP be idle
@@ -57,28 +57,28 @@ void ISP_idle(void)
 }
 
 /*
- * @Protype:unsigned char ISP_readByte(unsigned int addr)
+ * @Prototype:unsigned char ISP_readByte(unsigned int addr)
  * @Parameter:(1)addr:operating address
  * @Ret-val:byte
  * @Note:read the value of the register in the specified address
  */
 unsigned char ISP_readByte(unsigned int addr)
 {
-	unsigned char data__;
+	unsigned char dat;
 	
 	ISP_cmd(ENABLE);
 	ISP_setAddress(addr);
 	ISP_setCommand(ISP_command_read);
 	ISP_trig();
 	sleep(1);
-	data__ = ISP_DATA;
+	dat = ISP_DATA;
 	ISP_idle();
 	
-	return data__;
+	return dat;
 }
 
 /*
- * @Protype:void ISP_setAddress(unsigned int addr)
+ * @Prototype:void ISP_setAddress(unsigned int addr)
  * @Parameter:(1)addr:operating address
  * @Ret-val:
  * @Note:setting the address to be operated
@@ -90,7 +90,7 @@ void ISP_setAddress(unsigned int addr)
 }
 
 /*
- * @Protype:void ISP_setCommand(ISP_command cmd)
+ * @Prototype:void ISP_setCommand(ISP_command cmd)
  * @Parameter:(1)addr:operating address
  * @Ret-val:
  * @Note:set commmand
@@ -101,7 +101,7 @@ void ISP_setCommand(ISP_command cmd)
 }
 
 /*
- * @Protype:void ISP_trig(void)
+ * @Prototype:void ISP_trig(void)
  * @Parameter:
  * @Ret-val:
  * @Note:Trigger instruction
@@ -113,7 +113,7 @@ void ISP_trig(void)
 }
 
 /*
- * @Protype:void ISP_writeByte(unsigned int addr,unsigned char byte)
+ * @Prototype:void ISP_writeByte(unsigned int addr,unsigned char byte)
  * @Parameter:(1)addr:operating address
  * @Ret-val:
  * @Note:write the value into the register in the specified address

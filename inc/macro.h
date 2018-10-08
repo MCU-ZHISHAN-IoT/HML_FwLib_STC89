@@ -16,18 +16,19 @@
 typedef unsigned char byte;
 typedef unsigned char u8;
 typedef unsigned int  u16;
+typedef unsigned int  word;
 
 typedef enum
 {
 	RESET = 0x0,
 	SET   = !RESET
-}FunctionalState;
+} FunctionalState;
 
 typedef enum
 {
 	DISABLE = 0x0,
 	ENABLE  = !DISABLE
-}Action;
+} Action;
 
 /* mark model */
 #define MCU_NULL           0
@@ -49,7 +50,7 @@ typedef enum
 /* ---------- NEED TO BE SETTED ---------- */
 #define MCU_MODEL MCU_STC89C52RC
 
-/* config clock frequency */
+/* configure clock frequency */
 #define _FRE_OSC_ 11059200L
 //#define _FRE_OSC_ 12000000L
 
@@ -70,7 +71,7 @@ typedef enum
 
 /* ---------- @run-time check --------- */
 
-/* --- mcu model check --- */
+/* --- MCU model check --- */
 #if (MCU_MODEL == MCU_NULL)
 	#error HML run-time check:not specify MCU model!(ERROR_CODE-0x01)
 #endif
@@ -80,17 +81,17 @@ typedef enum
 	#error HML run-time check:the firmware library need define extern clcok frequency!(ERROR_CODE-0x02)
 #endif
 
-/* --- check compile macro define --- */
+/* --- check compile macro --- */
 #if (defined ___COMPILE_TIM___) && (!defined ___COMPILE_EXTI___)
-	#error HML run-time check: TIM part need extern support, please enable macro define ___COMPILE_EXTI___(ERROR_CODE-0x03)
+	#error HML run-time check: TIM part need extern support, please enable macro ___COMPILE_EXTI___(ERROR_CODE-0x03)
 #endif
 
 #if (defined ___COMPILE_TIM2___) && (!defined ___COMPILE_EXTI___)
-	#error HML run-time check: TIM2 part need extern support, please enable macro define ___COMPILE_EXTI___(ERROR_CODE-0x04)
+	#error HML run-time check: TIM2 part need extern support, please enable macro ___COMPILE_EXTI___(ERROR_CODE-0x04)
 #endif
 
 #if (defined ___COMPILE_UART___) && ((!defined ___COMPILE_EXTI___) || (!defined ___COMPILE_TIM___) || (!defined ___COMPILE_TIM2___))
-	#error HML run-time check: UART part need extern support, please enable macro define ___COMPILE_TIM___  or ___COMPILE_TIM2___ at the same time(ERROR_CODE-0x05)
+	#error HML run-time check: UART part need extern support, please enable macro ___COMPILE_TIM___  or ___COMPILE_TIM2___ at the same time(ERROR_CODE-0x05)
 #endif
 
-#endif /* ___MACRO_H___ */
+#endif

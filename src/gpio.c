@@ -14,13 +14,13 @@
 #ifdef ___COMPILE_GPIO___
 
 /*
- * @Protype:void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f)
+ * @Prototype:void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f)
  * @Parameter:
  *  (1)gpio:target GPIO port
  *  (2)pin:target GPIO pin
  *  (3)f:expected level state
  * @Ret-val:
- * @Note:config specified pin as expected state
+ * @Note:configure specified pin as expected state
  */
 void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f)
 {
@@ -35,14 +35,14 @@ void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f)
 }
 
 /*
- * @Protype:void GPIO_configPort(PERIPH_GPIO gpio,unsigned char val)
+ * @Prototype:void GPIO_configPort(PERIPH_GPIO gpio,byte val)
  * @Parameter:
  *  (1)gpio:target GPIO port
  *  (2)val:expected port value
  * @Ret-val:
- * @Note:config port value
+ * @Note:configure port value
  */
-void GPIO_configPort(PERIPH_GPIO gpio,unsigned char val)
+void GPIO_configPort(PERIPH_GPIO gpio,byte val)
 {
 	switch(gpio)
 	{
@@ -56,7 +56,7 @@ void GPIO_configPort(PERIPH_GPIO gpio,unsigned char val)
 }
 
 /*
- * @Protype:void GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
+ * @Prototype:void GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
  * @Parameter:
  *  (1)gpio:target GPIO port
  *  (2)pin:target pin
@@ -76,7 +76,7 @@ FunctionalState GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
 		case PERIPH_GPIO_4:value = P4 & pin;break;
 		default:break;
 	}
-	if(value==0)
+	if(value == 0)
 	{
 		return RESET;
 	}
@@ -87,7 +87,7 @@ FunctionalState GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
 }
 
 /*
- * @Protype:void GPIO_resetBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
+ * @Prototype:void GPIO_resetBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
  * @Parameter:
  *  (1)gpio:target GPIO port
  *  (2)pin:target pin
@@ -108,7 +108,7 @@ void GPIO_resetBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
 }
 
 /*
- * @Protype:void GPIO_setBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
+ * @Prototype:void GPIO_setBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
  * @Parameter:
  *  (1)gpio:target GPIO port
  *  (2)pin:target pin
@@ -129,7 +129,7 @@ void GPIO_setBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
 }
 
 /*
- * @Protype:void GPIO_toggleBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
+ * @Prototype:void GPIO_toggleBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
  * @Parameter:
  *  (1)gpio:target GPIO port
  *  (2)pin:target pin

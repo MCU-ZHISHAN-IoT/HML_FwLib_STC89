@@ -13,7 +13,7 @@
 #ifdef ___COMPILE_RST___
 
 /*
- * @Protype:void RST_reset(RST_bootarea area)
+ * @Prototype:void RST_reset(RST_bootarea area)
  * @Parameter:(1)area:boot area
  * @Ret-val:
  * @Note:resets module and chooses area the module boots from

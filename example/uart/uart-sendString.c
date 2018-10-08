@@ -11,7 +11,7 @@
 #include "conf.h"
 
 /*
- * @Protype:void sys_init(void)
+ * @Prototype:void sys_init(void)
  * @Parameter:None
  * @Ret-val:None
  * @Note:init MCU
@@ -21,17 +21,18 @@ void sys_init(void)
 	UART_configTypeDef uc;
 	
 	uc.baudrate = 9600;
+	uc.baudGenerator = PERIPH_TIM_2;
 	uc.interruptState = ENABLE;
 	uc.interruptPriority = DISABLE;
 	uc.mode = UART_mode_1;
 	uc.multiBaudrate = DISABLE;
 	uc.receiveState  = ENABLE;
-	uc.tim = PERIPH_TIM2;
 	
 	UART_config(&uc);
 	enableAllInterrupts();
 }
 
+/* ----- @main ----- */
 void main(void)
 {
 	sys_init();

@@ -14,7 +14,7 @@
 #ifdef ___COMPILE_TIM___
 
 /*
- * @Protype:unsigned int TIM_calcValue(unsigned int time,TIM_mode m)
+ * @Prototype:unsigned int TIM_calcValue(unsigned int time,TIM_mode m)
  * @Parameter:
  *  (1)time:Initial value of time (time/us)
  *  (2)m:work mode(refer to header file)
@@ -24,21 +24,28 @@
 unsigned int TIM_calculateValue(unsigned int time,TIM_mode m)
 {
 	/* MachineCycle:12/_FRE_OSC_ */
-	unsigned int MaxTick = 0x0000;
+	unsigned int maxTick = 0x0000;
+	
 	switch(m)
 	{
-        case TIM_MODE_0:MaxTick = 0x1FFF;break; //(1<<13)-1
-        case TIM_MODE_1:MaxTick = 0xFFFF;break; //(1<<16)-1
-        case TIM_MODE_2:MaxTick = 0x00FF;break; //(1<<8)-1
-        case TIM_MODE_3:MaxTick = 0x00FF;break; //(1<<8)-1
+        case TIM_mode_0:maxTick = 0x1FFF;break;
+        case TIM_mode_1:maxTick = 0xFFFF;break;
+        case TIM_mode_2:maxTick = 0x00FF;break;
+        case TIM_mode_3:maxTick = 0x00FF;break;
 		default:break;
 	}
-    if((time*12)/(_FRE_OSC_/1000000) >= MaxTick ) return 0;
-    else return (MaxTick+1-((time*12)/(_FRE_OSC_/1000000)));
+    if((time*12)/(_FRE_OSC_/1000000) >= maxTick )
+    {
+        return 0;
+	}
+    else
+    {
+        return (maxTick+1-((time*12)/(_FRE_OSC_/1000000)));
+    }
 }
 
 /*
- * @Protype:void TIM_cmd(PERIPH_TIM tim,Action a)
+ * @Prototype:void TIM_cmd(PERIPH_TIM tim,Action a)
  * @Parameter:
  *  (1)tim:target timer module
  *  (2)a:expected action
@@ -56,7 +63,7 @@ void TIM_cmd(PERIPH_TIM tim,Action a)
 }
 
 /*
- * @Protype:void TIM_config(PERIPH_TIM tim,TIM_configTypeDef *tc)
+ * @Prototype:void TIM_config(PERIPH_TIM tim,TIM_configTypeDef *tc)
  * @Parameter:
  *  (1)tim:target timer module
  *  (2)tc:custom config reference info.,look up details in header file
@@ -73,7 +80,7 @@ void TIM_config(PERIPH_TIM tim,TIM_configTypeDef *tc)
 }
 
 /*
- * @Protype:unsigned int TIM_getValue(PERIPH_TIM tim)
+ * @Prototype:unsigned int TIM_getValue(PERIPH_TIM tim)
  * @Parameter:(1)tim:target timer module
  * @Ret-val:value(if return 0,means user call this function with error ways)
  * @Note:get timer's value
@@ -89,7 +96,7 @@ unsigned int TIM_getValue(PERIPH_TIM tim)
 }
 
 /*
- * @Protype:bool TIM_isOverflow(PERIPH_TIM tim)
+ * @Prototype:bool TIM_isOverflow(PERIPH_TIM tim)
  * @Parameter:(1)tim:target timer module
  * @Ret-val:(1)false:not overflow;(2)true:overflow;
  * @Note:check value register timer if is overflow
@@ -105,7 +112,7 @@ bool TIM_isOverflow(PERIPH_TIM tim)
 }
 
 /*
- * @Protype:void TIM_setFunction(PERIPH_TIM tim,TIM_function f)
+ * @Prototype:void TIM_setFunction(PERIPH_TIM tim,TIM_function f)
  * @Parameter:
  * (1)tim:target timer module
  * (2)f:expected function
@@ -123,7 +130,7 @@ void TIM_setFunction(PERIPH_TIM tim,TIM_function f)
 }
 
 /*
- * @Protype:void TIM_setMode(PERIPH_TIM tim,TIM_mode m)
+ * @Prototype:void TIM_setMode(PERIPH_TIM tim,TIM_mode m)
  * @Parameter:
  * (1)tim:target timer module
  * (2)m:work mode(refer to header file)
@@ -141,7 +148,7 @@ void TIM_setMode(PERIPH_TIM tim,TIM_mode m)
 }
 
 /*
- * @Protype:void TIM_setValue(PERIPH_TIM tim,unsigned int val)
+ * @Prototype:void TIM_setValue(PERIPH_TIM tim,unsigned int val)
  * @Parameter:
  * (1)tim:target timer module
  * (2)val:expected value
@@ -167,7 +174,7 @@ void TIM_setValue(PERIPH_TIM tim,unsigned int val)
 }
 
 /*
- * @Protype:void TIM_INT_cmd(PERIPH_TIM tim,Action a)
+ * @Prototype:void TIM_INT_cmd(PERIPH_TIM tim,Action a)
  * @Parameter:
  * (1)tim:target timer module
  * (2)a:expected action,decide disable or enable timer intterupt
@@ -185,7 +192,7 @@ void TIM_INT_cmd(PERIPH_TIM tim,Action a)
 }
 
 /*
- * @Protype:void TIM_INT_setPriority(PERIPH_TIM tim,INTR_priority p)
+ * @Prototype:void TIM_INT_setPriority(PERIPH_TIM tim,INTR_priority p)
  * @Parameter:
  * (1)tim:target timer module
  * (2)p:expected intterrupt priority class
