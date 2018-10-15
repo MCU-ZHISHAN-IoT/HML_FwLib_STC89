@@ -2,7 +2,7 @@
  * @Author:
  *  #Weilun Fong | wlf(at)zhishan-iot.tk
  * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:a demo which shows how to use the library to send string via UART module, and use TIM2 as baud rate generator
+ * @File-description:a demo which shows how to use the library to send string via UART module, and use TIM2 as baudrate generator
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
  * @Version:V1

@@ -45,7 +45,7 @@
           (15)modify data type of member variable of "baudrate" in struct UART_configTypeDef(unsigned int -> uint32_t)
 
 >Version :v1.0.1
- Alias   :
+ Alias   :V1R1
  Date    :2018-10-08
  Note    :(1)rename function void ISP_writeByte(unsigned int addr,unsigned char dat) as void ISP_writeByte(unsigned int addr,byte dat) in <isp.h>
           (2)rename function unsigned int TIM2_calculateValue(unsigned int time) as unsigned int TIM2_calculateValue(unsigned int t) in <tim2.h>

@@ -31,24 +31,24 @@ typedef enum
 } Action;
 
 /* mark model */
-#define MCU_NULL           0
-#define MCU_STC89C51RC     1
-#define MCU_STC89LE51RC    1
-#define MCU_STC89C52RC     2
-#define MCU_STC89LE52RC    2
-#define MCU_STC89C54RDP    3
-#define MCU_STC89LE54RDP   3
-#define MCU_STC89C58RDP    4
-#define MCU_STC89LE58RDP   4
-#define MCU_STC89C510RDP   5
-#define MCU_STC89LE510RDP  5
-#define MCU_STC89C512RDP   6
-#define MCU_STC89LE512RDP  6
-#define MCU_STC89C514RDP   7
-#define MCU_STC89LE514RDP  7
+#define _MCU_NULL_           0
+#define _MCU_STC89C51RC_     1
+#define _MCU_STC89LE51RC_    1
+#define _MCU_STC89C52RC_     2
+#define _MCU_STC89LE52RC_    2
+#define _MCU_STC89C54RDP_    3
+#define _MCU_STC89LE54RDP_   3
+#define _MCU_STC89C58RDP_    4
+#define _MCU_STC89LE58RDP_   4
+#define _MCU_STC89C510RDP_   5
+#define _MCU_STC89LE510RDP_  5
+#define _MCU_STC89C512RDP_   6
+#define _MCU_STC89LE512RDP_  6
+#define _MCU_STC89C514RDP_   7
+#define _MCU_STC89LE514RDP_  7
 
-/* ---------- NEED TO BE SETTED ---------- */
-#define MCU_MODEL MCU_STC89C52RC
+/* ---------- NEED TO CONFIG MANUALLY !!! ---------- */
+#define _MCU_MODEL_ _MCU_STC89C52RC_
 
 /* configure clock frequency */
 #define _FRE_OSC_ 11059200L
@@ -66,13 +66,12 @@ typedef enum
 #define ___COMPILE_UTIL___
 #define ___COMPILE_WDT___
 
-
-/* ---------- ---------- */
+/* ---------- END OF MANUAL CONFIGURATON PART --------- */
 
 /* ---------- @run-time check --------- */
 
 /* --- MCU model check --- */
-#if (MCU_MODEL == MCU_NULL)
+#if (_MCU_MODEL_ == _MCU_NULL_)
 	#error HML run-time check:not specify MCU model!(ERROR_CODE-0x01)
 #endif
 

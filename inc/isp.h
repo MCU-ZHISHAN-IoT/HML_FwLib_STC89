@@ -28,33 +28,33 @@ typedef enum
 
 /* ---------- @address define --------- */
 
-#if (MCU_MODEL == MCU_STC89C51RC)  || \
-    (MCU_MODEL == MCU_STC89LE51RC) || \
-    (MCU_MODEL == MCU_STC89C52RC)  || \
-    (MCU_MODEL == MCU_STC89LE52RC)
+#if (_MCU_MODEL_ == _MCU_STC89C51RC_)  || \
+    (_MCU_MODEL_ == _MCU_STC89LE51RC_) || \
+    (_MCU_MODEL_ == _MCU_STC89C52RC_)  || \
+    (_MCU_MODEL_ == _MCU_STC89LE52RC_)
 	#define ISP_ADDR_START 0x2000
 	#define ISP_ADDR_END 0x2FFF
 
 #else
 	#define ISP_ADDR_END 0xF3FF
-	#if (MCU_MODEL == MCU_STC89C54RDP)    || \
-        (MCU_MODEL == MCU_STC89LE54RDP)
+	#if (_MCU_MODEL_ == _MCU_STC89C54RDP_)    || \
+        (_MCU_MODEL_ == _MCU_STC89LE54RDP_)
 		#define ISP_ADDR_START 0x4000
-	#elif (MCU_MODEL == MCU_STC89C58RDP)  || \
-	      (MCU_MODEL == MCU_STC89LE58RDP)
+	#elif (_MCU_MODEL_ == _MCU_STC89C58RDP_)  || \
+	      (_MCU_MODEL_ == _MCU_STC89LE58RDP_)
 		#define ISP_ADDR_START 0x8000
-	#elif (MCU_MODEL == MCU_STC89C510RDP) || \
-	      (MCU_MODEL == MCU_STC89LE510RDP)
+	#elif (_MCU_MODEL_ == _MCU_STC89C510RDP_) || \
+	      (_MCU_MODEL_ == _MCU_STC89LE510RDP_)
 		#define ISP_ADDR_START 0xA000
-	#elif (MCU_MODEL == MCU_STC89C512RDP) || \
-	      (MCU_MODEL == MCU_STC89LE512RDP)
+	#elif (_MCU_MODEL_ == _MCU_STC89C512RDP_) || \
+	      (_MCU_MODEL_ == _MCU_STC89LE512RDP_)
 		#define ISP_ADDR_START 0xC000
-	#elif (MCU_MODEL == MCU_STC89C514RDP) || \
-	      (MCU_MODEL == MCU_STC89LE514RDP)
+	#elif (_MCU_MODEL_ == _MCU_STC89C514RDP_) || \
+	      (_MCU_MODEL_ == _MCU_STC89LE514RDP_)
 		#define ISP_ADDR_START 0xE000
 	#endif
 
-#endif   /* MCU_MODEL RC/RDP */
+#endif   /* _MCU_MODEL_ RC/RDP */
 	
 /* ----- @function ----- */
 void ISP_cmd(Action a);

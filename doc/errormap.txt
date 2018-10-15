@@ -2,7 +2,7 @@
 #Description :record error code defined by HML
 #E-mail      :mcu(at)zhishan-iot.tk
 #FwLib       :HML_FwLib_STC89
-#Version     :v1.0.0
+#Version     :v1.0.1
 
 ERROR_CODE LIST >>
 

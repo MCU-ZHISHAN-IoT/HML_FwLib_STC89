@@ -9,6 +9,12 @@
 
 #include "conf.h"
 
+/*
+ * @Prototype:void sys_init(void)
+ * @Parameter:None
+ * @Ret-val:None
+ * @Note:init MCU
+ */
 void sys_init(void)
 {
 	UART_configTypeDef uc;
