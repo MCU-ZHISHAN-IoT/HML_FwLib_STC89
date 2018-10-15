@@ -53,6 +53,13 @@
           (4)modify function void UART_sendByte(unsigned char dat) as void UART_sendByte(byte dat) in <uart.h>
           (5)rename function unsigned int UART_getTimerInitValue(uint32_t baud,PERIPH_TIM tim) as unsigned int unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim) in <uart.h>
           (6)modify function void GPIO_configPortValue(PERIPH_GPIO gpio,unsigned char val) as void GPIO_configPortValue(PERIPH_GPIO gpio,byte val) in <gpio.h>
+
+>Version :v1.0.2
+ Alias   :
+ Date    :2018-10-15
+ Note    :(1)rename macro MCU_MODEL as _MCU_MODEL_ in <macro.h>
+ 
+		  
 #TEAM
  Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
  Director  - Weilun Fong (wlf@zhishan-iot.tk)
