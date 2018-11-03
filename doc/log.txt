@@ -56,9 +56,11 @@
 
 >Version :v1.0.2
  Alias   :
- Date    :2018-10-15
+ Date    :2018-11-03
  Note    :(1)rename macro MCU_MODEL as _MCU_MODEL_ in <macro.h>
- 
+          (2)rename macro __PDATA as __PBYTE in <mem.h>
+          (3)rename file doc/license.txt as LICENSE
+          (4)improve header information of example source files
 		  
 #TEAM
  Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)

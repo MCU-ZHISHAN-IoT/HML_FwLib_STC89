@@ -5,6 +5,8 @@
  * @File-description:a demo which shows how to use HML to toggle P12 state when EXTI trigged
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
+ * @Test-board:TS51-V2.0
+ * @Test-mcu:STC89C52RC
  * @Version:V1
  */
 

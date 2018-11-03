@@ -4,6 +4,8 @@
  * @File-description:show how to use firmware library to make an interruption by TIM module, then toggle the state of IO
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
+ * @Test-board:TS51-V2.0
+ * @Test-mcu:STC89C52RC
  * @Version:V1
  */
 
