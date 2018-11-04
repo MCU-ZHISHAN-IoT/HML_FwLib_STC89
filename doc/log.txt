@@ -49,18 +49,20 @@
  Date    :2018-10-08
  Note    :(1)rename function void ISP_writeByte(unsigned int addr,unsigned char dat) as void ISP_writeByte(unsigned int addr,byte dat) in <isp.h>
           (2)rename function unsigned int TIM2_calculateValue(unsigned int time) as unsigned int TIM2_calculateValue(unsigned int t) in <tim2.h>
-          (3)rename tim, member of UART_configTypeDef, as baudGenerator
+          (3)rename tim, member of UART_configTypeDef, as baudGenerator in <uart.h>
           (4)modify function void UART_sendByte(unsigned char dat) as void UART_sendByte(byte dat) in <uart.h>
           (5)rename function unsigned int UART_getTimerInitValue(uint32_t baud,PERIPH_TIM tim) as unsigned int unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim) in <uart.h>
           (6)modify function void GPIO_configPortValue(PERIPH_GPIO gpio,unsigned char val) as void GPIO_configPortValue(PERIPH_GPIO gpio,byte val) in <gpio.h>
 
 >Version :v1.0.2
  Alias   :
- Date    :2018-11-03
+ Date    :2018-11-05
  Note    :(1)rename macro MCU_MODEL as _MCU_MODEL_ in <macro.h>
           (2)rename macro __PDATA as __PBYTE in <mem.h>
           (3)rename file doc/license.txt as LICENSE
           (4)improve header information of example source files
+          (5)add .gitkeep file into obj directory, because Git doesn't permit user committing a empty directory.
+          (6)add interrupt vector for extern interrupt 2 and extern interrupt 2 in <stc89.h>
 		  
 #TEAM
  Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
