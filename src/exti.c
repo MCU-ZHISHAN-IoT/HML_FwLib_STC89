@@ -22,8 +22,8 @@
  */
 void EXTI_config(PERIPH_EXTI exti,EXTI_configTypeDef *ec)
 {
-	EXTI_setMode(exti,ec->mode);
-	EXTI_setPriority(exti,ec->priority);
+    EXTI_setMode(exti,ec->mode);
+    EXTI_setPriority(exti,ec->priority);
 }
 
 /*
@@ -35,14 +35,14 @@ void EXTI_config(PERIPH_EXTI exti,EXTI_configTypeDef *ec)
  */
 void EXTI_cmd(PERIPH_EXTI exti,Action a)
 {
-	switch(exti)
-	{
-		case PERIPH_EXTI_0:EX0 = a;break;
-		case PERIPH_EXTI_1:EX1 = a;break;
-		case PERIPH_EXTI_2:EX2 = a;break;
-		case PERIPH_EXTI_3:EX3 = a;break;
-		default:break;
-	}
+    switch(exti)
+    {
+        case PERIPH_EXTI_0:EX0 = a;break;
+        case PERIPH_EXTI_1:EX1 = a;break;
+        case PERIPH_EXTI_2:EX2 = a;break;
+        case PERIPH_EXTI_3:EX3 = a;break;
+        default:break;
+    }
 }
 
 /*
@@ -54,14 +54,14 @@ void EXTI_cmd(PERIPH_EXTI exti,Action a)
  */
 void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod)
 {
-	switch(exti)
-	{
-		case PERIPH_EXTI_0:IT0 = mod;break;
-		case PERIPH_EXTI_1:IT1 = mod;break;
-		case PERIPH_EXTI_2:IT2 = mod;break;
-		case PERIPH_EXTI_3:IT3 = mod;break;
-		default:break;
-	}
+    switch(exti)
+    {
+        case PERIPH_EXTI_0:IT0 = mod;break;
+        case PERIPH_EXTI_1:IT1 = mod;break;
+        case PERIPH_EXTI_2:IT2 = mod;break;
+        case PERIPH_EXTI_3:IT3 = mod;break;
+        default:break;
+    }
 }
 
 /*
@@ -73,38 +73,38 @@ void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod)
  */
 void EXTI_setPriority(PERIPH_EXTI exti,INTR_priority p)
 {
-	switch(exti)
-	{
-		case PERIPH_EXTI_0:
-		{
-			/* lower bit */
-			IP  = (IP & 0xFE) | (p & 0x01);
-			/* higher bit */
-			IPH = (IPH & 0xFE) | ((p >> 0x1) & 0x01);
-		} break;
-		case PERIPH_EXTI_1:
-		{
-			/* lower bit */
-			IP  = (IP & 0xFB) | ((p & 0x01) << 0x2);
-			/* higher bit */
-			IPH = (IPH & 0xFB) | ((p & 0x02) << 0x1);
-		} break;
-		case PERIPH_EXTI_2:
-		{
-			/* lower bit */
-			PX2 = (p & 0x01);
-			/* higher bit */
-			IPH = (IPH & 0xBF) | ((p & 0x02)) << 0x6;
-		} break;
-		case PERIPH_EXTI_3:
-		{
-			/* lower bit */
-			PX3 = (p & 0x01);
-			/* higher bit */
-			IPH = (IPH & 0x7F) | ((p & 0x02)) << 0x7;
-		} break;
-		default:break;
-	}
+    switch(exti)
+    {
+        case PERIPH_EXTI_0:
+        {
+            /* lower bit */
+            IP  = (IP & 0xFE) | (p & 0x01);
+            /* higher bit */
+            IPH = (IPH & 0xFE) | ((p >> 0x1) & 0x01);
+        } break;
+        case PERIPH_EXTI_1:
+        {
+            /* lower bit */
+            IP  = (IP & 0xFB) | ((p & 0x01) << 0x2);
+            /* higher bit */
+            IPH = (IPH & 0xFB) | ((p & 0x02) << 0x1);
+        } break;
+        case PERIPH_EXTI_2:
+        {
+            /* lower bit */
+            PX2 = (p & 0x01);
+            /* higher bit */
+            IPH = (IPH & 0xBF) | ((p & 0x02)) << 0x6;
+        } break;
+        case PERIPH_EXTI_3:
+        {
+            /* lower bit */
+            PX3 = (p & 0x01);
+            /* higher bit */
+            IPH = (IPH & 0x7F) | ((p & 0x02)) << 0x7;
+        } break;
+        default:break;
+    }
 }
 
 #endif

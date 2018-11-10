@@ -17,8 +17,8 @@
 /* mark boot area */
 typedef enum
 {
-	RST_AP  = 0x0,
-	RST_ISP = 0x1
+    RST_AP  = 0x0,
+    RST_ISP = 0x1
 } RST_bootarea;
 
 /* ----- @function --- */

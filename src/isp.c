@@ -20,7 +20,7 @@
  */
 void ISP_cmd(Action a)
 {
-	ISP_CONTR = (ISP_CONTR & 0x7F) | a << 0x7;
+    ISP_CONTR = (ISP_CONTR & 0x7F) | a << 0x7;
 }
 
 /*
@@ -31,15 +31,15 @@ void ISP_cmd(Action a)
  */
 bool ISP_eraseByte(unsigned int addr)
 {
-	if((ISP_ADDR_START > addr) | (ISP_ADDR_END < addr)) return false;
-	
-	ISP_cmd(ENABLE);
-	ISP_setAddress(addr);
-	ISP_setCommand(ISP_command_erase);
-	ISP_trig();
-	sleep(1);
-	ISP_idle();
-	return true;
+    if((ISP_ADDR_START > addr) | (ISP_ADDR_END < addr)) return false;
+    
+    ISP_cmd(ENABLE);
+    ISP_setAddress(addr);
+    ISP_setCommand(ISP_command_erase);
+    ISP_trig();
+    sleep(1);
+    ISP_idle();
+    return true;
 }
 
 /*
@@ -50,10 +50,10 @@ bool ISP_eraseByte(unsigned int addr)
  */
 void ISP_idle(void)
 {
-	ISP_cmd(DISABLE);
-	ISP_setAddress(0x0000);
-	ISP_setCommand(ISP_command_idle);
-	ISP_DATA = 0xFF;
+    ISP_cmd(DISABLE);
+    ISP_setAddress(0x0000);
+    ISP_setCommand(ISP_command_idle);
+    ISP_DATA = 0xFF;
 }
 
 /*
@@ -64,17 +64,17 @@ void ISP_idle(void)
  */
 unsigned char ISP_readByte(unsigned int addr)
 {
-	unsigned char dat;
-	
-	ISP_cmd(ENABLE);
-	ISP_setAddress(addr);
-	ISP_setCommand(ISP_command_read);
-	ISP_trig();
-	sleep(1);
-	dat = ISP_DATA;
-	ISP_idle();
-	
-	return dat;
+    unsigned char dat;
+    
+    ISP_cmd(ENABLE);
+    ISP_setAddress(addr);
+    ISP_setCommand(ISP_command_read);
+    ISP_trig();
+    sleep(1);
+    dat = ISP_DATA;
+    ISP_idle();
+    
+    return dat;
 }
 
 /*
@@ -85,8 +85,8 @@ unsigned char ISP_readByte(unsigned int addr)
  */
 void ISP_setAddress(unsigned int addr)
 {
-	ISP_ADDRL = addr;
-	ISP_ADDRH = addr >> 0x8;
+    ISP_ADDRL = addr;
+    ISP_ADDRH = addr >> 0x8;
 }
 
 /*
@@ -97,7 +97,7 @@ void ISP_setAddress(unsigned int addr)
  */
 void ISP_setCommand(ISP_command cmd)
 {
-	ISP_CMD = cmd;
+    ISP_CMD = cmd;
 }
 
 /*
@@ -108,8 +108,8 @@ void ISP_setCommand(ISP_command cmd)
  */
 void ISP_trig(void)
 {
-	ISP_TRIG = 0x46;
-	ISP_TRIG = 0xB9;
+    ISP_TRIG = 0x46;
+    ISP_TRIG = 0xB9;
 }
 
 /*
@@ -120,15 +120,15 @@ void ISP_trig(void)
  */
 void ISP_writeByte(unsigned int addr,unsigned char byte)
 {
-	if((ISP_ADDR_START > addr) | (ISP_ADDR_END < addr)) return;
-	
-	ISP_cmd(ENABLE);
-	ISP_setAddress(addr);
-	ISP_setCommand(ISP_command_write);
-	ISP_DATA = byte;
-	ISP_trig();
-	sleep(1);
-	ISP_idle();
+    if((ISP_ADDR_START > addr) | (ISP_ADDR_END < addr)) return;
+    
+    ISP_cmd(ENABLE);
+    ISP_setAddress(addr);
+    ISP_setCommand(ISP_command_write);
+    ISP_DATA = byte;
+    ISP_trig();
+    sleep(1);
+    ISP_idle();
 }
 
 #endif

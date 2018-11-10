@@ -20,33 +20,33 @@
 
 typedef enum
 {
-	PERIPH_TIM_0 = 0x0,
-	PERIPH_TIM_1 = 0x1,
-	PERIPH_TIM_2 = 0x2 /* refer to tim2.h */
+    PERIPH_TIM_0 = 0x0,
+    PERIPH_TIM_1 = 0x1,
+    PERIPH_TIM_2 = 0x2 /* refer to tim2.h */
 } PERIPH_TIM;
 
 typedef enum
 {
-	TIM_mode_0 = 0x0,   /* 13-bit timer/counter */
-	TIM_mode_1 = 0x1,   /* 16-bit timer/counter */
-	TIM_mode_2 = 0x2,   /* 8-bit auto reload */
-	TIM_mode_3 = 0x3    /* only for timer-0 */
+    TIM_mode_0 = 0x0,   /* 13-bit timer/counter */
+    TIM_mode_1 = 0x1,   /* 16-bit timer/counter */
+    TIM_mode_2 = 0x2,   /* 8-bit auto reload */
+    TIM_mode_3 = 0x3    /* only for timer-0 */
 } TIM_mode;
 
 /* mark function of timer */
 typedef enum
 {
-	TIM_FUNC_CNT = 0x1, /* counter mode */
-	TIM_FUNC_TIM = 0x0  /* timer mode */
+    TIM_FUNC_CNT = 0x1, /* counter mode */
+    TIM_FUNC_TIM = 0x0  /* timer mode */
 } TIM_function;
 
 typedef struct
 {
-	TIM_function  function;
-	Action        interruptState;
-	INTR_priority interruptPriority;
-	TIM_mode      mode;
-	unsigned int value;
+    TIM_function  function;
+    Action        interruptState;
+    INTR_priority interruptPriority;
+    TIM_mode      mode;
+    unsigned int value;
 } TIM_configTypeDef;
 
 /* ----- @function ----- */

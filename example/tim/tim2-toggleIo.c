@@ -19,23 +19,23 @@
  */
 void sys_init(void)
 {
-	TIM2_configTypeDef tc;
-	
-	tc.function = TIM2_FUNC_TIM;
-	tc.interruptState = ENABLE;
-	tc.interruptPriority = ENABLE;
-	tc.mode = TIM2_mode_0;
-	tc.value = TIM2_calculateValue(50000);
-	
-	TIM2_config(&tc);
-	TIM2_cmd(ENABLE);
-	enableAllInterrupts();
+    TIM2_configTypeDef tc;
+    
+    tc.function = TIM2_FUNC_TIM;
+    tc.interruptState = ENABLE;
+    tc.interruptPriority = ENABLE;
+    tc.mode = TIM2_mode_0;
+    tc.value = TIM2_calculateValue(50000);
+    
+    TIM2_config(&tc);
+    TIM2_cmd(ENABLE);
+    enableAllInterrupts();
 }
 
 void main(void)
 {
-	sys_init();
-	while(true);
+    sys_init();
+    while(true);
 }
 
 /*
@@ -46,14 +46,14 @@ void main(void)
  */
 void tim2_isr(void) __interrupt TF2_VECTOR
 {
-	static u8 i = 0;
-	TIM2_clearFlag();
-	
-	/* per 500ms */
-	i++;
-	if(i == 10)
-	{
-		GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
-		i = 0;
-	}
+    static u8 i = 0;
+    TIM2_clearFlag();
+    
+    /* per 500ms */
+    i++;
+    if(i == 10)
+    {
+        GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
+        i = 0;
+    }
 }

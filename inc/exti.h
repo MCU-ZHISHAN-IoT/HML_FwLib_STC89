@@ -18,32 +18,32 @@
 /* mark EXTI module */
 typedef enum
 {
-	PERIPH_EXTI_0 = 0x0,
-	PERIPH_EXTI_1 = 0x1,
-	PERIPH_EXTI_2 = 0x2,
-	PERIPH_EXTI_3 = 0x3
+    PERIPH_EXTI_0 = 0x0,
+    PERIPH_EXTI_1 = 0x1,
+    PERIPH_EXTI_2 = 0x2,
+    PERIPH_EXTI_3 = 0x3
 } PERIPH_EXTI;
 
 /* mark work mode */
 typedef enum
 {
-	EXTI_mode_fallEdge = 0x1,
+    EXTI_mode_fallEdge = 0x1,
     EXTI_mode_lowLevel = 0x0
 } EXTI_mode;
 
 /* mark priority(lager number means higher priority)*/
 typedef enum
 {
-	INTR_priority_0 = 0x00,
-	INTR_priority_1 = 0x01,
-	INTR_priority_2 = 0x02,
-	INTR_priority_3 = 0x03,
+    INTR_priority_0 = 0x00,
+    INTR_priority_1 = 0x01,
+    INTR_priority_2 = 0x02,
+    INTR_priority_3 = 0x03,
 } INTR_priority;
 
 typedef struct
 {
-	EXTI_mode     mode;
-	INTR_priority priority;
+    EXTI_mode     mode;
+    INTR_priority priority;
 } EXTI_configTypeDef;
 
 /* ----- @function ----- */

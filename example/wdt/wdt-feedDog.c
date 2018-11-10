@@ -18,33 +18,33 @@
  */
 void sys_init(void)
 {
-	UART_configTypeDef uc;
-	
-	uc.baudrate = 9600;
+    UART_configTypeDef uc;
+    
+    uc.baudrate = 9600;
     uc.baudGenerator = PERIPH_TIM_1;
-	uc.interruptState = ENABLE;
-	uc.interruptPriority = DISABLE;
-	uc.mode = UART_mode_1;
-	uc.multiBaudrate = DISABLE;
-	uc.receiveState  = ENABLE;
-	
-	UART_config(&uc);
-	enableAllInterrupts();
+    uc.interruptState = ENABLE;
+    uc.interruptPriority = DISABLE;
+    uc.mode = UART_mode_1;
+    uc.multiBaudrate = DISABLE;
+    uc.receiveState  = ENABLE;
+    
+    UART_config(&uc);
+    enableAllInterrupts();
 }
 
 /* ----- @main ----- */
 void main(void)
 {
-	sys_init();
-	UART_sendString("MCU boot");
-	WDT_setPrescale(WDT_prescale_32);
-	WDT_cmd(ENABLE);
-	
-	while(true)
-	{
-		/*feed watchdog per 500ms*/
-		sleep(500);
-		WDT_clear();
-		UART_sendString("root@localboard:WatchDog has been feed\r\n");
-	}
+    sys_init();
+    UART_sendString("MCU boot");
+    WDT_setPrescale(WDT_prescale_32);
+    WDT_cmd(ENABLE);
+    
+    while(true)
+    {
+        /*feed watchdog per 500ms*/
+        sleep(500);
+        WDT_clear();
+        UART_sendString("root@localboard:WatchDog has been feed\r\n");
+    }
 }

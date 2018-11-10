@@ -22,7 +22,7 @@
  */
 void disableAllInterrupts(void)
 {
-	EA = DISABLE;
+    EA = DISABLE;
 }
 
 /*
@@ -33,7 +33,7 @@ void disableAllInterrupts(void)
  */
 void enableAllInterrupts(void)
 {
-	EA = ENABLE;
+    EA = ENABLE;
 }
 
 /*
@@ -44,31 +44,31 @@ void enableAllInterrupts(void)
  */
 void sleep(unsigned int t)
 {
-	u8 i = 0x00;
-	u8 j = 0x00;
-	
-	#if ( _FRE_OSC_ == 11059200L )
+    u8 i = 0x00;
+    u8 j = 0x00;
+    
+    #if ( _FRE_OSC_ == 11059200L )
 
-		while(t--)
-		{
-			j = 110;
-			while(j--);
-		}
-		
-	//TODO
-	#elif ( _FRE_OSC_ == 12000000L )
+        while(t--)
+        {
+            j = 110;
+            while(j--);
+        }
+        
+    //TODO
+    #elif ( _FRE_OSC_ == 12000000L )
 
-		while(t--)
-		{
-			j = 120;
-			while(j--);
-		}
-		
-	#else
-		
-	//TODO
-	
-	#endif
+        while(t--)
+        {
+            j = 120;
+            while(j--);
+        }
+        
+    #else
+        
+    //TODO
+    
+    #endif
 }
 
 #endif

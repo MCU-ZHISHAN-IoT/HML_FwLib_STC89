@@ -20,25 +20,25 @@
 /* mark work mode of TIM2 */
 typedef enum
 {
-	TIM2_mode_0 = 0x00,  /* 16-bit timer mode(auto-reload) */
-	TIM2_mode_1 = 0x01,  /* 16-bit catch mode */
-	TIM2_mode_2 = 0x30   /* baud rate generator */
+    TIM2_mode_0 = 0x00,  /* 16-bit timer mode(auto-reload) */
+    TIM2_mode_1 = 0x01,  /* 16-bit catch mode */
+    TIM2_mode_2 = 0x30   /* baud rate generator */
 } TIM2_mode;
 
 typedef enum
 {
-	TIM2_FUNC_CNT = 0x1, /* counter mode */
-	TIM2_FUNC_TIM = 0x0  /* timer mode */
+    TIM2_FUNC_CNT = 0x1, /* counter mode */
+    TIM2_FUNC_TIM = 0x0  /* timer mode */
 } TIM2_function;
 
 /* define configure struct */
 typedef struct
 {
-	TIM2_function  function;
-	Action         interruptState;
-	INTR_priority  interruptPriority;
-	TIM2_mode      mode;
-	unsigned int   value;
+    TIM2_function  function;
+    Action         interruptState;
+    INTR_priority  interruptPriority;
+    TIM2_mode      mode;
+    unsigned int   value;
 } TIM2_configTypeDef;
 
 /* ---------- @function --------- */

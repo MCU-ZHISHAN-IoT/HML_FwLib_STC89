@@ -20,7 +20,7 @@
  */
 void WDT_clear(void)
 {
-	WDT_CONTR = WDT_CONTR | 0x10;
+    WDT_CONTR = WDT_CONTR | 0x10;
 }
 
 /*
@@ -31,7 +31,7 @@ void WDT_clear(void)
  */
 void WDT_cmd(Action a)
 {
-	WDT_CONTR = (WDT_CONTR & 0xDF) | (a << 0x5);
+    WDT_CONTR = (WDT_CONTR & 0xDF) | (a << 0x5);
 }
 
 /*
@@ -42,7 +42,7 @@ void WDT_cmd(Action a)
  */
 void WDT_cmd_idleCount(Action a)
 {
-	WDT_CONTR = (WDT_CONTR & 0xF7) | (a << 0x3);
+    WDT_CONTR = (WDT_CONTR & 0xF7) | (a << 0x3);
 }
 
 /*
@@ -53,7 +53,7 @@ void WDT_cmd_idleCount(Action a)
  */
 void WDT_setPrescale(WDT_prescale pre)
 {
-	WDT_CONTR = (WDT_CONTR & 0xF8) | pre;
+    WDT_CONTR = (WDT_CONTR & 0xF8) | pre;
 }
 
 #endif

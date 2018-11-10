@@ -20,14 +20,14 @@ typedef unsigned int  word;
 
 typedef enum
 {
-	RESET = 0x0,
-	SET   = !RESET
+    RESET = 0x0,
+    SET   = !RESET
 } FunctionalState;
 
 typedef enum
 {
-	DISABLE = 0x0,
-	ENABLE  = !DISABLE
+    DISABLE = 0x0,
+    ENABLE  = !DISABLE
 } Action;
 
 /* mark model */
@@ -72,25 +72,25 @@ typedef enum
 
 /* --- MCU model check --- */
 #if (_MCU_MODEL_ == _MCU_NULL_)
-	#error HML run-time check:not specify MCU model!(ERROR_CODE-0x01)
+    #error HML run-time check:not specify MCU model!(ERROR_CODE-0x01)
 #endif
 
 /* --- frequency of crystal oscillator --- */
 #ifndef _FRE_OSC_
-	#error HML run-time check:the firmware library need define extern clcok frequency!(ERROR_CODE-0x02)
+    #error HML run-time check:the firmware library need define extern clcok frequency!(ERROR_CODE-0x02)
 #endif
 
 /* --- check compile macro --- */
 #if (defined ___COMPILE_TIM___) && (!defined ___COMPILE_EXTI___)
-	#error HML run-time check: TIM part need extern support, please enable macro ___COMPILE_EXTI___(ERROR_CODE-0x03)
+    #error HML run-time check: TIM part need extern support, please enable macro ___COMPILE_EXTI___(ERROR_CODE-0x03)
 #endif
 
 #if (defined ___COMPILE_TIM2___) && (!defined ___COMPILE_EXTI___)
-	#error HML run-time check: TIM2 part need extern support, please enable macro ___COMPILE_EXTI___(ERROR_CODE-0x04)
+    #error HML run-time check: TIM2 part need extern support, please enable macro ___COMPILE_EXTI___(ERROR_CODE-0x04)
 #endif
 
 #if (defined ___COMPILE_UART___) && ((!defined ___COMPILE_EXTI___) || (!defined ___COMPILE_TIM___) || (!defined ___COMPILE_TIM2___))
-	#error HML run-time check: UART part need extern support, please enable macro ___COMPILE_TIM___  or ___COMPILE_TIM2___ at the same time(ERROR_CODE-0x05)
+    #error HML run-time check: UART part need extern support, please enable macro ___COMPILE_TIM___  or ___COMPILE_TIM2___ at the same time(ERROR_CODE-0x05)
 #endif
 
 #endif

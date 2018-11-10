@@ -7,16 +7,16 @@
 ERROR_CODE LIST >>
 
  -0x01(@macro.h)
-	User need to specify a frequency value of extern crystal oscillator via macro definitions; The default frequency value is 11059200L.
-	
+    User need to specify a frequency value of extern crystal oscillator via macro definitions; The default frequency value is 11059200L.
+    
  -0x02(@macro.h)
-	User need to specify a model of the MCU, the default model macro is MCU_STC89C52RC.
+    User need to specify a model of the MCU, the default model macro is MCU_STC89C52RC.
 
  -0x03(@macro.h)
-	User need to enable compile macro ___COMPILE_EXTI___ in <macro.h> to make sure source code of TIM part can be compiled successfully.
-	
+    User need to enable compile macro ___COMPILE_EXTI___ in <macro.h> to make sure source code of TIM part can be compiled successfully.
+    
  -0x04(@macro.h)
-	User need to enable compile macro ___COMPILE_EXTI___ in <macro.h> to make sure source code of TIM2 part can be compiled successfully.
-	
+    User need to enable compile macro ___COMPILE_EXTI___ in <macro.h> to make sure source code of TIM2 part can be compiled successfully.
+    
  -0x05(@macro.h)
-	User need to enable compile macro ___COMPILE_EXTI___, ___COMPILE_TIM___, ___COMPILE_TIM2___  in <macro.h> at the same time,it will make sure source code of UART part can be compiled successfully.
+    User need to enable compile macro ___COMPILE_EXTI___, ___COMPILE_TIM___, ___COMPILE_TIM2___  in <macro.h> at the same time,it will make sure source code of UART part can be compiled successfully.

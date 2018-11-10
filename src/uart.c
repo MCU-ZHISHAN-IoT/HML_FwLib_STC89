@@ -21,7 +21,7 @@
  */
 void UART_cmd_multiBaudrate(Action a)
 {
-	PCON = (PCON & 0x7F) | ((unsigned char)a << 0x7);
+    PCON = (PCON & 0x7F) | ((unsigned char)a << 0x7);
 }
 
 /*
@@ -32,7 +32,7 @@ void UART_cmd_multiBaudrate(Action a)
  */
 void UART_cmd_receive(Action a)
 {
-	REN = a;
+    REN = a;
 }
 
 /*
@@ -43,44 +43,44 @@ void UART_cmd_receive(Action a)
  */
 void UART_config(UART_configTypeDef *uc)
 {
-	TIM_configTypeDef tc;
-	TIM2_configTypeDef tc2;
-	
-	UART_INT_cmd(uc->interruptState);
-	UART_INT_setPriority(uc->interruptPriority);
-	UART_cmd_multiBaudrate(uc->multiBaudrate);
-	UART_setMode(uc->mode);
-	UART_cmd_receive(uc->receiveState);
-	UART_switchTim(uc->baudGenerator);
+    TIM_configTypeDef tc;
+    TIM2_configTypeDef tc2;
+    
+    UART_INT_cmd(uc->interruptState);
+    UART_INT_setPriority(uc->interruptPriority);
+    UART_cmd_multiBaudrate(uc->multiBaudrate);
+    UART_setMode(uc->mode);
+    UART_cmd_receive(uc->receiveState);
+    UART_switchTim(uc->baudGenerator);
 
-	switch(uc->baudGenerator)
-	{
-		case PERIPH_TIM_1:
-		{
-			tc.function          = TIM_FUNC_TIM;
-			tc.interruptState    = DISABLE;
-			tc.interruptPriority = DISABLE;
-			tc.mode              = TIM_mode_2;
-			tc.value             = UART_getBaudGeneratorInitValue(uc->baudrate,PERIPH_TIM_1);
-			TIM_config(PERIPH_TIM_1,&tc);
-			TIM_cmd(PERIPH_TIM_1,ENABLE);
-		} break;
-			
-		case PERIPH_TIM_2:
-		{
-			tc2.function          = TIM2_FUNC_TIM;
-			tc2.interruptState    = DISABLE;
-			tc2.interruptPriority = DISABLE;
-			tc2.mode              = TIM2_mode_2;
-			tc2.value             = UART_getBaudGeneratorInitValue(uc->baudrate,PERIPH_TIM_2);
-			RCAP2L = tc2.value;
-			RCAP2H = (tc2.value >> 8);
-			TIM2_config(&tc2);
-			TIM2_cmd(ENABLE);
-		} break;
-			
-		default:break;
-	}
+    switch(uc->baudGenerator)
+    {
+        case PERIPH_TIM_1:
+        {
+            tc.function          = TIM_FUNC_TIM;
+            tc.interruptState    = DISABLE;
+            tc.interruptPriority = DISABLE;
+            tc.mode              = TIM_mode_2;
+            tc.value             = UART_getBaudGeneratorInitValue(uc->baudrate,PERIPH_TIM_1);
+            TIM_config(PERIPH_TIM_1,&tc);
+            TIM_cmd(PERIPH_TIM_1,ENABLE);
+        } break;
+            
+        case PERIPH_TIM_2:
+        {
+            tc2.function          = TIM2_FUNC_TIM;
+            tc2.interruptState    = DISABLE;
+            tc2.interruptPriority = DISABLE;
+            tc2.mode              = TIM2_mode_2;
+            tc2.value             = UART_getBaudGeneratorInitValue(uc->baudrate,PERIPH_TIM_2);
+            RCAP2L = tc2.value;
+            RCAP2H = (tc2.value >> 8);
+            TIM2_config(&tc2);
+            TIM2_cmd(ENABLE);
+        } break;
+            
+        default:break;
+    }
 }
 
 /*
@@ -91,44 +91,44 @@ void UART_config(UART_configTypeDef *uc)
  */
 unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
 {
-	unsigned char tmp = 0x00;
-	
-	//baud = (2^SMOD/32) * _FRE_OSC_/(256-x)*12
-	switch(tim)
-	{
-		case PERIPH_TIM_1:
-			if(PCON & 0x80)     /* multi baud rate mode */
-			{
-				if(baud > _FRE_OSC_/12/16)
-				{
-					/* baud rate over max value */
-					return 0x0000;
-				}
-				else 
-				{
-					tmp = (256 - _FRE_OSC_/16/12/baud);  
-				}
-			}
-			else
-			{
-				if(baud > _FRE_OSC_/12/32)
-				{
-					return 0x0000;
-				}
-				else
-				{
-					tmp = (256 - _FRE_OSC_/32/12/baud);
-				}
-			}
-			break;
-		
-		case PERIPH_TIM_2:
-			return tmp = (65536 - (_FRE_OSC_/32/baud));
-			break;
-		
-		default:break;
-	}	
-	return (tmp << 0x8) | tmp;
+    unsigned char tmp = 0x00;
+    
+    //baud = (2^SMOD/32) * _FRE_OSC_/(256-x)*12
+    switch(tim)
+    {
+        case PERIPH_TIM_1:
+            if(PCON & 0x80)     /* multi baud rate mode */
+            {
+                if(baud > _FRE_OSC_/12/16)
+                {
+                    /* baud rate over max value */
+                    return 0x0000;
+                }
+                else 
+                {
+                    tmp = (256 - _FRE_OSC_/16/12/baud);  
+                }
+            }
+            else
+            {
+                if(baud > _FRE_OSC_/12/32)
+                {
+                    return 0x0000;
+                }
+                else
+                {
+                    tmp = (256 - _FRE_OSC_/32/12/baud);
+                }
+            }
+            break;
+        
+        case PERIPH_TIM_2:
+            return tmp = (65536 - (_FRE_OSC_/32/baud));
+            break;
+        
+        default:break;
+    }    
+    return (tmp << 0x8) | tmp;
 }
 
 /*
@@ -139,7 +139,7 @@ unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
  */
 FunctionalState UART_isReceived(void)
 {
-	return (FunctionalState)RI;
+    return (FunctionalState)RI;
 }
 
 /*
@@ -150,7 +150,7 @@ FunctionalState UART_isReceived(void)
  */
 FunctionalState UART_isTransmitted(void)
 {
-	return (FunctionalState)TI;
+    return (FunctionalState)TI;
 }
 
 /*
@@ -161,9 +161,9 @@ FunctionalState UART_isTransmitted(void)
  */
 void UART_sendByte(byte dat)
 {
-	SBUF = dat;
-	while(!TI);
-	TI = RESET;
+    SBUF = dat;
+    while(!TI);
+    TI = RESET;
 }
 
 /*
@@ -174,13 +174,13 @@ void UART_sendByte(byte dat)
  */
 void UART_sendString(char *str)
 {
-	while(*str != '\0')
-	{
-		SBUF = *str;
-		while(!TI);
-		TI = RESET;     /* clear */
-		str++;
-	}
+    while(*str != '\0')
+    {
+        SBUF = *str;
+        while(!TI);
+        TI = RESET;     /* clear */
+        str++;
+    }
 }
 
 /*
@@ -191,7 +191,7 @@ void UART_sendString(char *str)
  */
 void UART_setMode(UART_mode m)
 {
-	SCON = (SCON & 0x3F) | ((unsigned char)m << 0x6);
+    SCON = (SCON & 0x3F) | ((unsigned char)m << 0x6);
 }
 
 /*
@@ -202,12 +202,12 @@ void UART_setMode(UART_mode m)
  */
 void UART_switchTim(PERIPH_TIM tim)
 {
-	if(tim == PERIPH_TIM_1)
-	{
-		T2CON = T2CON & 0xCF;
-	}
-	if(tim == PERIPH_TIM_2)
-	{
+    if(tim == PERIPH_TIM_1)
+    {
+        T2CON = T2CON & 0xCF;
+    }
+    if(tim == PERIPH_TIM_2)
+    {
         T2CON = (T2CON & 0xCF) | 0x30;
     }
 }
@@ -220,8 +220,8 @@ void UART_switchTim(PERIPH_TIM tim)
  */
 void UART_INT_setPriority(INTR_priority p)
 {
-	IP  = (IP & 0xEF)  | ((p & 0x01) << 0x4);
-	IPH = (IPH & 0xEF) | ((p & 0x02) << 0x3);
+    IP  = (IP & 0xEF)  | ((p & 0x01) << 0x4);
+    IPH = (IPH & 0xEF) | ((p & 0x02) << 0x3);
 }
 
 /*
@@ -232,7 +232,7 @@ void UART_INT_setPriority(INTR_priority p)
  */
 void UART_INT_cmd(Action a)
 {
-	ES = a;
+    ES = a;
 }
 
 #endif

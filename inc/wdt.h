@@ -17,14 +17,14 @@
 /* mark prescale factor */
 typedef enum
 {
-	WDT_prescale_2   = 0x00,
-	WDT_prescale_4   = 0x01,
-	WDT_prescale_8   = 0x02,
-	WDT_prescale_16  = 0x03,
-	WDT_prescale_32  = 0x04,
-	WDT_prescale_64  = 0x05,
-	WDT_prescale_128 = 0x06,
-	WDT_prescale_256 = 0x07
+    WDT_prescale_2   = 0x00,
+    WDT_prescale_4   = 0x01,
+    WDT_prescale_8   = 0x02,
+    WDT_prescale_16  = 0x03,
+    WDT_prescale_32  = 0x04,
+    WDT_prescale_64  = 0x05,
+    WDT_prescale_128 = 0x06,
+    WDT_prescale_256 = 0x07
 } WDT_prescale;
 
 
