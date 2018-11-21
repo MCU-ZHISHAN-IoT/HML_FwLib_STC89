@@ -213,6 +213,17 @@ void UART_switchTim(PERIPH_TIM tim)
 }
 
 /*
+ * @Prototype:void UART_INT_cmd(Action a)
+ * @Parameter:(1)a:expected action
+ * @Ret-val:
+ * @Note:disable or enable interrupt function of UART module
+ */
+void UART_INT_cmd(Action a)
+{
+    ES = a;
+}
+
+/*
  * @Prototype:void UART_INT_setPriority(INTR_priority p)
  * @Parameter:(1)p:expected interrupt priority class
  * @Ret-val:
@@ -224,15 +235,5 @@ void UART_INT_setPriority(INTR_priority p)
     IPH = (IPH & 0xEF) | ((p & 0x02) << 0x3);
 }
 
-/*
- * @Prototype:void UART_INT_cmd(Action a)
- * @Parameter:(1)a:expected action
- * @Ret-val:
- * @Note:disable or enable interrupt function of UART module
- */
-void UART_INT_cmd(Action a)
-{
-    ES = a;
-}
 
 #endif

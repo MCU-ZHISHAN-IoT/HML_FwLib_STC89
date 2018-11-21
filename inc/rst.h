@@ -24,4 +24,4 @@ typedef enum
 /* ----- @function --- */
 void RST_reset(RST_bootarea area);
 
-#endif /* ___RST_H___ */
+#endif

@@ -55,4 +55,4 @@ void TIM2_INT_cmd(Action a);
 void TIM2_INT_setPriority(INTR_priority p);
 void TIM2_INT_T2EX_cmd(Action a);
 
-#endif /*___TIM2_H___*/
+#endif

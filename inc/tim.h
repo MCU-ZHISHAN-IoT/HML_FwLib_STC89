@@ -61,4 +61,4 @@ void TIM_setValue(PERIPH_TIM tim,unsigned int val);
 void TIM_INT_cmd(PERIPH_TIM tim,Action a);
 void TIM_INT_setPriority(PERIPH_TIM tim,INTR_priority p);
 
-#endif /* ___TIM_H___ */
+#endif

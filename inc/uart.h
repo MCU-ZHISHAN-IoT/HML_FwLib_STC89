@@ -49,7 +49,7 @@ void UART_sendByte(byte dat);
 void UART_sendString(char *str);
 void UART_setMode(UART_mode m);
 void UART_switchTim(PERIPH_TIM tim);
-void UART_INT_setPriority(INTR_priority p);
 void UART_INT_cmd(Action a);
+void UART_INT_setPriority(INTR_priority p);
 
 #endif

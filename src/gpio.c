@@ -24,7 +24,7 @@
  */
 void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f)
 {
-    if(f==RESET)
+    if(f == RESET)
     {
         GPIO_resetBitValue(gpio,pin);
     }
@@ -65,25 +65,15 @@ void GPIO_configPort(PERIPH_GPIO gpio,byte val)
  */
 FunctionalState GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
 {
-    unsigned char value=0;
-
     switch(gpio)
     {
-        case PERIPH_GPIO_0:value = P0 & pin;break;
-        case PERIPH_GPIO_1:value = P1 & pin;break;
-        case PERIPH_GPIO_2:value = P2 & pin;break;
-        case PERIPH_GPIO_3:value = P3 & pin;break;
-        case PERIPH_GPIO_4:value = P4 & pin;break;
-        default:break;
+        case PERIPH_GPIO_0:return (P0 & pin);break;
+        case PERIPH_GPIO_1:return (P1 & pin);break;
+        case PERIPH_GPIO_2:return (P2 & pin);break;
+        case PERIPH_GPIO_3:return (P3 & pin);break;
     }
-    if(value == 0)
-    {
-        return RESET;
-    }
-    else
-    {
-        return SET;
-    }
+
+    return RESET;
 }
 
 /*

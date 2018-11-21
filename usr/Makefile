@@ -17,7 +17,7 @@ CFLAGS         = -c -o ${DIR_OUTPUT}/ -I ${HML_FWLIB_INC} --std-sdcc99 -L ${DIR_
 LFLAGS         = -rcs
 #target#
 TARGET         = output
-REL_TARGET     =  $(addprefix ${DIR_OUTPUT}/, exti.rel gpio.rel isp.rel mem.rel rst.rel tim.rel tim2.rel uart.rel util.rel wdt.rel)
+REL_TARGET     = $(addprefix ${DIR_OUTPUT}/, exti.rel gpio.rel isp.rel mem.rel rst.rel tim.rel tim2.rel uart.rel util.rel wdt.rel)
 #tool-chain#
 CC             = sdcc
 LL             = sdar

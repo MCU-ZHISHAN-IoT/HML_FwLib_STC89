@@ -27,11 +27,10 @@ typedef enum
     WDT_prescale_256 = 0x07
 } WDT_prescale;
 
-
-/* ---------- @function --------- */
+/* ----- @function ----- */
 void WDT_clear(void);
 void WDT_cmd(Action a);
 void WDT_cmd_idleCount(Action a);
 void WDT_setPrescale(WDT_prescale pre);
 
-#endif /* ___WDT_H___ */
+#endif

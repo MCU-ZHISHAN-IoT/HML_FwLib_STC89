@@ -12,7 +12,7 @@
 #ifndef ___MACRO_H___
 #define ___MACRO_H___
 
-/* typedef */
+/* type define */
 typedef unsigned char byte;
 typedef unsigned char u8;
 typedef unsigned int  u16;

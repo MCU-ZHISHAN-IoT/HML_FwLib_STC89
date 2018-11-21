@@ -18,4 +18,4 @@ void disableAllInterrupts(void);
 void enableAllInterrupts(void);
 void sleep(unsigned int t);
 
-#endif /* ___UTIL_H___ */
+#endif

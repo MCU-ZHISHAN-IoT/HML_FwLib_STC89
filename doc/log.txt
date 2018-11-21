@@ -62,8 +62,14 @@
           (3)rename file doc/license.txt as LICENSE
           (4)improve header information of example source files
           (5)add .gitkeep file into obj directory, because Git doesn't permit user committing a empty directory.
-          (6)add interrupt vector for extern interrupt 2 and extern interrupt 2 in <stc89.h>
-		  
+          (6)add interrupt vector for extern interrupt 2(EXTI-2) and extern interrupt 3(EXTI-3) in <stc89.h>
+
+>Version :
+ Alias   :
+ Date    :2018-11-21
+ Note    :(1)optimize function GPIO_getBitValue
+          (2)optimize note of source code file
+
 #TEAM
  Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
  Director  - Weilun Fong (wlf@zhishan-iot.tk)

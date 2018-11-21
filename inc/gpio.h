@@ -25,7 +25,7 @@ typedef enum
     PERIPH_GPIO_4 = 0x4
 } PERIPH_GPIO;
 
-/* define pin */
+/* mark pin */
 typedef enum
 {
     PERIPH_GPIO_PIN_0 = 0x01,
@@ -39,7 +39,7 @@ typedef enum
 } PERIPH_GPIO_PIN;
 
 
-/* ---------- @function --------- */
+/* ----- @function ----- */
 void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f);
 void GPIO_configPort(PERIPH_GPIO gpio,byte val);
 FunctionalState GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
