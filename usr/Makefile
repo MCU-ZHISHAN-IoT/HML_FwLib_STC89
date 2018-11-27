@@ -1,30 +1,36 @@
 #Author     :Weilun Fong | wlf(at)zhishan-iot.tk
-#Date       :2018-09-16
+#Date       :2018-11-26
 #Description:Makefile for HML_FwLib_STC89, it will generate a hex format file finally
 #E-mail     :mcu(at)zhishan-iot.tk
 #Make-tool  :GNU Make (http://www.gnu.org/software/make/manual/make.html)
 #Page       :https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
 #Tar-mcu    :STC micro STC89 series (STC89C52RC, STC89C54RD, etc.)
 #Tar-project:HML_FwLib_STC89
-#Version    :v0.0.2
+#Version    :v0.0.3
 
 #important directories#
-DIR_OUTPUT     = ../obj
-HML_FWLIB_INC  = ../inc
-HML_FWLIB_SRC  = ../src
+DIR_ROOT       = ..
+DIR_INC        = $(DIR_ROOT)/inc
+DIR_OUTPUT     = $(DIR_ROOT)/obj
+DIR_SRC        = $(DIR_ROOT)/src
+#important files#
+HML_SRC_FILES  = $(wildcard ${DIR_SRC}/*.c)
+HML_SRC_NAMES  = $(basename $(notdir ${HML_SRC_FILES}))
+HML_REL_FILES  = $(addsuffix .rel, $(addprefix ${DIR_OUTPUT}/, ${HML_SRC_NAMES}))
 #operation parameter#
-CFLAGS         = -c -o ${DIR_OUTPUT}/ -I ${HML_FWLIB_INC} --std-sdcc99 -L ${DIR_OUTPUT}/hml_fw.lib
+CFLAGS         = -c -o ${DIR_OUTPUT}/ -I ${DIR_INC} --std-sdcc99 -L ${DIR_OUTPUT}/hml_fw.lib
 LFLAGS         = -rcs
 #target#
+HML_FWLIB_NAME = HML_FwLib_STC89
 TARGET         = output
-REL_TARGET     = $(addprefix ${DIR_OUTPUT}/, exti.rel gpio.rel isp.rel mem.rel rst.rel tim.rel tim2.rel uart.rel util.rel wdt.rel)
 #tool-chain#
 CC             = sdcc
 LL             = sdar
 
-#function define#
+###function define###
 #function-clean#
 define clean_obj
+	@echo
 	@cd ${DIR_OUTPUT} && (find . -name "*.asm" | xargs rm -rfv)
 	@cd ${DIR_OUTPUT} && (find . -name "*.ihx" | xargs rm -rfv)
 	@cd ${DIR_OUTPUT} && (find . -name "*.lk"  | xargs rm -rfv)
@@ -35,117 +41,79 @@ define clean_obj
 	@cd ${DIR_OUTPUT} && (find . -name "*.rst" | xargs rm -rfv)
 	@cd ${DIR_OUTPUT} && (find . -name "*.sym" | xargs rm -rfv)
 endef
+#function-show_end_information#
+define show_end_information
+	@echo
+	@echo ===================================================
+	@echo Make $(MAKECMDGOALS) done!
+	@echo Makefile - $(HML_FWLIB_NAME)
+	@echo ---------------------------------------------------
+	@echo completed at `date "+%Y-%m-%d %H:%M:%S"`
+	@echo ===================================================
+endef
 #function-show_version#
 define show_version
 	@echo ===================================================
-	@echo "MK-HML_FwLib_STC89 [v0.0.2]"
+	@echo "MK-$(HML_FWLIB_NAME) [v0.0.3]"
 	@echo "Copyright(c) 2018 ZHISHAN-IoT, all rights reserved."
 	@echo "Written by Weilun Fong <wlf(at)zhishan-iot.tk>"
 	@echo ===================================================
+	@echo
 endef
 
+###build works###
 all:startup $(TARGET).hex
-	@echo
-	@echo ===================================================
-	@echo Make done!
-	@echo Makefile - HML_FwLib_STC89
-	@echo ---------------------------------------------------
-	@echo completed at `date "+%Y-%m-%d %H:%M:%S"`
-	@echo ===================================================
+	$(show_end_information)
 
-output.hex:output.ihx
+$(TARGET).hex:$(TARGET).ihx
 	@echo generate .hex file
-	@cd ${DIR_OUTPUT} && packihx $(TARGET).ihx > $(TARGET).hex
-output.ihx:test.rel hml_fw.lib
-	@echo
+	@cd ${DIR_OUTPUT} && packihx $< > $@
+$(TARGET).ihx:test.rel hml_fw.lib
 	@echo generate .ihx file
-	@cd ${DIR_OUTPUT}/ && $(CC) $^ -o $(TARGET).ihx
+	@cd ${DIR_OUTPUT} && $(CC) $^ -o $@
 
-#source files of HML_FwLib_STC89#
-hml_fw.lib:
+#compile source file(*.c)
+$(HML_REL_FILES):$(HML_SRC_FILES)
 ifeq ($(wildcard ${DIR_OUTPUT}/hml_fw.lib), )
-
 	@echo make static link library hml_fw.lib
-	@echo CC ${HML_FWLIB_SRC}/exti.c
-	@$(CC) ${HML_FWLIB_SRC}/exti.c $(CFLAGS)
-	
-	@echo CC ${HML_FWLIB_SRC}/gpio.c
-	@$(CC) ${HML_FWLIB_SRC}/gpio.c $(CFLAGS)
-
-	@echo CC ${HML_FWLIB_SRC}/isp.c
-	@$(CC) ${HML_FWLIB_SRC}/isp.c $(CFLAGS)
-	
-	@echo CC ${HML_FWLIB_SRC}/mem.c
-	@$(CC) ${HML_FWLIB_SRC}/mem.c $(CFLAGS)
-	
-	@echo CC ${HML_FWLIB_SRC}/rst.c
-	@$(CC) ${HML_FWLIB_SRC}/rst.c $(CFLAGS)
-	
-	@echo CC ${HML_FWLIB_SRC}/tim.c
-	@$(CC) ${HML_FWLIB_SRC}/tim.c $(CFLAGS)
-	
-	@echo CC ${HML_FWLIB_SRC}/tim2.c
-	@$(CC) ${HML_FWLIB_SRC}/tim2.c $(CFLAGS)
-	
-	@echo CC ${HML_FWLIB_SRC}/uart.c
-	@$(CC) ${HML_FWLIB_SRC}/uart.c $(CFLAGS)
-
-	@echo CC ${HML_FWLIB_SRC}/util.c
-	@$(CC) ${HML_FWLIB_SRC}/util.c $(CFLAGS)
-	
-	@echo CC ${HML_FWLIB_SRC}/wdt.c
-	@$(CC) ${HML_FWLIB_SRC}/wdt.c $(CFLAGS)
-	
-	@echo LL ${DIR_OUTPUT}/hml_fw.lib
-	@cd ${DIR_OUTPUT} && $(LL) $(LFLAGS) hml_fw.lib $(notdir $(REL_TARGET))
+	@(for cur_file in $(HML_SRC_FILES); do \
+		echo CC "$$cur_file";              \
+		$(CC) "$$cur_file" $(CFLAGS);      \
+	done)
+endif
+#generate static library
+hml_fw.lib:$(HML_REL_FILES)
+ifeq ($(wildcard ${DIR_OUTPUT}/hml_fw.lib), )
+	@echo LL ${DIR_OUTPUT}/$@
+	@$(LL) $(LFLAGS) $(DIR_OUTPUT)/$@ $(HML_REL_FILES)
 	@echo
-	
-endif	
-#source file of user#	
-test.rel:test.c hml_fw.lib
-	@echo complie user source code
-	@echo CC test.c
-	@$(CC) $^ $(CFLAGS) -L ${DIR_OUTPUT}/hml_fw.lib
-
-#startup information#	
+endif
+#startup information#
 startup:
-	@echo
 	$(show_version)
-	@echo
 	@echo start at `date "+%Y-%m-%d %H:%M:%S"`
 	@echo
+#compile source file of user#
+test.rel:test.c hml_fw.lib
+	@echo compile user source code
+	@echo CC $<
+	@$(CC) $< $(CFLAGS) -L ${DIR_OUTPUT}/hml_fw.lib
+	@echo
 
-#clean temp files#	
+###special operation###
+#clean temp files#
 .PHONY:clean
 clean:
-	@echo
 	$(show_version)
-	@echo
 	@echo start to clean...
-	@echo
 	$(clean_obj)
-	@echo
-	@echo ===================================================
-	@echo Make clean done!
-	@echo Makefile - HML_FwLib_STC89
-	@echo ---------------------------------------------------
-	@echo completed at `date "+%Y-%m-%d %H:%M:%S"`
-	@echo ===================================================
+	$(show_end_information)
 	
 .PHONY:mostlyclean 
 mostlyclean:
-	@echo
 	$(show_version)
-	@echo
 	@echo start to clean mostly...
-	@echo
 	$(clean_obj)
 	@cd ${DIR_OUTPUT} && (find . -name "*.hex" | xargs rm -rfv)
 	@cd ${DIR_OUTPUT} && (find . -name "*.lib" | xargs rm -rfv)
-	@echo
-	@echo ===================================================
-	@echo Make mostlyclean done!
-	@echo Makefile - HML_FwLib_STC89
-	@echo ---------------------------------------------------
-	@echo completed at `date "+%Y-%m-%d %H:%M:%S"`
-	@echo ===================================================
+	$(show_end_information)

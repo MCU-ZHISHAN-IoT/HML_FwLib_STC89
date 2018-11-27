@@ -69,7 +69,7 @@
  Date    :2018-11-21
  Note    :(1)optimize function GPIO_getBitValue
           (2)optimize note of source code file
-
+          (3)update Makefile to v0.0.3
 #TEAM
  Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
  Director  - Weilun Fong (wlf@zhishan-iot.tk)
