@@ -64,12 +64,16 @@
           (5)add .gitkeep file into obj directory, because Git doesn't permit user committing a empty directory.
           (6)add interrupt vector for extern interrupt 2(EXTI-2) and extern interrupt 3(EXTI-3) in <stc89.h>
 
->Version :
+>Version :v1.0.3
  Alias   :
- Date    :2018-11-21
+ Date    :
  Note    :(1)optimize function GPIO_getBitValue
           (2)optimize note of source code file
           (3)update Makefile to v0.0.3
+          (4)modify errormap.txt
+          (5)fix bug of example/exti/exti-toggleIo.c
+          (6)optimize function EXTI_setPriority
+          (7)optimize function RST_reset
 #TEAM
  Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
  Director  - Weilun Fong (wlf@zhishan-iot.tk)

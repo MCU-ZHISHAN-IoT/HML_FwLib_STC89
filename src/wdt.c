@@ -27,7 +27,7 @@ void WDT_clear(void)
  * @Prototype:void WDT_cmd(Action a)
  * @Parameter:(1)a:expected action
  * @Ret-val:
- * @Note:lanuch or stop watch dog
+ * @Note:launch or stop watch dog
  */
 void WDT_cmd(Action a)
 {

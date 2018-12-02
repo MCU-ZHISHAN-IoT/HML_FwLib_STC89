@@ -10,7 +10,7 @@ ERROR_CODE LIST >>
     User need to specify a frequency value of extern crystal oscillator via macro definitions; The default frequency value is 11059200L.
     
  -0x02(@macro.h)
-    User need to specify a model of the MCU, the default model macro is MCU_STC89C52RC.
+    User need to specify a model of the MCU, the default model macro is _MCU_STC89C52RC_.
 
  -0x03(@macro.h)
     User need to enable compile macro ___COMPILE_EXTI___ in <macro.h> to make sure source code of TIM part can be compiled successfully.

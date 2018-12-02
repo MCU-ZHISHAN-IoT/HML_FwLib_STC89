@@ -2,7 +2,7 @@
  * @Author:
  *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
  * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:includes some definitions for operating ISP/IAP module
+ * @File-description:includes some definitions for operating ISP module
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
  * @Version:V1

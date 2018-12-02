@@ -2,7 +2,7 @@
  * @Author:
  *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
  * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:operations of ISP/IAP resource
+ * @File-description:operations of ISP resource
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
  * @Version:V1
@@ -31,14 +31,19 @@ void ISP_cmd(Action a)
  */
 bool ISP_eraseByte(unsigned int addr)
 {
-    if((ISP_ADDR_START > addr) | (ISP_ADDR_END < addr)) return false;
-    
+	/* check address */
+    if((ISP_ADDR_START > addr) | (ISP_ADDR_END < addr))
+	{
+		return false;
+    }
+	
     ISP_cmd(ENABLE);
     ISP_setAddress(addr);
     ISP_setCommand(ISP_command_erase);
     ISP_trig();
     sleep(1);
     ISP_idle();
+	
     return true;
 }
 
@@ -93,7 +98,7 @@ void ISP_setAddress(unsigned int addr)
  * @Prototype:void ISP_setCommand(ISP_command cmd)
  * @Parameter:(1)addr:operating address
  * @Ret-val:
- * @Note:set commmand
+ * @Note:set command
  */
 void ISP_setCommand(ISP_command cmd)
 {

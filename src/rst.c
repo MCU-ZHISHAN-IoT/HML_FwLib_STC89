@@ -20,9 +20,9 @@
  */
 void RST_reset(RST_bootarea area)
 {
-    ISP_CONTR = (ISP_CONTR & 0x7F) | 0x80;
+    ISP_CONTR = ISP_CONTR | 0x80;
     ISP_CONTR = (ISP_CONTR & 0xBF) | (area << 0x6);
-    ISP_CONTR = (ISP_CONTR & 0xDF) | 0x20;
+    ISP_CONTR = ISP_CONTR | 0x20;
 }
 
 #endif

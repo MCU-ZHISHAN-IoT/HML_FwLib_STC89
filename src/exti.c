@@ -78,14 +78,14 @@ void EXTI_setPriority(PERIPH_EXTI exti,INTR_priority p)
         case PERIPH_EXTI_0:
         {
             /* lower bit */
-            IP  = (IP & 0xFE) | (p & 0x01);
+            PX0 = (p & 0x01);
             /* higher bit */
             IPH = (IPH & 0xFE) | ((p >> 0x1) & 0x01);
         } break;
         case PERIPH_EXTI_1:
         {
             /* lower bit */
-            IP  = (IP & 0xFB) | ((p & 0x01) << 0x2);
+            PX1 = (IP & 0xFB) | ((p & 0x01) << 0x2);
             /* higher bit */
             IPH = (IPH & 0xFB) | ((p & 0x02) << 0x1);
         } break;

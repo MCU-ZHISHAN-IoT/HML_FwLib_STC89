@@ -20,15 +20,15 @@ typedef unsigned int  word;
 
 typedef enum
 {
-    RESET = 0x0,
-    SET   = !RESET
-} FunctionalState;
-
-typedef enum
-{
     DISABLE = 0x0,
     ENABLE  = !DISABLE
 } Action;
+
+typedef enum
+{
+    RESET = 0x0,
+    SET   = !RESET
+} FunctionalState;
 
 /* mark model */
 #define _MCU_NULL_           0

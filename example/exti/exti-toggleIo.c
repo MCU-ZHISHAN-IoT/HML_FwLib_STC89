@@ -2,7 +2,7 @@
  * @Author:
  *  #Weilun Fong | wlf(at)zhishan-iot.tk
  * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:a demo which shows how to use HML to toggle P12 state when EXTI trigged
+ * @File-description:a demo which shows how to use HML_FwLib_STC89 to toggle P12 state when EXTI trigged
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
  * @Test-board:TS51-V2.0
@@ -23,7 +23,7 @@ void sys_init(void)
     EXTI_configTypeDef ec;
     
     ec.mode = EXTI_mode_fallEdge;
-    ec.priority = DISABLE;
+    ec.priority = INTR_priority_0;
     EXTI_config(PERIPH_EXTI_1,&ec);
     EXTI_cmd(PERIPH_EXTI_1,ENABLE);
     enableAllInterrupts();
@@ -55,8 +55,5 @@ void exti1_isr(void) __interrupt IE1_VECTOR
         GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
     }
     /* recover */
-    else
-    {
-        enableAllInterrupts();
-    }
+    enableAllInterrupts();
 }
