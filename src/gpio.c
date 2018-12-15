@@ -71,6 +71,8 @@ FunctionalState GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
         case PERIPH_GPIO_1:return (P1 & pin);break;
         case PERIPH_GPIO_2:return (P2 & pin);break;
         case PERIPH_GPIO_3:return (P3 & pin);break;
+        case PERIPH_GPIO_4:return (P4 & pin);break;
+        default: break;
     }
 
     return RESET;
