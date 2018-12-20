@@ -75,6 +75,8 @@
           (6)fix bug of example/exti/exti-toggleIo.c
           (7)optimize function EXTI_setPriority
           (8)optimize function RST_reset
+          (9)fix bug of function UART_getBaudGeneratorInitValue, optimize function of UART_switchTim
+          (10)fix bug of function ISP_writeByte
 
           #TEAM
  Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)

@@ -64,8 +64,7 @@ void UART_config(UART_configTypeDef *uc)
             tc.value             = UART_getBaudGeneratorInitValue(uc->baudrate,PERIPH_TIM_1);
             TIM_config(PERIPH_TIM_1,&tc);
             TIM_cmd(PERIPH_TIM_1,ENABLE);
-        } break;
-            
+        } break; 
         case PERIPH_TIM_2:
         {
             tc2.function          = TIM2_FUNC_TIM;
@@ -77,8 +76,7 @@ void UART_config(UART_configTypeDef *uc)
             RCAP2H = (tc2.value >> 8);
             TIM2_config(&tc2);
             TIM2_cmd(ENABLE);
-        } break;
-            
+        } break;  
         default:break;
     }
 }
@@ -97,6 +95,7 @@ unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
     switch(tim)
     {
         case PERIPH_TIM_1:
+        {
             if(PCON & 0x80)     /* multi baud rate mode */
             {
                 if(baud > _FRE_OSC_/12/16)
@@ -120,14 +119,11 @@ unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
                     tmp = (256 - _FRE_OSC_/32/12/baud);
                 }
             }
-            break;
-        
-        case PERIPH_TIM_2:
-            return tmp = (65536 - (_FRE_OSC_/32/baud));
-            break;
-        
+        } break;
+        case PERIPH_TIM_2:return tmp = (65536 - (_FRE_OSC_/32/baud));break;  //TODO
         default:break;
-    }    
+    }
+    
     return (tmp << 0x8) | tmp;
 }
 
@@ -206,7 +202,7 @@ void UART_switchTim(PERIPH_TIM tim)
     {
         T2CON = T2CON & 0xCF;
     }
-    if(tim == PERIPH_TIM_2)
+    else if(tim == PERIPH_TIM_2)
     {
         T2CON = (T2CON & 0xCF) | 0x30;
     }
@@ -234,6 +230,5 @@ void UART_INT_setPriority(INTR_priority p)
     IP  = (IP & 0xEF)  | ((p & 0x01) << 0x4);
     IPH = (IPH & 0xEF) | ((p & 0x02) << 0x3);
 }
-
 
 #endif

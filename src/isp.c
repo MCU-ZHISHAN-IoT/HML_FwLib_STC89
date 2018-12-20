@@ -125,15 +125,16 @@ void ISP_trig(void)
  */
 void ISP_writeByte(unsigned int addr,unsigned char byte)
 {
-    if((ISP_ADDR_START > addr) | (ISP_ADDR_END < addr)) return;
-    
-    ISP_cmd(ENABLE);
-    ISP_setAddress(addr);
-    ISP_setCommand(ISP_command_write);
-    ISP_DATA = byte;
-    ISP_trig();
-    sleep(1);
-    ISP_idle();
+    if(((addr > ISP_ADDR_START) && (addr < ISP_ADDR_END)) || (addr == ISP_ADDR_START) || (addr == ISP_ADDR_END))
+    {
+        ISP_cmd(ENABLE);
+        ISP_setAddress(addr);
+        ISP_setCommand(ISP_command_write);
+        ISP_DATA = byte;
+        ISP_trig();
+        sleep(1);
+        ISP_idle();
+    }
 }
 
 #endif
