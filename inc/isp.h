@@ -13,9 +13,8 @@
 
 #include <stc89.h>
 #include <stdbool.h>
-
-#include "util.h"
 #include "macro.h"
+#include "util.h"
 
 /* mark command */
 typedef enum
@@ -34,7 +33,6 @@ typedef enum
     (_MCU_MODEL_ == _MCU_STC89LE52RC_)
     #define ISP_ADDR_START 0x2000
     #define ISP_ADDR_END 0x2FFF
-
 #else
     #define ISP_ADDR_END 0xF3FF
     #if (_MCU_MODEL_ == _MCU_STC89C54RDP_)    || \
@@ -53,9 +51,9 @@ typedef enum
           (_MCU_MODEL_ == _MCU_STC89LE514RDP_)
         #define ISP_ADDR_START 0xE000
     #endif
-
-#endif   /* _MCU_MODEL_ RC/RDP */
     
+#endif
+
 /* ----- @function ----- */
 void ISP_cmd(Action a);
 bool ISP_eraseByte(unsigned int addr);
@@ -64,6 +62,6 @@ unsigned char ISP_readByte(unsigned int addr);
 void ISP_setAddress(unsigned int addr);
 void ISP_setCommand(ISP_command cmd);
 void ISP_trig(void);
-void ISP_writeByte(unsigned int addr,byte dat);
+bool ISP_writeByte(unsigned int addr,byte dat);
 
 #endif

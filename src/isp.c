@@ -31,19 +31,19 @@ void ISP_cmd(Action a)
  */
 bool ISP_eraseByte(unsigned int addr)
 {
-	/* check address */
-    if((ISP_ADDR_START > addr) | (ISP_ADDR_END < addr))
-	{
-		return false;
+    /* check address */
+    if((addr < ISP_ADDR_START) || (addr > ISP_ADDR_END))
+    {
+        return false;
     }
-	
+    
     ISP_cmd(ENABLE);
     ISP_setAddress(addr);
     ISP_setCommand(ISP_command_erase);
     ISP_trig();
     sleep(1);
     ISP_idle();
-	
+    
     return true;
 }
 
@@ -118,22 +118,28 @@ void ISP_trig(void)
 }
 
 /*
- * @Prototype:void ISP_writeByte(unsigned int addr,unsigned char byte)
+ * @Prototype:bool ISP_writeByte(unsigned int addr,byte dat)
  * @Parameter:(1)addr:operating address
  * @Ret-val:
  * @Note:write the value into the register in the specified address
  */
-void ISP_writeByte(unsigned int addr,unsigned char byte)
+bool ISP_writeByte(unsigned int addr,byte dat)
 {
-    if(((addr > ISP_ADDR_START) && (addr < ISP_ADDR_END)) || (addr == ISP_ADDR_START) || (addr == ISP_ADDR_END))
+    if((addr < ISP_ADDR_START) || (addr > ISP_ADDR_END))
+    {
+        return false;
+    }
+    else
     {
         ISP_cmd(ENABLE);
         ISP_setAddress(addr);
         ISP_setCommand(ISP_command_write);
-        ISP_DATA = byte;
+        ISP_DATA = dat;
         ISP_trig();
         sleep(1);
         ISP_idle();
+        
+        return true;
     }
 }
 
