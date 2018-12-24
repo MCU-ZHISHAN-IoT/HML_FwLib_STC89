@@ -67,19 +67,18 @@
 >Version :v1.0.3
  Alias   :
  Date    :
- Note    :(1)optimize function GPIO_getBitValue
-          (2)fix bug of function GPIO_getBitValue
-          (3)optimize note of source code file
-          (4)update Makefile to v0.0.3
-          (5)modify errormap.txt
-          (6)fix bug of example/exti/exti-toggleIo.c
-          (7)optimize function EXTI_setPriority
-          (8)optimize function RST_reset
-          (9)fix bug of function UART_getBaudGeneratorInitValue, optimize function of UART_switchTim
-          (10)fix bug of function ISP_writeByte
-          (11)optimize function ISP_eraseByte and ISP_writeByte
+ Note    :(1)fix bug of function GPIO_getBitValue
+          (2)optimize note of source code file
+          (3)update Makefile to v0.0.3
+          (4)modify errormap.txt
+          (5)fix bug of example/exti/exti-toggleIo.c
+          (6)optimize function EXTI_setPriority
+          (7)optimize function RST_reset
+          (8)fix bug of function UART_getBaudGeneratorInitValue, optimize function of UART_switchTim
+          (9)fix bug of function ISP_writeByte
+          (10)optimize function ISP_eraseByte
 
-          #TEAM
+#TEAM
  Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
  Director  - Weilun Fong (wlf@zhishan-iot.tk)
  Testing   - Amy Chung   (zhongliguo@zhishant-iot.tk)

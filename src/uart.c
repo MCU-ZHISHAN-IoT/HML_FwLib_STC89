@@ -91,7 +91,7 @@ unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
 {
     unsigned char tmp = 0x00;
     
-    //baud = (2^SMOD/32) * _FRE_OSC_/(256-x)*12
+    /* baud = (2^SMOD/32) * _FRE_OSC_/(256-x)*12 */
     switch(tim)
     {
         case PERIPH_TIM_1:
@@ -120,7 +120,10 @@ unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
                 }
             }
         } break;
-        case PERIPH_TIM_2:return tmp = (65536 - (_FRE_OSC_/32/baud));break;  //TODO
+        case PERIPH_TIM_2:
+        {
+            return ((65536 - (_FRE_OSC_/32/baud)));
+        } break;
         default:break;
     }
     
