@@ -57,7 +57,7 @@ void UART_config(UART_configTypeDef *uc)
     {
         case PERIPH_TIM_1:
         {
-            tc.function          = TIM_FUNC_TIM;
+            tc.function          = TIM_function_tim;
             tc.interruptState    = DISABLE;
             tc.interruptPriority = DISABLE;
             tc.mode              = TIM_mode_2;
@@ -67,7 +67,7 @@ void UART_config(UART_configTypeDef *uc)
         } break; 
         case PERIPH_TIM_2:
         {
-            tc2.function          = TIM2_FUNC_TIM;
+            tc2.function          = TIM2_function_tim;
             tc2.interruptState    = DISABLE;
             tc2.interruptPriority = DISABLE;
             tc2.mode              = TIM2_mode_2;

@@ -11,9 +11,10 @@
 #ifndef ___UTIL_H___
 #define ___UTIL_H___
 
+/* ----- @header file ----- */
 #include "macro.h"
 
-/* ---------- @function --------- */
+/* ----- @function ----- */
 void disableAllInterrupts(void);
 void enableAllInterrupts(void);
 void sleep(unsigned int t);

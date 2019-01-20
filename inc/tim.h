@@ -12,19 +12,23 @@
 #ifndef ___TIM_H___
 #define ___TIM_H___
 
-/* --- @header file --- */
+/* ----- @header file ----- */
 #include <stc89.h>
 #include <stdbool.h>
+
 #include "exti.h"
 #include "macro.h"
 
+/* ----- @enumeration type ----- */
+/* mark timer module */
 typedef enum
 {
     PERIPH_TIM_0 = 0x0,
     PERIPH_TIM_1 = 0x1,
-    PERIPH_TIM_2 = 0x2 /* refer to tim2.h */
+    PERIPH_TIM_2 = 0x2  /* refer to tim2.h */
 } PERIPH_TIM;
 
+/* mark timer work mode */
 typedef enum
 {
     TIM_mode_0 = 0x0,   /* 13-bit timer/counter */
@@ -36,17 +40,19 @@ typedef enum
 /* mark function of timer */
 typedef enum
 {
-    TIM_FUNC_CNT = 0x1, /* counter mode */
-    TIM_FUNC_TIM = 0x0  /* timer mode */
+    TIM_function_cnt = 0x1,  /* counter mode */
+    TIM_function_tim = 0x0   /* timer mode */
 } TIM_function;
 
+/* ----- @structure define ----- */
+/* configuration structure */
 typedef struct
 {
     TIM_function  function;
     Action        interruptState;
     INTR_priority interruptPriority;
     TIM_mode      mode;
-    unsigned int value;
+    unsigned int  value;
 } TIM_configTypeDef;
 
 /* ----- @function ----- */

@@ -11,12 +11,13 @@
 #ifndef ___TIM2_H___
 #define ___TIM2_H___
 
-/* --- @header file --- */
+/* ----- @header file ----- */
 #include <stc89.h>
 #include <stdbool.h>
 #include "exti.h"
 #include "macro.h"
 
+/* ----- @enumeration type ----- */
 /* mark work mode of TIM2 */
 typedef enum
 {
@@ -25,13 +26,15 @@ typedef enum
     TIM2_mode_2 = 0x30   /* baud rate generator */
 } TIM2_mode;
 
+/* mark work function(role) of TIM2 */
 typedef enum
 {
-    TIM2_FUNC_CNT = 0x1, /* counter mode */
-    TIM2_FUNC_TIM = 0x0  /* timer mode */
+    TIM2_function_cnt = 0x1, /* counter mode */
+    TIM2_function_tim = 0x0  /* timer mode */
 } TIM2_function;
 
-/* define configure struct */
+/* ----- @structure define ----- */
+/* configuration structure */
 typedef struct
 {
     TIM2_function  function;

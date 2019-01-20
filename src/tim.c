@@ -16,9 +16,9 @@
 /*
  * @Prototype:unsigned int TIM_calcValue(unsigned int time,TIM_mode m)
  * @Parameter:
- *  (1)time:Initial value of time (time/us)
+ *  (1)time:initial value of time (time/us)
  *  (2)m:work mode(refer to header file)
- * @Ret-val:init value of timer counter register(if return 0x0000,it means that the time has over the limit)
+ * @Ret-val:initial value of timer counter register(if return 0x0000,it means that the time has over the limit)
  * @Note:calculate timer counter register value
  */
 unsigned int TIM_calculateValue(unsigned int time,TIM_mode m)
@@ -50,7 +50,7 @@ unsigned int TIM_calculateValue(unsigned int time,TIM_mode m)
  *  (1)tim:target timer module
  *  (2)a:expected action
  * @Ret-val:
- * @Note:lanuch or stop timer
+ * @Note:launch or stop timer
  */
 void TIM_cmd(PERIPH_TIM tim,Action a)
 {
@@ -66,9 +66,9 @@ void TIM_cmd(PERIPH_TIM tim,Action a)
  * @Prototype:void TIM_config(PERIPH_TIM tim,TIM_configTypeDef *tc)
  * @Parameter:
  *  (1)tim:target timer module
- *  (2)tc:custom config reference info.,look up details in header file
+ *  (2)tc:custom configure reference info.,look up details in header file
  * @Ret-val:
- * @Note:config target timer
+ * @Note:configure target timer
  */
 void TIM_config(PERIPH_TIM tim,TIM_configTypeDef *tc)
 {
@@ -117,7 +117,7 @@ bool TIM_isOverflow(PERIPH_TIM tim)
  * (1)tim:target timer module
  * (2)f:expected function
  * @Ret-val:
- * @Note:config the module as counter mode or timer mode
+ * @Note:configure the module as counter mode or timer mode
  */
 void TIM_setFunction(PERIPH_TIM tim,TIM_function f)
 {
@@ -177,9 +177,9 @@ void TIM_setValue(PERIPH_TIM tim,unsigned int val)
  * @Prototype:void TIM_INT_cmd(PERIPH_TIM tim,Action a)
  * @Parameter:
  * (1)tim:target timer module
- * (2)a:expected action,decide disable or enable timer intterupt
+ * (2)a:expected action,decide disable or enable timer interrupt
  * @Ret-val:
- * @Note:disable or enable timer intterupt
+ * @Note:disable or enable timer interrupt
  */
 void TIM_INT_cmd(PERIPH_TIM tim,Action a)
 {
@@ -195,7 +195,7 @@ void TIM_INT_cmd(PERIPH_TIM tim,Action a)
  * @Prototype:void TIM_INT_setPriority(PERIPH_TIM tim,INTR_priority p)
  * @Parameter:
  * (1)tim:target timer module
- * (2)p:expected intterrupt priority class
+ * (2)p:expected interrupt priority class
  * @Ret-val:
  * @Note:set priority of TIM module
  */
@@ -205,12 +205,12 @@ void TIM_INT_setPriority(PERIPH_TIM tim,INTR_priority p)
     {
         case PERIPH_TIM_0:
         {
-            IP = (IP & 0xFD) | ((P & 0x01) << 0x1);
+            IP  = (IP & 0xFD)  | ((p & 0x01) << 0x1);
             IPH = (IPH & 0xFD) | (p & 0x02);
         } break;
         case PERIPH_TIM_1:
         {
-            IP = (IP & 0xF7) | ((p & 0x01) << 0x3);
+            IP  = (IP & 0xF7)  | ((p & 0x01) << 0x3);
             IPH = (IPH & 0xF7) | ((p & 0x02) << 0x2);
         } break;
         default:break;

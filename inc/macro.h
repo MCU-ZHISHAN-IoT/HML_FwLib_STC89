@@ -12,24 +12,28 @@
 #ifndef ___MACRO_H___
 #define ___MACRO_H___
 
-/* type define */
+/* ----- @type define ----- */
 typedef unsigned char byte;
 typedef unsigned char u8;
 typedef unsigned int  u16;
 typedef unsigned int  word;
 
+/* ----- @enumeration type ----- */
+/* mark user action */
 typedef enum
 {
     DISABLE = 0x0,
     ENABLE  = !DISABLE
 } Action;
 
+/* mark bit level */
 typedef enum
 {
     RESET = 0x0,
     SET   = !RESET
 } FunctionalState;
 
+/* ----- @macro ----- */
 /* mark model */
 #define _MCU_NULL_           0
 #define _MCU_STC89C51RC_     1

@@ -11,9 +11,11 @@
 #ifndef ___WDT_H___
 #define ___WDT_H___
 
+/* ----- @header file ----- */
 #include <stc89.h>
 #include "macro.h"
 
+/* ----- @enumeration type ----- */
 /* mark prescale factor */
 typedef enum
 {

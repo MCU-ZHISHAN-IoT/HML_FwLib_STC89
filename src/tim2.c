@@ -48,7 +48,7 @@ void TIM2_clearFlag(void)
  * @Prototype:void TIM2_cmd(Action a)
  * @Parameter:(1)a:expected action
  * @Ret-val:
- * @Note:lanuch or stop TIM2
+ * @Note:launch or stop TIM2
  */
 void TIM2_cmd(Action a)
 {
@@ -89,7 +89,7 @@ unsigned int TIM2_getValue(void)
  */
 bool TIM2_isOverflow(void)
 {
-    return (bool)(T2CON >> 7);
+    return (bool)(T2CON >> 0x7);
 }
 
 /*
@@ -122,7 +122,7 @@ void TIM2_setMode(TIM2_mode m)
  */
 void TIM2_setValue(unsigned int val)
 {
-    TH2 = (val >> 8);
+    TH2 = (val >> 0x8);
     TL2 = val;
 }
 
@@ -134,18 +134,19 @@ void TIM2_setValue(unsigned int val)
  */
 void TIM2_INT_cmd(Action a)
 {
-    IE = (IE & 0xDF) | (a << 5);
+    IE = (IE & 0xDF) | (a << 0x5);
 }
 
 /*
  * @Prototype:void TIM2_INT_setPriority(INTR_priority p)
- * @Parameter:(1)p:expected interrupt priority class
+ * @Parameter:
+ * (1)p:expected interrupt priority class
  * @Ret-val:
  * @Note:set priority of TIM2 module
  */
 void TIM2_INT_setPriority(INTR_priority p)
 {
-    IP  = (IP & 0xDF)  | ((p & 0x01) << 0x5);
+    IP  = (IP  & 0xDF) | ((p & 0x01) << 0x5);
     IPH = (IPH & 0xDF) | ((p & 0x02) << 0x4);
 }
 
@@ -157,7 +158,7 @@ void TIM2_INT_setPriority(INTR_priority p)
  */
 void TIM2_INT_T2EX_cmd(Action a)
 {
-    T2CON = (T2CON & 0xF7) | (a << 3);
+    T2CON = (T2CON & 0xF7) | (a << 0x3);
 }
 
 #endif

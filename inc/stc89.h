@@ -61,7 +61,7 @@ __sbit __at (0xCD) RCLK  ;
 __sbit __at (0xCE) EXF2  ;
 __sbit __at (0xCF) TF2   ;
 
-/* --- @interrupt vector --- */
+/* ----- @interrupt vector ----- */
 #define TF2_VECTOR 5    /* 0x2b timer 2 */
 #define IE2_VECTOR 6    /* 0x33 external interrupt 2 */
 #define IE3_VECTOR 7    /* 0x3B external interrupt 3 */

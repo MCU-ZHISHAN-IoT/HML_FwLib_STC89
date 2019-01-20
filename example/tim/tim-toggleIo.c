@@ -21,7 +21,7 @@ void sys_init(void)
 {
     TIM_configTypeDef tc;
     
-    tc.function = TIM_FUNC_TIM;
+    tc.function = TIM_function_tim;
     tc.interruptState = ENABLE;
     tc.interruptPriority = ENABLE;
     tc.mode = TIM_mode_1;

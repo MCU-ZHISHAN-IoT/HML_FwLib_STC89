@@ -15,7 +15,7 @@
  * @Prototype:void sys_init(void)
  * @Parameter:None
  * @Ret-val:None
- * @Note:init MCU
+ * @Note:initial MCU
  */
 void sys_init(void)
 {
@@ -55,11 +55,10 @@ void exti1_isr(void) __interrupt IE1_VECTOR
     /* make sure the button connected to P33(INT1) */
     if(GPIO_getBitValue(PERIPH_GPIO_3,PERIPH_GPIO_PIN_3) == RESET)
     {
-        RST_reset(RST_AP);
+        RST_reset(RST_bootarea_ap);
     }
-    /* recover */
     else
     {
-        enableAllInterrupts();
+        enableAllInterrupts();    /* recover */
     }
 }

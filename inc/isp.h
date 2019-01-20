@@ -11,11 +11,14 @@
 #ifndef ___ISP_H___
 #define ___ISP_H___
 
+/* ----- @header file ----- */
 #include <stc89.h>
 #include <stdbool.h>
+
 #include "macro.h"
 #include "util.h"
 
+/* ----- @enumeration type ----- */
 /* mark command */
 typedef enum
 {

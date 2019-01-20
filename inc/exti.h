@@ -12,9 +12,11 @@
 #ifndef ___EXTI_H___
 #define ___EXTI_H___
 
+/* ----- @header file ----- */
 #include <stc89.h>
 #include "macro.h"
 
+/* ----- @enumeration type ----- */
 /* mark EXTI module */
 typedef enum
 {
@@ -31,7 +33,7 @@ typedef enum
     EXTI_mode_lowLevel = 0x0
 } EXTI_mode;
 
-/* mark priority(lager number means higher priority)*/
+/* mark interrupt priority(lager number means higher priority)*/
 typedef enum
 {
     INTR_priority_0 = 0x00,
@@ -40,6 +42,8 @@ typedef enum
     INTR_priority_3 = 0x03,
 } INTR_priority;
 
+/* ----- @structure define ----- */
+/* configuration structure */
 typedef struct
 {
     EXTI_mode     mode;

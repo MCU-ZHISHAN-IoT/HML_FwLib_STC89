@@ -77,6 +77,8 @@
           (8)fix bug of function UART_getBaudGeneratorInitValue, optimize function of UART_switchTim
           (9)fix bug of function ISP_writeByte
           (10)optimize function ISP_eraseByte
+          (11)rename member of enumeration type TIM_function, TIM2_function and RST_bootarea
+          (12)fix fatal bug in function TIM_INT_setPriority
 
 #TEAM
  Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
