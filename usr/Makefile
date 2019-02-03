@@ -58,7 +58,7 @@ endef
 define show_version
 	@echo ===================================================
 	@echo "Makefile for $(HML_FWLIB_NAME) [$(MAK_VERSION)]"
-	@echo "Copyright(c) 2018-019 ZHISHAN-IoT, all rights reserved."
+	@echo "Copyright(c) 2018-2019 ZHISHAN-IoT, all rights reserved."
 	@echo "Adapted by Weilun Fong <wlf(at)zhishan-iot.tk>"
 	@echo ===================================================
 	@echo
