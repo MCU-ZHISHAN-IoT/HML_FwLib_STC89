@@ -69,7 +69,7 @@
  Date    :
  Note    :(1)fix bug of function GPIO_getBitValue
           (2)optimize note of source code file
-          (3)update Makefile to v0.0.3
+          (3)update Makefile to v0.1.2
           (4)modify errormap.txt
           (5)fix bug of example/exti/exti-toggleIo.c
           (6)optimize function EXTI_setPriority

@@ -1,12 +1,12 @@
 #Author     :Weilun Fong | wlf(at)zhishan-iot.tk
-#Date       :2019-02-02
+#Date       :2019-02-04
 #Description:Makefile for HML_FwLib_STC89, it will generate a hex format file finally
 #E-mail     :mcu(at)zhishan-iot.tk
 #Make-tool  :GNU Make (http://www.gnu.org/software/make/manual/make.html)
 #Page       :https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
 #Tar-mcu    :STC micro STC89 series (STC89C52RC, STC89C54RD, etc.)
 #Tar-project:HML_FwLib_STC89
-#Version    :v0.1.1
+#Version    :v0.1.2
 
 ##### variable define #####
 ##important directories##
@@ -17,6 +17,8 @@ DIR_SRC        = $(DIR_ROOT)/src
 ##important files##
 HML_SRC_FILES  = $(wildcard $(DIR_SRC)/*.c)
 HML_REL_FILES  = $(patsubst $(DIR_SRC)/%.c,$(DIR_OUTPUT)/%.rel,$(HML_SRC_FILES))
+OBJ_FILE_TYPE_LIST = asm ihx lk lst map mem rel rst sym
+TAR_FILE_TYPE_LIST = hex lib
 ##operation parameter##
 CFLAGS         = -c -o $(DIR_OUTPUT)/ -I $(DIR_INC) --std-sdcc99 -L $(DIR_OUTPUT)/hml_fw.lib
 LFLAGS         = -rcs
@@ -28,21 +30,21 @@ CC             = sdcc
 ##version information##
 HML_FWLIB_NAME = HML_FwLib_STC89
 #note: we unify version code from v0.1.0 because of the same makefile template
-MAK_VERSION    = v0.1.1
+MAK_VERSION    = v0.1.2
 
 ##### function define #####
 ##function-clean##
 define clean_obj
 	@echo
-	@cd $(DIR_OUTPUT) && (find . -name "*.asm" | xargs rm -rfv)
-	@cd $(DIR_OUTPUT) && (find . -name "*.ihx" | xargs rm -rfv)
-	@cd $(DIR_OUTPUT) && (find . -name "*.lk"  | xargs rm -rfv)
-	@cd $(DIR_OUTPUT) && (find . -name "*.lst" | xargs rm -rfv)
-	@cd $(DIR_OUTPUT) && (find . -name "*.map" | xargs rm -rfv)
-	@cd $(DIR_OUTPUT) && (find . -name "*.mem" | xargs rm -rfv)
-	@cd $(DIR_OUTPUT) && (find . -name "*.rel" | xargs rm -rfv)
-	@cd $(DIR_OUTPUT) && (find . -name "*.rst" | xargs rm -rfv)
-	@cd $(DIR_OUTPUT) && (find . -name "*.sym" | xargs rm -rfv)
+	@for i in $(OBJ_FILE_TYPE_LIST); do                   \
+		find $(DIR_OUTPUT) -name "*.$$i" | xargs rm -rfv; \
+	done
+endef
+##function-content_version##
+define content_version
+	@echo "Makefile for $(HML_FWLIB_NAME) [$(MAK_VERSION)]"
+	@echo "Copyright(c) 2018-2019 ZHISHAN-IoT, all rights reserved."
+	@echo "Adapted by Weilun Fong <wlf(at)zhishan-iot.tk>"
 endef
 ##function-show_end_information##
 define show_end_information
@@ -57,9 +59,7 @@ endef
 ##function-show_version##
 define show_version
 	@echo ===================================================
-	@echo "Makefile for $(HML_FWLIB_NAME) [$(MAK_VERSION)]"
-	@echo "Copyright(c) 2018-2019 ZHISHAN-IoT, all rights reserved."
-	@echo "Adapted by Weilun Fong <wlf(at)zhishan-iot.tk>"
+	$(content_version)
 	@echo ===================================================
 	@echo
 endef
@@ -117,8 +117,9 @@ distclean:
 	$(show_version)
 	@echo start to distclean...
 	$(clean_obj)
-	@cd $(DIR_OUTPUT) && (find . -name "*.hex" | xargs rm -rfv)
-	@cd $(DIR_OUTPUT) && (find . -name "*.lib" | xargs rm -rfv)
+	@for i in $(TAR_FILE_TYPE_LIST); do                   \
+		find $(DIR_OUTPUT) -name "*.$$i" | xargs rm -rfv; \
+	done
 	$(show_end_information)
 ##help##
 .PHONY: help
@@ -127,6 +128,4 @@ help:
 ##version information##
 .PHONY: version
 version:
-	@echo "$(HML_FWLIB_NAME) makefile [$(MAK_VERSION)]"
-	@echo "Copyright(c) 2018-2019 ZHISHAN-IoT, all rights reserved."
-	@echo "Adapted by Weilun Fong <wlf(at)zhishan-iot.tk>"
+	$(content_version)

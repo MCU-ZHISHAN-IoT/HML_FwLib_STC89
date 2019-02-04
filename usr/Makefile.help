@@ -1,12 +1,12 @@
 #Author     :Weilun Fong | wlf(at)zhishan-iot.tk
-#Date       :2019-01-27
+#Date       :2019-02-04
 #Description:help Makefile for HML_FwLib_xxx
 #E-mail     :mcu(at)zhishan-iot.tk
 #Make-tool  :GNU Make (http://www.gnu.org/software/make/manual/make.html)
 #Page       :
 #Tar-mcu    :
 #Tar-project:HML_FwLib_xxx
-#Version    :v0.1.1
+#Version    :v0.1.2
 
 help:
 	@echo "Build:"
