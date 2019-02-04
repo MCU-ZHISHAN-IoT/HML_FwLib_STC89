@@ -16,7 +16,7 @@
  Note    :The first stable version of HML_FwLib_STC89!
  
 >Version :v0.0.1
- Alias   :
+ Alias   :V0R1
  Date    :2018-05-28
  Note    :(1)fix a bug about code order in <uart.c>
           (2)fix a bug of function TIM_setValue in <tim.c>
@@ -65,8 +65,8 @@
           (6)add interrupt vector for extern interrupt 2(EXTI-2) and extern interrupt 3(EXTI-3) in <stc89.h>
 
 >Version :v1.0.3
- Alias   :
- Date    :
+ Alias   :V1R2
+ Date    :2019-02-04
  Note    :(1)fix bug of function GPIO_getBitValue
           (2)optimize note of source code file
           (3)update Makefile to v0.1.2
