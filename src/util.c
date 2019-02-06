@@ -8,9 +8,7 @@
  * @Version:V1
  */
 
-
-#include <stc89.h>
-#include "macro.h"
+#include "util.h"
 
 #ifdef ___COMPILE_UTIL___
 
@@ -29,7 +27,7 @@ void disableAllInterrupts(void)
  * @Prototype:void enableAllInterrupts(void)
  * @Parameter:
  * @Ret-val:
- * @Note:enable total switch of intterupts
+ * @Note:enable total switch of interrupts
  */
 void enableAllInterrupts(void)
 {

@@ -80,6 +80,11 @@
           (11)rename member of enumeration type TIM_function, TIM2_function and RST_bootarea
           (12)fix fatal bug in function TIM_INT_setPriority
 
+>Version :
+ Alias   :
+ Date    :
+ Note    :(1)fix header file include bug in <util.c>
+
 #TEAM
  Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
  Director  - Weilun Fong (wlf@zhishan-iot.tk)
