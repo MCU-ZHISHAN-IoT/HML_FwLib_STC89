@@ -17,6 +17,9 @@
 #include "exti.h"
 #include "macro.h"
 
+/* ----- @macro define ------ */
+#define TIM2_MAXTICK 0xFFFF
+
 /* ----- @enumeration type ----- */
 /* mark work mode of TIM2 */
 typedef enum

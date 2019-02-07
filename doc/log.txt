@@ -84,6 +84,7 @@
  Alias   :
  Date    :
  Note    :(1)fix header file include bug in <util.c>
+          (2)optimize maxTick into macro definition TIM2_MAXTICK in tim2.h
 
 #TEAM
  Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)

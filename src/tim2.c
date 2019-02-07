@@ -20,15 +20,13 @@
  */
 unsigned int TIM2_calculateValue(unsigned int t)
 {
-    unsigned int maxTick = 0xFFFF;
-    
-    if((t*12)/(_FRE_OSC_/1000000) >= maxTick )
+    if((t*12)/(_FRE_OSC_/1000000) >= TIM2_MAXTICK )
     {
         return 0;
     }
     else
     {
-        return (maxTick+1-((t*12)/(_FRE_OSC_/1000000)));
+        return (TIM2_MAXTICK+1-((t*12)/(_FRE_OSC_/1000000)));
     }
 }
 
