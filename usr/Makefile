@@ -65,18 +65,18 @@ define show_version
 endef
 
 ##### build works #####
-all:startup $(TARGET).hex
+all: startup $(TARGET).hex
 	$(show_end_information)
 
-$(TARGET).hex:$(TARGET).ihx
+$(TARGET).hex: $(TARGET).ihx
 	@echo generate .hex file
 	@cd $(DIR_OUTPUT) && packihx $< > $@
-$(TARGET).ihx:test.rel hml_fw.lib
+$(TARGET).ihx: test.rel hml_fw.lib
 	@echo generate .ihx file
 	@cd $(DIR_OUTPUT) && $(CC) $^ -o $@
 
 #compile source file(*.c)
-$(HML_REL_FILES):$(HML_SRC_FILES)
+$(HML_REL_FILES): $(HML_SRC_FILES)
 ifeq ($(wildcard $(DIR_OUTPUT)/hml_fw.lib), )
 	@echo make static link library hml_fw.lib
 	@(for cur_file in $(HML_SRC_FILES); do \
@@ -85,7 +85,7 @@ ifeq ($(wildcard $(DIR_OUTPUT)/hml_fw.lib), )
 	done)
 endif
 #generate static library
-hml_fw.lib:$(HML_REL_FILES)
+hml_fw.lib: $(HML_REL_FILES)
 ifeq ($(wildcard $(DIR_OUTPUT)/hml_fw.lib), )
 	@echo AR $(DIR_OUTPUT)/$@
 	@$(AR) $(LFLAGS) $(DIR_OUTPUT)/$@ $(HML_REL_FILES)
@@ -97,7 +97,7 @@ startup:
 	@echo start at `date "+%Y-%m-%d %H:%M:%S"`
 	@echo
 #compile source file of user
-test.rel:test.c hml_fw.lib
+test.rel: test.c hml_fw.lib
 	@echo compile user source code
 	@echo CC $<
 	@$(CC) $< $(CFLAGS) -L $(DIR_OUTPUT)/hml_fw.lib
@@ -105,14 +105,14 @@ test.rel:test.c hml_fw.lib
 
 ##### PHONY target #####
 ##clean temp files##
-.PHONY:clean
+.PHONY: clean
 clean:
 	$(show_version)
 	@echo start to clean...
 	$(clean_obj)
 	$(show_end_information)
 ##distclean##
-.PHONY:distclean
+.PHONY: distclean
 distclean:
 	$(show_version)
 	@echo start to distclean...

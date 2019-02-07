@@ -18,6 +18,7 @@ Please visit [detail page](https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89
 ## Prerequisite
 + [GNU Make](http://www.gnu.org/software/make/manual/make.html)(recommend)
 + [SDCC compiler](http://sdcc.sourceforge.net/)
++ *\[for Windows\]* Unix shell tools([msys](http://www.mingw.org/wiki/MSYS), [Cygwin](http://www.cygwin.com/), [GNUwin32](http://gnuwin32.sourceforge.net/)) needed by makefile for SDCC
 
 ## Usage
 ### file structure
@@ -39,7 +40,9 @@ The macro mark the model of target MCU and is defined in *macro.h*. The default 
 #### conditional compilation
 In order to ensure the projects based on HML_FwLib_STC89 can be downloaded into the limited on-chip flash space of STC89 MCUs, the developers can modify the macro definition named `___COMPILE_XXX___` in *macro.h* to specify which piece of code should be compiled, thus to reduce the size of the HEX file. If user only use GPIO module, then user just need to enable `___COMPILE_GPIO___` macro definition in macro.h. Some macros for conditional compilation rely on others. For example, before you define the macro definition `___COMPILE_UART___`, the macro `___COMPILE_EXTI___`, `___COMPILE_TIM___` and `___COMPILE_TIM2___` should be defined, otherwise the compilation would be failed.
 ### code & compilation
-There is a source file named *test.c* under *usr* directory, we have put a main function here. User can add and modify own code here, then enter <kbd>make</kbd> in terminal(you had better use [Cygwin](http://www.cygwin.com/) instead of cmd.exe under Windows), the Makefile will work and complete compilation. Certainly, you can just add *inc* and *src* directory into your project structure, and write your own makefile to build a custom project. 
+There is a source file named *test.c* under *usr* directory, we have put a main function here. User can add and modify own code here, then enter <kbd>make</kbd> in terminal, the Makefile will work and complete compilation. From version V0R3, you can enter <kbd>make help</kbd> to get all usages, and former version makefile only support <kbd>make</kbd>, <kbd>make clean</kbd>, <kbd>make mostlyclean</kbd>(change into <kbd>make distclean</kbd> now)
+
+Certainly, you can just add *inc* and *src* directory into your project structure, and write your own makefile to build a custom project.
 
 ## Contributing
 Welcome suggestions and contribution from you! You can fork it or contact us via *[mcu@zhishan-iot.tk](mailto:mcu@zhishan-iot.tk)*.
