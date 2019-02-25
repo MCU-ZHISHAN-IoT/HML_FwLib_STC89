@@ -37,25 +37,24 @@ __sfr __at (0xE7) ISP_CONTR ;
 __sfr __at (0xE8) P4        ;
 
 /*  BIT Register  */
-/* P1 */
-__sbit __at (0x90) T2       ;
-__sbit __at (0x91) T2EX     ;
-
 /* IE */
 __sbit __at (0xAD) ET2      ;
 
 /* IP */
 __sbit __at (0xBD) PT2      ;
 
-/* XICON */
-__sbit __at (0xC0) IT2      ;
-__sbit __at (0xC1) IE2      ;
-__sbit __at (0xC2) EX2      ;
-__sbit __at (0xC3) PX2      ;
-__sbit __at (0xC4) IT3      ;
-__sbit __at (0xC5) IE3      ;
-__sbit __at (0xC6) EX3      ;
-__sbit __at (0xC7) PX3      ;
+/* P1 */
+__sbit __at (0x90) T2       ;
+__sbit __at (0x91) T2EX     ;
+
+/* P4 */
+__sbit __at (0xE8) P4_0     ;
+__sbit __at (0xE9) P4_1     ;
+__sbit __at (0xEA) P4_2     ;
+__sbit __at (0xEB) P4_3     ;
+
+__sbit __at (0xEA) INT3     ;
+__sbit __at (0xEB) INT2     ;
 
 /* T2CON */
 __sbit __at (0xC8) CPRL2    ;
@@ -67,14 +66,15 @@ __sbit __at (0xCD) RCLK     ;
 __sbit __at (0xCE) EXF2     ;
 __sbit __at (0xCF) TF2      ;
 
-/* P4 */
-__sbit __at (0xE8) P4_0     ;
-__sbit __at (0xE9) P4_1     ;
-__sbit __at (0xEA) P4_2     ;
-__sbit __at (0xEB) P4_3     ;
-
-__sbit __at (0xEA) INT3     ;
-__sbit __at (0xEB) INT2     ;
+/* XICON */
+__sbit __at (0xC0) IT2      ;
+__sbit __at (0xC1) IE2      ;
+__sbit __at (0xC2) EX2      ;
+__sbit __at (0xC3) PX2      ;
+__sbit __at (0xC4) IT3      ;
+__sbit __at (0xC5) IE3      ;
+__sbit __at (0xC6) EX3      ;
+__sbit __at (0xC7) PX3      ;
 
 /* BIT number for bits that are not directly accessible */
 /* AUXR bits */
