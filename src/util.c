@@ -42,24 +42,22 @@ void enableAllInterrupts(void)
  */
 void sleep(unsigned int t)
 {
-    u8 i = 0x00;
-    u8 j = 0x00;
+    u8 i = 0;
     
     #if ( _FRE_OSC_ == 11059200L )
 
         while(t--)
         {
-            j = 110;
-            while(j--);
+            i = 110;
+            while(i--);
         }
-        
-    //TODO
+
     #elif ( _FRE_OSC_ == 12000000L )
 
         while(t--)
         {
-            j = 120;
-            while(j--);
+            i = 120;
+            while(i--);
         }
         
     #else

@@ -16,11 +16,11 @@
  * @Prototype:void ISP_cmd(Action a)
  * @Parameter:(1)a:expected action
  * @Ret-val:
- * @Note:launch or stop ISP/IAP module
+ * @Note:launch or stop ISP module
  */
 void ISP_cmd(Action a)
 {
-    ISP_CONTR = (ISP_CONTR & 0x7F) | a << 0x7;
+    ISP_CONTR = CONFB(ISP_CONTR,BIT_NUM_ISPEN,a);
 }
 
 /*

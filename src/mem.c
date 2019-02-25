@@ -24,7 +24,7 @@
  */
 void MEM_cmd_ale(Action a)
 {
-    AUXR = (AUXR & 0xFE) | a;
+    AUXR = CONFB(AUXR,BIT_NUM_ALEOFF,a);
 }
 
 /*
@@ -32,13 +32,13 @@ void MEM_cmd_ale(Action a)
  * @Parameter:(1)a:expected state
  * @Ret-val:
  * @Note:enable or disable internal extended RAM access
- *  > there is a RAM area integrated insides STC90 MCUs and it's independent in physics
+ *  > there is a RAM area integrated insides STC89 MCUs and it's independent in logic
  *  > if you enable this function,this area will occupy address zone in the beginning(RD+ series is 0000H~03FFH(1024 bytes),RC series is 0000H~00FFH(256 bytes));or this RAM area is hide,the MCU is as same as classical 8051 MCU now
  *  > if you want to enable this function,please remember select the option in STC-ISP
  */
 void MEM_cmd_internalExtendedRam(Action a)
 {
-    AUXR = (AUXR & 0xFD) | ((~a) << 0x1);
+    AUXR = CONFB(AUXR,BIT_NUM_EXTRAM,(~a));
 }
 
 #endif

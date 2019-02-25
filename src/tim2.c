@@ -39,7 +39,7 @@ unsigned int TIM2_calculateValue(unsigned int t)
  */
 void TIM2_clearFlag(void)
 {
-    T2CON = T2CON & 0x7F;
+    TF2 = RESET;
 }
 
 /*
@@ -50,7 +50,7 @@ void TIM2_clearFlag(void)
  */
 void TIM2_cmd(Action a)
 {
-    T2CON = (T2CON & 0xFB) | (a << 2);
+    TR2 = a;
 }
 
 /*
@@ -87,7 +87,7 @@ unsigned int TIM2_getValue(void)
  */
 bool TIM2_isOverflow(void)
 {
-    return (bool)(T2CON >> 0x7);
+    return (bool)(TF2);
 }
 
 /*
@@ -132,7 +132,7 @@ void TIM2_setValue(unsigned int val)
  */
 void TIM2_INT_cmd(Action a)
 {
-    IE = (IE & 0xDF) | (a << 0x5);
+    ET2 = a;
 }
 
 /*
@@ -144,8 +144,8 @@ void TIM2_INT_cmd(Action a)
  */
 void TIM2_INT_setPriority(INTR_priority p)
 {
-    IP  = (IP  & 0xDF) | ((p & 0x01) << 0x5);
-    IPH = (IPH & 0xDF) | ((p & 0x02) << 0x4);
+    PT2 = TESTB(p,1);
+    IPH = CONFB(IPH,BIT_NUM_PT2H,TESTB(p,1));
 }
 
 /*
@@ -156,7 +156,7 @@ void TIM2_INT_setPriority(INTR_priority p)
  */
 void TIM2_INT_T2EX_cmd(Action a)
 {
-    T2CON = (T2CON & 0xF7) | (a << 0x3);
+    EXEN2 = a;
 }
 
 #endif

@@ -21,7 +21,7 @@
  */
 void UART_cmd_multiBaudrate(Action a)
 {
-    PCON = (PCON & 0x7F) | ((unsigned char)a << 0x7);
+    PCON = CONFB(PCON,BIT_NUM_SMOD,a);
 }
 
 /*
@@ -96,7 +96,7 @@ unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
     {
         case PERIPH_TIM_1:
         {
-            if(PCON & 0x80)     /* multi baud rate mode */
+            if(GET_BIT(PCON,SMOD))     /* multi baud rate mode */
             {
                 if(baud > _FRE_OSC_/12/16)
                 {
@@ -230,8 +230,8 @@ void UART_INT_cmd(Action a)
  */
 void UART_INT_setPriority(INTR_priority p)
 {
-    IP  = (IP & 0xEF)  | ((p & 0x01) << 0x4);
-    IPH = (IPH & 0xEF) | ((p & 0x02) << 0x3);
+    PS  = TESTB(p,0);
+    IPH = CONFB(IPH,BIT_NUM_PSH,TESTB(p,1));
 }
 
 #endif

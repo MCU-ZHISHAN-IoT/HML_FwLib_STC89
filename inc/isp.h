@@ -12,8 +12,8 @@
 #define ___ISP_H___
 
 /* ----- @header file ----- */
-#include <stc89.h>
 #include <stdbool.h>
+#include "stc89.h"
 
 #include "macro.h"
 #include "util.h"
@@ -22,10 +22,10 @@
 /* mark command */
 typedef enum
 {
-    ISP_command_idle  = 0x0,
-    ISP_command_read  = 0x1,
-    ISP_command_write = 0x2,
-    ISP_command_erase = 0x3
+    ISP_command_idle  = 0x00,
+    ISP_command_read  = 0x01,
+    ISP_command_write = 0x02,
+    ISP_command_erase = 0x03
 } ISP_command;
 
 /* ---------- @address define --------- */

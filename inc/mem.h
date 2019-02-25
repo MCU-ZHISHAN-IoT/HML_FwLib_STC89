@@ -14,7 +14,7 @@
 #define ___MEM_H___
 
 /* ----- @header file ----- */
-#include <stc89.h>
+#include "stc89.h"
 #include "macro.h"
 
 /* ----- @macro ----- */

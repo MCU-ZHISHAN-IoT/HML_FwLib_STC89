@@ -13,8 +13,9 @@
 #define ___CONF_H___
 
 /* ----- @header file ----- */
-#include  <stc89.h>
+#include  "stc89.h"
 
+#include "bit.h"
 #include "exti.h"
 #include "gpio.h"
 #include "intrasm.h"

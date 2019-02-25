@@ -13,7 +13,7 @@
 #define ___GPIO_H___
 
 /* ----- @header file ----- */
-#include <stc89.h>
+#include "stc89.h"
 #include "macro.h"
 
 /* ----- @enumeration type ----- */

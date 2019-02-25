@@ -12,8 +12,8 @@
 #define ___TIM2_H___
 
 /* ----- @header file ----- */
-#include <stc89.h>
 #include <stdbool.h>
+#include "stc89.h"
 #include "exti.h"
 #include "macro.h"
 

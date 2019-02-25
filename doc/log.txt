@@ -85,6 +85,8 @@
  Date    :
  Note    :(1)fix header file include bug in <util.c>
           (2)optimize maxTick into macro definition TIM2_MAXTICK in tim2.h
+          (3)fix bug of function UART_INT_setPriority in uart.c
+          (4)provide bit operation function
 
 #TEAM
  Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
