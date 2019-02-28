@@ -124,7 +124,7 @@ void TIM_setFunction(PERIPH_TIM tim,TIM_function f)
     switch(tim)
     {
         case PERIPH_TIM_0:TMOD = CONFB(TMOD,BIT_NUM_T0_CT,f);break;
-        case PERIPH_TIM_1:TMOD = CONFB(TMOD,BIT_NUM_T1_CT,f);;break;
+        case PERIPH_TIM_1:TMOD = CONFB(TMOD,BIT_NUM_T1_CT,f);break;
         default:break;
     }
 }

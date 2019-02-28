@@ -69,7 +69,7 @@ void ISP_idle(void)
  */
 unsigned char ISP_readByte(unsigned int addr)
 {
-    unsigned char dat;
+    unsigned char dat = 0x00;
     
     ISP_cmd(ENABLE);
     ISP_setAddress(addr);
