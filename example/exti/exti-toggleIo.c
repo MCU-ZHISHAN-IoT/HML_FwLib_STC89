@@ -1,22 +1,22 @@
 /*
  * @Author:
  *  #Weilun Fong | wlf(at)zhishan-iot.tk
+ * @Compiler:SDCC v3.6.0
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:a demo which shows how to use HML_FwLib_STC89 to toggle P12 state when EXTI trigged
- * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
  * @Test-board:TS51-V2.0
  * @Test-mcu:STC89C52RC
  * @Version:V1
  */
-
+ 
 #include "conf.h"
 
 /*
  * @Prototype:void sys_init(void)
  * @Parameter:None
  * @Ret-val:None
- * @Note:init MCU
+ * @Note:initial MCU
  */
 void sys_init(void)
 {
@@ -54,6 +54,6 @@ void exti1_isr(void) __interrupt IE1_VECTOR
     {
         GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
     }
-    /* recover */
-    enableAllInterrupts();
+    
+    enableAllInterrupts();   /* recover */
 }

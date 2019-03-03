@@ -1,8 +1,9 @@
 /*
  * @Author:
  *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
- * @File-description:show how to use HML to toggle GPIO bit
- * @Required-complier:SDCC
+ * @Compiler:SDCC v3.6.0
+ * @E-mail:mcu(at)zhishan-iot.tk
+ * @File-description:show how to use HML_FwLib_STC89 to toggle GPIO bit
  * @Support-mcu:STC micro STC89 series
  * @Test-board:TS51-V2.0
  * @Test-mcu:STC89C52RC

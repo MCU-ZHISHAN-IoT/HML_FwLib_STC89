@@ -1,8 +1,9 @@
 /*
  * @Author:
  *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
+ * @Compiler:SDCC v3.6.0
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:show how to use firmware library to make an interruption by TIM2
- * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
  * @Test-board:TS51-V2.0
  * @Test-mcu:STC89C52RC
@@ -15,17 +16,17 @@
  * @Prototype:void sys_init(void)
  * @Parameter:None
  * @Ret-val:None
- * @Note:init MCU
+ * @Note:initial MCU
  */
 void sys_init(void)
 {
     TIM2_configTypeDef tc;
     
-    tc.function = TIM2_function_tim;
-    tc.interruptState = ENABLE;
-    tc.interruptPriority = ENABLE;
-    tc.mode = TIM2_mode_0;
-    tc.value = TIM2_calculateValue(50000);
+    tc.function          = TIM2_function_tim;
+    tc.interruptState    = ENABLE;
+    tc.interruptPriority = INTR_priority_0;
+    tc.mode              = TIM2_mode_0;
+    tc.value             = TIM2_calculateValue(50000);
     
     TIM2_config(&tc);
     TIM2_cmd(ENABLE);

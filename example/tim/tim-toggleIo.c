@@ -1,8 +1,9 @@
 /*
  * @Author:
  *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
+ * @Compiler:SDCC v3.6.0
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:show how to use firmware library to make an interruption by TIM module, then toggle the state of IO
- * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC89 series
  * @Test-board:TS51-V2.0
  * @Test-mcu:STC89C52RC
@@ -15,23 +16,24 @@
  * @Prototype:void sys_init(void)
  * @Parameter:None
  * @Ret-val:None
- * @Note:init MCU
+ * @Note:initial MCU
  */
 void sys_init(void)
 {
     TIM_configTypeDef tc;
     
-    tc.function = TIM_function_tim;
-    tc.interruptState = ENABLE;
-    tc.interruptPriority = ENABLE;
-    tc.mode = TIM_mode_1;
-    tc.value = TIM_calculateValue(50000,TIM_mode_1);
+    tc.function          = TIM_function_tim;
+    tc.interruptState    = ENABLE;
+    tc.interruptPriority = INTR_priority_0;
+    tc.mode              = TIM_mode_1;
+    tc.value             = TIM_calculateValue(50000,TIM_mode_1);
     
     TIM_config(PERIPH_TIM_0,&tc);
     TIM_cmd(PERIPH_TIM_0,ENABLE);
     enableAllInterrupts();
 }
 
+/* ----- @main ----- */
 void main(void)
 {
     sys_init();
