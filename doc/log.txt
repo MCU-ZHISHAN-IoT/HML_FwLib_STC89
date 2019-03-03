@@ -80,13 +80,14 @@
           (11)rename member of enumeration type TIM_function, TIM2_function and RST_bootarea
           (12)fix fatal bug in function TIM_INT_setPriority
 
->Version :
+>Version :v1.0.4
  Alias   :
- Date    :
- Note    :(1)fix header file include bug in <util.c>
+ Date    :2019-03-03
+ Note    :(1)fix header file include bug in util.c
           (2)optimize maxTick into macro definition TIM2_MAXTICK in tim2.h
           (3)fix bug of function UART_INT_setPriority in uart.c
           (4)provide bit operation function
+          (5)add new example exti-interruptPriority.c
 
 #TEAM
  Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
