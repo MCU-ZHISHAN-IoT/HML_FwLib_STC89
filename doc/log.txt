@@ -80,6 +80,11 @@
           (11)rename member of enumeration type TIM_function, TIM2_function and RST_bootarea
           (12)fix fatal bug in function TIM_INT_setPriority
 
+>Version :
+ Alias   :
+ Date    :
+ Note    :(1)adjust coding style of example files
+          
 >Version :v1.0.4
  Alias   :
  Date    :2019-03-03

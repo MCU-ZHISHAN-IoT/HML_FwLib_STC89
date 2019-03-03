@@ -4,7 +4,6 @@
  * @Compiler:SDCC v3.6.0
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:a example which shows how to use HML to control interruptPriority between EXTI and TIM
- * @Support-mcu:STC micro STC89 series
  * @Test-board:ZS51-V1.0
  * @Test-mcu:STC89C52RC
  * @Version:V1
