@@ -21,7 +21,7 @@
  */
 void UART_cmd_multiBaudrate(Action a)
 {
-    PCON = CONFB(PCON,BIT_NUM_SMOD,a);
+    CONFB(PCON,BIT_NUM_SMOD,a);
 }
 
 /*
@@ -230,8 +230,8 @@ void UART_INT_cmd(Action a)
  */
 void UART_INT_setPriority(INTR_priority p)
 {
-    PS  = TESTB(p,0);
-    IPH = CONFB(IPH,BIT_NUM_PSH,TESTB(p,1));
+    PS = TESTB(p,0);
+    CONFB(IPH,BIT_NUM_PSH,TESTB(p,1));
 }
 
 #endif

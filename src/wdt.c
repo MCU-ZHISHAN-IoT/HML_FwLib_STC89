@@ -20,7 +20,7 @@
  */
 void WDT_clear(void)
 {
-    WDT_CONTR = SET_BIT_MASK(WDT_CONTR,CLR_WDT);
+    SET_BIT_MASK(WDT_CONTR,CLR_WDT);
 }
 
 /*
@@ -31,7 +31,7 @@ void WDT_clear(void)
  */
 void WDT_cmd(Action a)
 {
-    WDT_CONTR = CONFB(WDT_CONTR,BIT_NUM_EN_WDT,a);
+    CONFB(WDT_CONTR,BIT_NUM_EN_WDT,a);
 }
 
 /*
@@ -42,7 +42,7 @@ void WDT_cmd(Action a)
  */
 void WDT_cmd_idleCount(Action a)
 {
-    WDT_CONTR = CONFB(WDT_CONTR,BIT_NUM_IDLE_WDT,a);
+    CONFB(WDT_CONTR,BIT_NUM_IDLE_WDT,a);
 }
 
 /*

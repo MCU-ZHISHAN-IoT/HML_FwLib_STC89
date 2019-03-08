@@ -4,7 +4,7 @@
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:bit operation
  * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC89 series
+ * @Support-mcu:general purpose header file
  * @Version:V1
  */
  
@@ -25,7 +25,8 @@
 #define NOTB(reg,x)             (reg xor_eq (1U << (x % BITS_PER_BYTE)))
 #define SETB(reg,x)             (reg or_eq  (1U << (x % BITS_PER_BYTE)))
 #define TESTB(val,x)            (not(not(val bitand (1U << (x % BITS_PER_BYTE)))))
-#define CONFB(reg,x,val)        (CLRB(reg,x) | (val << x))
+#define CONFB(reg,x,val)        (reg = (reg and_eq (complement(1U << (x % BITS_PER_BYTE)))) bitor (val << x))
+ 
 /* --- bit mask function --- */
 #define BIT_MASK(x)             SET(x)
 #define CLR_BIT_MASK(reg,mask)  (reg and_eq (complement(mask)))

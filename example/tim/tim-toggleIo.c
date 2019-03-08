@@ -40,12 +40,12 @@ void main(void)
 }
 
 /*
- * @Prototype:void TIM_isr(void)
+ * @Prototype:void tim0_isr(void)
  * @Parameter:None
  * @Ret-val:None
  * @Note:interrupt service function for TIM_0
  */
-void TIM_isr(void) __interrupt TF0_VECTOR
+void tim0_isr(void) __interrupt TF0_VECTOR
 {
     static int cnt = 0;
     

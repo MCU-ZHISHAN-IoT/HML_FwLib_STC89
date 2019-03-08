@@ -145,7 +145,7 @@ void TIM2_INT_cmd(Action a)
 void TIM2_INT_setPriority(INTR_priority p)
 {
     PT2 = TESTB(p,1);
-    IPH = CONFB(IPH,BIT_NUM_PT2H,TESTB(p,1));
+    CONFB(IPH,BIT_NUM_PT2H,TESTB(p,1));
 }
 
 /*

@@ -24,7 +24,7 @@
  */
 void MEM_cmd_ale(Action a)
 {
-    AUXR = CONFB(AUXR,BIT_NUM_ALEOFF,a);
+    CONFB(AUXR,BIT_NUM_ALEOFF,a);
 }
 
 /*
@@ -38,7 +38,7 @@ void MEM_cmd_ale(Action a)
  */
 void MEM_cmd_internalExtendedRam(Action a)
 {
-    AUXR = CONFB(AUXR,BIT_NUM_EXTRAM,(~a));
+    CONFB(AUXR,BIT_NUM_EXTRAM,(~a));
 }
 
 #endif

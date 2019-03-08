@@ -123,8 +123,8 @@ void TIM_setFunction(PERIPH_TIM tim,TIM_function f)
 {
     switch(tim)
     {
-        case PERIPH_TIM_0:TMOD = CONFB(TMOD,BIT_NUM_T0_CT,f);break;
-        case PERIPH_TIM_1:TMOD = CONFB(TMOD,BIT_NUM_T1_CT,f);break;
+        case PERIPH_TIM_0:CONFB(TMOD,BIT_NUM_T0_CT,f);break;
+        case PERIPH_TIM_1:CONFB(TMOD,BIT_NUM_T1_CT,f);break;
         default:break;
     }
 }
@@ -206,12 +206,12 @@ void TIM_INT_setPriority(PERIPH_TIM tim,INTR_priority p)
         case PERIPH_TIM_0:
         {
             PT0 = TESTB(p,0);
-            IPH = CONFB(IPH,BIT_NUM_PT0H,TESTB(p,1));
+            CONFB(IPH,BIT_NUM_PT0H,TESTB(p,1));
         } break;
         case PERIPH_TIM_1:
         {
             PT1 = TESTB(p,0);
-            IPH = CONFB(IPH,BIT_NUM_PT1H,TESTB(p,1));
+            CONFB(IPH,BIT_NUM_PT1H,TESTB(p,1));
         } break;
         default:break;
     }

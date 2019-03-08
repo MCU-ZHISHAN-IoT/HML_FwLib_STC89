@@ -20,7 +20,7 @@
  */
 void ISP_cmd(Action a)
 {
-    ISP_CONTR = CONFB(ISP_CONTR,BIT_NUM_ISPEN,a);
+    CONFB(ISP_CONTR,BIT_NUM_ISPEN,a);
 }
 
 /*

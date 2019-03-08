@@ -78,22 +78,22 @@ void EXTI_setPriority(PERIPH_EXTI exti,INTR_priority p)
         case PERIPH_EXTI_0:
         {
             PX0 = TESTB(p,0);
-            IPH = CONFB(IPH,BIT_NUM_PX0H,TESTB(p,1));
+            CONFB(IPH,BIT_NUM_PX0H,TESTB(p,1));
         } break;
         case PERIPH_EXTI_1:
         {
             PX1 = TESTB(p,0);
-            IPH = CONFB(IPH,BIT_NUM_PX1H,TESTB(p,1));
+            CONFB(IPH,BIT_NUM_PX1H,TESTB(p,1));
         } break;
         case PERIPH_EXTI_2:
         {
             PX2 = TESTB(p,0);
-            IPH = CONFB(IPH,BIT_NUM_PX2H,TESTB(p,1));
+            CONFB(IPH,BIT_NUM_PX2H,TESTB(p,1));
         } break;
         case PERIPH_EXTI_3:
         {
             PX3 = TESTB(p,0);
-            IPH = CONFB(IPH,BIT_NUM_PX3H,TESTB(p,1));
+            CONFB(IPH,BIT_NUM_PX3H,TESTB(p,1));
         } break;
         default:break;
     }

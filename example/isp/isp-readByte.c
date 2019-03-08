@@ -15,7 +15,7 @@
  * @Prototype:void sys_init(void)
  * @Parameter:None
  * @Ret-val:None
- * @Note:init MCU
+ * @Note:initial MCU
  */
 void sys_init(void)
 {
