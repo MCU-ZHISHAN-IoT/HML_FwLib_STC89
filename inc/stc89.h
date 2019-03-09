@@ -83,7 +83,7 @@ __sbit __at (0xC7) PX3      ;
 
 /* AUXR1 bits */
 #define BIT_NUM_DPS       0
-#define BIT_NUM_GF2       2
+#define BIT_NUM_GF2       3
 
 /* IPH bits */
 #define BIT_NUM_PX0H      0
