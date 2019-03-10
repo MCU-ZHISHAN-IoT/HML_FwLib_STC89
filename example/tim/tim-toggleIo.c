@@ -47,7 +47,7 @@ void main(void)
  */
 void tim0_isr(void) __interrupt TF0_VECTOR
 {
-    static int cnt = 0;
+    static u8 cnt = 0;
     
     /* per 500ms */
     cnt++;

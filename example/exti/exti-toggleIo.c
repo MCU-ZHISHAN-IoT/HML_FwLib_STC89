@@ -21,7 +21,7 @@ void sys_init(void)
 {
     EXTI_configTypeDef ec;
     
-    ec.mode = EXTI_mode_fallEdge;
+    ec.mode     = EXTI_mode_fallEdge;
     ec.priority = INTR_priority_0;
     EXTI_config(PERIPH_EXTI_1,&ec);
     EXTI_cmd(PERIPH_EXTI_1,ENABLE);
@@ -48,7 +48,7 @@ void exti1_isr(void) __interrupt IE1_VECTOR
     disableAllInterrupts();
     sleep(20);
     
-    /* make sure the button connected to P33(INT1) */
+    /* make sure the button pressed by P33(INT1) */
     if(GPIO_getBitValue(PERIPH_GPIO_3,PERIPH_GPIO_PIN_3) == RESET)
     {
         GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
