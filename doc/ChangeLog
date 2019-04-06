@@ -1,10 +1,9 @@
 #FwLib       :HML_FwLib_STC89
-#Description :record file about HML_FwLib_STC89
+#Description :ChangeLog of HML_FwLib_STC89
 #E-mail      :mcu(at)zhishant-iot.tk
 #Organization:ZHISHAN-IoT(https://zhishan-iot.tk)
 #Page        :https://hw.zhishant-iot.tk/page/hml/detail/fwlib_stc89.html
 
-#RELEASE RECORD
 >Version :v0.0.0(beta)
  Alias   :
  Date    :2018-03-21
@@ -95,10 +94,7 @@
  Date    :
  Note    :(1)adjust coding style of example files
           (2)optimize bit operation function
-
-#TEAM
- Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
- Director  - Weilun Fong (wlf@zhishan-iot.tk)
- Testing   - Amy Chung   (zhongliguo@zhishant-iot.tk)
- 
+          (3)rename log.txt as ChangeLog
+          (4)add AUTHORS file
+          (5)fix bug about CONFB in <bit.h>
  

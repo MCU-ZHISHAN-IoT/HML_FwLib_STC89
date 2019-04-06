@@ -1,7 +1,9 @@
 # HML_FwLib_STC89
 [![BuildStatus](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html)
 [![License](https://img.shields.io/badge/license-WTFPL2-blue.svg)](http://wtfpl2.com/)
+[![HitCount](http://hits.dwyl.io/MCU-ZHISHAN-IoT/HML_FwLib_STC89.svg)](http://hits.dwyl.io/MCU-ZHISHAN-IoT/HML_FwLib_STC89)
 [![MCU](https://img.shields.io/badge/mcu-stc89-orange.svg)](http://www.stcmcu.com/)
+
 ## What is HML_FwLib_STC89
 HML_FwLib_STC89 is a member component of HML firmware library, **providing a group of interface functions for users to operate on-chip resource of STC89 MCUs**, including GPIO, ISP, timer, UART, external interrupt and watchdog. The STC89 MCU is a kind of Intel MCS-51 based MCU which released by [STC Micro](http://www.stcmcu.com/)(*宏晶*), and it's one of the most widely used MCUs series in Mainland, China. This series MCU have more on-chip resource than classical 8051 MCU.
 
@@ -14,6 +16,20 @@ Please visit [detail page](https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89
 + Cover all on-chip resource of STC89 series MCUs.
 + Open all source code on [Github](https://github.com) and licensed under the [WTPL2](http://wtfpl2.com/).
 + Readable code and provide examples to help you get started it.
+
+## What's working
+Here is a list of the all on-chip peripheral drivers and examples that need to be ported.
+
+| Peripheral | Description | Status |
+| --- | --- | --- |
+| extended bus | Intel 8080 bus receiver/transmitter | supported |
+| EXTI | extern interrupt | supported |
+| GPIO | I/O peripheral | supported  |
+| ISP | internal EEPROM | supported  |
+| RST | reset control | supported |
+| TIM | timer | supported |
+| UART | universal asynchronous receiver/transmitter | supported |
+| WDT | watchdog | supported |
 
 ## Prerequisite
 + [GNU Make](http://www.gnu.org/software/make/manual/make.html)(recommend)

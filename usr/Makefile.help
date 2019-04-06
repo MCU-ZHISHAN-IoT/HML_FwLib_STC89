@@ -1,17 +1,18 @@
 #Author     :Weilun Fong | wlf(at)zhishan-iot.tk
-#Date       :2019-02-04
+#Date       :2019-04-06
 #Description:help Makefile for HML_FwLib_xxx
 #E-mail     :mcu(at)zhishan-iot.tk
 #Make-tool  :GNU Make (http://www.gnu.org/software/make/manual/make.html)
 #Page       :
 #Tar-mcu    :
 #Tar-project:HML_FwLib_xxx
-#Version    :v0.1.2
+#Version    :v0.1.3
 
 help:
 	@echo "Build:"
 	@echo "    all        - Build target(include HML library file and user code)"
 	@echo "        Makefile will generate a .lib file when no such file under obj directory. In the other words, the Makefile will not compile HML code when there is already a .lib file exists, because library code is not necessary to compile every time. If you want to rebuild it, please execute command \"make distclean\" first. Besides, user code will be compile together every time."
+	@echo "    rebuild    - Rebuild target(include HML library file and user code, not support -j option), the function is equal to \"make distclean\" + \"make\""
 	@echo ""
 	@echo "Cleaning:"
 	@echo "    clean      - Delete temporary files created by build except for the .lib and .hex files"
