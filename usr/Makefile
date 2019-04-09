@@ -32,7 +32,7 @@ TARGET           = output
 AR               = sdar
 CC               = sdcc
 ##version information##
-HML_FILE_HML_FWLIB   = HML_FwLib_STC89
+FWLIB_NAME       = HML_FwLib_STC89
 #note: we unify version code from v0.1.0 because of the same makefile template
 MAK_VERSION      = v0.1.3
 
@@ -52,7 +52,7 @@ define distclean_obj
 endef
 ##function-content_version##
 define content_version
-	@echo "Makefile for $(HML_FILE_HML_FWLIB) [$(MAK_VERSION)]"
+	@echo "Makefile for $(FWLIB_NAME) [$(MAK_VERSION)]"
 	@echo "Copyright(c) 2018-2019 ZHISHAN-IoT, all rights reserved."
 	@echo "Adapted by Weilun Fong <wlf(at)zhishan-iot.tk>"
 endef
@@ -61,7 +61,7 @@ define show_end_information
 	@echo
 	@echo ===================================================
 	@echo Make $(MAKECMDGOALS) done!
-	@echo Makefile - $(HML_FILE_HML_FWLIB)
+	@echo Makefile - $(FWLIB_NAME)
 	@echo ---------------------------------------------------
 	@echo completed at `date "+%Y-%m-%d %H:%M:%S"`
 	@echo ===================================================
