@@ -88,13 +88,12 @@
           (3)fix bug of function UART_INT_setPriority in uart.c
           (4)provide bit operation function
           (5)add new example exti-interruptPriority.c
-          
->Version :
+
+>Version :v1.0.5
  Alias   :
- Date    :
+ Date    :2019-04-09
  Note    :(1)adjust coding style of example files
           (2)optimize bit operation function
           (3)rename log.txt as ChangeLog
           (4)add AUTHORS file
           (5)fix bug about CONFB in <bit.h>
- 
