@@ -4,7 +4,6 @@
  * @Compiler:SDCC v3.6.0
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:a demo which shows how to use the library to send string via UART module, and use TIM2 as baudrate generator
- * @Support-mcu:STC micro STC89 series
  * @Test-board:TS51-V2.0
  * @Test-mcu:STC89C52RC
  * @Version:V1
