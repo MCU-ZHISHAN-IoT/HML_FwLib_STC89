@@ -1,7 +1,6 @@
 # HML_FwLib_STC89
 [![BuildStatus](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html)
 [![License](https://img.shields.io/badge/license-WTFPL2-blue.svg)](http://wtfpl2.com/)
-[![HitCount](http://hits.dwyl.io/MCU-ZHISHAN-IoT/HML_FwLib_STC89.svg)](http://hits.dwyl.io/MCU-ZHISHAN-IoT/HML_FwLib_STC89)
 [![MCU](https://img.shields.io/badge/mcu-stc89-orange.svg)](http://www.stcmcu.com/)
 
 ## What is HML_FwLib_STC89
@@ -64,7 +63,7 @@ Certainly, you can just add *inc* and *src* directory into your project structur
 Welcome suggestions and contribution from you! You can fork it or contact us via *[mcu@zhishan-iot.tk](mailto:mcu@zhishan-iot.tk)*.
 
 ## License
-HML_FwLib_STC89 is licensed under the [WTPL2](http://wtfpl2.com/).
+HML_FwLib_STC89 is licensed under the [WTFPL2](http://wtfpl2.com/).
 
 ##  Team
 
