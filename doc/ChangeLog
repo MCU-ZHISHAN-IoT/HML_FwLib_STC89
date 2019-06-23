@@ -96,4 +96,10 @@
           (2)optimize bit operation function
           (3)rename log.txt as ChangeLog
           (4)add AUTHORS file
-          (5)fix bug about CONFB in <bit.h>
+          (5)fix bug about CONFB in bit.h
+
+>Version :
+ Alias   :
+ Date    :(1)update example file of ISP
+          (2)delete abolished header file intrasm.h
+          (3)move file LICENSE to root path of project
