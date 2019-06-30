@@ -79,7 +79,6 @@
           (11)rename member of enumeration type TIM_function, TIM2_function and RST_bootarea
           (12)fix fatal bug in function TIM_INT_setPriority
 
-          
 >Version :v1.0.4
  Alias   :
  Date    :2019-03-03
@@ -98,8 +97,15 @@
           (4)add AUTHORS file
           (5)fix bug about CONFB in bit.h
 
->Version :
+>Version :v2.0.0
  Alias   :
- Date    :(1)update example file of ISP
+ Date    :
+ Note    :(1)update example file of ISP
           (2)delete abolished header file intrasm.h
           (3)move file LICENSE to root path of project
+          (4)update Makefile to v0.2.1
+            - refactor all code, optimize effect of print;
+            - improve speed of clean operation;
+            - fix problem that user can't set job server during execute rebuild operation;
+            - support incremental compilation; 
+            - upport compiling custom source file

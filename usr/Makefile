@@ -1,128 +1,133 @@
-#Author     :Weilun Fong | wlf(at)zhishan-iot.tk
-#Date       :2019-04-06
-#Description:Makefile for HML_FwLib_STC89, it will generate a hex format file finally
-#E-mail     :mcu(at)zhishan-iot.tk
-#Make-tool  :GNU Make (http://www.gnu.org/software/make/manual/make.html)
-#Page       :https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
-#Tar-mcu    :STC89C52RC, belong to STC micro STC89 series
-#Tar-project:HML_FwLib_STC90
-#Version    :v0.1.3
+##################################################
+# Author     :Weilun Fong | wlf(at)zhishan-iot.tk
+# Date       :2019-06-30
+# Description:Makefile for HML_FwLib_STC89, it will generate a hex format file finally
+# E-mail     :mcu(at)zhishan-iot.tk
+# Make-tool  :GNU Make (http://www.gnu.org/software/make/manual/make.html)
+# Page       :https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
+# Tar-mcu    :STC89C52RC, belong to STC micro STC89 series
+# Tar-project:HML_FwLib_8051
+# Version    :v0.2.1
+##################################################
 
-##### variable define #####
-##important directories##
-DIR_ROOT         = ..
-DIR_INC          = $(DIR_ROOT)/inc
-DIR_OUTPUT       = $(DIR_ROOT)/obj
-DIR_SRC          = $(DIR_ROOT)/src
-##important files##
-FILE_HML_FWLIB   := libhml_stc89.lib
-HML_SRC_FILES    := $(notdir $(wildcard $(DIR_SRC)/*.c))
-HML_REL_FILES    := $(patsubst %.c,%.rel,$(HML_SRC_FILES))
-MODULE_TARGETS_NAME := $(patsubst %.c,%,$(HML_SRC_FILES))
-OBJ_FILE_TYPE_LIST  = asm ihx lk lst map mem rel rst sym
-TAR_FILE_TYPE_LIST  = hex lib
-##operation parameter##
-AFLAGS_HML       = -rcs
-CFLAGS_HML       = -c -I $(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 --code-loc 0x0000 --code-size 0x1FFF --data-loc 0x00
-CFLAGS           = -c -I $(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 -L $(DIR_OUTPUT) -lhml_stc89 --code-loc 0x0000 --code-size 0x1FFF --data-loc 0x00
+########################################
+##### [*]ENVIRONMENT CONFIGURATION
+########################################
+##### shell
+export SHELL        := /bin/bash
+export CAT          := cat
+export CD           := cd
+export ECHO         := echo
+export EECHO        := $(ECHO) -e
+export GREP         := grep
+export LS           := ls
+export RM           := rm -f
+export XARGS        := xargs
+##### tool-chain
+AR                  := sdar
+CC                  := sdcc
+MAKE                ?= make
+PACKIHX             := packihx
 
-##target##
-TARGET           = output
-##tool-chain##
-AR               = sdar
-CC               = sdcc
-##version information##
-FWLIB_NAME       = HML_FwLib_STC89
-#note: we unify version code from v0.1.0 because of the same makefile template
-MAK_VERSION      = v0.1.3
+########################################
+##### [1]PATH & TARGET DEFINE
+########################################
+##### important path
+DIR_ROOT           := ..
+DIR_INC            := $(DIR_ROOT)/inc
+DIR_OUTPUT         := $(DIR_ROOT)/obj
+DIR_SRC            := $(DIR_ROOT)/src
+##### important file
+FILE_HML_FWLIB     := libhml_stc89.lib
+HML_SRC_FILES      := $(wildcard $(DIR_SRC)/*.c)
+HML_REL_FILES      := $(patsubst $(DIR_SRC)/%.c, $(DIR_OUTPUT)/%.rel, $(HML_SRC_FILES))
+MYFILE             ?= test.c
+    # file check
+    ifneq ($(wildcard $(MYFILE)),$(MYFILE))
+        $(error no such file $(CURDIR)/$(MYFILE))
+    endif
+MYFILE_NAME        := $(shell basename $(MYFILE) .c)
+MYFILE_REL         := $(patsubst %.c, $(DIR_OUTPUT)/%.rel, $(MYFILE))
+###### target
+TARGET             := output
+TARGET_FWLIB       := $(DIR_OUTPUT)/$(FILE_HML_FWLIB)
+###### compile parameter
+AFLAGS_HML         := -rcs
+CFLAGS_HML         := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99
+CFLAGS             := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 -L$(DIR_OUTPUT) -lhml_stc89
 
-##### function define #####
-##function-clean##
-define clean_obj
-	@echo
-	@for i in $(OBJ_FILE_TYPE_LIST); do                   \
-		find $(DIR_OUTPUT) -name "*.$$i" | xargs rm -rfv; \
-	done
-endef
-define distclean_obj
-	$(clean_obj)
-	@for i in $(TAR_FILE_TYPE_LIST); do                   \
-		find $(DIR_OUTPUT) -name "*.$$i" | xargs rm -rfv; \
-	done
-endef
-##function-content_version##
-define content_version
-	@echo "Makefile for $(FWLIB_NAME) [$(MAK_VERSION)]"
-	@echo "Copyright(c) 2018-2019 ZHISHAN-IoT, all rights reserved."
-	@echo "Adapted by Weilun Fong <wlf(at)zhishan-iot.tk>"
-endef
-##function-show_end_information##
-define show_end_information
+########################################
+##### [2]VERSIION INFORMATION
+########################################
+##### version information##
+HML_FWLIB_NAME    := HML_FwLib_STC89
+HML_FWLIB_VERSION := $(shell $(CAT) $(DIR_ROOT)/VERSION)
+# [note]: we unify version code from v0.1.0 because of the same makefile template
+MAK_VERSION       := v0.2.1
+
+########################################
+##### [3]BUILD WORKS
+########################################
+##### all target
+all: $(TARGET).hex
 	@echo
 	@echo ===================================================
 	@echo Make $(MAKECMDGOALS) done!
-	@echo Makefile - $(FWLIB_NAME)
+	@echo project: $(HML_FWLIB_NAME) $(HML_FWLIB_VERSION)
 	@echo ---------------------------------------------------
 	@echo completed at `date "+%Y-%m-%d %H:%M:%S"`
 	@echo ===================================================
-endef
-
-##### build works #####
-all: $(TARGET).hex
-	$(show_end_information)
-
-#compile source file(*.c)
-$(MODULE_TARGETS_NAME): %:$(DIR_SRC)/%.c
-	@if [ ! -f $(DIR_OUTPUT)/$(FILE_HML_FWLIB) ];then          \
-    echo "CC  $<";                                             \
-    $(CC) $(DIR_SRC)/$< $(CFLAGS_HML) -o $(DIR_OUTPUT)/$@.rel; \
-    fi;
-#generate static library
-$(FILE_HML_FWLIB): $(MODULE_TARGETS_NAME)
-	@if [ ! -f $(DIR_OUTPUT)/$(FILE_HML_FWLIB) ];then          \
-    echo ;                                                     \
-    echo make static link library $@;                          \
-    echo "AR  $(DIR_OUTPUT)/$@";                               \
-    $(AR) $(AFLAGS_HML) $(DIR_OUTPUT)/$@ $(addprefix $(DIR_OUTPUT)/, $(HML_REL_FILES)); \
-    fi;
-#compile source file of user
-test.rel: test.c $(FILE_HML_FWLIB)
-	@echo
-	@echo compile user source code
-	@echo "CC  $<"
-	@$(CC) $< $(CFLAGS) -o $(DIR_OUTPUT)/$@
-#generate hex file#
-$(TARGET).ihx: test.rel $(FILE_HML_FWLIB)
-	@echo
-	@echo generate .ihx file
-	@cd $(DIR_OUTPUT) && $(CC) $^ -o $@
+########################################
+###### compile HML source file(*.c)
+$(HML_REL_FILES): $(DIR_OUTPUT)/%.rel:$(DIR_SRC)/%.c
+	@$(ECHO) "CC  $<"
+	@$(CC) $< $(CFLAGS_HML) -o $@
+########################################
+##### generate static library
+$(TARGET_FWLIB): $(HML_REL_FILES)
+	@$(EECHO) "\033[36m - Make static link library `basename $@` \033[0m"
+	@$(ECHO) "AR  $@"
+	@$(AR) $(AFLAGS_HML) $@ $^
+########################################
+#### compile source file of user
+$(MYFILE_REL): $(MYFILE) $(TARGET_FWLIB)
+	@$(EECHO) "\033[36m - Compile user source code \033[0m"
+	@$(ECHO) "CC  $<"
+	@$(CC) $< $(CFLAGS) -o $@
+########################################
+##### generate .hex file
+$(TARGET).ihx: $(MYFILE_REL)
+	@$(EECHO) "\033[36m - Generate .ihx file \033[0m"
+	@$(CD) $(DIR_OUTPUT) && $(CC) $^ $(FILE_HML_FWLIB) -o $@
 $(TARGET).hex: $(TARGET).ihx
-	@echo generate .hex file
-	@cd $(DIR_OUTPUT) && packihx $< > $@
+	@$(EECHO) "\033[36m - Generate .hex file \033[0m"
+	@$(CD) $(DIR_OUTPUT) && $(PACKIHX) $< > $@
 
-##### PHONY target #####
-##clean temp files##
+########################################
+##### [+]PHONY TARGET
+########################################
+##### clean
 .PHONY:clean
 clean:
-	@echo start to clean...
-	$(clean_obj)
-	$(show_end_information)
-##distclean##
-.PHONY:distclean_core distclean
-distclean_core:
-	$(distclean_obj)
-	@echo
-distclean: distclean_core
-	$(show_end_information)
-##help##
+	$(CD) $(DIR_OUTPUT) && $(LS) | $(GREP) -vE -e ".gitkeep" -e ^$(MYFILE_NAME)* -e *.lib$$ -e *.hex$$ | $(XARGS) $(RM)
+##### distclean
+.PHONY:distclean
+distclean:
+	$(CD) $(DIR_OUTPUT) && $(LS) | $(GREP) -v ".gitkeep" | $(XARGS) $(RM)
+##### help
 .PHONY: help
 help:
     sinclude Makefile.help
-##rebuild##
-.PHONY: distclean_core rebuild
-rebuild: distclean_core $(TARGET).hex
-	$(show_end_information)
-##version information##
+##### rebuild
+.PHONY: rebuild
+rebuild:
+	@$(EECHO) "\033[36m - Clean all middle or temporary files \033[0m"
+	$(CD) $(DIR_OUTPUT) && $(LS) | $(GREP) -v ".gitkeep" | $(XARGS) $(RM)
+	@$(EECHO) "\033[36m - Start to build... \033[0m"
+	@$(MAKE) -s -f makefile -j$(JOBS) MAKECMDGOALS=$(MAKECMDGOALS)
+##### version information
 .PHONY: version
 version:
-	$(content_version)
+	@$(ECHO) "Makefile for HML_FwLib_xxx [$(MAK_VERSION)]"
+	@$(ECHO) "build project $(HML_FWLIB_NAME)-$(HML_FWLIB_VERSION), adapted by Weilun Fong <wlf(at)zhishan-iot.tk>"
+	@$(ECHO) "Copyright(c) 2018-2019 ZHISHAN-IoT, all rights reserved."

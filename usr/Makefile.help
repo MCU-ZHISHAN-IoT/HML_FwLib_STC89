@@ -1,23 +1,39 @@
-#Author     :Weilun Fong | wlf(at)zhishan-iot.tk
-#Date       :2019-04-06
-#Description:help Makefile for HML_FwLib_xxx
-#E-mail     :mcu(at)zhishan-iot.tk
-#Make-tool  :GNU Make (http://www.gnu.org/software/make/manual/make.html)
-#Page       :
-#Tar-mcu    :
-#Tar-project:HML_FwLib_xxx
-#Version    :v0.1.3
+##################################################
+# Author     :Weilun Fong | wlf(at)zhishan-iot.tk
+# Date       :2019-06-30
+# Description:help Makefile for HML_FwLib_xxx
+# E-mail     :mcu(at)zhishan-iot.tk
+# Make-tool  :GNU Make (http://www.gnu.org/software/make/manual/make.html)
+# Page       :
+# Tar-mcu    :
+# Tar-project:HML_FwLib_xxx
+# Version    :v0.2.1
+##################################################
 
+########################################
+##### [*]ENVIRONMENT CONFIGURATION
+########################################
+SHELL := /bin/bash
+ECHO  ?= echo
+EECHO ?= $(ECHO) -e
+
+########################################
+##### [1]HELP WORKS
+########################################
 help:
-	@echo "Build:"
-	@echo "    all        - Build target(include HML library file and user code)"
-	@echo "        Makefile will generate a .lib file when no such file under obj directory. In the other words, the Makefile will not compile HML code when there is already a .lib file exists, because library code is not necessary to compile every time. If you want to rebuild it, please execute command \"make distclean\" first. Besides, user code will be compile together every time."
-	@echo "    rebuild    - Rebuild target(include HML library file and user code, not support -j option), the function is equal to \"make distclean\" + \"make\""
-	@echo ""
-	@echo "Cleaning:"
-	@echo "    clean      - Delete temporary files created by build except for the .lib and .hex files"
-	@echo "    distclean  - Delete all temporary files and generated library file"
-	@echo ""
-	@echo "Info:"
-	@echo "    help       - Show help information"
-	@echo "    version    - Show version information"
+	@$(ECHO)  "Build:"
+	@$(ECHO)  "    all        - Build target(include HML library file and user code)"
+	@$(EECHO) "    rebuild    - Rebuild target(include HML library file and user code. In this case, -j can't work and please pass \033[3mJOBS\033[0m variable via command line instead of it, such as \"make rebuild JOBS=8\""
+	@$(ECHO)  ""
+	@$(ECHO)  "Cleaning:"
+	@$(ECHO)  "    clean      - Delete temporary files created by build, except for the .lib and .hex files"
+	@$(ECHO)  "    distclean  - Delete all temporary files and generated library file"
+	@$(ECHO)  ""
+	@$(ECHO)  "Info:"
+	@$(ECHO)  "    help       - Show help information"
+	@$(ECHO)  "    version    - Show version information"
+	@$(ECHO)  ""
+	@$(ECHO)  "+ command line variable:"
+	@$(ECHO)  "    JOBS       - Specify number of make job(only for make rebuild)"
+	@$(ECHO)  "    MYFILE     - Specify user source file or Makefile will fill it with \"test.c\". It's noticed that once use this option to compile specified .c file, user should add this option during doing other works, such as clean and rebuild."
+
