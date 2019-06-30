@@ -13,7 +13,7 @@ Please visit [detail page](https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89
 ## Feature
 + :dart:Based on [SDCC compiler](http://sdcc.sourceforge.net/).
 + Cover all on-chip resource of STC89 series MCUs.
-+ Open all source code on [Github](https://github.com) and licensed under the [WTPL2](http://wtfpl2.com/).
++ Open all source code on [Github](https://github.com) and licensed under the [WTFPL2](http://wtfpl2.com/).
 + Readable code and provide examples to help you get started it.
 
 ## What's working
