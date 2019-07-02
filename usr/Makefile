@@ -1,33 +1,33 @@
 ##################################################
 # Author     :Weilun Fong | wlf(at)zhishan-iot.tk
-# Date       :2019-06-30
+# Date       :2019-07-02
 # Description:Makefile for HML_FwLib_STC89, it will generate a hex format file finally
 # E-mail     :mcu(at)zhishan-iot.tk
 # Make-tool  :GNU Make (http://www.gnu.org/software/make/manual/make.html)
 # Page       :https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
 # Tar-mcu    :STC89C52RC, belong to STC micro STC89 series
-# Tar-project:HML_FwLib_8051
-# Version    :v0.2.1
+# Tar-project:HML_FwLib_STC89
+# Version    :v0.2.2
 ##################################################
 
 ########################################
 ##### [*]ENVIRONMENT CONFIGURATION
 ########################################
 ##### shell
-export SHELL        := /bin/bash
-export CAT          := cat
-export CD           := cd
-export ECHO         := echo
-export EECHO        := $(ECHO) -e
-export GREP         := grep
-export LS           := ls
-export RM           := rm -f
-export XARGS        := xargs
+export SHELL       := /bin/bash
+export CAT         := cat
+export CD          := cd
+export ECHO        := echo
+export EECHO       := $(ECHO) -e
+export GREP        := grep
+export LS          := ls
+export RM          := rm -f
+export XARGS       := xargs
 ##### tool-chain
-AR                  := sdar
-CC                  := sdcc
-MAKE                ?= make
-PACKIHX             := packihx
+AR                 := sdar
+CC                 := sdcc
+MAKE               ?= make
+PACKIHX            := packihx
 
 ########################################
 ##### [1]PATH & TARGET DEFINE
@@ -53,24 +53,23 @@ TARGET             := output
 TARGET_FWLIB       := $(DIR_OUTPUT)/$(FILE_HML_FWLIB)
 ###### compile parameter
 AFLAGS_HML         := -rcs
-CFLAGS_HML         := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99
-CFLAGS             := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 -L$(DIR_OUTPUT) -lhml_stc89
+CFLAGS_HML         := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 --code-loc 0x0000 --code-size 0x1FFF --data-loc 0x00
+CFLAGS             := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 -L$(DIR_OUTPUT) -lhml_8051 --code-loc 0x0000 --code-size 0x1FFF --data-loc 0x00
 
 ########################################
 ##### [2]VERSIION INFORMATION
 ########################################
 ##### version information##
-HML_FWLIB_NAME    := HML_FwLib_STC89
-HML_FWLIB_VERSION := $(shell $(CAT) $(DIR_ROOT)/VERSION)
+HML_FWLIB_NAME     := HML_FwLib_STC89
+HML_FWLIB_VERSION  := $(shell $(CAT) $(DIR_ROOT)/VERSION)
 # [note]: we unify version code from v0.1.0 because of the same makefile template
-MAK_VERSION       := v0.2.1
+MAK_VERSION        := v0.2.2
 
 ########################################
 ##### [3]BUILD WORKS
 ########################################
 ##### all target
 all: $(TARGET).hex
-	@echo
 	@echo ===================================================
 	@echo Make $(MAKECMDGOALS) done!
 	@echo project: $(HML_FWLIB_NAME) $(HML_FWLIB_VERSION)
@@ -124,10 +123,10 @@ rebuild:
 	@$(EECHO) "\033[36m - Clean all middle or temporary files \033[0m"
 	$(CD) $(DIR_OUTPUT) && $(LS) | $(GREP) -v ".gitkeep" | $(XARGS) $(RM)
 	@$(EECHO) "\033[36m - Start to build... \033[0m"
-	@$(MAKE) -s -f makefile -j$(JOBS) MAKECMDGOALS=$(MAKECMDGOALS)
+	@$(MAKE) -s -f Makefile -j$(JOBS) MAKECMDGOALS=$(MAKECMDGOALS)
 ##### version information
 .PHONY: version
 version:
 	@$(ECHO) "Makefile for HML_FwLib_xxx [$(MAK_VERSION)]"
-	@$(ECHO) "build project $(HML_FWLIB_NAME)-$(HML_FWLIB_VERSION), adapted by Weilun Fong <wlf(at)zhishan-iot.tk>"
+	@$(ECHO) "build project $(HML_FWLIB_NAME) $(HML_FWLIB_VERSION), adapted by Weilun Fong <wlf(at)zhishan-iot.tk>"
 	@$(ECHO) "Copyright(c) 2018-2019 ZHISHAN-IoT, all rights reserved."

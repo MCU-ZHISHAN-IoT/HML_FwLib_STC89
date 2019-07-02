@@ -97,15 +97,12 @@
           (4)add AUTHORS file
           (5)fix bug about CONFB in bit.h
 
->Version :v2.0.0
+>Version :v1.1.0
  Alias   :
  Date    :
  Note    :(1)update example file of ISP
           (2)delete abolished header file intrasm.h
           (3)move file LICENSE to root path of project
-          (4)update Makefile to v0.2.1
-            - refactor all code, optimize effect of print;
-            - improve speed of clean operation;
-            - fix problem that user can't set job server during execute rebuild operation;
-            - support incremental compilation; 
-            - upport compiling custom source file
+          (4)update Makefile
+            - update Makefile to v0.2.1: refactor all code, optimize effect of print; improve speed of clean operation; fix problem that user can't set job server during execute rebuild operation;  support incremental compilation; support compiling custom source file;
+            - update Makefile to v0.2.2: fix bug of rebuild function
