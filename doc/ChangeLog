@@ -106,3 +106,4 @@
           (4)update Makefile
             - update Makefile to v0.2.1: refactor all code, optimize effect of print; improve speed of clean operation; fix problem that user can't set job server during execute rebuild operation;  support incremental compilation; support compiling custom source file;
             - update Makefile to v0.2.2: fix bug of rebuild function
+            - update Makefile to v0.2.3: fix fatal bug of custom source file

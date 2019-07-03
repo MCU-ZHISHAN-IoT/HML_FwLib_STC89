@@ -1,13 +1,13 @@
 ##################################################
 # Author     :Weilun Fong | wlf(at)zhishan-iot.tk
-# Date       :2019-07-02
+# Date       :2019-07-03
 # Description:Makefile for HML_FwLib_STC89, it will generate a hex format file finally
 # E-mail     :mcu(at)zhishan-iot.tk
 # Make-tool  :GNU Make (http://www.gnu.org/software/make/manual/make.html)
 # Page       :https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
 # Tar-mcu    :STC89C52RC, belong to STC micro STC89 series
 # Tar-project:HML_FwLib_STC89
-# Version    :v0.2.2
+# Version    :v0.2.3
 ##################################################
 
 ########################################
@@ -43,8 +43,11 @@ HML_SRC_FILES      := $(wildcard $(DIR_SRC)/*.c)
 HML_REL_FILES      := $(patsubst $(DIR_SRC)/%.c, $(DIR_OUTPUT)/%.rel, $(HML_SRC_FILES))
 MYFILE             ?= test.c
     # file check
-    ifneq ($(wildcard $(MYFILE)),$(MYFILE))
-        $(error no such file $(CURDIR)/$(MYFILE))
+    PHONY_LIST_IN := distclean help version
+    ifeq ($(findstring $(MAKECMDGOALS),$(PHONY_LIST_IN)),)
+        ifneq ($(wildcard $(MYFILE)),$(MYFILE))
+            $(error no such file $(CURDIR)/$(MYFILE))
+        endif
     endif
 MYFILE_NAME        := $(shell basename $(MYFILE) .c)
 MYFILE_REL         := $(patsubst %.c, $(DIR_OUTPUT)/%.rel, $(MYFILE))
@@ -63,7 +66,7 @@ CFLAGS             := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 -L$(D
 HML_FWLIB_NAME     := HML_FwLib_STC89
 HML_FWLIB_VERSION  := $(shell $(CAT) $(DIR_ROOT)/VERSION)
 # [note]: we unify version code from v0.1.0 because of the same makefile template
-MAK_VERSION        := v0.2.2
+MAK_VERSION        := v0.2.3
 
 ########################################
 ##### [3]BUILD WORKS
@@ -124,7 +127,7 @@ rebuild:
 	$(CD) $(DIR_OUTPUT) && $(LS) | $(GREP) -v ".gitkeep" | $(XARGS) $(RM)
 	@$(EECHO) "\033[36m - Start to build... \033[0m"
 	@$(MAKE) -s -f Makefile -j$(JOBS) MAKECMDGOALS=$(MAKECMDGOALS)
-##### version information
+##### version
 .PHONY: version
 version:
 	@$(ECHO) "Makefile for HML_FwLib_xxx [$(MAK_VERSION)]"
