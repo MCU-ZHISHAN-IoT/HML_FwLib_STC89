@@ -1,13 +1,13 @@
 ##################################################
 # Author     :Weilun Fong | wlf(at)zhishan-iot.tk
-# Date       :2019-07-03
+# Date       :2019-07-04
 # Description:Makefile for HML_FwLib_STC89, it will generate a hex format file finally
 # E-mail     :mcu(at)zhishan-iot.tk
 # Make-tool  :GNU Make (http://www.gnu.org/software/make/manual/make.html)
 # Page       :https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
 # Tar-mcu    :STC89C52RC, belong to STC micro STC89 series
 # Tar-project:HML_FwLib_STC89
-# Version    :v0.2.3
+# Version    :v0.2.4
 ##################################################
 
 ########################################
@@ -15,6 +15,7 @@
 ########################################
 ##### shell
 export SHELL       := /bin/bash
+export BASENAME    := basename
 export CAT         := cat
 export CD          := cd
 export ECHO        := echo
@@ -49,7 +50,7 @@ MYFILE             ?= test.c
             $(error no such file $(CURDIR)/$(MYFILE))
         endif
     endif
-MYFILE_NAME        := $(shell basename $(MYFILE) .c)
+MYFILE_NAME        := $(shell $(BASENAME) $(MYFILE) .c)
 MYFILE_REL         := $(patsubst %.c, $(DIR_OUTPUT)/%.rel, $(MYFILE))
 ###### target
 TARGET             := output
@@ -66,7 +67,7 @@ CFLAGS             := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 -L$(D
 HML_FWLIB_NAME     := HML_FwLib_STC89
 HML_FWLIB_VERSION  := $(shell $(CAT) $(DIR_ROOT)/VERSION)
 # [note]: we unify version code from v0.1.0 because of the same makefile template
-MAK_VERSION        := v0.2.3
+MAK_VERSION        := v0.2.4
 
 ########################################
 ##### [3]BUILD WORKS
@@ -95,12 +96,12 @@ $(TARGET_FWLIB): $(HML_REL_FILES)
 $(MYFILE_REL): $(MYFILE) $(TARGET_FWLIB)
 	@$(EECHO) "\033[36m - Compile user source code \033[0m"
 	@$(ECHO) "CC  $<"
-	@$(CC) $< $(CFLAGS) -o $@
+	@$(CC) $< $(CFLAGS) -o $(DIR_OUTPUT)/`$(BASENAME) $@`
 ########################################
 ##### generate .hex file
 $(TARGET).ihx: $(MYFILE_REL)
 	@$(EECHO) "\033[36m - Generate .ihx file \033[0m"
-	@$(CD) $(DIR_OUTPUT) && $(CC) $^ $(FILE_HML_FWLIB) -o $@
+	@$(CD) $(DIR_OUTPUT) && $(CC) `$(BASENAME) $^` $(FILE_HML_FWLIB) -o $@
 $(TARGET).hex: $(TARGET).ihx
 	@$(EECHO) "\033[36m - Generate .hex file \033[0m"
 	@$(CD) $(DIR_OUTPUT) && $(PACKIHX) $< > $@

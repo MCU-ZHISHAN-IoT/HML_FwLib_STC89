@@ -1,56 +1,72 @@
-/*
- * @Author:
- *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:operations for watch dog resource
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC89 series
- * @Version:V1
- */
- 
+/*****************************************************************************/
+/** 
+ * \file        wdt.c
+ * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
+ * \brief       operations for watchdog
+ * \note        
+ * \version     v1.1
+ * \ingroup     WDT
+******************************************************************************/
+
 #include "wdt.h"
 
-#ifdef ___COMPILE_WDT___
+#ifdef __CONF_COMPILE_WDT
 
-/*
- * @Prototype:void WDT_clear(void)
- * @Parameter:
- * @Ret-val:
- * @Note:feeds the watch dog 
- */
-void WDT_clear(void)
-{
-    SET_BIT_MASK(WDT_CONTR,CLR_WDT);
-}
-
-/*
- * @Prototype:void WDT_cmd(Action a)
- * @Parameter:(1)a:expected action
- * @Ret-val:
- * @Note:launch or stop watch dog
- */
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        
+ * \brief       enable or disable watchdog
+ * \param[in]   a: expected state
+ * \return      none
+ * \ingroup     WDT
+ * \remarks     
+******************************************************************************/
 void WDT_cmd(Action a)
 {
     CONFB(WDT_CONTR,BIT_NUM_EN_WDT,a);
 }
 
-/*
- * @Prototype:void WDT_cmd_idleCount(Action a)
- * @Parameter:(1)a:expected action
- * @Ret-val:
- * @Note:enable or disable watch dog when idle mode
- */
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        
+ * \brief       enable or disable watchdog under idle mode
+ * \param[in]   a: expected state
+ * \return      none
+ * \ingroup     WDT
+ * \remarks     
+******************************************************************************/
 void WDT_cmd_idleCount(Action a)
 {
     CONFB(WDT_CONTR,BIT_NUM_IDLE_WDT,a);
 }
 
-/*
- * @Prototype:void WDT_setPrescale(WDT_prescale pre)
- * @Parameter:(1)pre:prescale factor
- * @Ret-val:
- * @Note:set prescale
- */
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        
+ * \brief       feeds watchdog
+ * \param[in]   
+ * \return      none
+ * \ingroup     WDT
+ * \remarks     
+******************************************************************************/
+void WDT_feed(void)
+{
+    SET_BIT_MASK(WDT_CONTR,CLR_WDT);
+}
+
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        
+ * \brief       set prescale
+ * \param[in]   pre: prescale factor
+ * \return      none
+ * \ingroup     WDT
+ * \remarks     
+******************************************************************************/
 void WDT_setPrescale(WDT_prescale pre)
 {
     WDT_CONTR = (WDT_CONTR & 0xF8) | pre;

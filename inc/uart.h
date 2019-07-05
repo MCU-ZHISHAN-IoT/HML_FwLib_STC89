@@ -1,35 +1,48 @@
-/*
- * @Author:
- *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:includes some definitions for operating uart module
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC89 series
- * @Version:V1
- */
- 
+/*****************************************************************************/
+/** 
+ * \file        uart.h
+ * \author      Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
+ * \author      Weilun Fong | wlf@zhishan-iot.tk
+ * \brief       operations for UART module
+ * \note        
+ * \version     v1.1
+ * \ingroup     UART
+******************************************************************************/
+
 #ifndef ___UART_H___
 #define ___UART_H___
 
-/* ----- @header file ----- */
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
 #include <stdint.h>
+/*****************************************************************************/
 #include "exti.h"
 #include "tim.h"
 #include "tim2.h"
 
-/* ----- @enumeration type ----- */
-/* mark work mode */
+/*****************************************************************************
+ *                           enumeration type                                *
+ *****************************************************************************/
+
+/**
+ *\brief: mark work mode of UART
+ */
 typedef enum
 {
-    UART_mode_0 = 0x0,   /* 8-bit shift register */
-    UART_mode_1 = 0x1,   /* 8-bit UART,variable baud rate */
-    UART_mode_2 = 0x2,   /* 9-bit UART,baud rate = fosc/64 or fosc/32 */
-    UART_mode_3 = 0x3    /* 9-bit UART,variable baud rate */
+    UART_mode_0 = 0x0,       /* 8-bit shift register */
+    UART_mode_1 = 0x1,       /* 8-bit UART,variable baud rate */
+    UART_mode_2 = 0x2,       /* 9-bit UART,baud rate = fosc/64 or fosc/32 */
+    UART_mode_3 = 0x3        /* 9-bit UART,variable baud rate */
 } UART_mode;
 
-/* ----- @structure define ----- */
-/* configuration structure */
+/*****************************************************************************
+ *                           structure define                                *
+ *****************************************************************************/
+
+/**
+ *\brief: struct for UART configuration
+ */
 typedef struct
 {
     uint32_t      baudrate;
@@ -41,7 +54,9 @@ typedef struct
     Action        receiveState;
 } UART_configTypeDef;
 
-/* ----- @function ----- */
+/*****************************************************************************
+ *                          function declare                                 *
+ *****************************************************************************/
 void UART_cmd_multiBaudrate(Action a);
 void UART_cmd_receive(Action a);
 void UART_config(UART_configTypeDef *uc);

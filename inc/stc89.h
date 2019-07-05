@@ -1,13 +1,13 @@
-/*
- * @Author:
- *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:STC89Cxx header file
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC89 series
- * @Version:V1
- */
+/*****************************************************************************/
+/** 
+ * \file        stc89.h
+ * \author      Jiabin Hsu  | zsiothsu@zhishan-iot.tk
+ * \author      Weilun Fong | wlf@zhishan-iot.tk
+ * \brief       register define header file for STC89 series MCU
+ * \note        
+ * \version     
+ * \ingroup     generic
+******************************************************************************/
 
 #ifndef ___STC89_H___
 #define ___STC89_H___
@@ -44,8 +44,8 @@ __sbit __at (0xAD) ET2      ;
 __sbit __at (0xBD) PT2      ;
 
 /* P1 */
-__sbit __at (0x90) T2       ;
-__sbit __at (0x91) T2EX     ;
+__sbit __at (0x90) T2       ;          /* AFIO */
+__sbit __at (0x91) T2EX     ;          /* AFIO */
 
 /* P4 */
 __sbit __at (0xE8) P4_0     ;

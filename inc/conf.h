@@ -1,31 +1,42 @@
-/*
- * @Author:
- *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:includes some header files and modules definitions
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC89 series
- * @Version:V1
- */
- 
+/*****************************************************************************/
+/** 
+ * \file        conf.h
+ * \author      Weilun Fong | wlf@zhishan-iot.tk
+ * \brief       HML configurations, this file need to be modified by users
+ * \note        
+ * \version     v1.1
+ * \ingroup     generic
+******************************************************************************/
+
 #ifndef ___CONF_H___
 #define ___CONF_H___
 
-/* ----- @header file ----- */
-#include  "stc89.h"
+/*****************************************************************************
+ *                                macro                                      *
+ *****************************************************************************/
 
-#include "bit.h"
-#include "exti.h"
-#include "gpio.h"
-#include "isp.h"
-#include "macro.h"
-#include "mem.h"
-#include "rst.h"
-#include "tim.h"
-#include "tim2.h"
-#include "uart.h"
-#include "util.h"
-#include "wdt.h"
+/**
+ *\brief: configure clock frequency of MCU
+ */
+#define __CONF_FRE_CLKIN 11059200L
 
-#endif 
+/**
+ *\brief: configure module of MCU
+ */
+#define __CONF_MCU_MODEL MCU_MODEL_STC89C52RC
+
+/**
+ *\brief: select HML module which take part in compilation
+ */
+#define __CONF_COMPILE_EXTI
+#define __CONF_COMPILE_GPIO
+#define __CONF_COMPILE_ISP
+#define __CONF_COMPILE_RST
+#define __CONF_COMPILE_TIM
+#define __CONF_COMPILE_TIM2
+#define __CONF_COMPILE_UART
+#define __CONF_COMPILE_UTIL
+#define __CONF_COMPILE_WDT
+
+#endif
+

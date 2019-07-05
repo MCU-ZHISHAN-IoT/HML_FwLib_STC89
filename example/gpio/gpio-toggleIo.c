@@ -1,21 +1,34 @@
-/*
- * @Author:
- *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
- * @Compiler:SDCC v3.6.0
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:show how to use HML_FwLib_STC89 to toggle GPIO bit
- * @Test-board:TS51-V2.0
- * @Test-mcu:STC89C52RC
- * @Version:V1
- */
- 
-#include "conf.h"
+/*****************************************************************************/
+/** 
+ * \file       gpio-toggleIo.c
+ * \author     Jiabin Hsu | zsiothsu@zhishan-iot.tk
+ * \date       
+ * \brief      eshow how to use HML_FwLib_STC89 to toggle GPIO bit
+ * \note       
+ * \version    v1.1
+ * \ingroup    example
+ * \remarks    test-board: TS51-V2.0; test-MCU: STC89C52RC
+******************************************************************************/
 
-/* ----- @main ----- */
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
+#include "hml.h"
+
+/*****************************************************************************/
+/** 
+ * \author      Amy Chung
+ * \date        
+ * \brief       main function
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void main(void)
 {
     GPIO_resetBitValue(PERIPH_GPIO_4,PERIPH_GPIO_PIN_5);
-    
+
     while(true)
     {
         sleep(500);

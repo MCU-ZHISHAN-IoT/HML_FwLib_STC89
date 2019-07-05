@@ -1,49 +1,72 @@
- /*
- * @Author:
- *  #Amy Chung | zhongliguo(at)zhishan-iot.tk
- * @Compiler:SDCC v3.6.0
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:a example which shows how to use HML_FwLib_STC89 to configure interrupt priority of extern interrupts and timers
- * @Test-board:ZS5110
- * @Test-mcu:STC89C52RC
- * @Version:V1
- */
- 
-/*
-  * @Extra-note:(1)This file configures TIM0 priority as lowest priority(INTR_priority_0), EXTI0's priority is lower priority(INTR_priority_1), and EXTI1 's priority is highest(INTR_priority_1). At the same time, each interrupt source controls a blink LED with different gap time, higher priority means shorter time(EXTI0: 250ms; EXTI1: 150ms; TIM0: 500ms;).(2)On board ZS51-V1.0, pin INT0 and INT1 are connected to buttons so we can use them to wakeup interrupt. And a 8-bit LED group controlled by GPIO2.
-  */
-#include "conf.h"
+/*****************************************************************************/
+/** 
+ * \file       exti-interruptPriority.c
+ * \author     Amy Chung | zhongliguo@zhishan-iot.tk
+ * \date       
+ * \brief      example for interrupt priority
+ * \note       a example which shows how to use HML_FwLib_STC89 to configure 
+ *             interrupt priority of extern interrupts and timers
+ * \version    v1.1
+ * \ingroup    example
+ * \remarks    test-board: ZS5110; test-MCU: STC89C52RC
+******************************************************************************/
 
-/* ----- @macro define ----- */
-/* --- led define --- */
-#define PERIPH_LED PERIPH_GPIO_2
-/* --- led bit define --- */
-#define PERIPH_LED_TIM0 PERIPH_GPIO_PIN_0
-#define PERIPH_LED_EXTI0 PERIPH_GPIO_PIN_1
-#define PERIPH_LED_EXTI1 PERIPH_GPIO_PIN_2
-/* --- key define --- */
-#define PERIPH_KEY PERIPH_GPIO_3
-/* --- key bit define --- */
-#define PERIPH_KEY_EXTI0 PERIPH_GPIO_PIN_2
-#define PERIPH_KEY_EXTI1 PERIPH_GPIO_PIN_3
-
-/*
- * @Prototype:void sys_init(void)
- * @Parameter:None
- * @Ret-val:None
- * @Note:initial MCU
+/**
+ *\extra-note:
+ * (1) This file configures TIM0 priority as lowest priority(INTR_priority_0), 
+ *     EXTI0's priority is lower priority(INTR_priority_1), and EXTI1 's priority 
+ *     is highest(INTR_priority_1). At the same time, each interrupt source 
+ *     controls a blink LED with different gap time, higher priority means shorter 
+ *     time(EXTI0: 250ms; EXTI1: 150ms; TIM0: 500ms;).
+ * (2) On board ZS51-V1.0, pin INT0 and INT1 are connected to buttons so we can 
+ *     use them to wakeup interrupt. And a 8-bit LED group controlled by GPIO2.
  */
+
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
+#include "hml.h"
+
+/*****************************************************************************
+ *                                macro                                      *
+ *****************************************************************************/
+
+/**
+ *\brief: LED define
+ */
+#define PERIPH_LED           PERIPH_GPIO_2
+#define PERIPH_LED_TIM0      PERIPH_GPIO_PIN_0   /* indicator LED for TIM0 */
+#define PERIPH_LED_EXTI0     PERIPH_GPIO_PIN_1   /* indicator LED for EXTI0 */
+#define PERIPH_LED_EXTI1     PERIPH_GPIO_PIN_2   /* indicator LED for EXTI1 */
+
+/**
+ *\brief: key define
+ */
+#define PERIPH_KEY           PERIPH_GPIO_3
+#define PERIPH_KEY_EXTI0     PERIPH_GPIO_PIN_2   /* key connected to EXTI1 */
+#define PERIPH_KEY_EXTI1     PERIPH_GPIO_PIN_3
+
+/*****************************************************************************/
+/** 
+ * \author      Amy Chung
+ * \date        
+ * \brief       initial MCU
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void sys_init(void)
 {
     EXTI_configTypeDef ec;
     TIM_configTypeDef tc;
-    
+
     tc.function          = TIM_function_tim;
     tc.interruptState    = ENABLE;
     tc.interruptPriority = INTR_priority_0;
     tc.mode              = TIM_mode_1;
     tc.value             = TIM_calculateValue(50000,TIM_mode_1);
-    
+
     TIM_config(PERIPH_TIM_0,&tc);
     TIM_cmd(PERIPH_TIM_0,ENABLE);
 
@@ -55,27 +78,41 @@ void sys_init(void)
     ec.priority = INTR_priority_2;
     EXTI_config(PERIPH_EXTI_1,&ec);
     EXTI_cmd(PERIPH_EXTI_1,ENABLE);
+
     enableAllInterrupts();
-    
     GPIO_configPort(PERIPH_LED,0xFF);
 }
 
+/*****************************************************************************/
+/** 
+ * \author      Amy Chung
+ * \date        
+ * \brief       main function
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void main(void)
 {
     sys_init();
     while(true);
 }
 
-/*
- * @Prototype:void tim0_isr(void)
- * @Parameter:None
- * @Ret-val:None
- * @Note:interrupt service function for TIM0
- */
+/*****************************************************************************/
+/** 
+ * \author      Amy Chung
+ * \date        
+ * \brief       interrupt service function for TIM0
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void tim0_isr(void) __interrupt TF0_VECTOR
 {
     static u8 cnt = 0;
-    
+
     /* per 500ms */
     cnt++;
     if(cnt == 10)
@@ -85,12 +122,16 @@ void tim0_isr(void) __interrupt TF0_VECTOR
     }
 }
 
-/*
- * @Prototype:void exti0_isr(void)
- * @Parameter:None
- * @Ret-val:None
- * @Note:interrupt service function for EXTI0
- */
+/*****************************************************************************/
+/** 
+ * \author      Amy Chung
+ * \date        
+ * \brief       interrupt service function for EXTI0
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void exti0_isr(void) __interrupt IE0_VECTOR
 {
     u8 i = 10;
@@ -98,7 +139,7 @@ void exti0_isr(void) __interrupt IE0_VECTOR
     /* avoid shake */
     EXTI_cmd(PERIPH_EXTI_0,DISABLE);
     sleep(20);
-    
+
     /* make sure the button pressed by P32(INT0) */
     if(GPIO_getBitValue(PERIPH_KEY,PERIPH_KEY_EXTI0) == RESET)
     {
@@ -115,12 +156,16 @@ void exti0_isr(void) __interrupt IE0_VECTOR
     EXTI_cmd(PERIPH_EXTI_0,ENABLE);
 }
 
-/*
- * @Prototype:void exti1_isr(void)
- * @Parameter:None
- * @Ret-val:None
- * @Note:interrupt service function for EXTI1
- */
+/*****************************************************************************/
+/** 
+ * \author      Amy Chung
+ * \date        
+ * \brief       interrupt service function for EXTI1
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void exti1_isr(void) __interrupt IE1_VECTOR
 {
     u8 j = 10;
@@ -128,7 +173,7 @@ void exti1_isr(void) __interrupt IE1_VECTOR
     /* avoid shake */
     EXTI_cmd(PERIPH_EXTI_1,DISABLE);
     sleep(20);
-    
+
     /* make sure the button pressed by P33(INT1) */
     if(GPIO_getBitValue(PERIPH_KEY,PERIPH_KEY_EXTI1) == RESET)
     {

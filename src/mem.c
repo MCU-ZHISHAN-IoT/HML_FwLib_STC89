@@ -1,41 +1,50 @@
-/*
- * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:
- * #contains definitions that allow you to directly access the different memory areas of the STC90.
- * #have the similar functions like <absacc.h> in Keil
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC89 series
- * @Version:V1
- */
+/*****************************************************************************/
+/** 
+ * \file        mem.c
+ * \author      Weillun Fong | wlf@zhishan-iot.tk
+ * \brief       operations for memory zone of MCU
+ * \note        allow you to directly access the different memory areas of STC89 series MCU
+ * \version     v1.1
+ * \ingroup     MEM
+******************************************************************************/
  
 #include "mem.h"
 
-#ifdef ___COMPILE_MEM___
+#ifdef __CONF_COMPILE_MEM
 
-/*
- * @Prototype:void MEM_cmd_ale(Action a)
- * @Parameter:(1)a:expected state
- * @Ret-val:
- * @Note:
- *  > disable ALE:ALE is emitted a constant rate of 1/3 Fsoc(the oscillator frequency) in 6 clock mode,1/6 Fsoc in 12 clock mode
- *  > enable ALE:ALE is active only during a MOVX or MOVC instruction
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       enable or disable pin ALE for Intel 8080 Bus
+ * \param[in]   a: expected state
+ * \return      none
+ * \ingroup     MEM
+ * \remarks     (1) disable ALE: ALE is emitted a constant rate of 1/3 Fsoc(the 
+ *              oscillator frequency) in 6 clock mode,1/6 Fsoc in 12 clock mode
+ *              (2) enable ALE: ALE is active only during a MOVX or MOVC instruction
+******************************************************************************/
 void MEM_cmd_ale(Action a)
 {
     CONFB(AUXR,BIT_NUM_ALEOFF,a);
 }
 
-/*
- * @Prototype:void MEM_cmd_internalExtendedRam(Action a)
- * @Parameter:(1)a:expected state
- * @Ret-val:
- * @Note:enable or disable internal extended RAM access
- *  > there is a RAM area integrated insides STC89 MCUs and it's independent in logic
- *  > if you enable this function,this area will occupy address zone in the beginning(RD+ series is 0000H~03FFH(1024 bytes),RC series is 0000H~00FFH(256 bytes));or this RAM area is hide,the MCU is as same as classical 8051 MCU now
- *  > if you want to enable this function,please remember select the option in STC-ISP
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       enable or disable pin ALE for Intel 8080 Bus
+ * \param[in]   a: expected state
+ * \return      none
+ * \ingroup     MEM
+ * \remarks     (1) there is a RAM area integrated insides STC89 MCUs and it's
+ *              independent in logic
+ *              (2) if you enable this function, this area will occupy address
+ *              zone whose address range is 0000H~03FFH(1024 bytes) for RD+
+ *              series, or 0000H~00FFH(256 bytes) for RC series. If not, the RAM
+ *              area will be hidden and it's same with classical 8051 MCU under
+ *              this situation.
+******************************************************************************/
 void MEM_cmd_internalExtendedRam(Action a)
 {
     CONFB(AUXR,BIT_NUM_EXTRAM,(~a));

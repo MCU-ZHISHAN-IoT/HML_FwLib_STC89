@@ -1,22 +1,31 @@
-/*
- * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @Compiler:SDCC v3.6.0
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:a demo which shows how to use HML_FwLib_STC89 to toggle P12 state when EXTI trigged
- * @Test-board:TS51-V2.0
- * @Test-mcu:STC89C52RC
- * @Version:V1
- */
- 
-#include "conf.h"
+/*****************************************************************************/
+/** 
+ * \file       exti-toggleIo.c
+ * \author     Weilun Fong | wlf@zhishan-iot.tk
+ * \date       
+ * \brief      example for interrupt priority
+ * \note       a example which shows how to use HML_FwLib_STC89 to toggle P12 
+ *             state when EXTI is trigged
+ * \version    v1.1
+ * \ingroup    example
+ * \remarks    test-board: TS51-V2.0; test-MCU: STC89C52RC
+******************************************************************************/
 
-/*
- * @Prototype:void sys_init(void)
- * @Parameter:None
- * @Ret-val:None
- * @Note:initial MCU
- */
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
+#include "hml.h"
+
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       initial MCU
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void sys_init(void)
 {
     EXTI_configTypeDef ec;
@@ -30,29 +39,43 @@ void sys_init(void)
     GPIO_configPort(PERIPH_GPIO_1,0xFF);
 }
 
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       main function
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void main(void)
 {
     sys_init();
     while(true);
 }
 
-/*
- * @Prototype:void exti1_isr(void)
- * @Parameter:None
- * @Ret-val:None
- * @Note:interrupt service function for EXTI1
- */
+/*****************************************************************************/
+/** 
+ * \author      Amy Chung
+ * \date        
+ * \brief       interrupt service function for EXTI1
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void exti1_isr(void) __interrupt IE1_VECTOR
 {
     /* avoid shake */
     disableAllInterrupts();
     sleep(20);
-    
+
     /* make sure the button pressed by P33(INT1) */
     if(GPIO_getBitValue(PERIPH_GPIO_3,PERIPH_GPIO_PIN_3) == RESET)
     {
         GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
     }
-    
+
     enableAllInterrupts();   /* recover */
 }

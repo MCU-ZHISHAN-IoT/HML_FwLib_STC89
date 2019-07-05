@@ -1,27 +1,33 @@
 /*****************************************************************************/
 /** 
- * \file        util.h
+ * \file        hml.h
  * \author      Weilun Fong | wlf@zhishan-iot.tk
- * \brief       public operations
+ * \brief       include all needed HML header files
  * \note        
  * \version     v1.1
- * \ingroup     UTIL
+ * \ingroup     generic
 ******************************************************************************/
-
-#ifndef ___UTIL_H___
-#define ___UTIL_H___
+ 
+#ifndef ___HML_H___
+#define ___HML_H___
 
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "stc89.h"
+#include "conf.h"
 #include "macro.h"
-
-/*****************************************************************************
- *                          function declare                                 *
- *****************************************************************************/
-void disableAllInterrupts(void);
-void enableAllInterrupts(void);
-void sleep(unsigned int t);
+/*****************************************************************************/
+#include "stc89.h"
+/*****************************************************************************/
+#include "exti.h"
+#include "gpio.h"
+#include "isp.h"
+#include "mem.h"
+#include "rst.h"
+#include "tim.h"
+#include "tim2.h"
+#include "uart.h"
+#include "util.h"
+#include "wdt.h"
 
 #endif

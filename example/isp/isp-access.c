@@ -1,26 +1,34 @@
-/*
- * @Author:
- *  #Amy Chung | zhongliguo(at)zhishan-iot.tk
- * @Compiler:SDCC v3.6.0
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:show how to use HML_FwLib_STC89 to use ISP to write and read byte
- * @Test-board:TS51-V2.0
- * @Test-mcu:STC89C52RC
- * @Version:V1
- */
+/*****************************************************************************/
+/** 
+ * \file       isp-access.c
+ * \author     Amy Chung | zhongliguo@zhishan-iot.tk
+ * \date       
+ * \brief      show how to use HML_FwLib_STC89 to execute access operation on ISP
+ * \note       
+ * \version    v1.1
+ * \ingroup    example
+ * \remarks    test-board: TS51-V2.0; test-MCU: STC89C52RC
+******************************************************************************/
 
-#include "conf.h" 
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
+#include "hml.h"
 
-/*
- * @Prototype:void sys_init(void)
- * @Parameter:None
- * @Ret-val:None
- * @Note:initial MCU
- */
+/*****************************************************************************/
+/** 
+ * \author      Amy Chung
+ * \date        
+ * \brief       initial MCU
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void sys_init(void)
 {
     UART_configTypeDef uc;
-    
+
     uc.baudrate          = 9600;
     uc.baudGenerator     = PERIPH_TIM_2;
     uc.interruptState    = ENABLE;
@@ -28,22 +36,27 @@ void sys_init(void)
     uc.mode              = UART_mode_1;
     uc.multiBaudrate     = DISABLE;
     uc.receiveState      = ENABLE;
-    
+
     UART_config(&uc);
     ISP_cmd(ENABLE);
 }
 
-/*
- * @Prototype:void util_byteToHexString(byte src,char *res)
- * @Parameter:(1)src:the byte of date which is going to transfer; (2)res:a array for storing result
- * @Ret-val:None
- * @Note:transfer byte to hex string
- */
+/*****************************************************************************/
+/** 
+ * \author      Amy Chung
+ * \date        
+ * \brief       transfer byte to hex string
+ * \param[in]   src: the byte of date which is going to transfer
+ * \param[in]   res: a array for storing result
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void util_byteToHexString(byte src,char *res)
 {
     u8 i = 2;
-    byte tmp = 0;
-    
+    byte tmp = 0x00;
+
     res = res + 2;
     *res = '\0';
     
@@ -65,7 +78,16 @@ void util_byteToHexString(byte src,char *res)
 
 }
 
-/* ----- @main ----- */
+/*****************************************************************************/
+/** 
+ * \author      Amy Chung
+ * \date        
+ * \brief       main function
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void main(void)
 {
     char accessResult[3];                             /* store results */

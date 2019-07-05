@@ -1,22 +1,20 @@
-#Author      :Weilun Fong | wlf(at)zhishan-iot.tk
-#Description :record error code defined by HML
-#E-mail      :mcu(at)zhishan-iot.tk
-#FwLib       :HML_FwLib_STC89
-#Version     :v1.0.1
+# Author     : Weilun Fong | wlf(at)zhishan-iot.tk
+# Description: record HML_FwLib_STC89 error code detail
 
-ERROR_CODE LIST >>
+ - 0x01
+    User need to specify a frequency value of extern crystal oscillator via macro.
 
- -0x01(@macro.h)
-    User need to specify a frequency value of extern crystal oscillator via macro definitions; The default frequency value is 11059200L.
-    
- -0x02(@macro.h)
-    User need to specify a model of the MCU, the default model macro is _MCU_STC89C52RC_.
+ - 0x02
+    User need to specify a model of the MCU manually.
 
- -0x03(@macro.h)
-    User need to enable compile macro ___COMPILE_EXTI___ in <macro.h> to make sure source code of TIM part can be compiled successfully.
+ - 0x03
+    TIM(timer) module need extern support, please enable macro __CONF_COMPILE_EXTI in conf.h
     
- -0x04(@macro.h)
-    User need to enable compile macro ___COMPILE_EXTI___ in <macro.h> to make sure source code of TIM2 part can be compiled successfully.
+ - 0x04
+    User need to enable compile macro __CONF_COMPILE_EXTI in conf.h to make sure source code of TIM2 part can be compiled successfully.
     
- -0x05(@macro.h)
-    User need to enable compile macro ___COMPILE_EXTI___, ___COMPILE_TIM___, ___COMPILE_TIM2___  in <macro.h> at the same time,it will make sure source code of UART part can be compiled successfully.
+ - 0x05
+    User need to enable compile macro __CONF_COMPILE_EXTI, __CONF_COMPILE_TIM, __CONF_COMPILE_TIM2  in conf.h at the same time, it will make sure source code of UART part can be compiled successfully.
+
+  - 0x06
+    User need update thier own SDCC tool-chain, because HML_FwLib_STC89 requires v3.6.0 or later version.

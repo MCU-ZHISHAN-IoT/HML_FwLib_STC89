@@ -1,43 +1,61 @@
-/*
- * @Author:
- *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:includes some definitions for operating timer_2 module
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC89 series
- * @Version:V1
- */
+/*****************************************************************************/
+/** 
+ * \file        tim2.h
+ * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
+ * \brief       operations for timer-2
+ * \note        
+ * \version     v1.1
+ * \ingroup     TIM2
+******************************************************************************/
 
 #ifndef ___TIM2_H___
 #define ___TIM2_H___
 
-/* ----- @header file ----- */
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
 #include <stdbool.h>
+/*****************************************************************************/
 #include "stc89.h"
+/*****************************************************************************/
 #include "exti.h"
-#include "macro.h"
 
-/* ----- @macro define ------ */
+/*****************************************************************************
+ *                                macro                                      *
+ *****************************************************************************/
 #define TIM2_MAXTICK 0xFFFF
 
-/* ----- @enumeration type ----- */
-/* mark work mode of TIM2 */
+/*****************************************************************************
+ *                           enumeration type                                *
+ *****************************************************************************/
+
+/**
+ *\brief: mark work mode of timer-2
+ */
 typedef enum
 {
-    TIM2_mode_0 = 0x00,  /* 16-bit timer mode(auto-reload) */
-    TIM2_mode_1 = 0x01,  /* 16-bit catch mode */
-    TIM2_mode_2 = 0x30   /* baud rate generator */
+    TIM2_mode_0 = 0x00,       /* 16-bit timer mode(auto-reload) */
+    TIM2_mode_1 = 0x01,       /* 16-bit catch mode */
+    TIM2_mode_2 = 0x30        /* baud rate generator */
 } TIM2_mode;
 
-/* mark work function(role) of TIM2 */
+
+/**
+ *\brief: mark work function(role) of timer-2
+ */
 typedef enum
 {
     TIM2_function_cnt = 0x1, /* counter mode */
     TIM2_function_tim = 0x0  /* timer mode */
 } TIM2_function;
 
-/* ----- @structure define ----- */
-/* configuration structure */
+/*****************************************************************************
+ *                           structure define                                *
+ *****************************************************************************/
+
+/**
+ *\brief: struct for timer-2 configuration
+ */
 typedef struct
 {
     TIM2_function  function;
@@ -47,8 +65,10 @@ typedef struct
     unsigned int   value;
 } TIM2_configTypeDef;
 
-/* ---------- @function --------- */
-unsigned int TIM2_calculateValue(unsigned int time);  /* (time/us) */
+/*****************************************************************************
+ *                          function declare                                 *
+ *****************************************************************************/
+unsigned int TIM2_calculateValue(unsigned int time);
 void TIM2_clearFlag(void);
 void TIM2_cmd(Action a);
 void TIM2_config(TIM2_configTypeDef *tc);

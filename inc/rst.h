@@ -1,29 +1,38 @@
-/*
- * @Author:
- *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:includes some definitions of reset function
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC89 series
- * @Version:V1
- */
+/*****************************************************************************/
+/** 
+ * \file        rst.h
+ * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
+ * \brief       operations for reset module
+ * \note        
+ * \version     v1.1
+ * \ingroup     RST
+******************************************************************************/
 
 #ifndef ___RST_H___
 #define ___RST_H___
 
-/* ----- @header file ----- */
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
 #include "stc89.h"
 #include "macro.h"
 
-/* ----- @enumeration type ----- */
-/* mark boot area */
+/*****************************************************************************
+ *                           enumeration type                                *
+ *****************************************************************************/
+
+/**
+ *\brief: mark boot area
+ */
 typedef enum
 {
     RST_bootarea_ap  = 0x0,  /* user application area */
     RST_bootarea_isp = 0x1   /* ISP area */
 } RST_bootarea;
 
-/* ----- @function ----- */
+/*****************************************************************************
+ *                          function declare                                 *
+ *****************************************************************************/
 void RST_reset(RST_bootarea area);
 
 #endif

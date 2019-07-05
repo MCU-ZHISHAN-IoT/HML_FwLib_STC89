@@ -1,9 +1,10 @@
 /*****************************************************************************/
 /** 
- * \file       rst-softwareReset.c
- * \author     Weilun Fong | wlf@zhishan-iot.tk
+ * \file       tim2-toggleIo.c
+ * \author     Jiabin Hsu | zhongliguo@zhishan-iot.tk
  * \date       
- * \brief      a example for software reset
+ * \brief      a example which shows how to toggle state of specified pin periodic
+ *             via timers' interrupt
  * \note       
  * \version    v1.1
  * \ingroup    example
@@ -17,7 +18,7 @@
 
 /*****************************************************************************/
 /** 
- * \author      Weilun Fong
+ * \author      Jiabin Hsu
  * \date        
  * \brief       initial MCU
  * \param[in]   
@@ -27,18 +28,22 @@
 ******************************************************************************/
 void sys_init(void)
 {
-    EXTI_configTypeDef ec;
-    
-    ec.mode     = EXTI_mode_fallEdge;
-    ec.priority = INTR_priority_0;
-    EXTI_config(PERIPH_EXTI_1,&ec);
-    EXTI_cmd(PERIPH_EXTI_1,ENABLE);
+    TIM2_configTypeDef tc;
+
+    tc.function          = TIM2_function_tim;
+    tc.interruptState    = ENABLE;
+    tc.interruptPriority = INTR_priority_0;
+    tc.mode              = TIM2_mode_0;
+    tc.value             = TIM2_calculateValue(50000);
+
+    TIM2_config(&tc);
+    TIM2_cmd(ENABLE);
     enableAllInterrupts();
 }
 
 /*****************************************************************************/
 /** 
- * \author      Weilun Fong
+ * \author      Jiabin Hsu
  * \date        
  * \brief       main function
  * \param[in]   
@@ -49,38 +54,29 @@ void sys_init(void)
 void main(void)
 {
     sys_init();
-    while(true)
-    {
-        GPIO_configBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0,RESET);
-        sleep(500);
-        GPIO_configBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0,SET);
-        sleep(500);
-    }
+    while(true);
 }
 
 /*****************************************************************************/
 /** 
- * \author      Weilun Fong
+ * \author      Jiabin Hsu
  * \date        
- * \brief       interrupt service function for EXTI1
+ * \brief       interrupt service function for TIM2
  * \param[in]   
  * \return      none
  * \ingroup     example
  * \remarks     
 ******************************************************************************/
-void exti1_isr(void) __interrupt IE1_VECTOR
+void tim2_isr(void) __interrupt TF2_VECTOR
 {
-    /* avoid shake */
-    disableAllInterrupts();
-    sleep(20);
+    static u8 i = 0;
+    TIM2_clearFlag();
 
-    /* make sure the button connected to P33(INT1) */
-    if(GPIO_getBitValue(PERIPH_GPIO_3,PERIPH_GPIO_PIN_3) == RESET)
+    /* per 500ms */
+    i++;
+    if(i == 10)
     {
-        RST_reset(RST_bootarea_ap);
-    }
-    else
-    {
-        enableAllInterrupts();    /* recover */
+        GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
+        i = 0;
     }
 }

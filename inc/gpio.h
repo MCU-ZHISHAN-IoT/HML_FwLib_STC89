@@ -1,23 +1,30 @@
-/*
- * @Author:
- *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:includes some definitions for operating GPIO module
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC89 series
- * @Version:V1
- */
+/*****************************************************************************/
+/** 
+ * \file        gpio.h
+ * \author      Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
+ * \author      Weilun Fong | wlf@zhishan-iot.tk
+ * \brief       operations for GPIO module
+ * \note        
+ * \version     v1.1
+ * \ingroup     GPIO
+******************************************************************************/
  
 #ifndef ___GPIO_H___
 #define ___GPIO_H___
 
-/* ----- @header file ----- */
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
 #include "stc89.h"
 #include "macro.h"
 
-/* ----- @enumeration type ----- */
-/* define port */
+/*****************************************************************************
+ *                           enumeration type                                *
+ *****************************************************************************/
+
+/**
+ *\brief: define port
+ */
 typedef enum
 {
     PERIPH_GPIO_0 = 0x0,
@@ -27,7 +34,9 @@ typedef enum
     PERIPH_GPIO_4 = 0x4
 } PERIPH_GPIO;
 
-/* mark pin */
+/**
+ *\brief: define pin
+ */
 typedef enum
 {
     PERIPH_GPIO_PIN_0 = 0x01,
@@ -40,11 +49,13 @@ typedef enum
     PERIPH_GPIO_PIN_7 = 0x80
 } PERIPH_GPIO_PIN;
 
-
-/* ----- @function ----- */
+/*****************************************************************************
+ *                          function declare                                 *
+ *****************************************************************************/
 void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f);
 void GPIO_configPort(PERIPH_GPIO gpio,byte val);
 FunctionalState GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
+byte GPIO_getPortValue(PERIPH_GPIO gpio);
 void GPIO_resetBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
 void GPIO_setBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
 void GPIO_toggleBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);

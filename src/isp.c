@@ -1,34 +1,42 @@
-/*
- * @Author:
- *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:operations of ISP resource
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC89 series
- * @Version:V1
- */
- 
-#include "isp.h"
- 
-#ifdef ___COMPILE_ISP___
+/*****************************************************************************/
+/** 
+ * \file        isp.c
+ * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
+ * \brief       operations for ISP module
+ * \note        
+ * \version     v0.1
+ * \ingroup     ISP
+******************************************************************************/
 
-/*
- * @Prototype:void ISP_cmd(Action a)
- * @Parameter:(1)a:expected action
- * @Ret-val:
- * @Note:launch or stop ISP module
- */
+#include "isp.h"
+
+#ifdef __CONF_COMPILE_ISP
+
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        
+ * \brief       enable or disable ISP module
+ * \param[in]   a : expected action
+ * \return      none
+ * \ingroup     ISP
+ * \remarks     
+******************************************************************************/
 void ISP_cmd(Action a)
 {
     CONFB(ISP_CONTR,BIT_NUM_ISPEN,a);
 }
 
-/*
- * @Prototype:bool ISP_eraseByte(unsigned int addr)
- * @Parameter:(1)addr:operating address
- * @Ret-val:
- * @Note:clear the value of the register in the specified address
- */
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        
+ * \brief       erase all data of specified ISP area
+ * \param[in]   addr: address of target area
+ * \return      complete to erase(true) or failed to execute operation(false)
+ * \ingroup     ISP
+ * \remarks     
+******************************************************************************/
 bool ISP_eraseByte(unsigned int addr)
 {
     /* check address */
@@ -36,23 +44,27 @@ bool ISP_eraseByte(unsigned int addr)
     {
         return false;
     }
-    
+
     ISP_cmd(ENABLE);
     ISP_setAddress(addr);
     ISP_setCommand(ISP_command_erase);
     ISP_trig();
     sleep(1);
     ISP_idle();
-    
+
     return true;
 }
 
-/*
- * @Prototype:void ISP_idle(void)
- * @Parameter:
- * @Ret-val:
- * @Note:Let ISP be idle
- */
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        
+ * \brief       make ISP module be in idle mode
+ * \param[in]   
+ * \return      none
+ * \ingroup     ISP
+ * \remarks     
+******************************************************************************/
 void ISP_idle(void)
 {
     ISP_cmd(DISABLE);
@@ -61,16 +73,20 @@ void ISP_idle(void)
     ISP_DATA = 0xFF;
 }
 
-/*
- * @Prototype:unsigned char ISP_readByte(unsigned int addr)
- * @Parameter:(1)addr:operating address
- * @Ret-val:byte
- * @Note:read the value of the register in the specified address
- */
-unsigned char ISP_readByte(unsigned int addr)
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        
+ * \brief       read one byte of data form specified ISP area
+ * \param[in]   addr: address of target area
+ * \return      access result
+ * \ingroup     ISP
+ * \remarks     
+******************************************************************************/
+byte ISP_readByte(unsigned int addr)
 {
-    unsigned char dat = 0x00;
-    
+    byte dat = 0x00;
+
     ISP_cmd(ENABLE);
     ISP_setAddress(addr);
     ISP_setCommand(ISP_command_read);
@@ -78,51 +94,68 @@ unsigned char ISP_readByte(unsigned int addr)
     sleep(1);
     dat = ISP_DATA;
     ISP_idle();
-    
+
     return dat;
 }
 
-/*
- * @Prototype:void ISP_setAddress(unsigned int addr)
- * @Parameter:(1)addr:operating address
- * @Ret-val:
- * @Note:setting the address to be operated
- */
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        
+ * \brief       configure value of ISP address register for access
+ * \param[in]   addr: address of target area
+ * \return      none
+ * \ingroup     ISP
+ * \remarks     
+******************************************************************************/
 void ISP_setAddress(unsigned int addr)
 {
     ISP_ADDRL = addr;
     ISP_ADDRH = addr >> 0x8;
 }
 
-/*
- * @Prototype:void ISP_setCommand(ISP_command cmd)
- * @Parameter:(1)addr:operating address
- * @Ret-val:
- * @Note:set command
- */
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        
+ * \brief       send command to ISP module by write ISP_CMD register
+ * \param[in]   cmd: ISP command type
+ * \return      none
+ * \ingroup     ISP
+ * \remarks     
+******************************************************************************/
 void ISP_setCommand(ISP_command cmd)
 {
     ISP_CMD = cmd;
 }
 
-/*
- * @Prototype:void ISP_trig(void)
- * @Parameter:
- * @Ret-val:
- * @Note:Trigger instruction
- */
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        
+ * \brief       trigger instruction
+ * \param[in]   
+ * \return      none
+ * \ingroup     ISP
+ * \remarks     
+******************************************************************************/
 void ISP_trig(void)
 {
     ISP_TRIG = 0x46;
     ISP_TRIG = 0xB9;
 }
 
-/*
- * @Prototype:bool ISP_writeByte(unsigned int addr,byte dat)
- * @Parameter:(1)addr:operating address
- * @Ret-val:
- * @Note:write the value into the register in the specified address
- */
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        
+ * \brief       write data to specified ISP area
+ * \param[in]   addr: address of target ISP area
+ * \param[in]   dat : one byte of data
+ * \return      write successfully(true) or not(false)
+ * \ingroup     ISP
+ * \remarks     
+******************************************************************************/
 bool ISP_writeByte(unsigned int addr,byte dat)
 {
     if((addr < ISP_ADDR_START) || (addr > ISP_ADDR_END))
@@ -138,7 +171,7 @@ bool ISP_writeByte(unsigned int addr,byte dat)
         ISP_trig();
         sleep(1);
         ISP_idle();
-        
+
         return true;
     }
 }

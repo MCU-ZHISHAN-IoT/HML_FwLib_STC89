@@ -1,27 +1,30 @@
-/*
- * @Author:
- *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:operations for GPIO resource
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC89 series
- * @Version:V1
- */
+/*****************************************************************************/
+/** 
+ * \file        gpio.c
+ * \author      Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
+ * \author      Weilun Fong | wlf@zhishan-iot.tk
+ * \brief       operations for GPIO module
+ * \note        
+ * \version     v1.1
+ * \ingroup     GPIO
+******************************************************************************/
 
 #include "gpio.h" 
 
-#ifdef ___COMPILE_GPIO___
+#ifdef __CONF_COMPILE_GPIO
 
-/*
- * @Prototype:void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f)
- * @Parameter:
- *  (1)gpio:target GPIO port
- *  (2)pin:target GPIO pin
- *  (3)f:expected level state
- * @Ret-val:
- * @Note:configure specified pin as expected state
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       configure state of specified target GPIO bit as SET pr RESET
+ * \param[in]   gpio: target GPIO port
+ * \param[in]   pin : target GPIO pin
+ * \param[in]   f   : expected state
+ * \return      none
+ * \ingroup     GPIO
+ * \remarks     
+******************************************************************************/
 void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f)
 {
     if(f == RESET)
@@ -34,110 +37,146 @@ void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f)
     }
 }
 
-/*
- * @Prototype:void GPIO_configPort(PERIPH_GPIO gpio,byte val)
- * @Parameter:
- *  (1)gpio:target GPIO port
- *  (2)val:expected port value
- * @Ret-val:
- * @Note:configure port value
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       configure value specified GPIO port
+ * \param[in]   gpio: target GPIO port
+ * \param[in]   val : expected value(0x00~0xFF)
+ * \return      none
+ * \ingroup     GPIO
+ * \remarks     
+******************************************************************************/
 void GPIO_configPort(PERIPH_GPIO gpio,byte val)
 {
     switch(gpio)
     {
-        case PERIPH_GPIO_0:P0 = val;break;
-        case PERIPH_GPIO_1:P1 = val;break;
-        case PERIPH_GPIO_2:P2 = val;break;
-        case PERIPH_GPIO_3:P3 = val;break;
-        case PERIPH_GPIO_4:P4 = val;break;
-        default:break;
+        case PERIPH_GPIO_0: P0 = val; break;
+        case PERIPH_GPIO_1: P1 = val; break;
+        case PERIPH_GPIO_2: P2 = val; break;
+        case PERIPH_GPIO_3: P3 = val; break;
+        case PERIPH_GPIO_4: P4 = val; break;
+        default: break;
     }
 }
 
-/*
- * @Prototype:void GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
- * @Parameter:
- *  (1)gpio:target GPIO port
- *  (2)pin:target pin
- * @Ret-val:
- * @Note:get value of target pin
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       get state of target GPIO pin
+ * \param[in]   gpio: target GPIO port
+ * \param[in]   pin : target GPIO pin
+ * \return      SET or RESET
+ * \ingroup     GPIO
+ * \remarks     
+******************************************************************************/
 FunctionalState GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
 {
     switch(gpio)
     {
-        case PERIPH_GPIO_0:return GET_BIT(P0,pin);break;
-        case PERIPH_GPIO_1:return GET_BIT(P1,pin);break;
-        case PERIPH_GPIO_2:return GET_BIT(P2,pin);break;
-        case PERIPH_GPIO_3:return GET_BIT(P3,pin);break;
-        case PERIPH_GPIO_4:return GET_BIT(P4,pin);break;
-        default:break;
+        case PERIPH_GPIO_0: return GET_BIT(P0,pin);
+        case PERIPH_GPIO_1: return GET_BIT(P1,pin);
+        case PERIPH_GPIO_2: return GET_BIT(P2,pin);
+        case PERIPH_GPIO_3: return GET_BIT(P3,pin);
+        case PERIPH_GPIO_4: return GET_BIT(P4,pin);
+        default: return RESET;
     }
-
-    return RESET;
 }
 
-/*
- * @Prototype:void GPIO_resetBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
- * @Parameter:
- *  (1)gpio:target GPIO port
- *  (2)pin:target pin
- * @Ret-val:
- * @Note:reset value of target pin
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        2019/06/30
+ * \brief       get value of target GPIO port
+ * \param[in]   gpio: target GPIO port
+ * \return      current value of target GPIO port
+ * \ingroup     GPIO
+ * \remarks     
+******************************************************************************/
+byte GPIO_getPortValue(PERIPH_GPIO gpio)
+{
+    switch(gpio)
+    {
+        case PERIPH_GPIO_0: return P0;
+        case PERIPH_GPIO_1: return P1;
+        case PERIPH_GPIO_2: return P2;
+        case PERIPH_GPIO_3: return P3;
+        case PERIPH_GPIO_4: return P4;
+        default: return 0x00;
+    }
+}
+
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       reset target GPIO pin
+ * \param[in]   gpio: target GPIO port
+ * \param[in]   pin : target GPIO pin
+ * \return      none
+ * \ingroup     GPIO
+ * \remarks     
+******************************************************************************/
 void GPIO_resetBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
 {
     switch(gpio)
     {
-        case PERIPH_GPIO_0:CLR_BIT_MASK(P0,pin);break;
-        case PERIPH_GPIO_1:CLR_BIT_MASK(P1,pin);break;
-        case PERIPH_GPIO_2:CLR_BIT_MASK(P2,pin);break;
-        case PERIPH_GPIO_3:CLR_BIT_MASK(P3,pin);break;
-        case PERIPH_GPIO_4:CLR_BIT_MASK(P4,pin);break;
-        default:break;
+        case PERIPH_GPIO_0: CLR_BIT_MASK(P0,pin); break;
+        case PERIPH_GPIO_1: CLR_BIT_MASK(P1,pin); break;
+        case PERIPH_GPIO_2: CLR_BIT_MASK(P2,pin); break;
+        case PERIPH_GPIO_3: CLR_BIT_MASK(P3,pin); break;
+        case PERIPH_GPIO_4: CLR_BIT_MASK(P4,pin); break;
+        default: break;
     }
 }
 
-/*
- * @Prototype:void GPIO_setBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
- * @Parameter:
- *  (1)gpio:target GPIO port
- *  (2)pin:target pin
- * @Ret-val:
- * @Note:set value of target pin
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       set target GPIO pin
+ * \param[in]   gpio: target GPIO port
+ * \param[in]   pin : target GPIO pin
+ * \return      none
+ * \ingroup     GPIO
+ * \remarks     
+******************************************************************************/
 void GPIO_setBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
 {
     switch(gpio)
     {
-        case PERIPH_GPIO_0:SET_BIT_MASK(P0,pin);break;
-        case PERIPH_GPIO_1:SET_BIT_MASK(P1,pin);break;
-        case PERIPH_GPIO_2:SET_BIT_MASK(P2,pin);break;
-        case PERIPH_GPIO_3:SET_BIT_MASK(P3,pin);break;
-        case PERIPH_GPIO_4:SET_BIT_MASK(P4,pin);break;
-        default:break;
+        case PERIPH_GPIO_0: SET_BIT_MASK(P0,pin); break;
+        case PERIPH_GPIO_1: SET_BIT_MASK(P1,pin); break;
+        case PERIPH_GPIO_2: SET_BIT_MASK(P2,pin); break;
+        case PERIPH_GPIO_3: SET_BIT_MASK(P3,pin); break;
+        case PERIPH_GPIO_4: SET_BIT_MASK(P4,pin); break;
+        default: break;
     }
 }
 
-/*
- * @Prototype:void GPIO_toggleBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
- * @Parameter:
- *  (1)gpio:target GPIO port
- *  (2)pin:target pin
- * @Ret-val:
- * @Note:change value of target pin into opposite state
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       toggle state pf target GPIO pin
+ * \param[in]   gpio: target GPIO port
+ * \param[in]   pin : target GPIO pin
+ * \return      none
+ * \ingroup     GPIO
+ * \remarks     
+******************************************************************************/
 void GPIO_toggleBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
 {
     switch(gpio)
     {
-        case PERIPH_GPIO_0:NOT_BIT_MASK(P0,pin);break;
-        case PERIPH_GPIO_1:NOT_BIT_MASK(P1,pin);break;
-        case PERIPH_GPIO_2:NOT_BIT_MASK(P2,pin);break;
-        case PERIPH_GPIO_3:NOT_BIT_MASK(P3,pin);break;
-        case PERIPH_GPIO_4:NOT_BIT_MASK(P4,pin);break;
-        default:break;
+        case PERIPH_GPIO_0: NOT_BIT_MASK(P0,pin); break;
+        case PERIPH_GPIO_1: NOT_BIT_MASK(P1,pin); break;
+        case PERIPH_GPIO_2: NOT_BIT_MASK(P2,pin); break;
+        case PERIPH_GPIO_3: NOT_BIT_MASK(P3,pin); break;
+        case PERIPH_GPIO_4: NOT_BIT_MASK(P4,pin); break;
+        default: break;
     }
 }
 
