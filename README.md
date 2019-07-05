@@ -55,7 +55,7 @@ There are several parameters need to be configured by user manually.
 In order to ensure the projects based on HML_FwLib_STC89 can be downloaded into the limited on-chip flash space of STC89 MCUs, the developers can modify the macro definition named `__CONF_COMPILE_xxx` in *conf.h* to specify which piece of codewill take part in compilation, then it will reduce size of final .hex file. If user only use GPIO module, then user just need to enable `__CONF_COMPILE_GPIO` macro in *conf.h*. Some macros for conditional compilation rely on others. For example, before you define the macro definition `__CONF_COMPILE_UART`, the macro `__CONF_COMPILE_EXTI`, `__CONF_COMPILE_TIM` and `__CONF_COMPILE_TIM2` should be defined, otherwise the compilation would be failed.
 ####  \_\_CONF\_FRE\_CLKIN
 The macro mark frequency of clock source, including extern crystal oscillator or internal RC oscillating circuit, and it's defined in *conf.h*.
-#### \_\_CONF\_MCU\_MODEL\_
+#### \_\_CONF\_MCU\_MODEL
 The macro mark the model of target MCU and is defined in *conf.h*.
 
 ### code & compile
