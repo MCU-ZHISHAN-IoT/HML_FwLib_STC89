@@ -52,23 +52,45 @@ typedef enum
  *****************************************************************************/
 
 /**
- *\brief: mark MCU model of STC89 series
+ *\brief: mark MCU model of STC89 series(suffix letter 'P' represents '+' )
  */
-#define MCU_MODEL_NULL            0x00
-#define MCU_MODEL_STC89C51RC      0x01
-#define MCU_MODEL_STC89LE51RC     0x01
-#define MCU_MODEL_STC89C52RC      0x02
-#define MCU_MODEL_STC89LE52RC     0x02
-#define MCU_MODEL_STC89C54RDP     0x03
-#define MCU_MODEL_STC89LE54RDP    0x03
-#define MCU_MODEL_STC89C58RDP     0x04
-#define MCU_MODEL_STC89LE58RDP    0x04
-#define MCU_MODEL_STC89C510RDP    0x05
-#define MCU_MODEL_STC89LE510RDP   0x05
-#define MCU_MODEL_STC89C512RDP    0x06
-#define MCU_MODEL_STC89LE512RDP   0x06
-#define MCU_MODEL_STC89C514RDP    0x07
-#define MCU_MODEL_STC89LE514RDP   0x07
+#define MCU_MODEL_GENERIC         0x01
+#define MCU_MODEL_STC89C51RC      0x02
+#define MCU_MODEL_STC89LE51RC     0x02
+#define MCU_MODEL_STC89C52RC      0x03
+#define MCU_MODEL_STC89LE52RC     0x03
+#define MCU_MODEL_STC89C54RDP     0x04
+#define MCU_MODEL_STC89LE54RDP    0x04
+#define MCU_MODEL_STC89C58RDP     0x05
+#define MCU_MODEL_STC89LE58RDP    0x05
+#define MCU_MODEL_STC89C510RDP    0x06
+#define MCU_MODEL_STC89LE510RDP   0x06
+#define MCU_MODEL_STC89C512RDP    0x07
+#define MCU_MODEL_STC89LE512RDP   0x07
+#define MCU_MODEL_STC89C514RDP    0x08
+#define MCU_MODEL_STC89LE514RDP   0x08
+
+/**
+ *\brief: check macro for MCU model
+ */
+#define IS_STC89_MCU_MODEL(model)           \
+    (                                       \
+      (model == MCU_MODEL_GENERIC)       || \
+      (model == MCU_MODEL_STC89C51RC)    || \
+      (model == MCU_MODEL_STC89LE51RC)   || \
+      (model == MCU_MODEL_STC89C52RC)    || \
+      (model == MCU_MODEL_STC89LE52RC)   || \
+      (model == MCU_MODEL_STC89C54RDP)   || \
+      (model == MCU_MODEL_STC89LE54RDP)  || \
+      (model == MCU_MODEL_STC89C58RDP)   || \
+      (model == MCU_MODEL_STC89LE58RDP)  || \
+      (model == MCU_MODEL_STC89C510RDP)  || \
+      (model == MCU_MODEL_STC89LE510RDP) || \
+      (model == MCU_MODEL_STC89C512RDP)  || \
+      (model == MCU_MODEL_STC89LE512RDP) || \
+      (model == MCU_MODEL_STC89C514RDP)  || \
+      (model == MCU_MODEL_STC89LE514RDP)    \
+    )
 
 /*****************************************************************************
  *                           run-time check                                  *
@@ -86,30 +108,33 @@ typedef enum
  *\brief: MCU model check
  */
 #if (defined __CONF_MCU_MODEL)
-    #if (__CONF_MCU_MODEL == MCU_MODEL_NULL)
-        /* default MCU model: STC89C52RC */
-        #pragma message("HML run-time check: error: HML will fill MCU model macro with MCU_MODEL_STC89C52RC")
-        #define HML_MCU_MODEL MCU_MODEL_STC89C52RC
+    #if IS_STC89_MCU_MODEL(__CONF_MCU_MODEL)
+        #if (__CONF_MCU_MODEL == MCU_MODEL_GENERIC)
+            #warning the value of macro HML_MCU_MODEL will be filled with MCU_MODEL_STC89C52RC
+            #define HML_MCU_MODEL MCU_MODEL_STC89C52RC
+        #else
+            #define HML_MCU_MODEL __CONF_MCU_MODEL
+        #endif
     #else
-        #define HML_MCU_MODEL __CONF_MCU_MODEL
+        #error HML run-time check: error: unknow or unsupported MCU model!(ERROR_CODE-0x02)
     #endif
 #else
-    #error HML run-time check: error: no specified MCU model!(ERROR_CODE-0x02)
+    #error HML run-time check: error: no specified MCU model!(ERROR_CODE-0x03)
 #endif
 
 /**
  *\brief: HML compile selection check
  */
 #if (defined __CONF_COMPILE_TIM) && (!defined __CONF_COMPILE_EXTI)
-    #error HML run-time check: error: TIM module need extern support, please enable macro __CONF_COMPILE_EXTI in conf.h (ERROR_CODE-0x03)
+    #error HML run-time check: error: TIM module need extern support, please enable macro __CONF_COMPILE_EXTI in conf.h (ERROR_CODE-0x04)
 #endif
 
 #if (defined __CONF_COMPILE_TIM2) && (!defined __CONF_COMPILE_EXTI)
-    #error HML run-time check: error: TIM2 module need extern support, please enable macro __CONF_COMPILE_EXTI in conf.h (ERROR_CODE-0x04)
+    #error HML run-time check: error: TIM2 module need extern support, please enable macro __CONF_COMPILE_EXTI in conf.h (ERROR_CODE-0x05)
 #endif
 
 #if (defined __CONF_COMPILE_UART) && ((!defined __CONF_COMPILE_EXTI) || (!defined __CONF_COMPILE_TIM) || (!defined __CONF_COMPILE_TIM2))
-    #error HML run-time check: error UART module need extern support, please enable macro __CONF_COMPILE_EXTI, __CONF_COMPILE_TIM  or __CONF_COMPILE_TIM2 at the same time in conf.h (ERROR_CODE-0x05)
+    #error HML run-time check: error UART module need extern support, please enable macro __CONF_COMPILE_EXTI, __CONF_COMPILE_TIM  or __CONF_COMPILE_TIM2 at the same time in conf.h (ERROR_CODE-0x06)
 #endif
 
 /**
@@ -117,11 +142,11 @@ typedef enum
  */
 #if (__SDCC_VERSION_MAJOR == 3)
     #if (__SDCC_VERSION_MINOR < 6)
-        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x06)
+        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x07)
     #endif
 #else
     #if (__SDCC_VERSION_MAJOR < 3)
-        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x06)
+        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x07)
     #endif
 #endif
 
