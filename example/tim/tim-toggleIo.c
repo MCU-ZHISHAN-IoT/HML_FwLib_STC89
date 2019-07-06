@@ -1,22 +1,31 @@
-/*
- * @Author:
- *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
- * @Compiler:SDCC v3.6.0
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:show how to use firmware library to make an interruption by TIM module, then toggle the state of IO
- * @Test-board:TS51-V2.0
- * @Test-mcu:STC89C52RC
- * @Version:V1
- */
+/*****************************************************************************/
+/** 
+ * \file       tim-toggleIo.c
+ * \author     Jiabin Hsu | zhongliguo@zhishan-iot.tk
+ * \date       
+ * \brief      a example which shows how to toggle state of specified pin periodic
+ *             via timers' interrupt
+ * \note       
+ * \version    v1.1
+ * \ingroup    example
+ * \remarks    test-board: TS51-V2.0; test-MCU: STC89C52RC
+******************************************************************************/
 
-#include "conf.h"
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
+#include "hml.h"
  
-/*
- * @Prototype:void sys_init(void)
- * @Parameter:None
- * @Ret-val:None
- * @Note:initial MCU
- */
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        
+ * \brief       initial MCU
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void sys_init(void)
 {
     TIM_configTypeDef tc;
@@ -32,28 +41,41 @@ void sys_init(void)
     enableAllInterrupts();
 }
 
-/* ----- @main ----- */
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        
+ * \brief       main function
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void main(void)
 {
     sys_init();
     while(true);
 }
 
-/*
- * @Prototype:void tim0_isr(void)
- * @Parameter:None
- * @Ret-val:None
- * @Note:interrupt service function for TIM_0
- */
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        
+ * \brief       interrupt service function for TIM0
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void tim0_isr(void) __interrupt TF0_VECTOR
 {
-    static u8 cnt = 0;
+    static u8 i = 0;
     
     /* per 500ms */
-    cnt++;
-    if(cnt == 10)
+    i++;
+    if(i == 10)
     {
         GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
-        cnt = 0;
+        i = 0;
     }
 }
