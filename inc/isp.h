@@ -28,28 +28,28 @@
 /**
  *\brief: define ISP address
  */
-#if (_MCU_MODEL_ == _MCU_STC89C51RC_)  || \
-    (_MCU_MODEL_ == _MCU_STC89LE51RC_) || \
-    (_MCU_MODEL_ == _MCU_STC89C52RC_)  || \
-    (_MCU_MODEL_ == _MCU_STC89LE52RC_)
+#if (HML_MCU_MODEL == MCU_MODEL_STC89C51RC)  || \
+    (HML_MCU_MODEL == MCU_MODEL_STC89LE51RC) || \
+    (HML_MCU_MODEL == MCU_MODEL_STC89C52RC)  || \
+    (HML_MCU_MODEL == MCU_MODEL_STC89LE52RC)
     #define ISP_ADDR_START 0x2000
     #define ISP_ADDR_END 0x2FFF
 #else
     #define ISP_ADDR_END 0xF3FF
-    #if (_MCU_MODEL_ == _MCU_STC89C54RDP_)    || \
-        (_MCU_MODEL_ == _MCU_STC89LE54RDP_)
+    #if (HML_MCU_MODEL == MCU_MODEL_STC89C54RDP)    || \
+        (HML_MCU_MODEL == MCU_MODEL_STC89LE54RDP)
         #define ISP_ADDR_START 0x4000
-    #elif (_MCU_MODEL_ == _MCU_STC89C58RDP_)  || \
-          (_MCU_MODEL_ == _MCU_STC89LE58RDP_)
+    #elif (HML_MCU_MODEL == MCU_MODEL_STC89C58RDP)  || \
+          (HML_MCU_MODEL == MCU_MODEL_STC89LE58RDP)
         #define ISP_ADDR_START 0x8000
-    #elif (_MCU_MODEL_ == _MCU_STC89C510RDP_) || \
-          (_MCU_MODEL_ == _MCU_STC89LE510RDP_)
+    #elif (HML_MCU_MODEL == MCU_MODEL_STC89C510RDP) || \
+          (HML_MCU_MODEL == MCU_MODEL_STC89LE510RDP)
         #define ISP_ADDR_START 0xA000
-    #elif (_MCU_MODEL_ == _MCU_STC89C512RDP_) || \
-          (_MCU_MODEL_ == _MCU_STC89LE512RDP_)
+    #elif (HML_MCU_MODEL == MCU_MODEL_STC89C512RDP) || \
+          (HML_MCU_MODEL == MCU_MODEL_STC89LE512RDP)
         #define ISP_ADDR_START 0xC000
-    #elif (_MCU_MODEL_ == _MCU_STC89C514RDP_) || \
-          (_MCU_MODEL_ == _MCU_STC89LE514RDP_)
+    #elif (HML_MCU_MODEL == MCU_MODEL_STC89C514RDP) || \
+          (HML_MCU_MODEL == MCU_MODEL_STC89LE514RDP)
         #define ISP_ADDR_START 0xE000
     #endif
 #endif
