@@ -111,3 +111,4 @@
           (5)rename function WDT_clear as WDT_feed
           (6)add version.h for HML version information
           (7)rename enumeration INTR_priority as UTIL_interruptPriority and move it to util.h
+          (8)move stc89.h to inc/hw
