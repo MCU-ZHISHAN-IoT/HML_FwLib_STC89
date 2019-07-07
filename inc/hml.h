@@ -28,6 +28,7 @@
 #include "tim2.h"
 #include "uart.h"
 #include "util.h"
+#include "version.h"
 #include "wdt.h"
 
 #endif
