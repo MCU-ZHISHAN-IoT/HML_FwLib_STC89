@@ -19,7 +19,7 @@
 /*****************************************************************************/
 #include "stc89.h"
 /*****************************************************************************/
-#include "exti.h"
+#include "util.h"
 
 /*****************************************************************************
  *                           enumeration type                                *
@@ -64,11 +64,11 @@ typedef enum
  */
 typedef struct
 {
-    TIM_function  function;
-    Action        interruptState;
-    INTR_priority interruptPriority;
-    TIM_mode      mode;
-    unsigned int  value;
+    TIM_function           function;
+    Action                 interruptState;
+    UTIL_interruptPriority interruptPriority;
+    TIM_mode               mode;
+    unsigned int           value;
 } TIM_configTypeDef;
 
 /*****************************************************************************
@@ -83,6 +83,6 @@ void TIM_setFunction(PERIPH_TIM tim,TIM_function f);
 void TIM_setMode(PERIPH_TIM tim,TIM_mode m);
 void TIM_setValue(PERIPH_TIM tim,unsigned int val);
 void TIM_INT_cmd(PERIPH_TIM tim,Action a);
-void TIM_INT_setPriority(PERIPH_TIM tim,INTR_priority p);
+void TIM_INT_setPriority(PERIPH_TIM tim,UTIL_interruptPriority p);
 
 #endif

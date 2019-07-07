@@ -229,12 +229,12 @@ void TIM_INT_cmd(PERIPH_TIM tim,Action a)
  * \date        
  * \brief       configure interrupt priority class of target timer
  * \param[in]   tim: target timer module
- * \param[in]   p  : nterrupt priority class
+ * \param[in]   p  : interrupt priority class
  * \return      none
  * \ingroup     TIM
  * \remarks     not for timer2
 ******************************************************************************/
-void TIM_INT_setPriority(PERIPH_TIM tim,INTR_priority p)
+void TIM_INT_setPriority(PERIPH_TIM tim,UTIL_interruptPriority p)
 {
     switch(tim)
     {

@@ -33,7 +33,7 @@ void sys_init(void)
     uc.baudrate          = 9600;
     uc.baudGenerator     = PERIPH_TIM_2;
     uc.interruptState    = DISABLE;
-    uc.interruptPriority = INTR_priority_0;
+    uc.interruptPriority = UTIL_interruptPriority_0;
     uc.mode              = UART_mode_1;
     uc.multiBaudrate     = DISABLE;
     uc.receiveState      = ENABLE;

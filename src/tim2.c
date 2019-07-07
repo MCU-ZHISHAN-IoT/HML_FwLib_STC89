@@ -186,7 +186,7 @@ void TIM2_INT_cmd(Action a)
  * \ingroup     TIM2
  * \remarks     
 ******************************************************************************/
-void TIM2_INT_setPriority(INTR_priority p)
+void TIM2_INT_setPriority(UTIL_interruptPriority p)
 {
     PT2 = TESTB(p,1);
     CONFB(IPH,BIT_NUM_PT2H,TESTB(p,1));

@@ -29,13 +29,13 @@
 void sys_init(void)
 {
     TIM_configTypeDef tc;
-    
+
     tc.function          = TIM_function_tim;
     tc.interruptState    = ENABLE;
-    tc.interruptPriority = INTR_priority_0;
+    tc.interruptPriority = UTIL_interruptPriority_0;
     tc.mode              = TIM_mode_1;
     tc.value             = TIM_calculateValue(50000,TIM_mode_1);
-    
+
     TIM_config(PERIPH_TIM_0,&tc);
     TIM_cmd(PERIPH_TIM_0,ENABLE);
     enableAllInterrupts();
@@ -70,7 +70,7 @@ void main(void)
 void tim0_isr(void) __interrupt TF0_VECTOR
 {
     static u8 i = 0;
-    
+
     /* per 500ms */
     i++;
     if(i == 10)

@@ -16,7 +16,7 @@
  *                             header file                                   *
  *****************************************************************************/
 #include "stc89.h"
-#include "macro.h"
+#include "util.h"
 
 /*****************************************************************************
  *                           enumeration type                                *
@@ -42,17 +42,6 @@ typedef enum
     EXTI_mode_lowLevel = 0x0
 } EXTI_mode;
 
-/**
- *\brief: mark interrupt priority, lager number means higher priority
- */
-typedef enum
-{
-    INTR_priority_0 = 0x00,
-    INTR_priority_1 = 0x01,
-    INTR_priority_2 = 0x02,
-    INTR_priority_3 = 0x03,
-} INTR_priority;
-
 /*****************************************************************************
  *                           structure define                                *
  *****************************************************************************/
@@ -62,8 +51,8 @@ typedef enum
  */
 typedef struct
 {
-    EXTI_mode     mode;
-    INTR_priority priority;
+    EXTI_mode              mode;
+    UTIL_interruptPriority priority;
 } EXTI_configTypeDef;
 
 /*****************************************************************************
@@ -72,7 +61,7 @@ typedef struct
 void EXTI_cmd(PERIPH_EXTI exti,Action a);
 void EXTI_config(PERIPH_EXTI exti,EXTI_configTypeDef *ec);
 void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod);
-void EXTI_setPriority(PERIPH_EXTI exti,INTR_priority p);
+void EXTI_setPriority(PERIPH_EXTI exti,UTIL_interruptPriority p);
 
 #endif
 

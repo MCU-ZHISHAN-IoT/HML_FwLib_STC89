@@ -277,7 +277,7 @@ void UART_INT_cmd(Action a)
  * \ingroup     UART
  * \remarks     
 ******************************************************************************/
-void UART_INT_setPriority(INTR_priority p)
+void UART_INT_setPriority(UTIL_interruptPriority p)
 {
     PS = TESTB(p,0);
     CONFB(IPH,BIT_NUM_PSH,TESTB(p,1));

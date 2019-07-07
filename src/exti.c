@@ -83,7 +83,7 @@ void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod)
  * \ingroup     EXTI
  * \remarks     
 ******************************************************************************/
-void EXTI_setPriority(PERIPH_EXTI exti,INTR_priority p)
+void EXTI_setPriority(PERIPH_EXTI exti,UTIL_interruptPriority p)
 {
     switch(exti)
     {

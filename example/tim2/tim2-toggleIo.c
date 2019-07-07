@@ -32,7 +32,7 @@ void sys_init(void)
 
     tc.function          = TIM2_function_tim;
     tc.interruptState    = ENABLE;
-    tc.interruptPriority = INTR_priority_0;
+    tc.interruptPriority = UTIL_interruptPriority_0;
     tc.mode              = TIM2_mode_0;
     tc.value             = TIM2_calculateValue(50000);
 

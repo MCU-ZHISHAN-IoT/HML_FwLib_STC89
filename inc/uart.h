@@ -17,7 +17,8 @@
  *****************************************************************************/
 #include <stdint.h>
 /*****************************************************************************/
-#include "exti.h"
+#include "util.h"
+/*****************************************************************************/
 #include "tim.h"
 #include "tim2.h"
 
@@ -45,13 +46,13 @@ typedef enum
  */
 typedef struct
 {
-    uint32_t      baudrate;
-    PERIPH_TIM    baudGenerator;
-    Action        interruptState;
-    INTR_priority interruptPriority;
-    UART_mode     mode;
-    Action        multiBaudrate;
-    Action        receiveState;
+    uint32_t               baudrate;
+    PERIPH_TIM             baudGenerator;
+    Action                 interruptState;
+    UTIL_interruptPriority interruptPriority;
+    UART_mode              mode;
+    Action                 multiBaudrate;
+    Action                 receiveState;
 } UART_configTypeDef;
 
 /*****************************************************************************
@@ -68,6 +69,6 @@ void UART_sendString(char *str);
 void UART_setMode(UART_mode m);
 void UART_switchTim(PERIPH_TIM tim);
 void UART_INT_cmd(Action a);
-void UART_INT_setPriority(INTR_priority p);
+void UART_INT_setPriority(UTIL_interruptPriority p);
 
 #endif

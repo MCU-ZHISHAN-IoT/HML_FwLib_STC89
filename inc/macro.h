@@ -125,16 +125,8 @@ typedef enum
 /**
  *\brief: HML compile selection check
  */
-#if (defined __CONF_COMPILE_TIM) && (!defined __CONF_COMPILE_EXTI)
-    #error HML run-time check: error: TIM module need extern support, please enable macro __CONF_COMPILE_EXTI in conf.h (ERROR_CODE-0x04)
-#endif
-
-#if (defined __CONF_COMPILE_TIM2) && (!defined __CONF_COMPILE_EXTI)
-    #error HML run-time check: error: TIM2 module need extern support, please enable macro __CONF_COMPILE_EXTI in conf.h (ERROR_CODE-0x05)
-#endif
-
-#if (defined __CONF_COMPILE_UART) && ((!defined __CONF_COMPILE_EXTI) || (!defined __CONF_COMPILE_TIM) || (!defined __CONF_COMPILE_TIM2))
-    #error HML run-time check: error UART module need extern support, please enable macro __CONF_COMPILE_EXTI, __CONF_COMPILE_TIM  or __CONF_COMPILE_TIM2 at the same time in conf.h (ERROR_CODE-0x06)
+#if (defined __CONF_COMPILE_UART) && ((!defined __CONF_COMPILE_TIM) || (!defined __CONF_COMPILE_TIM2))
+    #error HML run-time check: error UART module need extern support, please enable macro __CONF_COMPILE_EXTI, __CONF_COMPILE_TIM  or __CONF_COMPILE_TIM2 at the same time in conf.h (ERROR_CODE-0x04)
 #endif
 
 /**
@@ -142,11 +134,11 @@ typedef enum
  */
 #if (__SDCC_VERSION_MAJOR == 3)
     #if (__SDCC_VERSION_MINOR < 6)
-        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x07)
+        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x05)
     #endif
 #else
     #if (__SDCC_VERSION_MAJOR < 3)
-        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x07)
+        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x05)
     #endif
 #endif
 

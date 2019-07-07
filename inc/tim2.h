@@ -18,7 +18,7 @@
 /*****************************************************************************/
 #include "stc89.h"
 /*****************************************************************************/
-#include "exti.h"
+#include "util.h"
 
 /*****************************************************************************
  *                                macro                                      *
@@ -58,11 +58,11 @@ typedef enum
  */
 typedef struct
 {
-    TIM2_function  function;
-    Action         interruptState;
-    INTR_priority  interruptPriority;
-    TIM2_mode      mode;
-    unsigned int   value;
+    TIM2_function          function;
+    Action                 interruptState;
+    UTIL_interruptPriority interruptPriority;
+    TIM2_mode              mode;
+    unsigned int           value;      /* value of counter register */
 } TIM2_configTypeDef;
 
 /*****************************************************************************
@@ -78,7 +78,7 @@ void TIM2_setFunction(TIM2_function f);
 void TIM2_setMode(TIM2_mode m);
 void TIM2_setValue(unsigned int val);
 void TIM2_INT_cmd(Action a);
-void TIM2_INT_setPriority(INTR_priority p);
+void TIM2_INT_setPriority(UTIL_interruptPriority p);
 void TIM2_INT_T2EX_cmd(Action a);
 
 #endif

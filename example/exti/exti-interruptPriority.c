@@ -63,7 +63,7 @@ void sys_init(void)
 
     tc.function          = TIM_function_tim;
     tc.interruptState    = ENABLE;
-    tc.interruptPriority = INTR_priority_0;
+    tc.interruptPriority = UTIL_interruptPriority_0;
     tc.mode              = TIM_mode_1;
     tc.value             = TIM_calculateValue(50000,TIM_mode_1);
 
@@ -71,11 +71,11 @@ void sys_init(void)
     TIM_cmd(PERIPH_TIM_0,ENABLE);
 
     ec.mode     = EXTI_mode_fallEdge;
-    ec.priority = INTR_priority_1;
+    ec.priority = UTIL_interruptPriority_1;
     EXTI_config(PERIPH_EXTI_0,&ec);
     EXTI_cmd(PERIPH_EXTI_0,ENABLE);
 
-    ec.priority = INTR_priority_2;
+    ec.priority = UTIL_interruptPriority_2;
     EXTI_config(PERIPH_EXTI_1,&ec);
     EXTI_cmd(PERIPH_EXTI_1,ENABLE);
 
