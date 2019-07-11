@@ -118,7 +118,7 @@ void ISP_setAddress(unsigned int addr)
 /** 
  * \author      Jiabin Hsu
  * \date        
- * \brief       send command to ISP module by write ISP_CMD register
+ * \brief       send command to ISP module by writing ISP_CMD register
  * \param[in]   cmd: ISP command type
  * \return      none
  * \ingroup     ISP

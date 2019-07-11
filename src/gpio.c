@@ -17,7 +17,7 @@
 /** 
  * \author      Weilun Fong
  * \date        
- * \brief       configure state of specified target GPIO bit as SET pr RESET
+ * \brief       configure state of target GPIO bit as SET or RESET
  * \param[in]   gpio: target GPIO port
  * \param[in]   pin : target GPIO pin
  * \param[in]   f   : expected state
@@ -48,7 +48,7 @@ void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f)
  * \ingroup     GPIO
  * \remarks     
 ******************************************************************************/
-void GPIO_configPort(PERIPH_GPIO gpio,byte val)
+void GPIO_configPortValue(PERIPH_GPIO gpio,byte val)
 {
     switch(gpio)
     {
@@ -160,7 +160,7 @@ void GPIO_setBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
 /** 
  * \author      Weilun Fong
  * \date        
- * \brief       toggle state pf target GPIO pin
+ * \brief       toggle state of target GPIO pin
  * \param[in]   gpio: target GPIO port
  * \param[in]   pin : target GPIO pin
  * \return      none
