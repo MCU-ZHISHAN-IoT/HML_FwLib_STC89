@@ -18,8 +18,8 @@
 /**
  *\brief: version code
  */
-#define HML_VERSION_CODE 1.1.0
-#define HML_VERSION_NAME HML_FwLib_STC89
+#define HML_VERSION_CODE "1.1.0"
+#define HML_VERSION_NAME "HML_FwLib_STC89"
 
 /**
  *\brief: secondary version code
