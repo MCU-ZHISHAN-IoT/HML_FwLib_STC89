@@ -119,14 +119,14 @@ typedef enum
         #error HML run-time check: error: unknow or unsupported MCU model!(ERROR_CODE-0x02)
     #endif
 #else
-    #error HML run-time check: error: no specified MCU model!(ERROR_CODE-0x03)
+    #error HML run-time check: error: unspecify MCU model!(ERROR_CODE-0x03)
 #endif
 
 /**
  *\brief: HML compile selection check
  */
 #if (defined __CONF_COMPILE_UART) && ((!defined __CONF_COMPILE_TIM) || (!defined __CONF_COMPILE_TIM2))
-    #error HML run-time check: error UART module need extern support, please enable macro __CONF_COMPILE_EXTI, __CONF_COMPILE_TIM  or __CONF_COMPILE_TIM2 at the same time in conf.h (ERROR_CODE-0x04)
+    #error HML run-time check: error: UART module needs extern support, please enable macro __CONF_COMPILE_EXTI, __CONF_COMPILE_TIM and __CONF_COMPILE_TIM2 at the same time in conf.h (ERROR_CODE-0x04)
 #endif
 
 /**
