@@ -80,7 +80,7 @@ void sys_init(void)
     EXTI_cmd(PERIPH_EXTI_1,ENABLE);
 
     enableAllInterrupts();
-    GPIO_configPort(PERIPH_LED,0xFF);
+    GPIO_configPortValue(PERIPH_LED,0xFF);
 }
 
 /*****************************************************************************/
@@ -143,7 +143,7 @@ void exti0_isr(void) __interrupt IE0_VECTOR
     /* make sure the button pressed by P32(INT0) */
     if(GPIO_getBitValue(PERIPH_KEY,PERIPH_KEY_EXTI0) == RESET)
     {
-        GPIO_configPort(PERIPH_LED,0xFF);
+        GPIO_configPortValue(PERIPH_LED,0xFF);
         while(i--)
         {
             GPIO_toggleBitValue(PERIPH_LED,PERIPH_LED_EXTI0);
@@ -152,7 +152,7 @@ void exti0_isr(void) __interrupt IE0_VECTOR
     }
 
     /* recover */
-    GPIO_configPort(PERIPH_LED,0xFF);
+    GPIO_configPortValue(PERIPH_LED,0xFF);
     EXTI_cmd(PERIPH_EXTI_0,ENABLE);
 }
 
@@ -177,7 +177,7 @@ void exti1_isr(void) __interrupt IE1_VECTOR
     /* make sure the button pressed by P33(INT1) */
     if(GPIO_getBitValue(PERIPH_KEY,PERIPH_KEY_EXTI1) == RESET)
     {
-        GPIO_configPort(PERIPH_LED,0xFF);
+        GPIO_configPortValue(PERIPH_LED,0xFF);
         while(j--)
         {
             GPIO_toggleBitValue(PERIPH_LED,PERIPH_LED_EXTI1);
@@ -186,7 +186,7 @@ void exti1_isr(void) __interrupt IE1_VECTOR
     }
 
     /* recover */
-    GPIO_configPort(PERIPH_LED,0xFF);
+    GPIO_configPortValue(PERIPH_LED,0xFF);
     EXTI_cmd(PERIPH_EXTI_1,ENABLE);
 }
 

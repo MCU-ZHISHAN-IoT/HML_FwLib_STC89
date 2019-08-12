@@ -40,7 +40,7 @@ void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f)
 /*****************************************************************************/
 /** 
  * \author      Weilun Fong
- * \date        
+ * \date        2019/08/12
  * \brief       configure value specified GPIO port
  * \param[in]   gpio: target GPIO port
  * \param[in]   val : expected value(0x00~0xFF)

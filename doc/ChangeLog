@@ -117,3 +117,4 @@
  Alias   :
  Date    :
  Note    :(1)rename all examples
+          (2)fix bugs in examples because of changes from HML interface(GPIO_configBitValue)
