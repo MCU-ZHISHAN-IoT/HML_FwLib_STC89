@@ -39,4 +39,3 @@
 #define __CONF_COMPILE_WDT
 
 #endif
-
