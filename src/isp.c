@@ -4,11 +4,13 @@
  * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
  * \brief       operations for ISP module
  * \note        
- * \version     v0.1
+ * \version     v1.1
  * \ingroup     ISP
 ******************************************************************************/
 
 #include "isp.h"
+
+#ifdef HAVE_ISP
 
 #ifdef __CONF_COMPILE_ISP
 
@@ -175,5 +177,7 @@ bool ISP_writeByte(unsigned int addr,byte dat)
         return true;
     }
 }
+
+#endif
 
 #endif

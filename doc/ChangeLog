@@ -118,3 +118,9 @@
  Date    :
  Note    :(1)rename all examples
           (2)fix bugs in examples because of changes from HML interface(GPIO_configBitValue)
+          (3)support new MCU model
+            - STC89C53RC
+            - STC89LE53RC
+            - STC89C516RD+
+            - STC89LE516RD+
+          (4)optimize HML compile selection check and add macro HAVE_ISP

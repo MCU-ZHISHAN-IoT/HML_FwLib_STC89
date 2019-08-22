@@ -56,19 +56,23 @@ typedef enum
  */
 #define MCU_MODEL_GENERIC         0x01
 #define MCU_MODEL_STC89C51RC      0x02
-#define MCU_MODEL_STC89LE51RC     0x02
-#define MCU_MODEL_STC89C52RC      0x03
-#define MCU_MODEL_STC89LE52RC     0x03
-#define MCU_MODEL_STC89C54RDP     0x04
-#define MCU_MODEL_STC89LE54RDP    0x04
-#define MCU_MODEL_STC89C58RDP     0x05
-#define MCU_MODEL_STC89LE58RDP    0x05
-#define MCU_MODEL_STC89C510RDP    0x06
-#define MCU_MODEL_STC89LE510RDP   0x06
-#define MCU_MODEL_STC89C512RDP    0x07
-#define MCU_MODEL_STC89LE512RDP   0x07
-#define MCU_MODEL_STC89C514RDP    0x08
-#define MCU_MODEL_STC89LE514RDP   0x08
+#define MCU_MODEL_STC89LE51RC     0x03
+#define MCU_MODEL_STC89C52RC      0x04
+#define MCU_MODEL_STC89LE52RC     0x05
+#define MCU_MODEL_STC89C53RC      0x06
+#define MCU_MODEL_STC89LE53RC     0x07
+#define MCU_MODEL_STC89C54RDP     0x08
+#define MCU_MODEL_STC89LE54RDP    0x09
+#define MCU_MODEL_STC89C58RDP     0x0A
+#define MCU_MODEL_STC89LE58RDP    0x0B
+#define MCU_MODEL_STC89C510RDP    0x0C
+#define MCU_MODEL_STC89LE510RDP   0x0D
+#define MCU_MODEL_STC89C512RDP    0x0E
+#define MCU_MODEL_STC89LE512RDP   0x0F
+#define MCU_MODEL_STC89C514RDP    0x10
+#define MCU_MODEL_STC89LE514RDP   0x11
+#define MCU_MODEL_STC89C516RDP    0x12
+#define MCU_MODEL_STC89LE516RDP   0x13
 
 /**
  *\brief: check macro for MCU model
@@ -76,6 +80,31 @@ typedef enum
 #define IS_STC89_MCU_MODEL(model)           \
     (                                       \
       (model == MCU_MODEL_GENERIC)       || \
+      (model == MCU_MODEL_STC89C51RC)    || \
+      (model == MCU_MODEL_STC89LE51RC)   || \
+      (model == MCU_MODEL_STC89C52RC)    || \
+      (model == MCU_MODEL_STC89LE52RC)   || \
+      (model == MCU_MODEL_STC89C53RC)    || \
+      (model == MCU_MODEL_STC89LE53RC)   || \
+      (model == MCU_MODEL_STC89C54RDP)   || \
+      (model == MCU_MODEL_STC89LE54RDP)  || \
+      (model == MCU_MODEL_STC89C58RDP)   || \
+      (model == MCU_MODEL_STC89LE58RDP)  || \
+      (model == MCU_MODEL_STC89C510RDP)  || \
+      (model == MCU_MODEL_STC89LE510RDP) || \
+      (model == MCU_MODEL_STC89C512RDP)  || \
+      (model == MCU_MODEL_STC89LE512RDP) || \
+      (model == MCU_MODEL_STC89C514RDP)  || \
+      (model == MCU_MODEL_STC89LE514RDP) || \
+      (model == MCU_MODEL_STC89C516RDP)  || \
+      (model == MCU_MODEL_STC89LE516RDP)    \
+    )
+
+/**
+ *\brief: have macro for ISP function
+ */
+#define IS_ADC_MODEL(model)           \
+    (                                       \
       (model == MCU_MODEL_STC89C51RC)    || \
       (model == MCU_MODEL_STC89LE51RC)   || \
       (model == MCU_MODEL_STC89C52RC)    || \
@@ -122,11 +151,21 @@ typedef enum
     #error HML run-time check: error: unspecify MCU model!(ERROR_CODE-0x03)
 #endif
 
+#if IS_ADC_MODEL(HML_MCU_MODEL)
+    #define HAVE_ISP
+#endif
+
 /**
  *\brief: HML compile selection check
  */
+#ifndef HAVE_ISP
+    #ifdef __CONF_COMPILE_ISP
+        #error HML run-time check: error: specified MCU model does not suppport ISP function. (ERROR_CODE-0x04)
+    #endif
+#endif
+
 #if (defined __CONF_COMPILE_UART) && ((!defined __CONF_COMPILE_TIM) || (!defined __CONF_COMPILE_TIM2))
-    #error HML run-time check: error: UART module needs extern support, please enable macro __CONF_COMPILE_EXTI, __CONF_COMPILE_TIM and __CONF_COMPILE_TIM2 at the same time in conf.h (ERROR_CODE-0x04)
+    #error HML run-time check: error: UART module needs extern support, please enable macro __CONF_COMPILE_EXTI, __CONF_COMPILE_TIM and __CONF_COMPILE_TIM2 at the same time in conf.h (ERROR_CODE-0x05)
 #endif
 
 /**
@@ -134,11 +173,11 @@ typedef enum
  */
 #if (__SDCC_VERSION_MAJOR == 3)
     #if (__SDCC_VERSION_MINOR < 6)
-        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x05)
+        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x06)
     #endif
 #else
     #if (__SDCC_VERSION_MAJOR < 3)
-        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x05)
+        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x06)
     #endif
 #endif
 
