@@ -103,7 +103,7 @@ typedef enum
 /**
  *\brief: have macro for ISP function
  */
-#define IS_ADC_MODEL(model)           \
+#define IS_ISP_MODEL(model)                 \
     (                                       \
       (model == MCU_MODEL_STC89C51RC)    || \
       (model == MCU_MODEL_STC89LE51RC)   || \
@@ -151,7 +151,7 @@ typedef enum
     #error HML run-time check: error: unspecify MCU model!(ERROR_CODE-0x03)
 #endif
 
-#if IS_ADC_MODEL(HML_MCU_MODEL)
+#if IS_ISP_MODEL(HML_MCU_MODEL)
     #define HAVE_ISP
 #endif
 
