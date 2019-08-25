@@ -1,6 +1,6 @@
 /*****************************************************************************/
 /** 
- * \file       wdt-feedDog.c
+ * \file       wdt_feedDog.c
  * \author     Jiabin Hsu | zsiothsu@zhishan-iot.tk
  * \date       
  * \brief      a example of watchdog module

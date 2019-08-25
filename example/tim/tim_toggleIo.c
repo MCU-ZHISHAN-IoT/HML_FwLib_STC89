@@ -1,6 +1,6 @@
 /*****************************************************************************/
 /** 
- * \file       tim-toggleIo.c
+ * \file       tim_toggleIo.c
  * \author     Jiabin Hsu | zhongliguo@zhishan-iot.tk
  * \date       
  * \brief      a example which shows how to toggle state of specified pin periodic

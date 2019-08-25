@@ -1,6 +1,6 @@
 /*****************************************************************************/
 /** 
- * \file       exti-interruptPriority.c
+ * \file       exti_interruptPriority.c
  * \author     Amy Chung | zhongliguo@zhishan-iot.tk
  * \date       
  * \brief      example for interrupt priority

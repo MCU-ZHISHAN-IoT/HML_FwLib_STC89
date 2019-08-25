@@ -1,6 +1,6 @@
 /*****************************************************************************/
 /** 
- * \file       rst-softwareReset.c
+ * \file       rst_softwareReset.c
  * \author     Weilun Fong | wlf@zhishan-iot.tk
  * \date       
  * \brief      a example for software reset

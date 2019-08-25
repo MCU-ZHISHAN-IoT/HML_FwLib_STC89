@@ -1,6 +1,6 @@
 /*****************************************************************************/
 /** 
- * \file       isp-access.c
+ * \file       isp_access.c
  * \author     Amy Chung | zhongliguo@zhishan-iot.tk
  * \date       
  * \brief      show how to use HML_FwLib_STC89 to execute access operation on ISP

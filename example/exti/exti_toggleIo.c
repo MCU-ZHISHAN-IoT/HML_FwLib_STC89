@@ -1,6 +1,6 @@
 /*****************************************************************************/
 /** 
- * \file       exti-toggleIo.c
+ * \file       exti_toggleIo.c
  * \author     Weilun Fong | wlf@zhishan-iot.tk
  * \date       
  * \brief      example for interrupt priority
