@@ -56,11 +56,11 @@ typedef enum
  */
 typedef struct
 {
-    TIM2_function          function;
-    Action                 interruptState;
-    UTIL_interruptPriority interruptPriority;
-    TIM2_mode              mode;
-    unsigned int           value;      /* value of counter register */
+    TIM2_function            function;
+    Action                   interruptState;
+    UTIL_interruptPriority   interruptPriority;
+    TIM2_mode                mode;
+    unsigned int             value;    /* value of counter register */
 } TIM2_configTypeDef;
 
 /*****************************************************************************

@@ -3,7 +3,8 @@
  * \file        mem.c
  * \author      Weillun Fong | wlf@zhishan-iot.tk
  * \brief       operations for memory zone of MCU
- * \note        allow you to directly access the different memory areas of STC89 series MCU
+ * \note        allow you to directly access the different memory areas of STC89
+ *              series MCU
  * \version     v1.1
  * \ingroup     MEM
 ******************************************************************************/

@@ -14,7 +14,7 @@
     User enable macro __CONF_COMPILE_ISP, but current MCU model doesn't support ISP function.
 
  - 0x05
-    User need to enable compile macro__CONF_COMPILE_TIM, __CONF_COMPILE_TIM2  in conf.h at the same time, it will make sure source code of UART part can be compiled successfully.
+    User need to enable compile macro__CONF_COMPILE_TIM and __CONF_COMPILE_TIM2  in conf.h at the same time, it will make sure source code of UART part can be compiled successfully.
 
  - 0x06
     User need update their own SDCC tool-chain, because HML_FwLib_STC89 requires v3.6.0 or later version.

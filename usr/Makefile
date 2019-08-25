@@ -58,7 +58,7 @@ TARGET_FWLIB       := $(DIR_OUTPUT)/$(FILE_HML_FWLIB)
 ###### compile parameter
 AFLAGS_HML         := -rcs
 CFLAGS_HML         := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 --code-loc 0x0000 --code-size 0x1FFF --data-loc 0x00
-CFLAGS             := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 -L$(DIR_OUTPUT) -lhml_8051 --code-loc 0x0000 --code-size 0x1FFF --data-loc 0x00
+CFLAGS             := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 -L$(DIR_OUTPUT) -lhml_stc89 --code-loc 0x0000 --code-size 0x1FFF --data-loc 0x00
 
 ########################################
 ##### [2]VERSIION INFORMATION

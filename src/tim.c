@@ -20,7 +20,8 @@
  * \brief       calculate initial value for THx/TLx register
  * \param[in]   time: expected timing cycle(unit: us)
  * \param[in]   m   : work mode of timer
- * \return      initial value of timer counter register(if return 0x0000, it means that the time has over the limit)
+ * \return      initial value of timer counter register(if return 0x0000, it 
+ *              means that the time has over the limit)
  * \ingroup     TIM
  * \remarks     
 ******************************************************************************/

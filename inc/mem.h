@@ -3,7 +3,8 @@
  * \file        mem.h
  * \author      Weillun Fong | wlf@zhishan-iot.tk
  * \brief       operations for memory zone of MCU
- * \note        allow you to directly access the different memory areas of STC89 series MCU
+ * \note        allow you to directly access the different memory areas of STC89
+ *              series MCU
  * \version     v1.1
  * \ingroup     MEM
 ******************************************************************************/
@@ -22,7 +23,7 @@
  *****************************************************************************/
 
 /**
- *\brief: [absacc]: for direct access
+ *\brief: for access target zone directly
  */
 #define __CBYTE ((unsigned char volatile __code  *) 0)
 #define __DBYTE ((unsigned char volatile __data  *) 0)

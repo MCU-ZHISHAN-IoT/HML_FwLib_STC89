@@ -199,7 +199,7 @@ void UART_sendByte(byte dat)
  * \author      Weilun Fong
  * \date        
  * \brief       send string via UART
- * \param[in]   str: pointer to targer string
+ * \param[in]   str: pointer to target string
  * \return      none
  * \ingroup     UART
  * \remarks     the string must be end with '\0'
