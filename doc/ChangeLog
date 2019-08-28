@@ -1,126 +1,126 @@
-#FwLib       :HML_FwLib_STC89
-#Description :ChangeLog of HML_FwLib_STC89
-#E-mail      :mcu(at)zhishant-iot.tk
-#Organization:ZHISHAN-IoT(https://zhishan-iot.tk)
-#Page        :https://hw.zhishant-iot.tk/page/hml/detail/fwlib_stc89.html
+#FwLib       : HML_FwLib_STC89
+#Description : ChangeLog of HML_FwLib_STC89
+#E-mail      : mcu(at)zhishant-iot.tk
+#Organization: ZHISHAN-IoT(https://zhishan-iot.tk)
+#Page        : https://hw.zhishant-iot.tk/page/hml/detail/fwlib_stc89.html
 
->Version :v0.0.0(beta)
+>Version : v0.0.0(beta)
  Alias   :
- Date    :2018-03-21
- Note    :The first version of HML_FwLib_STC89!
+ Date    : 2018-03-21
+ Note    : The first version of HML_FwLib_STC89!
  
->Version :v0.0.0
+>Version : v0.0.0
  Alias   :
- Date    :2018-03-28
- Note    :The first stable version of HML_FwLib_STC89!
+ Date    : 2018-03-28
+ Note    : The first stable version of HML_FwLib_STC89!
  
->Version :v0.0.1
- Alias   :V0R1
- Date    :2018-05-28
- Note    :(1)fix a bug about code order in <uart.c>
-          (2)fix a bug of function TIM_setValue in <tim.c>
-          (3)rewrite <mem.h>, fix a fatal bug!
-          (4)rewrite /usr/Makefile
-          (5)correct spelling mistakes in <uart.c>
-          (6)fix fatal bug about interrupt priority
+>Version : v0.0.1
+ Alias   : V0R1
+ Date    : 2018-05-28
+ Note    : (1)fix a bug about code order in <uart.c>
+           (2)fix a bug of function TIM_setValue in <tim.c>
+           (3)rewrite <mem.h>, fix a fatal bug!
+           (4)rewrite /usr/Makefile
+           (5)correct spelling mistakes in <uart.c>
+           (6)fix fatal bug about interrupt priority
 
->Version :v1.0.0
+>Version : v1.0.0
  Alias   :
- Date    :2018-09-17
- Note    :(1)rename [user] directory as [usr]
-          (2)update /usr/Makefile
-          (3)rename EXTI_MOD as EXTI_mode in <exti.h>, and modify name of related enum value
-          (4)rename INTR_PIOR as INTR_priority in <exti.h>, and modify name of related enum value
-          (5)rename UART_MODE as UART_mode in <uart.h>, and modify name of related enum value
-          (6)rename ISP_CMMD as ISP_command in <isp.h>, and modify name of related enum value
-          (7)rename ISP_beginAddress as ISP_ADDR_START in <isp.h>
-          (8)rename ISP_endAddress as ISP_ADDR_END <isp.h>
-          (9)rename function MEM_cmd_Ale as MEM_cmd_ale in <mem.h>
-          (10)rename WDT_Prescale as WDT_prescale in <wdt.h>, and modify name of related enum value
-          (11)fix fatal bug in <uart.c>, this bug can cause user can't use TIM2 as baud rate generator
-          (12)rename [sample] directory as [example]
-          (13)the conditional compilation mechanism is introduced into the source code(select expected compile part <macro.h>)
-          (14)add new data type "byte" in <macro.h>
-          (15)modify data type of member variable of "baudrate" in struct UART_configTypeDef(unsigned int -> uint32_t)
+ Date    : 2018-09-17
+ Note    : (1)rename [user] directory as [usr]
+           (2)update /usr/Makefile
+           (3)rename EXTI_MOD as EXTI_mode in <exti.h>, and modify name of related enum value
+           (4)rename INTR_PIOR as INTR_priority in <exti.h>, and modify name of related enum value
+           (5)rename UART_MODE as UART_mode in <uart.h>, and modify name of related enum value
+           (6)rename ISP_CMMD as ISP_command in <isp.h>, and modify name of related enum value
+           (7)rename ISP_beginAddress as ISP_ADDR_START in <isp.h>
+           (8)rename ISP_endAddress as ISP_ADDR_END <isp.h>
+           (9)rename function MEM_cmd_Ale as MEM_cmd_ale in <mem.h>
+           (10)rename WDT_Prescale as WDT_prescale in <wdt.h>, and modify name of related enum value
+           (11)fix fatal bug in <uart.c>, this bug can cause user can't use TIM2 as baud rate generator
+           (12)rename [sample] directory as [example]
+           (13)the conditional compilation mechanism is introduced into the source code(select expected compile part <macro.h>)
+           (14)add new data type "byte" in <macro.h>
+           (15)modify data type of member variable of "baudrate" in struct UART_configTypeDef(unsigned int -> uint32_t)
 
->Version :v1.0.1
- Alias   :V1R1
- Date    :2018-10-08
- Note    :(1)rename function void ISP_writeByte(unsigned int addr,unsigned char dat) as void ISP_writeByte(unsigned int addr,byte dat) in isp.h
-          (2)rename function unsigned int TIM2_calculateValue(unsigned int time) as unsigned int TIM2_calculateValue(unsigned int t) in tim2.h
-          (3)rename tim, member of UART_configTypeDef, as baudGenerator in uart.h
-          (4)modify function void UART_sendByte(unsigned char dat) as void UART_sendByte(byte dat) in uart.h
-          (5)rename function unsigned int UART_getTimerInitValue(uint32_t baud,PERIPH_TIM tim) as unsigned int unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim) in uart.h
-          (6)modify function void GPIO_configPortValue(PERIPH_GPIO gpio,unsigned char val) as void GPIO_configPortValue(PERIPH_GPIO gpio,byte val) in gpio.h
+>Version : v1.0.1
+ Alias   : V1R1
+ Date    : 2018-10-08
+ Note    : (1)rename function void ISP_writeByte(unsigned int addr,unsigned char dat) as void ISP_writeByte(unsigned int addr,byte dat) in isp.h
+           (2)rename function unsigned int TIM2_calculateValue(unsigned int time) as unsigned int TIM2_calculateValue(unsigned int t) in tim2.h
+           (3)rename tim, member of UART_configTypeDef, as baudGenerator in uart.h
+           (4)modify function void UART_sendByte(unsigned char dat) as void UART_sendByte(byte dat) in uart.h
+           (5)rename function unsigned int UART_getTimerInitValue(uint32_t baud,PERIPH_TIM tim) as unsigned int unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim) in uart.h
+           (6)modify function void GPIO_configPortValue(PERIPH_GPIO gpio,unsigned char val) as void GPIO_configPortValue(PERIPH_GPIO gpio,byte val) in gpio.h
 
->Version :v1.0.2
+>Version : v1.0.2
  Alias   :
- Date    :2018-11-05
- Note    :(1)rename macro MCU_MODEL as _MCU_MODEL_ in macro.h
-          (2)rename macro __PDATA as __PBYTE in mem.h
-          (3)rename file doc/license.txt as LICENSE
-          (4)improve header information of example source files
-          (5)add .gitkeep file into obj directory, because Git doesn't permit user committing a empty directory.
-          (6)add interrupt vector for extern interrupt 2(EXTI-2) and extern interrupt 3(EXTI-3) in stc89.h
+ Date    : 2018-11-05
+ Note    : (1)rename macro MCU_MODEL as _MCU_MODEL_ in macro.h
+           (2)rename macro __PDATA as __PBYTE in mem.h
+           (3)rename file doc/license.txt as LICENSE
+           (4)improve header information of example source files
+           (5)add .gitkeep file into obj directory, because Git doesn't permit user committing a empty directory.
+           (6)add interrupt vector for extern interrupt 2(EXTI-2) and extern interrupt 3(EXTI-3) in stc89.h
 
->Version :v1.0.3
- Alias   :V1R2
- Date    :2019-02-04
- Note    :(1)fix bug of function GPIO_getBitValue
-          (2)optimize note of source code file
-          (3)update Makefile to v0.1.2
-          (4)modify errormap.txt
-          (5)fix bug of example/exti/exti-toggleIo.c
-          (6)optimize function EXTI_setPriority
-          (7)optimize function RST_reset
-          (8)fix bug of function UART_getBaudGeneratorInitValue, optimize function of UART_switchTim
-          (9)fix bug of function ISP_writeByte
-          (10)optimize function ISP_eraseByte
-          (11)rename member of enumeration type TIM_function, TIM2_function and RST_bootarea
-          (12)fix fatal bug in function TIM_INT_setPriority
+>Version : v1.0.3
+ Alias   : V1R2
+ Date    : 2019-02-04
+ Note    : (1)fix bug of function GPIO_getBitValue
+           (2)optimize note of source code file
+           (3)update Makefile to v0.1.2
+           (4)modify errormap.txt
+           (5)fix bug of example/exti/exti-toggleIo.c
+           (6)optimize function EXTI_setPriority
+           (7)optimize function RST_reset
+           (8)fix bug of function UART_getBaudGeneratorInitValue, optimize function of UART_switchTim
+           (9)fix bug of function ISP_writeByte
+           (10)optimize function ISP_eraseByte
+           (11)rename member of enumeration type TIM_function, TIM2_function and RST_bootarea
+           (12)fix fatal bug in function TIM_INT_setPriority
 
->Version :v1.0.4
+>Version : v1.0.4
  Alias   :
- Date    :2019-03-03
- Note    :(1)fix header file include bug in util.c
-          (2)optimize maxTick into macro definition TIM2_MAXTICK in tim2.h
-          (3)fix bug of function UART_INT_setPriority in uart.c
-          (4)provide bit operation function
-          (5)add new example exti-interruptPriority.c
+ Date    : 2019-03-03
+ Note    : (1)fix header file include bug in util.c
+           (2)optimize maxTick into macro definition TIM2_MAXTICK in tim2.h
+           (3)fix bug of function UART_INT_setPriority in uart.c
+           (4)provide bit operation function
+           (5)add new example exti-interruptPriority.c
 
->Version :v1.0.5
+>Version : v1.0.5
  Alias   :
- Date    :2019-04-09
- Note    :(1)adjust coding style of example files
-          (2)optimize bit operation function
-          (3)rename log.txt as ChangeLog
-          (4)add AUTHORS file
-          (5)fix bug about CONFB in bit.h
+ Date    : 2019-04-09
+ Note    : (1)adjust coding style of example files
+           (2)optimize bit operation function
+           (3)rename log.txt as ChangeLog
+           (4)add AUTHORS file
+           (5)fix bug about CONFB in bit.h
 
->Version :v1.1.0
+>Version : v1.1.0
  Alias   :
- Date    :2019-08-03
- Note    :(1)update example file of ISP
-          (2)delete abolished header file intrasm.h
-          (3)move file LICENSE to root path of project
-          (4)update Makefile
-            - update Makefile to v0.2.1: refactor all code, optimize effect of print; improve speed of clean operation; fix problem that user can't set job server during execute rebuild operation;  support incremental compilation; support compiling custom source file;
-            - update Makefile to v0.2.2: fix bug of rebuild function
-            - update Makefile to v0.2.3: fix fatal bug of custom source file
-            - update Makefile to v0.2.4: fix fatal bug about build error when pass a absolute path  or relative path
-          (5)rename function WDT_clear as WDT_feed
-          (6)add version.h for HML version information
-          (7)rename enumeration INTR_priority as UTIL_interruptPriority and move it to util.h
-          (8)move stc89.h to inc/hw
+ Date    : 2019-08-03
+ Note    : (1)update example file of ISP
+           (2)delete abolished header file intrasm.h
+           (3)move file LICENSE to root path of project
+           (4)update Makefile
+             - update Makefile to v0.2.1: refactor all code, optimize effect of print; improve speed of clean operation; fix problem that user can't set job server during execute rebuild operation;  support incremental compilation; support compiling custom source file;
+             - update Makefile to v0.2.2: fix bug of rebuild function
+             - update Makefile to v0.2.3: fix fatal bug of custom source file
+             - update Makefile to v0.2.4: fix fatal bug about build error when pass a absolute path  or relative path
+           (5)rename function WDT_clear as WDT_feed
+           (6)add version.h for HML version information
+           (7)rename enumeration INTR_priority as UTIL_interruptPriority and move it to util.h
+           (8)move stc89.h to inc/hw
 
->Version :v1.1.1
+>Version : v1.1.1
  Alias   :
- Date    :
- Note    :(1)rename all examples
-          (2)fix bugs in examples because of changes from HML interface(GPIO_configBitValue)
-          (3)support new MCU model
-            - STC89C53RC
-            - STC89LE53RC
-            - STC89C516RD+
-            - STC89LE516RD+
-          (4)optimize HML compile selection check and add macro HAVE_ISP
+ Date    : 2019-08-28
+ Note    : (1)rename all examples
+           (2)fix bugs in examples because of changes from HML interface(GPIO_configBitValue)
+           (3)support new MCU model
+             - STC89C53RC
+             - STC89LE53RC
+             - STC89C516RD+
+             - STC89LE516RD+
+           (4)optimize HML compile selection check and add macro HAVE_ISP
