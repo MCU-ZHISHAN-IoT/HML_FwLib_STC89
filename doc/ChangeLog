@@ -124,3 +124,8 @@
              - STC89C516RD+
              - STC89LE516RD+
            (4)optimize HML compile selection check and add macro HAVE_ISP
+
+>Version :
+ Alias   :
+ Date    :
+ Note    : (1)add warning information output when meet redundant source files under conditional compilation

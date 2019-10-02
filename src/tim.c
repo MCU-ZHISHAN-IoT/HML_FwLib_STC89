@@ -253,4 +253,6 @@ void TIM_INT_setPriority(PERIPH_TIM tim,UTIL_interruptPriority p)
     }
 }
 
+#else
+    #warning Nothing to be done... User should remove .c file which is disabled by compile control macro from current directory.
 #endif

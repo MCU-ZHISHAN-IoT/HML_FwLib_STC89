@@ -180,4 +180,6 @@ void GPIO_toggleBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
     }
 }
 
+#else
+    #warning Nothing to be done... User should remove .c file which is disabled by compile control macro from current directory.
 #endif

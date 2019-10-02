@@ -283,4 +283,6 @@ void UART_INT_setPriority(UTIL_interruptPriority p)
     CONFB(IPH,BIT_NUM_PSH,TESTB(p,1));
 }
 
+#else
+    #warning Nothing to be done... User should remove .c file which is disabled by compile control macro from current directory.
 #endif

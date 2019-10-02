@@ -25,7 +25,7 @@
 ******************************************************************************/
 unsigned int TIM2_calculateValue(unsigned int t)
 {
-    if((t*12)/(MCU_FRE_CLK/1000000) >= TIM2_MAXTICK )
+    if((t*12)/(MCU_FRE_CLK/1000000) >= TIM2_MAXTICK)
     {
         return 0;
     }
@@ -197,14 +197,19 @@ void TIM2_INT_setPriority(UTIL_interruptPriority p)
  * \author      Jiabin Hsu
  * \date        
  * \brief       enable or disable T2EX function of timer-2
- * \param[in]   p: expected interrupt priority
+ * \param[in]   a: expected action
  * \return      none
  * \ingroup     TIM2
- * \remarks     determine whether the falling jump makes capture or reload or not
+ * \remarks     timer-2 external enable. When set, allows a capture or reload 
+ *              to occur as a result of a negative transition on T2EX if timer-2
+ *              is not being used to clock the serial port. EXEN2 = 0 causes 
+ *              timer-2 to ignore events at T2EX.
 ******************************************************************************/
 void TIM2_INT_T2EX_cmd(Action a)
 {
     EXEN2 = a;
 }
 
+#else
+    #warning Nothing to be done... User should remove .c file which is disabled by compile control macro from current directory.
 #endif

@@ -29,4 +29,6 @@ void RST_reset(RST_bootarea area)
     SET_BIT_MASK(ISP_CONTR,SWRST);
 }
 
+#else
+    #warning Nothing to be done... User should remove .c file which is disabled by compile control macro from current directory.
 #endif

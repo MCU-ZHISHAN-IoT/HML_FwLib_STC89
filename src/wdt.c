@@ -72,4 +72,6 @@ void WDT_setPrescale(WDT_prescale pre)
     WDT_CONTR = (WDT_CONTR & 0xF8) | pre;
 }
 
+#else
+    #warning Nothing to be done... User should remove .c file which is disabled by compile control macro from current directory.
 #endif
