@@ -25,13 +25,13 @@
 ******************************************************************************/
 unsigned int TIM2_calculateValue(unsigned int t)
 {
-    if((t*12)/(MCU_FRE_CLK/1000000) >= TIM2_MAXTICK)
+    if((t*(MCU_FRE_CLK/1000000)/12) >= TIM2_MAXTICK)
     {
         return 0;
     }
     else
     {
-        return (TIM2_MAXTICK + 1 - ((t*12) / (MCU_FRE_CLK / 1000000)));
+        return (TIM2_MAXTICK + 1 - (t*(MCU_FRE_CLK/1000000)/12));
     }
 }
 
