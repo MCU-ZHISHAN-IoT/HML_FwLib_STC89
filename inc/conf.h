@@ -31,6 +31,7 @@
 #define __CONF_COMPILE_EXTI
 #define __CONF_COMPILE_GPIO
 #define __CONF_COMPILE_ISP
+#define __CONF_COMPILE_MEM
 #define __CONF_COMPILE_RST
 #define __CONF_COMPILE_TIM
 #define __CONF_COMPILE_TIM2
