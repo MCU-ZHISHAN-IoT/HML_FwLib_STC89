@@ -75,13 +75,14 @@ void TIM2_cmd(Action a)
  * \ingroup     TIM2
  * \remarks     
 ******************************************************************************/
-void TIM2_config(TIM2_configTypeDef *tc)
+void TIM2_config(TIM2_configTypeDef *t2c)
 {
-    TIM2_setFunction(tc->function);
-    TIM2_setMode(tc->mode);
-    TIM2_setValue(tc->value);
-    TIM2_INT_cmd(tc->interruptState);
-    TIM2_INT_setPriority(tc->interruptPriority);
+    TIM2_setFunction(t2c->function);
+    TIM2_setMode(t2c->mode);
+    TIM2_setReloadValue(t2c->reloadValue);
+    TIM2_setValue(t2c->value);
+    TIM2_INT_cmd(t2c->interruptState);
+    TIM2_INT_setPriority(t2c->interruptPriority);
 }
 
 /*****************************************************************************/
@@ -148,7 +149,7 @@ bool TIM2_isOverflow(void)
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2018/10/08
  * \brief       configure function(timer or counter) of timer-2
  * \param[in]   f: expected function
  * \return      none
@@ -163,7 +164,7 @@ void TIM2_setFunction(TIM2_function f)
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2018/10/08
  * \brief       configure function(timer or counter) of timer-2
  * \param[in]   f: expected function
  * \return      none
@@ -194,7 +195,7 @@ void TIM2_setReloadValue(unsigned int val)
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2018/10/08
  * \brief       set value of THx/TLx register
  * \param[in]   val: expected value(range: 0x0000~0xFFFF)
  * \return      none
@@ -238,7 +239,7 @@ void TIM2_BAUD_cmd(TIM2_baudClock t,Action a)
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2018/10/08
  * \brief       disable or enable interrupt function of timer-2
  * \param[in]   a: expected state
  * \return      none
@@ -253,7 +254,7 @@ void TIM2_INT_cmd(Action a)
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2018/10/08
  * \brief       configure interrupt priority of timer-2
  * \param[in]   p: expected interrupt priority
  * \return      none
@@ -269,7 +270,7 @@ void TIM2_INT_setPriority(UTIL_interruptPriority p)
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2018/10/08
  * \brief       enable or disable T2EX function of timer-2
  * \param[in]   a: expected action
  * \return      none

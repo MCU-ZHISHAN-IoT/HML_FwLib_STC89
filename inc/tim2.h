@@ -21,7 +21,7 @@
 /*****************************************************************************
  *                                macro                                      *
  *****************************************************************************/
-#define TIM2_MAXTICK 0xFFFF
+#define TIM2_MAXTICK    WORD_MAX
 
 /*****************************************************************************
  *                           enumeration type                                *
@@ -78,7 +78,7 @@ typedef struct
 unsigned int TIM2_calculateValue(unsigned int time);
 void TIM2_clearFlag(void);
 void TIM2_cmd(Action a);
-void TIM2_config(TIM2_configTypeDef *tc);
+void TIM2_config(TIM2_configTypeDef *t2c);
 unsigned int TIM2_getCaptureValue(void);
 unsigned int TIM2_getValue(void);
 bool TIM2_isExternalEvent(void);
