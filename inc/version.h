@@ -18,7 +18,7 @@
 /**
  *\brief: version code
  */
-#define HML_VERSION_CODE "1.1.1"
+#define HML_VERSION_CODE "1.1.2"
 #define HML_VERSION_NAME "HML_FwLib_STC89"
 
 /**
@@ -37,6 +37,6 @@
 #ifdef HML_VERSION_PATCH
     #undef HML_VERSION_PATCH
 #endif
-#define HML_VERSION_PATCH 1
+#define HML_VERSION_PATCH 2
 
 #endif

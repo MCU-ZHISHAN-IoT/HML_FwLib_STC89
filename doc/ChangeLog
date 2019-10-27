@@ -125,7 +125,14 @@
              - STC89LE516RD+
            (4)optimize HML compile selection check and add macro HAVE_ISP
 
->Version :
+>Version : v1.1.2
  Alias   :
- Date    :
+ Date    : 2019-10-27
  Note    : (1)add warning information output when meet redundant source files under conditional compilation
+           (2)correct wrong formula for tim2 initial value
+           (3)add new function
+             - TIM2_getCaptureValue
+             - TIM2_isExternalEvent
+             - TIM2_setReloadValue
+             - TIM2_BAUD_cmd
+           (4)rename function TIM2_INT_T2EX_cmd as TIM2_T2EX_cmd
