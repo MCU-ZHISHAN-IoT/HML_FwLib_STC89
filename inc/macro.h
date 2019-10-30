@@ -18,39 +18,8 @@
 #include "conf.h"
 
 /*****************************************************************************
- *                             type define                                   *
- *****************************************************************************/
-typedef unsigned char byte;
-typedef unsigned char u8;
-typedef unsigned int  u16;
-typedef unsigned int  word;
-
-/*****************************************************************************
- *                           enumeration type                                *
- *****************************************************************************/
-
-/**
- *\brief: mark user action
- */
-typedef enum
-{
-    DISABLE = 0x0,
-    ENABLE  = !DISABLE
-} Action;
-
-/**
- *\brief: mark bit value/state
- */
-typedef enum
-{
-    RESET = 0x0,
-    SET   = !RESET
-} FunctionalState;
-
-/*****************************************************************************
  *                                macro                                      *
  *****************************************************************************/
-#define WORD_MAX 0xFFFF
 
 /**
  *\brief: mark MCU model of STC89 series(suffix letter 'P' represents '+' )

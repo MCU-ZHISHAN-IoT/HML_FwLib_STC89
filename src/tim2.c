@@ -23,7 +23,7 @@
  * \ingroup     TIM2
  * \remarks     
 ******************************************************************************/
-unsigned int TIM2_calculateValue(unsigned int t)
+uint16_t TIM2_calculateValue(uint16_t t)
 {
     if((t*(MCU_FRE_CLK/1000000)/12) >= TIM2_MAXTICK)
     {
@@ -95,9 +95,9 @@ void TIM2_config(TIM2_configTypeDef *t2c)
  * \ingroup     TIM2
  * \remarks     this function only can be called validly under capture mode
 ******************************************************************************/
-unsigned int TIM2_getCaptureValue(void)
+uint16_t TIM2_getCaptureValue(void)
 {
-    return (unsigned int)((RCAP2H << 0x8) | RCAP2L);
+    return (uint16_t)((RCAP2H << 0x8) | RCAP2L);
 }
 
 /*****************************************************************************/
@@ -110,9 +110,9 @@ unsigned int TIM2_getCaptureValue(void)
  * \ingroup     TIM2
  * \remarks     
 ******************************************************************************/
-unsigned int TIM2_getValue(void)
+uint16_t TIM2_getValue(void)
 {
-    return (unsigned int)((TH2 << 0x8) | TL2);
+    return (uint16_t)((TH2 << 0x8) | TL2);
 }
 
 /*****************************************************************************/
@@ -186,7 +186,7 @@ void TIM2_setMode(TIM2_mode m)
  * \ingroup     TIM2
  * \remarks     the parameter value will be written into register RCAP2H/RCAP2L
 ******************************************************************************/
-void TIM2_setReloadValue(unsigned int val)
+void TIM2_setReloadValue(uint16_t val)
 {
     RCAP2H = (byte)(val >> 0x8);
     RCAP2L = val;
@@ -202,7 +202,7 @@ void TIM2_setReloadValue(unsigned int val)
  * \ingroup     TIM2
  * \remarks     
 ******************************************************************************/
-void TIM2_setValue(unsigned int val)
+void TIM2_setValue(uint16_t val)
 {
     TH2 = (val >> 0x8);
     TL2 = val;

@@ -52,9 +52,9 @@ void enableAllInterrupts(void)
  * \ingroup     UTIL
  * \remarks     
 ******************************************************************************/
-void sleep(unsigned int t)
+void sleep(uint16_t t)
 {
-    u8 i = 0;
+    uint8_t i = 0;
     
     #if ( MCU_FRE_CLK == 11059200L )
 

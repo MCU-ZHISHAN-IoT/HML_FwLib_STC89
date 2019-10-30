@@ -70,12 +70,12 @@ typedef enum
  *                          function declare                                 *
  *****************************************************************************/
 void ISP_cmd(Action a);
-bool ISP_eraseByte(unsigned int addr);
+bool ISP_eraseByte(uint16_t addr);
 void ISP_idle(void);
-byte ISP_readByte(unsigned int addr);
-void ISP_setAddress(unsigned int addr);
+byte ISP_readByte(uint16_t addr);
+void ISP_setAddress(uint16_t addr);
 void ISP_setCommand(ISP_command cmd);
 void ISP_trig(void);
-bool ISP_writeByte(unsigned int addr,byte dat);
+bool ISP_writeByte(uint16_t addr,byte dat);
 
 #endif

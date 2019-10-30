@@ -62,24 +62,24 @@ typedef enum
  */
 typedef struct
 {
-    TIM_function           function;
-    Action                 interruptState;
-    UTIL_interruptPriority interruptPriority;
-    TIM_mode               mode;
-    unsigned int           value;
+    TIM_function            function;
+    Action                  interruptState;
+    UTIL_interruptPriority  interruptPriority;
+    TIM_mode                mode;
+    uint16_t                value;
 } TIM_configTypeDef;
 
 /*****************************************************************************
  *                          function declare                                 *
  *****************************************************************************/
-unsigned int TIM_calculateValue(unsigned int time,TIM_mode m);
+uint16_t TIM_calculateValue(uint16_t time,TIM_mode m);
 void TIM_cmd(PERIPH_TIM tim,Action a);
 void TIM_config(PERIPH_TIM tim,TIM_configTypeDef *tc);
-unsigned int TIM_getValue(PERIPH_TIM tim);
+uint16_t TIM_getValue(PERIPH_TIM tim);
 bool TIM_isOverflow(PERIPH_TIM tim);
 void TIM_setFunction(PERIPH_TIM tim,TIM_function f);
 void TIM_setMode(PERIPH_TIM tim,TIM_mode m);
-void TIM_setValue(PERIPH_TIM tim,unsigned int val);
+void TIM_setValue(PERIPH_TIM tim,uint16_t val);
 void TIM_INT_cmd(PERIPH_TIM tim,Action a);
 void TIM_INT_setPriority(PERIPH_TIM tim,UTIL_interruptPriority p);
 

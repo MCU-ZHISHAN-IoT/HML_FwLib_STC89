@@ -25,10 +25,10 @@
  * \ingroup     TIM
  * \remarks     
 ******************************************************************************/
-unsigned int TIM_calculateValue(unsigned int time,TIM_mode m)
+uint16_t TIM_calculateValue(uint16_t time,TIM_mode m)
 {
     /* machine cycle: MCU_FRE_CLK / 12 */
-    unsigned int maxTick = 0x0000;
+    uint16_t maxTick = 0x0000;
 
     switch(m)
     {
@@ -101,7 +101,7 @@ void TIM_config(PERIPH_TIM tim,TIM_configTypeDef *tc)
  * \ingroup     TIM
  * \remarks     not for timer2
 ******************************************************************************/
-unsigned int TIM_getValue(PERIPH_TIM tim)
+uint16_t TIM_getValue(PERIPH_TIM tim)
 {
     switch(tim)
     {
@@ -185,19 +185,19 @@ void TIM_setMode(PERIPH_TIM tim,TIM_mode m)
  * \ingroup     TIM
  * \remarks     not for timer2
 ******************************************************************************/
-void TIM_setValue(PERIPH_TIM tim,unsigned int val)
+void TIM_setValue(PERIPH_TIM tim,uint16_t val)
 {
     switch(tim)
     {
         case PERIPH_TIM_0:
         {
-            TH0 = (u8)((val >> 0x8) & 0x00FF);
-            TL0 = (u8)(val & 0x00FF);
+            TH0 = (uint8_t)((val >> 0x8) & 0x00FF);
+            TL0 = (uint8_t)(val & 0x00FF);
         } break;
         case PERIPH_TIM_1:
         {
-            TH1 = (u8)((val >> 0x8) & 0x00FF);
-            TL1 = (u8)(val & 0x00FF);
+            TH1 = (uint8_t)((val >> 0x8) & 0x00FF);
+            TL1 = (uint8_t)(val & 0x00FF);
         } break;
         default:break;
     }

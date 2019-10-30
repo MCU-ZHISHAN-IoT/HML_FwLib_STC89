@@ -15,7 +15,9 @@
  *                             header file                                   *
  *****************************************************************************/
 #include "hw/stc89.h"
+#include "conf.h"
 #include "macro.h"
+#include "types.h"
 
 /*****************************************************************************
  *                           enumeration type                                *
@@ -36,6 +38,6 @@ typedef enum
  *****************************************************************************/
 void disableAllInterrupts(void);
 void enableAllInterrupts(void);
-void sleep(unsigned int t);
+void sleep(uint16_t t);
 
 #endif

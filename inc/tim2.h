@@ -68,25 +68,25 @@ typedef struct
     Action                  interruptState;
     UTIL_interruptPriority  interruptPriority;
     TIM2_mode               mode;
-    unsigned int            value;          /* value of counter register */
-    unsigned int            reloadValue;    /* only for auto-reload mode */
+    uint16_t                value;          /* value of counter register */
+    uint16_t                reloadValue;    /* only for auto-reload mode */
 } TIM2_configTypeDef;
 
 /*****************************************************************************
  *                          function declare                                 *
  *****************************************************************************/
-unsigned int TIM2_calculateValue(unsigned int time);
+uint16_t TIM2_calculateValue(uint16_t time);
 void TIM2_clearFlag(void);
 void TIM2_cmd(Action a);
 void TIM2_config(TIM2_configTypeDef *t2c);
-unsigned int TIM2_getCaptureValue(void);
-unsigned int TIM2_getValue(void);
+uint16_t TIM2_getCaptureValue(void);
+uint16_t TIM2_getValue(void);
 bool TIM2_isExternalEvent(void);
 bool TIM2_isOverflow(void);
 void TIM2_setFunction(TIM2_function f);
 void TIM2_setMode(TIM2_mode m);
-void TIM2_setReloadValue(unsigned int val);
-void TIM2_setValue(unsigned int val);
+void TIM2_setReloadValue(uint16_t val);
+void TIM2_setValue(uint16_t val);
 void TIM2_BAUD_cmd(TIM2_baudClock t,Action a);
 void TIM2_INT_cmd(Action a);
 void TIM2_INT_setPriority(UTIL_interruptPriority p);

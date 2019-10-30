@@ -61,7 +61,7 @@ typedef struct
 void UART_cmd_multiBaudrate(Action a);
 void UART_cmd_receive(Action a);
 void UART_config(UART_configTypeDef *uc);
-unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim);
+uint16_t UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim);
 FunctionalState UART_isReceived(void);
 FunctionalState UART_isTransmitted(void);
 void UART_sendByte(byte dat);
