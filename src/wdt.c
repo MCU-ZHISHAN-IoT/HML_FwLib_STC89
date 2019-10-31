@@ -8,7 +8,7 @@
  * \ingroup     WDT
 ******************************************************************************/
 
-#include "wdt.h"
+#include "hml/wdt.h"
 
 #ifdef __CONF_COMPILE_WDT
 

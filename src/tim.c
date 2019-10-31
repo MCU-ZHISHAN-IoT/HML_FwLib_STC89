@@ -9,7 +9,7 @@
  * \ingroup     TIM
 ******************************************************************************/
 
-#include "tim.h"
+#include "hml/tim.h"
 
 #ifdef __CONF_COMPILE_TIM
 

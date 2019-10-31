@@ -8,7 +8,7 @@
  * \ingroup     RST
 ******************************************************************************/
 
-#include "rst.h"
+#include "hml/rst.h"
 
 #ifdef __CONF_COMPILE_RST
 

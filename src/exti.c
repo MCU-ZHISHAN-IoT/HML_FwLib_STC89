@@ -9,7 +9,7 @@
  * \ingroup     EXTI
 ******************************************************************************/
 
-#include "exti.h"
+#include "hml/exti.h"
  
 #ifdef __CONF_COMPILE_EXTI
 

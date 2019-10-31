@@ -9,7 +9,7 @@
  * \ingroup     UART
 ******************************************************************************/
 
-#include "uart.h"
+#include "hml/uart.h"
 
 #ifdef __CONF_COMPILE_UART
 

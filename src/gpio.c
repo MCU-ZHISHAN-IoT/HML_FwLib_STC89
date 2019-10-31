@@ -9,7 +9,7 @@
  * \ingroup     GPIO
 ******************************************************************************/
 
-#include "gpio.h" 
+#include "hml/gpio.h" 
 
 #ifdef __CONF_COMPILE_GPIO
 

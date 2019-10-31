@@ -25,7 +25,7 @@
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "hml.h"
+#include "hml/hml.h"
 
 /*****************************************************************************
  *                                macro                                      *
@@ -111,7 +111,7 @@ void main(void)
 ******************************************************************************/
 void tim0_isr(void) __interrupt TF0_VECTOR
 {
-    static u8 cnt = 0;
+    static uint8_t cnt = 0;
 
     /* per 500ms */
     cnt++;
@@ -134,7 +134,7 @@ void tim0_isr(void) __interrupt TF0_VECTOR
 ******************************************************************************/
 void exti0_isr(void) __interrupt IE0_VECTOR
 {
-    u8 i = 10;
+    uint8_t i = 10;
 
     /* avoid shake */
     EXTI_cmd(PERIPH_EXTI_0,DISABLE);
@@ -168,7 +168,7 @@ void exti0_isr(void) __interrupt IE0_VECTOR
 ******************************************************************************/
 void exti1_isr(void) __interrupt IE1_VECTOR
 {
-    u8 j = 10;
+    uint8_t j = 10;
 
     /* avoid shake */
     EXTI_cmd(PERIPH_EXTI_1,DISABLE);

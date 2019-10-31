@@ -8,7 +8,7 @@
  * \ingroup     TIM2
 ******************************************************************************/
 
-#include "tim2.h"
+#include "hml/tim2.h"
 
 #ifdef __CONF_COMPILE_TIM2
 

@@ -8,7 +8,7 @@
  * \ingroup     ISP
 ******************************************************************************/
 
-#include "isp.h"
+#include "hml/isp.h"
 
 #ifdef HAVE_ISP
 

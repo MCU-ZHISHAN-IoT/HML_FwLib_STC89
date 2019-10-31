@@ -8,7 +8,7 @@
  * \ingroup     UTIL
 ******************************************************************************/
 
-#include "util.h"
+#include "hml/util.h"
 
 #ifdef __CONF_COMPILE_UTIL
 

@@ -13,7 +13,7 @@
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "hml.h"
+#include "hml/hml.h"
 
 /*****************************************************************************/
 /** 
@@ -54,7 +54,7 @@ void sys_init(void)
 ******************************************************************************/
 void util_byteToHexString(byte src,char *res)
 {
-    u8 i = 2;
+    uint8_t i = 2;
     byte tmp = 0x00;
 
     res = res + 2;
@@ -92,7 +92,7 @@ void main(void)
 {
     char accessResult[3];                             /* store results */
     char __code test_data[3] = {0x20, 0x19, 0x04};    /* test data */
-    u8 i = 0;
+    uint8_t i = 0;
 
     sys_init();
     UART_sendString("MCU boot...\r\n\0");
