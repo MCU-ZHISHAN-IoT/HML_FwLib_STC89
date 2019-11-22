@@ -15,7 +15,6 @@
  *                             header file                                   *
  *****************************************************************************/
 #include "hml/stc89.h"
-#include "hml/conf.h"
 #include "hml/macro.h"
 #include "hml/types.h"
 
