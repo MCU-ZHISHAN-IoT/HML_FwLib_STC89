@@ -9,11 +9,11 @@
  * \ingroup     generic
 ******************************************************************************/
 
-#ifndef ___STC89_H___
-#define ___STC89_H___
+#ifndef ___HML_STC89_H___
+#define ___HML_STC89_H___
 
 #include <8051.h>
-#include "bit.h"
+#include "hml/bit.h"
 
 /*  BYTE Register  */
 __sfr __at (0x8E) AUXR      ;

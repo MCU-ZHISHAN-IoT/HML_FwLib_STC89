@@ -6,12 +6,12 @@
  * \brief       HML standard data type define, include base data type and extended
  *              data type
  * \note        HML only uses data types defined in this file!
- * \version     
+ * \version
  * \ingroup     generic
 ******************************************************************************/
 
-#ifndef ___TYPES_H___
-#define ___TYPES_H___
+#ifndef ___HML_TYPES_H___
+#define ___HML_TYPES_H___
 
 /*****************************************************************************
  *                             header file                                   *

@@ -4,20 +4,20 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       public operations
  * \note        
- * \version     v1.1
+ * \version     v1.2
  * \ingroup     UTIL
 ******************************************************************************/
 
-#ifndef ___UTIL_H___
-#define ___UTIL_H___
+#ifndef ___HML_UTIL_H___
+#define ___HML_UTIL_H___
 
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "stc89.h"
-#include "conf.h"
-#include "macro.h"
-#include "types.h"
+#include "hml/stc89.h"
+#include "hml/conf.h"
+#include "hml/macro.h"
+#include "hml/types.h"
 
 /*****************************************************************************
  *                           enumeration type                                *

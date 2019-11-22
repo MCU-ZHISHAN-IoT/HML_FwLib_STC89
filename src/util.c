@@ -4,7 +4,7 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       public operations
  * \note        
- * \version     v1.1
+ * \version     v1.2
  * \ingroup     UTIL
 ******************************************************************************/
 

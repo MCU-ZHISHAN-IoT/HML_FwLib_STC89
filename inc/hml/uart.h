@@ -5,22 +5,20 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       operations for UART module
  * \note        
- * \version     v1.1
+ * \version     v1.2
  * \ingroup     UART
 ******************************************************************************/
 
-#ifndef ___UART_H___
-#define ___UART_H___
+#ifndef ___HML_UART_H___
+#define ___HML_UART_H___
 
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include <stdint.h>
+#include "hml/util.h"
 /*****************************************************************************/
-#include "util.h"
-/*****************************************************************************/
-#include "tim.h"
-#include "tim2.h"
+#include "hml/tim.h"
+#include "hml/tim2.h"
 
 /*****************************************************************************
  *                           enumeration type                                *

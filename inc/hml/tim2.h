@@ -4,19 +4,17 @@
  * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
  * \brief       operations for timer-2
  * \note        
- * \version     v1.1
+ * \version     v1.2
  * \ingroup     TIM2
 ******************************************************************************/
 
-#ifndef ___TIM2_H___
-#define ___TIM2_H___
+#ifndef ___HML_TIM2_H___
+#define ___HML_TIM2_H___
 
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include <stdbool.h>
-/*****************************************************************************/
-#include "util.h"
+#include "hml/util.h"
 
 /*****************************************************************************
  *                                macro                                      *
@@ -32,8 +30,8 @@
  */
 typedef enum
 {
-    TIM2_baudClock_receive  = 0x0,   /* receive clock */
-    TIM2_baudClock_transmit = 0x1    /* transmit clock */
+    TIM2_baudClock_receive  = 0x01, /* receive clock */
+    TIM2_baudClock_transmit = 0x02  /* transmit clock */
 } TIM2_baudClock;
 
 /**

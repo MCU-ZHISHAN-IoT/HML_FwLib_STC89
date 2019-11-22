@@ -4,19 +4,19 @@
  * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
  * \brief       operations for watchdog module
  * \note        
- * \version     v1.1
+ * \version     v1.2
  * \ingroup     WDT
 ******************************************************************************/
 
-#ifndef ___WDT_H___
-#define ___WDT_H___
+#ifndef ___HML_WDT_H___
+#define ___HML_WDT_H___
 
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "stc89.h"
-#include "conf.h"
-#include "types.h"
+#include "hml/stc89.h"
+#include "hml/conf.h"
+#include "hml/types.h"
 
 /*****************************************************************************
  *                           enumeration type                                *

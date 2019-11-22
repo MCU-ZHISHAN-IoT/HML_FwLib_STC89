@@ -4,7 +4,7 @@
  * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
  * \brief       operations for timer-2
  * \note        
- * \version     v1.1
+ * \version     v1.2
  * \ingroup     TIM2
 ******************************************************************************/
 
@@ -222,17 +222,13 @@ void TIM2_setValue(uint16_t val)
 ******************************************************************************/
 void TIM2_BAUD_cmd(TIM2_baudClock t,Action a)
 {
-    if (t == TIM2_baudClock_receive)
+    if (t & TIM2_baudClock_receive)
     {
         RCLK = (FunctionalState)a;
     }
-    else if (t == TIM2_baudClock_transmit)
+    if (t & TIM2_baudClock_transmit)
     {
         TCLK = (FunctionalState)a;
-    }
-    else
-    {
-        /* nothing to be done */
     }
 }
 

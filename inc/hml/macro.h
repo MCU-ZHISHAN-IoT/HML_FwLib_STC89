@@ -5,17 +5,17 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       HML macro define
  * \note        
- * \version     v1.1
+ * \version     v1.2
  * \ingroup     generic
 ******************************************************************************/
 
-#ifndef ___MACRO_H___
-#define ___MACRO_H___
+#ifndef ___HML_MACRO_H___
+#define ___HML_MACRO_H___
 
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "conf.h"
+#include "hml/conf.h"
 
 /*****************************************************************************
  *                                macro                                      *

@@ -4,18 +4,18 @@
  * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
  * \brief       operations for reset module
  * \note        
- * \version     v1.1
+ * \version     v1.2
  * \ingroup     RST
 ******************************************************************************/
 
-#ifndef ___RST_H___
-#define ___RST_H___
+#ifndef ___HML_RST_H___
+#define ___HML_RST_H___
 
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "stc89.h"
-#include "macro.h"
+#include "hml/stc89.h"
+#include "hml/macro.h"
 
 /*****************************************************************************
  *                           enumeration type                                *

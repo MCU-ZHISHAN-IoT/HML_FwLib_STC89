@@ -5,7 +5,7 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       operations for UART
  * \note        
- * \version     v1.1
+ * \version     v1.2
  * \ingroup     UART
 ******************************************************************************/
 
@@ -74,6 +74,7 @@ void UART_config(UART_configTypeDef *uc)
             tc.interruptPriority = DISABLE;
             tc.mode              = TIM_mode_2;
             tc.value             = UART_getBaudGeneratorInitValue(uc->baudrate,PERIPH_TIM_1);
+            TIM2_BAUD_cmd(TIM2_baudClock_receive | TIM2_baudClock_transmit,DISABLE);
             TIM_config(PERIPH_TIM_1,&tc);
             TIM_cmd(PERIPH_TIM_1,ENABLE);
         } break; 
@@ -83,9 +84,9 @@ void UART_config(UART_configTypeDef *uc)
             tc2.interruptState    = DISABLE;
             tc2.interruptPriority = DISABLE;
             tc2.mode              = TIM2_mode_2;
-            tc2.value             = UART_getBaudGeneratorInitValue(uc->baudrate,PERIPH_TIM_2);
-            RCAP2L = tc2.value;
-            RCAP2H = (tc2.value >> 8);
+            tc2.value             = 0x00;
+            tc2.reloadValue       = UART_getBaudGeneratorInitValue(uc->baudrate,PERIPH_TIM_2);
+            TIM2_BAUD_cmd(TIM2_baudClock_receive | TIM2_baudClock_transmit,ENABLE);
             TIM2_config(&tc2);
             TIM2_cmd(ENABLE);
         } break;  

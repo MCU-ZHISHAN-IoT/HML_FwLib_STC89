@@ -6,7 +6,7 @@
  * \brief      example for interrupt priority
  * \note       a example which shows how to use HML_FwLib_STC89 to configure 
  *             interrupt priority of extern interrupts and timers
- * \version    v1.1
+ * \version    v1.2
  * \ingroup    example
  * \remarks    test-board: ZS5110; test-MCU: STC89C52RC
 ******************************************************************************/

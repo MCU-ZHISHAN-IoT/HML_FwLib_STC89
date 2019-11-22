@@ -5,19 +5,19 @@
  * \brief       operations for memory zone of MCU
  * \note        allow you to directly access the different memory areas of STC89
  *              series MCU
- * \version     v1.1
+ * \version     v1.2
  * \ingroup     MEM
 ******************************************************************************/
 
-#ifndef ___MEM_H___
-#define ___MEM_H___
+#ifndef ___HML_MEM_H___
+#define ___HML_MEM_H___
 
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "stc89.h"
-#include "conf.h"
-#include "types.h"
+#include "hml/stc89.h"
+#include "hml/conf.h"
+#include "hml/types.h"
 
 /*****************************************************************************
  *                                macro                                      *

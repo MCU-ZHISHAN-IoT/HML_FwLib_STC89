@@ -5,17 +5,17 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       operation for on-chip EXTI module
  * \note        
- * \version     v1.1
+ * \version     v1.2
  * \ingroup     EXTI
 ******************************************************************************/
 
-#ifndef ___EXTI_H___
-#define ___EXTI_H___
+#ifndef ___HML_EXTI_H___
+#define ___HML_EXTI_H___
 
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "util.h"
+#include "hml/util.h"
 
 /*****************************************************************************
  *                           enumeration type                                *

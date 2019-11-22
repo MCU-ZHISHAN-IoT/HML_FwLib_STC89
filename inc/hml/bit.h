@@ -4,12 +4,12 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       bit operation
  * \note        this is a general purpose header file
- * \version     
+ * \version
  * \ingroup     generic
 ******************************************************************************/
  
-#ifndef ___BIT_H___
-#define ___BIT_H___
+#ifndef ___HML_BIT_H___
+#define ___HML_BIT_H___
 
 /*****************************************************************************
  *                             header file                                   *

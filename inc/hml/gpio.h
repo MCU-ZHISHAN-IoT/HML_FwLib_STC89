@@ -5,19 +5,19 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       operations for GPIO module
  * \note        
- * \version     v1.1
+ * \version     v1.2
  * \ingroup     GPIO
 ******************************************************************************/
  
-#ifndef ___GPIO_H___
-#define ___GPIO_H___
+#ifndef ___HML_GPIO_H___
+#define ___HML_GPIO_H___
 
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "stc89.h"
-#include "conf.h"
-#include "types.h"
+#include "hml/stc89.h"
+#include "hml/conf.h"
+#include "hml/types.h"
 
 /*****************************************************************************
  *                           enumeration type                                *

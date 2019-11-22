@@ -4,7 +4,7 @@
  * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
  * \brief       operations for ISP module
  * \note        
- * \version     v1.1
+ * \version     v1.2
  * \ingroup     ISP
 ******************************************************************************/
 
