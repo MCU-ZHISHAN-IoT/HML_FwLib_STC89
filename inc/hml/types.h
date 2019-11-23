@@ -5,8 +5,8 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       HML standard data type define, include base data type and extended
  *              data type
- * \note        HML only uses data types defined in this file!
- * \version
+ * \note        HML only uses data types ruled by this file!
+ * \version     
  * \ingroup     generic
 ******************************************************************************/
 
@@ -24,7 +24,9 @@
  * ========================================================
  * |   HML base data type   |         description         |
  * ========================================================
- * |         bool           |         boolen type         |
+ * |         bool           |         boolean type        |
+ * |------------------------|-----------------------------|
+ * |         char           |        character type       |
  * |------------------------|-----------------------------|
  * |        uint8_t         |   unsigned 8-bit integer    |
  * |------------------------|-----------------------------|
@@ -44,7 +46,7 @@
  * ========================================================
  *
  * @note: base data types are all defined in original header files provides by
- *        SDCC offical
+ *        SDCC official
  */
 
 /*****************************************************************************
