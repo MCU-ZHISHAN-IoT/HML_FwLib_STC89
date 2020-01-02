@@ -136,3 +136,12 @@
              - TIM2_setReloadValue
              - TIM2_BAUD_cmd
            (4)rename function TIM2_INT_T2EX_cmd as TIM2_T2EX_cmd
+
+>Version : v1.2.0
+ Alias   :
+ Date    : 
+ Note    : (1)add types.h including definitions of data types
+           (2)fix bug that timer-2 cannot run in baud rate generator mode
+           (3)update Makefile to v0.2.6
+             - support <library> target, user can get usage via <make help>
+             - optimize <make version> function

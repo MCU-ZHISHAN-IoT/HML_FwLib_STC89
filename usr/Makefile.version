@@ -1,0 +1,38 @@
+##################################################
+# Author     : Weilun Fong | wlf@zhishan-iot.tk
+# Date       : 2020-01-02
+# Description: version Makefile
+# E-mail     : mcu@zhishan-iot.tk
+# Make-tool  : GNU Make (http://www.gnu.org/software/make/manual/make.html)
+# Page       :
+# Tar-mcu    :
+# Tar-project: general purpose
+# Version    : v0.2.6
+##################################################
+
+########################################
+##### [*]VARIABLE DEFINE
+########################################
+##### shell command
+ECHO               := echo
+##### version information##
+HML_FWLIB_NAME     := HML_FwLib_STC89
+# [note]: we unify version code from v0.1.0 because of the same makefile template
+MAK_VERSION        := v0.2.6
+# author
+AUTHOR_NAME        := Weilun Fong
+AUTHOR_EMAIL       := wlf@zhishan-iot.tk
+# maintainer
+MAINTAINER_EMAIL   := mcu@zhishan-iot.tk
+
+########################################
+##### [1]PRINT VERSION
+########################################
+version:
+	@$(ECHO) "HmlFwlibMakefile [$(MAK_VERSION)]"
+	@$(ECHO) "General purpose Makefile for HML firmware library."
+	@$(ECHO) "Copyright(c) 2018-2020 ZHISHAN-IoT, all rights reserved."
+	@$(ECHO) ""
+	@$(ECHO) "Adapted for $(HML_FWLIB_NAME) $(HML_FWLIB_VERSION)\
+by $(AUTHOR_NAME) <$(AUTHOR_EMAIL)>"
+	@$(ECHO) "Report bugs and patches to <$(MAINTAINER_EMAIL)>"

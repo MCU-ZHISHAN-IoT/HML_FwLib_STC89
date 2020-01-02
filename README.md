@@ -40,14 +40,14 @@ Here is a list of the all on-chip peripheral drivers and examples that need to b
 ### file structure
 ```bash
 HML_FwLib_STC89
-├─doc      #store related documents about HML_FwLib_STC89
-├─example  #provide some example files with *.c format to help users learn about HML_FwLib_STC89
-├─inc      #include all header files(*.h) of HML_FwLib_STC89
-├─obj      #store all output files, including *.hex,*.ihx,*.lk,*.rel and others during compilation
-├─src      #store all source files(*.c) of HML_FwLib_STC89
-├─usr      #store makefile and a source file which includes main function
-├─LICENSE  #license of HML_FwLib_STC89
-└─VERSION  #version code of HML_FwLib_STC89
+├─doc      # store related documents about HML_FwLib_STC89
+├─example  # provide some example files with *.c format to help users learn about HML_FwLib_STC89
+├─inc      # include all header files(*.h) of HML_FwLib_STC89
+├─obj      # store all output files, including *.hex,*.ihx,*.lk,*.rel and others during compilation
+├─src      # store all source files(*.c) of HML_FwLib_STC89
+├─usr      # store makefile and a source file which includes main function
+├─LICENSE  # license of HML_FwLib_STC89
+└─VERSION  # version code of HML_FwLib_STC89
 ```
 ### configuration
 There are several parameters need to be configured by user manually.

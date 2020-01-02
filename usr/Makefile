@@ -1,13 +1,13 @@
 ##################################################
-# Author     :Weilun Fong | wlf(at)zhishan-iot.tk
-# Date       :2019-07-04
-# Description:Makefile for HML_FwLib_STC89, it will generate a hex format file finally
-# E-mail     :mcu(at)zhishan-iot.tk
-# Make-tool  :GNU Make (http://www.gnu.org/software/make/manual/make.html)
-# Page       :https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
-# Tar-mcu    :STC89C52RC, belong to STC micro STC89 series
-# Tar-project:HML_FwLib_STC89
-# Version    :v0.2.4
+# Author     : Weilun Fong | wlf(at)zhishan-iot.tk
+# Date       : 2020-01-02
+# Description: Makefile for HML_FwLib_STC89, it will generate a hex format file finally
+# E-mail     : mcu@zhishan-iot.tk
+# Make-tool  : GNU Make (http://www.gnu.org/software/make/manual/make.html)
+# Page       : https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
+# Tar-mcu    : STC89C52RC, belong to STC micro STC89 series
+# Tar-project: HML_FwLib_STC89
+# Version    : v0.2.6
 ##################################################
 
 ########################################
@@ -27,7 +27,7 @@ export XARGS       := xargs
 ##### tool-chain
 AR                 := sdar
 CC                 := sdcc
-MAKE               ?= make
+MAKE               := make --no-print-directory
 PACKIHX            := packihx
 
 ########################################
@@ -61,16 +61,7 @@ CFLAGS_HML         := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 --cod
 CFLAGS             := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 -L$(DIR_OUTPUT) -lhml_stc89 --code-loc 0x0000 --code-size 0x1FFF --data-loc 0x00
 
 ########################################
-##### [2]VERSIION INFORMATION
-########################################
-##### version information##
-HML_FWLIB_NAME     := HML_FwLib_STC89
-HML_FWLIB_VERSION  := $(shell $(CAT) $(DIR_ROOT)/VERSION)
-# [note]: we unify version code from v0.1.0 because of the same makefile template
-MAK_VERSION        := v0.2.4
-
-########################################
-##### [3]BUILD WORKS
+##### [2]BUILD WORKS
 ########################################
 ##### all target
 all: $(TARGET).hex
@@ -121,16 +112,23 @@ distclean:
 .PHONY: help
 help:
     sinclude Makefile.help
+##### library
+.PHONY: library
+library: $(TARGET_FWLIB)
+	@echo ===================================================
+	@echo Make $(MAKECMDGOALS) done!
+	@echo project: $(HML_FWLIB_NAME) $(HML_FWLIB_VERSION)
+	@echo ---------------------------------------------------
+	@echo completed at `date "+%Y-%m-%d %H:%M:%S"`
+	@echo ===================================================
 ##### rebuild
 .PHONY: rebuild
 rebuild:
 	@$(EECHO) "\033[36m - Clean all middle or temporary files \033[0m"
 	$(CD) $(DIR_OUTPUT) && $(LS) | $(GREP) -v ".gitkeep" | $(XARGS) $(RM)
 	@$(EECHO) "\033[36m - Start to build... \033[0m"
-	@$(MAKE) -s -f Makefile -j$(JOBS) MAKECMDGOALS=$(MAKECMDGOALS)
+	@$(MAKE) -f Makefile -j$(JOBS) MAKECMDGOALS=$(MAKECMDGOALS)
 ##### version
 .PHONY: version
 version:
-	@$(ECHO) "Makefile for HML_FwLib_xxx [$(MAK_VERSION)]"
-	@$(ECHO) "build project $(HML_FWLIB_NAME) $(HML_FWLIB_VERSION), adapted by Weilun Fong <wlf(at)zhishan-iot.tk>"
-	@$(ECHO) "Copyright(c) 2018-2019 ZHISHAN-IoT, all rights reserved."
+    sinclude Makefile.version
