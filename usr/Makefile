@@ -67,7 +67,6 @@ CFLAGS             := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 -L$(D
 all: $(TARGET).hex
 	@echo ===================================================
 	@echo Make $(MAKECMDGOALS) done!
-	@echo project: $(HML_FWLIB_NAME) $(HML_FWLIB_VERSION)
 	@echo ---------------------------------------------------
 	@echo completed at `date "+%Y-%m-%d %H:%M:%S"`
 	@echo ===================================================
@@ -117,7 +116,6 @@ help:
 library: $(TARGET_FWLIB)
 	@echo ===================================================
 	@echo Make $(MAKECMDGOALS) done!
-	@echo project: $(HML_FWLIB_NAME) $(HML_FWLIB_VERSION)
 	@echo ---------------------------------------------------
 	@echo completed at `date "+%Y-%m-%d %H:%M:%S"`
 	@echo ===================================================
@@ -125,7 +123,7 @@ library: $(TARGET_FWLIB)
 .PHONY: rebuild
 rebuild:
 	@$(EECHO) "\033[36m - Clean all middle or temporary files \033[0m"
-	$(CD) $(DIR_OUTPUT) && $(LS) | $(GREP) -v ".gitkeep" | $(XARGS) $(RM)
+	@$(MAKE) distclean
 	@$(EECHO) "\033[36m - Start to build... \033[0m"
 	@$(MAKE) -f Makefile -j$(JOBS) MAKECMDGOALS=$(MAKECMDGOALS)
 ##### version
