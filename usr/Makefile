@@ -58,7 +58,7 @@ MYFILE             ?= test.c
         endif
     endif
 MYFILE_NAME        := $(shell $(BASENAME) $(MYFILE) .c)
-MYFILE_REL         := $(patsubst %.c, $(DIR_OUTPUT)/%.rel, $(MYFILE))
+MYFILE_REL         := $(DIR_OUTPUT)/$(MYFILE_NAME).rel
 ###### target
 TARGET             := output
 TARGET_FWLIB       := $(DIR_OUTPUT)/$(FILE_HML_FWLIB)
