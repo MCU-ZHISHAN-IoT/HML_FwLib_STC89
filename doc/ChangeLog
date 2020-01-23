@@ -146,3 +146,4 @@
              - support <library> target, user can get usage via <make help>
              - optimize <make version> function
            (4)optimize sleep function
+           (5)refactor version.h
