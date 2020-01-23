@@ -130,7 +130,8 @@
  */
 #ifndef HAVE_ISP
     #ifdef __CONF_COMPILE_ISP
-        #error HML run-time check: error: specified MCU model does not suppport ISP function. (ERROR_CODE-0x04)
+        #error HML run-time check: error: specified MCU model does not suppport \
+ISP function, please disable macro __CONF_COMPILE_ISP in hml/conf.h (ERROR_CODE-0x04)
     #endif
 #endif
 

@@ -1,13 +1,14 @@
+#!/usr/bin/make
+
 ##################################################
 # Author     : Weilun Fong | wlf@zhishan-iot.tk
-# Date       : 2020-01-02
+# Date       : 2020-01-18
 # Description: version Makefile
 # E-mail     : mcu@zhishan-iot.tk
 # Make-tool  : GNU Make (http://www.gnu.org/software/make/manual/make.html)
 # Page       :
-# Tar-mcu    :
-# Tar-project: general purpose
-# Version    : v0.2.6
+# Project    : HML_FwLib_STC89
+# Version    : v0.3.0
 ##################################################
 
 ########################################
@@ -18,7 +19,7 @@ ECHO               := echo
 ##### version information##
 HML_FWLIB_NAME     := HML_FwLib_STC89
 # [note]: we unify version code from v0.1.0 because of the same makefile template
-MAK_VERSION        := v0.2.6
+MAK_VERSION        := v0.3.0
 # author
 AUTHOR_NAME        := Weilun Fong
 AUTHOR_EMAIL       := wlf@zhishan-iot.tk

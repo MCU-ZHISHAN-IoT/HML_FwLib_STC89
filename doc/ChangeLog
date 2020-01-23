@@ -145,5 +145,8 @@
            (3)update Makefile to v0.2.6
              - support <library> target, user can get usage via <make help>
              - optimize <make version> function
+             update Makefile to v0.3.0
+             - support MCU(mandatory), CLKFRE, CODE and XRAM for MCU configuration
+             - optimize build information print
            (4)optimize sleep function
            (5)refactor version.h

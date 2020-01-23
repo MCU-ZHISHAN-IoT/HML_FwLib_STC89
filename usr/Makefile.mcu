@@ -1,0 +1,153 @@
+#!/usr/bin/make
+
+##################################################
+# Author     : Weilun Fong | wlf@zhishan-iot.tk
+# Date       : 2020-01-18
+# Description: configure Makefile
+# E-mail     : mcu@zhishan-iot.tk
+# Make-tool  : GNU Make (http://www.gnu.org/software/make/manual/make.html)
+# Page       : https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
+# Project    : HML_FwLib_STC89
+# Version    : v0.3.0
+##################################################
+
+########################################
+##### [*]ENVIRONMENT CONFIGURATION
+SHELL := /bin/bash
+AWK   ?= awk
+ECHO  ?= echo
+EXPR  ?= expr
+GREP  ?= grep
+SPACE ?= $(empty) $(empty)
+########################################
+
+########################################
+##### [1] INFORMATION PRINT
+$(info $(SPACE)- Collect MCU config information)
+########################################
+
+########################################
+##### [2] INTERNAL RAM / USER INPUT
+########################################
+### clock frequency
+ifneq ($(CLKFRE),)
+    ifeq ($(shell $(ECHO) $(CLKFRE) | $(GREP) '^[[:digit:]]*$$'),)
+        $(error invalid CLKFRE value)
+    else
+        CLOCK_FREQUENCY := $(CLKFRE)
+    endif
+else
+    CLOCK_FREQUENCY := 11059200
+endif
+### internal ROM
+ifneq ($(CODE),)
+    export CODE_SIZE := $(shell $EXPR $(CODE) \* 1024)
+endif
+### internal RAM
+# for stc89, this value is fixed to 256
+export IRAM_SIZE := 256
+### external RAM
+ifneq ($(XRAM),)
+    export XRAM_SIZE := $(shell $(EXPR) $(XRAM) \* 1024)
+endif
+
+########################################
+##### [3] OTHER MCU CONFIGURATION
+########################################
+ifneq ($(MCU),)
+    mcu_model := $(shell $(ECHO) $(MCU) | $(TR) '[a-z]' '[A-Z]')
+    ifeq ($(mcu_model), STC89C51RC)
+        MCU_MACRO := MCU_MODEL_$(mcu_model)
+        CODE_SIZE ?= 4096
+        XRAM_SIZE ?= 256
+    else ifeq ($(mcu_model), STC89LE51RC)
+        MCU_MACRO := MCU_MODEL_$(mcu_model)
+        CODE_SIZE ?= 4096
+        XRAM_SIZE ?= 256
+    else ifeq ($(mcu_model), STC89C52RC)
+        MCU_MACRO := MCU_MODEL_$(mcu_model)
+        CODE_SIZE ?= 8192
+        XRAM_SIZE ?= 256
+    else ifeq ($(mcu_model), STC89LE52RC)
+        MCU_MACRO := MCU_MODEL_$(mcu_model)
+        CODE_SIZE ?= 8192
+        XRAM_SIZE ?= 256
+    else ifeq ($(mcu_model), STC89C53RC)
+        MCU_MACRO := MCU_MODEL_$(mcu_model)
+        CODE_SIZE ?= 13312
+        XRAM_SIZE ?= 256
+    else ifeq ($(mcu_model), STC89LE53RC)
+        MCU_MACRO := MCU_MODEL_$(mcu_model)
+        CODE_SIZE ?= 13312
+        XRAM_SIZE ?= 256
+    else ifeq ($(mcu_model), STC89C54RD+)
+        MCU_MACRO := MCU_MODEL_STC89C54RDP
+        CODE_SIZE ?= 16384
+        XRAM_SIZE ?= 1024
+    else ifeq ($(mcu_model), STC89LE54RD+)
+        MCU_MACRO := MCU_MODEL_STC89LE54RDP
+        CODE_SIZE ?= 16384
+        XRAM_SIZE ?= 1024
+    else ifeq ($(mcu_model), STC89C58RD+)
+        MCU_MACRO := MCU_MODEL_STC89C58RDP
+        CODE_SIZE ?= 32768
+        XRAM_SIZE ?= 1024
+    else ifeq ($(mcu_model), STC89LE58RD+)
+        MCU_MACRO := MCU_MODEL_STC89LE58RDP
+        CODE_SIZE ?= 32768
+        XRAM_SIZE ?= 1024
+    else ifeq ($(mcu_model), STC89C510RD+)
+        MCU_MACRO := MCU_MODEL_STC89C510RDP
+        CODE_SIZE ?= 40960
+        XRAM_SIZE ?= 1024
+    else ifeq ($(mcu_model), STC89LE510RD+)
+        MCU_MACRO := MCU_MODEL_STC89LE510RDP
+        CODE_SIZE ?= 40960
+        XRAM_SIZE ?= 1024
+    else ifeq ($(mcu_model), STC89C512RD+)
+        MCU_MACRO := MCU_MODEL_STC89C512RDP
+        CODE_SIZE ?= 49152
+        XRAM_SIZE ?= 1024
+    else ifeq ($(mcu_model), STC89LE512RD+)
+        MCU_MACRO := MCU_MODEL_STC89LE512RDP
+        CODE_SIZE ?= 49152
+        XRAM_SIZE ?= 1024
+    else ifeq ($(mcu_model), STC89C514RD+)
+        MCU_MACRO := MCU_MODEL_STC89C514RDP
+        CODE_SIZE ?= 57344
+        XRAM_SIZE ?= 1024
+    else ifeq ($(mcu_model), STC89LE514RD+)
+        MCU_MACRO := MCU_MODEL_STC89LE514RDP
+        CODE_SIZE ?= 57344
+        XRAM_SIZE ?= 1024
+    else ifeq ($(mcu_model), STC89C516RD+)
+        MCU_MACRO := MCU_MODEL_STC89C516RDP
+        CODE_SIZE ?= 65536
+        XRAM_SIZE ?= 1024
+    else ifeq ($(mcu_model), STC89LE516RD+)
+        MCU_MACRO := MCU_MODEL_STC89LE516RDP
+        CODE_SIZE ?= 65536
+        XRAM_SIZE ?= 1024
+    else
+        $(error unknow or unsupport MCU model $(MCU))
+    endif
+else
+    $(error unspecify MCU model!)
+endif
+
+########################################
+##### [4] EXPORT CFLAGS
+########################################
+export CFLAGS := -c -I$(DIR_INC)           \
+                 -mmcs51 -D__CONF_MCU_MODEL=$(MCU_MACRO) -D__CONF_FRE_CLKIN=$(CLOCK_FREQUENCY)L \
+                 --std-sdcc99              \
+                 --opt-code-size           \
+                 --code-loc 0x0000 --code-size $(CODE_SIZE) \
+                 --iram-size $(IRAM_SIZE)  \
+                 --xram-size $(XRAM_SIZE)
+
+########################################
+##### [+] PRINT RESULT
+$(info [mcu-model] $(mcu_model) (code=$(CODE_SIZE)B, iram=$(IRAM_SIZE)B, xram=$(XRAM_SIZE)B))
+$(info [mcu-clock] $(shell $(ECHO) $(CLOCK_FREQUENCY) | $(AWK) '{printf("%.6f",$$1/1000000)}') MHz)
+########################################

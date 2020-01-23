@@ -1,13 +1,14 @@
+#!/usr/bin/make
+
 ##################################################
 # Author     : Weilun Fong | wlf@zhishan-iot.tk
-# Date       : 2019-12-28
+# Date       : 2020-01-18
 # Description: help Makefile
 # E-mail     : mcu@zhishan-iot.tk
 # Make-tool  : GNU Make (http://www.gnu.org/software/make/manual/make.html)
 # Page       :
-# Tar-mcu    :
-# Tar-project: general purpose
-# Version    : v0.2.6
+# Project    : HML_FwLib_STC89
+# Version    : v0.3.0
 ##################################################
 
 ########################################
@@ -24,7 +25,8 @@ help:
 	@$(ECHO)  "Build:"
 	@$(ECHO)  "    all        - Build target(include HML library file and user code)"
 	@$(ECHO)  "    library    - Only build HML library file"
-	@$(EECHO) "    rebuild    - Rebuild target(include HML library file and user code). In this case, -j can't work and please pass \033[3mJOBS\033[0m variable via command line instead of it, such as \"make rebuild JOBS=8\""
+	@$(EECHO) "    rebuild    - Rebuild target(include HML library file and user code). In this case, \
+-j can't work and please pass \033[3mJOBS\033[0m variable via command line instead of it, such as \"make rebuild JOBS=8\""
 	@$(ECHO)  ""
 	@$(ECHO)  "Cleaning:"
 	@$(ECHO)  "    clean      - Delete temporary files created by build, except for the .lib and .hex files"
@@ -34,7 +36,18 @@ help:
 	@$(ECHO)  "    help       - Show help information"
 	@$(ECHO)  "    version    - Show version information"
 	@$(ECHO)  ""
+	@$(ECHO)  "+ MCU config variable:"
+	@$(ECHO)  "    MCU        - Specify MCU model(case-insensitive), this variable is required by all \
+compilation target, including all, library and rebuild"
+	@$(ECHO)  "    CLKFRE     - Specify clock frequency manually, user may add releated code into sleep \
+function at the same time. (unit: Hz)"
+	@$(ECHO)  "    CODE       - Specify total size of ROM(external+ on-chip) during compilation manually (unit: KB)"
+	@$(ECHO)  "    XRAM       - Specify total size of external RAM during compilation manually (unit: KB)"
+	@$(ECHO)  ""
 	@$(ECHO)  "+ command line variable:"
 	@$(ECHO)  "    JOBS       - Specify number of make job(only for make rebuild)"
-	@$(ECHO)  "    MYFILE     - Specify user source file or Makefile will fill it with \"test.c\". It's noticed that once use this option to compile specified .c file, user should add this option during doing other works, such as clean and rebuild."
-
+	@$(ECHO)  "    MYFILE     - Specify user source file or Makefile will fill it with \"test.c\". It's \
+noticed that once use this option to compile specified .c file, user should add this option during doing \
+other works, such as clean and rebuild."
+	@$(ECHO)  ""
+	@$(ECHO)  "Examples: make -j MCU=stc89c52rc"
