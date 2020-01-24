@@ -3,24 +3,24 @@
  * \file        util.c
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       public operations
- * \note
+ * \note        
  * \version     v1.2
  * \ingroup     UTIL
 ******************************************************************************/
 
 #include "hml/util.h"
 
-#ifdef __CONF_COMPILE_UTIL
+#ifdef COMPILE_UTIL
 
 /*****************************************************************************/
 /**
  * \author      Weilun Fong
- * \date
+ * \date        
  * \brief       disable master switch of MCU interrupt
- * \param[in]
+ * \param[in]   
  * \return      none
  * \ingroup     UTIL
- * \remarks
+ * \remarks     
 ******************************************************************************/
 void disableAllInterrupts(void)
 {
@@ -30,12 +30,12 @@ void disableAllInterrupts(void)
 /*****************************************************************************/
 /**
  * \author      Weilun Fong
- * \date
+ * \date        
  * \brief       enable master switch of MCU interrupt
- * \param[in]
+ * \param[in]   
  * \return      none
  * \ingroup     UTIL
- * \remarks
+ * \remarks     
 ******************************************************************************/
 void enableAllInterrupts(void)
 {
@@ -94,7 +94,7 @@ void sleep(uint16_t t)
         mov r5,dph
         mov a,#0xd2
         clr c
-        subb    a,r4
+        subb a,r4
         mov dpl,a
         mov a,#0xff
         subb a,r5
@@ -116,7 +116,7 @@ void sleep(uint16_t t)
     __endasm;
 
     /**
-     * @node: disable SDCC warning
+     * @note: disable SDCC warning
      */
     t = 0;
 }

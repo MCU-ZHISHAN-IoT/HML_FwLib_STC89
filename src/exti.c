@@ -11,7 +11,7 @@
 
 #include "hml/exti.h"
  
-#ifdef __CONF_COMPILE_EXTI
+#ifdef COMPILE_EXTI
 
 /*****************************************************************************/
 /** 

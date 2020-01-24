@@ -10,7 +10,7 @@
 
 #include "hml/rst.h"
 
-#ifdef __CONF_COMPILE_RST
+#ifdef COMPILE_RST
 
 /*****************************************************************************/
 /** 

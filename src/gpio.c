@@ -11,7 +11,7 @@
 
 #include "hml/gpio.h" 
 
-#ifdef __CONF_COMPILE_GPIO
+#ifdef COMPILE_GPIO
 
 /*****************************************************************************/
 /** 

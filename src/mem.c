@@ -11,7 +11,7 @@
  
 #include "hml/mem.h"
 
-#ifdef __CONF_COMPILE_MEM
+#ifdef COMPILE_MEM
 
 /*****************************************************************************/
 /** 

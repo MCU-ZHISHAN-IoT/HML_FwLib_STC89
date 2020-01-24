@@ -91,6 +91,40 @@
       (model == MCU_MODEL_STC89LE514RDP)    \
     )
 
+/**
+ *\brief: compile select
+ */
+#if (__CONF_COMPILE_EXTI == 1)
+    #define COMPILE_EXTI
+#endif
+#if (__CONF_COMPILE_GPIO == 1)
+    #define COMPILE_GPIO
+#endif
+#if (__CONF_COMPILE_ISP == 1)
+    #define COMPILE_ISP
+#endif
+#if (__CONF_COMPILE_MEM == 1)
+    #define COMPILE_MEM
+#endif
+#if (__CONF_COMPILE_RST == 1)
+    #define COMPILE_RST
+#endif
+#if (__CONF_COMPILE_TIM == 1)
+    #define COMPILE_TIM
+#endif
+#if (__CONF_COMPILE_TIM2 == 1)
+    #define COMPILE_TIM2
+#endif
+#if (__CONF_COMPILE_UART == 1)
+    #define COMPILE_UART
+#endif
+#if (__CONF_COMPILE_UTIL == 1)
+    #define COMPILE_UTIL
+#endif
+#if (__CONF_COMPILE_WDT == 1)
+    #define COMPILE_WDT
+#endif
+
 /*****************************************************************************
  *                           run-time check                                  *
  *****************************************************************************/
@@ -129,14 +163,15 @@
  *\brief: HML compile selection check
  */
 #ifndef HAVE_ISP
-    #ifdef __CONF_COMPILE_ISP
+    #ifdef COMPILE_ISP
         #error HML run-time check: error: specified MCU model does not suppport \
 ISP function, please disable macro __CONF_COMPILE_ISP in hml/conf.h (ERROR_CODE-0x04)
     #endif
 #endif
 
-#if (defined __CONF_COMPILE_UART) && ((!defined __CONF_COMPILE_TIM) || (!defined __CONF_COMPILE_TIM2))
-    #error HML run-time check: error: UART module needs extern support, please enable macro __CONF_COMPILE_TIM and __CONF_COMPILE_TIM2 at the same time in conf.h (ERROR_CODE-0x05)
+#if (defined COMPILE_UART) && ((!defined COMPILE_TIM) || (!defined COMPILE_TIM2))
+    #error HML run-time check: error: UART module needs extern support, please enable \
+macro __CONF_COMPILE_TIM and __CONF_COMPILE_TIM2 at the same time in hml/conf.h (ERROR_CODE-0x05)
 #endif
 
 /**

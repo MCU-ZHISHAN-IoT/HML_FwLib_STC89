@@ -10,7 +10,7 @@
 
 #include "hml/wdt.h"
 
-#ifdef __CONF_COMPILE_WDT
+#ifdef COMPILE_WDT
 
 /*****************************************************************************/
 /** 
