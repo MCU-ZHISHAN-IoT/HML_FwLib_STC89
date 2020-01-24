@@ -41,7 +41,7 @@ else
 endif
 ### internal ROM
 ifneq ($(CODE),)
-    export CODE_SIZE := $(shell $EXPR $(CODE) \* 1024)
+    export CODE_SIZE := $(shell $(EXPR) $(CODE) \* 1024)
 endif
 ### internal RAM
 # for stc89, this value is fixed to 256
@@ -139,7 +139,7 @@ endif
 ##### [4] EXPORT CFLAGS
 ########################################
 export CFLAGS := -c -I$(DIR_INC)           \
-                 -mmcs51 -D__CONF_MCU_MODEL=$(MCU_MACRO) -D__CONF_FRE_CLKIN=$(CLOCK_FREQUENCY)L \
+                 -mmcs51 -D__CONF_MCU_MODEL=$(MCU_MACRO) -D__CONF_FRE_CLKIN=$(CLOCK_FREQUENCY)UL \
                  --std-sdcc99              \
                  --opt-code-size           \
                  --code-loc 0x0000 --code-size $(CODE_SIZE) \
