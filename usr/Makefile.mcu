@@ -41,14 +41,14 @@ else
 endif
 ### internal ROM
 ifneq ($(CODE),)
-    export CODE_SIZE := $(shell $(EXPR) $(CODE) \* 1024)
+    export CODE_SIZE := $(shell $(ECHO) $(CODE) | $(AWK) '{printf("%d",$$1*1024)}')
 endif
 ### internal RAM
 # for stc89, this value is fixed to 256
 export IRAM_SIZE := 256
 ### external RAM
 ifneq ($(XRAM),)
-    export XRAM_SIZE := $(shell $(EXPR) $(XRAM) \* 1024)
+    export XRAM_SIZE := $(shell $(ECHO) $(XRAM) | $(AWK) '{printf("%d",$$1*1024)}')
 endif
 
 ########################################
