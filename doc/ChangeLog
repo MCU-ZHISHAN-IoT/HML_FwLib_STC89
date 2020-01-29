@@ -139,7 +139,7 @@
 
 >Version : v1.2.0
  Alias   :
- Date    : 
+ Date    : 2020-01-29
  Note    : (1)add types.h including definitions of data types
            (2)fix bug that timer-2 cannot run in baud rate generator mode
            (3)update Makefile to v0.2.6

@@ -50,4 +50,7 @@ function at the same time. (unit: Hz)"
 noticed that once use this option to compile specified .c file, user should add this option during doing \
 other works, such as clean and rebuild."
 	@$(ECHO)  ""
-	@$(ECHO)  "Examples: make -j MCU=stc89c52rc"
+	@$(ECHO)  "Examples:"
+	@$(ECHO)  "    (1) make -j MCU=stc89c52rc"
+	@$(ECHO)  "    (2) make rebuild MCU=stc89c52rc JOBS=4"
+	@$(ECHO)  "    (3) make -j library MCU=stc89c52rc"

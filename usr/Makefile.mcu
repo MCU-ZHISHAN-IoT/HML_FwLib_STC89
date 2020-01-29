@@ -16,7 +16,6 @@
 SHELL := /bin/bash
 AWK   ?= awk
 ECHO  ?= echo
-EXPR  ?= expr
 GREP  ?= grep
 SPACE ?= $(empty) $(empty)
 ########################################

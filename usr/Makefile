@@ -22,7 +22,6 @@ export CAT         := cat
 export CD          := cd
 export ECHO        := echo
 export EECHO       := $(ECHO) -e
-export EXPR        := expr
 export GREP        := grep
 export LS          := ls
 export RM          := rm -f
