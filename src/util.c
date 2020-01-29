@@ -44,8 +44,49 @@ void enableAllInterrupts(void)
 
 /*****************************************************************************/
 /**
- * \author      Weilun Fong
- * \date
+ * \author      Qiyuan Chen & Jiabin Hsu
+ * \date        2020/01/28
+ * \brief       get _sleep_1ms initial value
+ * \param[in]   none
+ * \return      none
+ * \ingroup     UTIL
+ * \remarks     private function, don' use it
+******************************************************************************/
+uint16_t _sleep_getInitValue(void)
+{
+    return (uint16_t)(MCU_FRE_CLK/(float)12000/8) - 2;
+}
+
+/*****************************************************************************/
+/**
+ * \author      Qiyuan Chen
+ * \date        2020/01/28
+ * \brief       sleep 1 ms
+ * \param[in]   none
+ * \return      none
+ * \ingroup     UTIL
+ * \remarks     private function, don' use it
+******************************************************************************/
+void _sleep_1ms(void)
+{
+    __asm
+        mov ar5, r6                 ;#1
+    delay1ms_loop$:
+        nop                         ;#1
+        nop                         ;#1
+        nop                         ;#1
+        nop                         ;#1
+        nop                         ;#1
+        nop                         ;#1
+        djnz r5, delay1ms_loop$     ;#2
+        ret                         ;#2
+    __endasm;
+}
+
+/*****************************************************************************/
+/**
+ * \author      Jiabin Hsu
+ * \date        2020/01/28
  * \brief       software delay according to MCU clock frequency
  * \param[in]   t: how many one ms you want to delay
  * \return      none
@@ -55,64 +96,54 @@ void enableAllInterrupts(void)
 void sleep(uint16_t t)
 {
     __asm
+        push ar5
+        push ar6
+        push ar7
 
-        ; preprocess
+        push dph
+        push dpl
+
+    ; freq -> r6,r7
+        lcall __sleep_getInitValue
+        mov ar6,dpl
+        mov ar7,dph
+
+    ; t -> dptr
+        pop dpl
+        pop dph
+
+    ; 0xFFFF - t
         clr c
-        mov a,dpl
-        subb a,#1
+        mov a,#0xFF
+        subb a,dpl
         mov dpl,a
-        mov a,dph
-        subb a,#0
+        mov a,#0xFF
+        subb a,dph
         mov dph,a
 
-        ; calculate total cosume time
-        mov r6,dpl
-        mov r7,dph
-        mov __mullong_PARM_2,r6
-        mov (__mullong_PARM_2 + 1),r7
-        mov (__mullong_PARM_2 + 2),#0x00
-        mov (__mullong_PARM_2 + 3),#0x00
-        mov dptr,#0x0399
-        clr a
-        mov b,a
-        lcall   __mullong
-        mov r4,dpl
-        mov r5,dph
-        mov r6,b
-        mov r7,a
-        mov __divslong_PARM_2,#0x07
-        clr a
-        mov (__divslong_PARM_2 + 1),a
-        mov (__divslong_PARM_2 + 2),a
-        mov (__divslong_PARM_2 + 3),a
-        mov dpl,r4
-        mov dph,r5
-        mov b,r6
-        mov a,r7
-        lcall   __divslong
-        mov r4,dpl
-        mov r5,dph
-        mov a,#0xd2
-        clr c
-        subb a,r4
-        mov dpl,a
-        mov a,#0xff
-        subb a,r5
-        mov dph,a
-
-        ; loop for sleep
+    ; return if time equals 0
         mov a,dpl
         anl a,dph
         cpl a
         jz ENDL$
-    LOOP$:
-        inc dptr
-        mov a,dpl
-        anl a,dph
-        cpl a
-        jnz LOOP$
-    ENDL$:
 
+    ; loop for sleep
+    ; loop from (0xFFFF - t) to (0xFFFF)
+    LOOP$:
+        lcall __sleep_1ms               ;#8*((frep/12000)-2)+5
+        inc dptr                        ;#1
+        mov a,dpl                       ;#1
+        anl a,dph                       ;#1
+        cpl a                           ;#1
+        nop                             ;#1
+        nop                             ;#1
+        nop                             ;#1
+        jnz LOOP$                       ;#2
+    ENDL$:
+        pop ar7
+        pop ar6
+        pop ar5
+        ret
     __endasm;
 
     /**
