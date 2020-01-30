@@ -1,8 +1,8 @@
 # HML_FwLib_STC89
-![Jenkins](https://img.shields.io/jenkins/build?jobUrl=http%3A%2F%2Fjenkins.zhishan-iot.tk%3A12463%2Fjob%2FHML_FwLib_STC89)
-![GitHub repo size](https://img.shields.io/github/repo-size/MCU-ZHISHAN-IoT/HML_FwLib_STC89)
-![GitHub](https://img.shields.io/github/license/MCU-ZHISHAN-IoT/HML_FwLib_STC89)
-![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/MCU-ZHISHAN-IoT/HML_FwLib_STC89?color=26a69a)
+[![Jenkins](https://img.shields.io/jenkins/build?jobUrl=http%3A%2F%2Fjenkins.zhishan-iot.tk%3A12463%2Fjob%2FHML_FwLib_STC89)](http://jenkins.zhishan-iot.tk:12463/job/HML_FwLib_STC89)
+[![GitHub repo size](https://img.shields.io/github/repo-size/MCU-ZHISHAN-IoT/HML_FwLib_STC89)](https://github.com/MCU-ZHISHAN-IoT/HML_FwLib_STC89)
+[![GitHub](https://img.shields.io/github/license/MCU-ZHISHAN-IoT/HML_FwLib_STC89)](https://github.com/MCU-ZHISHAN-IoT/HML_FwLib_STC89/blob/master/LICENSE)
+[![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/MCU-ZHISHAN-IoT/HML_FwLib_STC89?color=26a69a)](https://github.com/MCU-ZHISHAN-IoT/HML_FwLib_STC89/tags)
 
 ## What is HML_FwLib_STC89
 HML_FwLib_STC89 is a important member component of HML firmware library, **providing a group of interface functions for users to operate on-chip resource of STC89 MCUs**, including GPIO, ISP, timer, UART, external interrupt and watchdog. The STC89 MCU is a kind of Intel MCS-51 based MCU which released by [STC Micro](http://www.stcmcu.com/)(*宏晶*), and it's one of the most widely used MCUs series in Mainland, China. This series MCU have more on-chip resource than classical 8051 MCU.
