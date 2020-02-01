@@ -27,7 +27,7 @@
 ******************************************************************************/
 uint16_t TIM_calculateValue(uint16_t time,TIM_mode m)
 {
-    /* machine cycle: MCU_FRE_CLK / 12 */
+    /* machine cycle: MCU_FRE_CLK / MCU_PRESCALER */
     uint16_t maxTick = 0x0000;
 
     switch(m)
@@ -39,13 +39,13 @@ uint16_t TIM_calculateValue(uint16_t time,TIM_mode m)
         default: break;
     }
 
-    if((time*12)/(MCU_FRE_CLK/1000000) >= maxTick )
+    if((time*MCU_PRESCALER)/(MCU_FRE_CLK/1000000) >= maxTick)
     {
         return 0x0000;
     }
     else
     {
-        return (maxTick + 1 - ((time*12)/(MCU_FRE_CLK/1000000)));
+        return (maxTick + 1 - ((time*MCU_PRESCALER)/(MCU_FRE_CLK/1000000)));
     }
 }
 

@@ -41,6 +41,7 @@ help:
 compilation target, including all, library and rebuild"
 	@$(ECHO)  "    CLKFRE     - Specify clock frequency manually, user may add releated code into sleep \
 function at the same time. (unit: Hz)"
+	@$(ECHO)  "    PRESCALER  - Specify MCU prescaler factor, the value must be 6(6T mode) or 12(12T mode)"
 	@$(ECHO)  "    CODE       - Specify total size of ROM(external+ on-chip) during compilation manually (unit: KB)"
 	@$(ECHO)  "    XRAM       - Specify total size of external RAM during compilation manually (unit: KB)"
 	@$(ECHO)  ""

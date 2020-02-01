@@ -20,7 +20,19 @@
  */
 #ifndef __CONF_FRE_CLKIN
     #warning no specified clock frequency, HML will fill it with 11.0592MHz
-    #define __CONF_FRE_CLKIN 11059200L
+    #define __CONF_FRE_CLKIN 11059200UL
+#endif
+
+/**
+ *\brief: configure prescaler of MCU
+ *
+ *\note : in order to switch 6T/12T mode successfully, user must also do related 
+ *        operations via select option inside official <stc-isp> software and restart 
+ *        MCU. Otherwise, user can't observe expected phenomenon.
+ */
+#ifndef __CONF_MCU_PRESCALER
+    #warning no specified MCU prescaler, HML will fill it with 12(12T mode)
+    #define __CONF_MCU_PRESCALER 12
 #endif
 
 /**

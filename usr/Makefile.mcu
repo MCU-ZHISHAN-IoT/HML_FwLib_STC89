@@ -38,6 +38,16 @@ ifneq ($(CLKFRE),)
 else
     CLOCK_FREQUENCY := 11059200
 endif
+### prescaler
+ifeq ($(PRESCALER),)
+    PRESCALER_FACTOR ?= 12
+else ifeq ($(PRESCALER),6)
+    PRESCALER_FACTOR := 6
+else ifeq ($(PRESCALER),12)
+    PRESCALER_FACTOR := 12
+else
+    $(error invalid PRESCALER value, the value must be 6 or 12!)
+endif
 ### internal ROM
 ifneq ($(CODE),)
     export CODE_SIZE := $(shell $(ECHO) $(CODE) | $(AWK) '{printf("%d",$$1*1024)}')
@@ -138,7 +148,8 @@ endif
 ##### [4] EXPORT CFLAGS
 ########################################
 export CFLAGS := -c -I$(DIR_INC)           \
-                 -mmcs51 -D__CONF_MCU_MODEL=$(MCU_MACRO) -D__CONF_FRE_CLKIN=$(CLOCK_FREQUENCY)UL \
+                 -mmcs51 -D__CONF_MCU_MODEL=$(MCU_MACRO) \
+                 -D__CONF_FRE_CLKIN=$(CLOCK_FREQUENCY)UL -D__CONF_MCU_PRESCALER=$(PRESCALER_FACTOR)\
                  --std-sdcc99              \
                  --opt-code-size           \
                  --code-loc 0x0000 --code-size $(CODE_SIZE) \
@@ -149,4 +160,5 @@ export CFLAGS := -c -I$(DIR_INC)           \
 ##### [+] PRINT RESULT
 $(info [mcu-model] $(mcu_model) (code=$(CODE_SIZE)B, iram=$(IRAM_SIZE)B, xram=$(XRAM_SIZE)B))
 $(info [mcu-clock] $(shell $(ECHO) $(CLOCK_FREQUENCY) | $(AWK) '{printf("%.6f",$$1/1000000)}') MHz)
+$(info [prescaler] $(PRESCALER_FACTOR)T mode)
 ########################################

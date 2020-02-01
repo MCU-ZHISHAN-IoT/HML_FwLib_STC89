@@ -125,6 +125,11 @@
     #define COMPILE_WDT
 #endif
 
+/**
+ *\brief: configure prescaler of MCU
+ */
+#define MCU_PRESCALER __CONF_MCU_PRESCALER
+
 /*****************************************************************************
  *                           run-time check                                  *
  *****************************************************************************/
@@ -135,6 +140,13 @@
     #define MCU_FRE_CLK __CONF_FRE_CLKIN
 #else
     #error HML run-time check: error: HML need define input clock frequency! (ERROR_CODE-0x01)
+#endif
+
+/**
+ *\brief: MCU clock prescaler(6T/12T) check
+ */
+#if (MCU_PRESCALER != 6) && (MCU_PRESCALER != 12) 
+    #error HML run-time check: error: value of macro MCU_PRESCALER must be 6 or 12! (ERROR_CODE-0x01)
 #endif
 
 /**

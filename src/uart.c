@@ -110,37 +110,43 @@ uint16_t UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
 {
     uint8_t tmp = 0x00;
 
-    /* baud = (2^SMOD/32) * MCU_FRE_CLK/(256-x)*12 */
+    /* baud = (2^SMOD/32) * MCU_FRE_CLK/(256-TH1)*12 */
     switch(tim)
     {
         case PERIPH_TIM_1:
         {
             if(GET_BIT(PCON,SMOD))     /* multi baud rate mode */
             {
-                if(baud > MCU_FRE_CLK/12/16)
+                if(baud > MCU_FRE_CLK/MCU_PRESCALER/16)
                 {
                     return 0x0000;     /* baud rate over max value */
                 }
                 else 
                 {
-                    tmp = (256 - MCU_FRE_CLK/16/12/baud);  
+                    tmp = (256 - MCU_FRE_CLK/16/MCU_PRESCALER/baud);  
                 }
             }
             else
             {
-                if(baud > MCU_FRE_CLK/12/32)
+                if(baud > MCU_FRE_CLK/MCU_PRESCALER/32)
                 {
                     return 0x0000;
                 }
                 else
                 {
-                    tmp = (256 - MCU_FRE_CLK/32/12/baud);
+                    tmp = (256 - MCU_FRE_CLK/32/MCU_PRESCALER/baud);
                 }
             }
         } break;
         case PERIPH_TIM_2:
         {
+        #if (MCU_PRESCALER == 6)
+            return ((65536 - (MCU_FRE_CLK/16/baud)));
+        #elif (MCU_PRESCALER == 12)
             return ((65536 - (MCU_FRE_CLK/32/baud)));
+        #else
+            return 0x0000;
+        #endif
         } break;
         default: break;
     }

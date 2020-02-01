@@ -138,7 +138,7 @@
            (4)rename function TIM2_INT_T2EX_cmd as TIM2_T2EX_cmd
 
 >Version : v1.2.0
- Alias   :
+ Alias   : V1R3
  Date    : 2020-01-29
  Note    : (1)add types.h including definitions of data types
            (2)fix bug that timer-2 cannot run in baud rate generator mode
@@ -151,3 +151,8 @@
            (4)optimize sleep function
            (5)refactor version.h
            (6)optimize macro for module compile selection
+
+>Version : v1.2.1
+ Alias   :
+ Date    :
+ Note    : (1)support 6T mode
