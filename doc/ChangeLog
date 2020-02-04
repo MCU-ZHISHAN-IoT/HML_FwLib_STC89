@@ -157,3 +157,4 @@
  Date    :
  Note    : (1)support 6T mode
            (2)add macro __HML_NAME_STRING__ for version mark
+           (3)add function UART_getByte and UART_sendHex
