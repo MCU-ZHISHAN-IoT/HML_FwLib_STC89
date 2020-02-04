@@ -156,3 +156,4 @@
  Alias   :
  Date    :
  Note    : (1)support 6T mode
+           (2)add macro __HML_NAME_STRING__ for version mark
