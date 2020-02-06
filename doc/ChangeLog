@@ -158,3 +158,7 @@
  Note    : (1)support 6T mode
            (2)add macro __HML_NAME_STRING__ for version mark
            (3)add function UART_getByte and UART_sendHex
+           (4)update Makefile to v0.3.1
+             - optimize the way to obtain config parameters, add Makefile.config
+             - change code comment style
+             - support CONF, VERBOSE variable for MCU configuration

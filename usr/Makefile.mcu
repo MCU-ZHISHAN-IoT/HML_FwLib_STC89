@@ -1,34 +1,21 @@
 #!/usr/bin/make
 
-##################################################
+# ------------------------------------------------------------------------
 # Author     : Weilun Fong | wlf@zhishan-iot.tk
-# Date       : 2020-01-18
-# Description: configure Makefile
+# Date       : 2020-02-06
+# Description: MCU parameters config Makefile
 # E-mail     : mcu@zhishan-iot.tk
 # Make-tool  : GNU Make (http://www.gnu.org/software/make/manual/make.html)
 # Page       : https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
 # Project    : HML_FwLib_STC89
-# Version    : v0.3.0
-##################################################
+# Version    : v0.3.1
+# ------------------------------------------------------------------------
 
-########################################
-##### [*]ENVIRONMENT CONFIGURATION
-SHELL := /bin/bash
-AWK   ?= awk
-ECHO  ?= echo
-GREP  ?= grep
-SPACE ?= $(empty) $(empty)
-########################################
-
-########################################
-##### [1] INFORMATION PRINT
+# Print note information
 $(info $(SPACE)- Collect MCU config information)
-########################################
 
-########################################
-##### [2] INTERNAL RAM / USER INPUT
-########################################
-### clock frequency
+# Configuration parameter translation
+# [CLKFRE] frequency of MCU clock
 ifneq ($(CLKFRE),)
     ifeq ($(shell $(ECHO) $(CLKFRE) | $(GREP) '^[[:digit:]]*$$'),)
         $(error invalid CLKFRE value)
@@ -38,7 +25,7 @@ ifneq ($(CLKFRE),)
 else
     CLOCK_FREQUENCY := 11059200
 endif
-### prescaler
+# [PRESCALER] MCU prescaler
 ifeq ($(PRESCALER),)
     PRESCALER_FACTOR ?= 12
 else ifeq ($(PRESCALER),6)
@@ -48,21 +35,20 @@ else ifeq ($(PRESCALER),12)
 else
     $(error invalid PRESCALER value, the value must be 6 or 12!)
 endif
-### internal ROM
+
+# [CODE] internal ROM
 ifneq ($(CODE),)
     export CODE_SIZE := $(shell $(ECHO) $(CODE) | $(AWK) '{printf("%d",$$1*1024)}')
 endif
-### internal RAM
+# [IRAM] internal RAM
 # for stc89, this value is fixed to 256
 export IRAM_SIZE := 256
-### external RAM
+# [XRAM] external RAM
 ifneq ($(XRAM),)
     export XRAM_SIZE := $(shell $(ECHO) $(XRAM) | $(AWK) '{printf("%d",$$1*1024)}')
 endif
 
-########################################
-##### [3] OTHER MCU CONFIGURATION
-########################################
+# [MCU] MCU model enumeration
 ifneq ($(MCU),)
     mcu_model := $(shell $(ECHO) $(MCU) | $(TR) '[a-z]' '[A-Z]')
     ifeq ($(mcu_model), STC89C51RC)
@@ -144,21 +130,33 @@ else
     $(error unspecify MCU model!)
 endif
 
-########################################
-##### [4] EXPORT CFLAGS
-########################################
-export CFLAGS := -c -I$(DIR_INC)           \
-                 -mmcs51 -D__CONF_MCU_MODEL=$(MCU_MACRO) \
-                 -D__CONF_FRE_CLKIN=$(CLOCK_FREQUENCY)UL -D__CONF_MCU_PRESCALER=$(PRESCALER_FACTOR)\
-                 --std-sdcc99              \
-                 --opt-code-size           \
-                 --code-loc 0x0000 --code-size $(CODE_SIZE) \
-                 --iram-size $(IRAM_SIZE)  \
-                 --xram-size $(XRAM_SIZE)
+# Generate and export CFLAGS
+#   Details:
+#     --fsigned-char    Make "char" signed by default
+#    -mmcs51            Generate code for the Intel MCS51 family of processors.
+#                       This is the default processor target.
+#    --std-sdcc99       Use ISO C99 standard with SDCC extensions
+#    --opt-code-size    Optimize for code size rather than speed
+#    --code-loc         Code Segment Location
+#    --code-size        Code Segment size
+#    --iram-size        Internal Ram size
+#    --xram-size        External Ram size
+export CFLAGS := -c -I$(DIR_INC) --fsigned-char \
+-mmcs51 -D__CONF_MCU_MODEL=$(MCU_MACRO) \
+-D__CONF_FRE_CLKIN=$(CLOCK_FREQUENCY)UL -D__CONF_MCU_PRESCALER=$(PRESCALER_FACTOR) \
+--std-sdcc99 --fsigned-char\
+--opt-code-size \
+--code-loc 0x0000 --code-size $(CODE_SIZE) \
+--iram-size $(IRAM_SIZE) \
+--xram-size $(XRAM_SIZE)
 
-########################################
-##### [+] PRINT RESULT
+# Generate and export AFLAGS
+#     -c      do not warn if the library had to be created
+#     -s      act as ranlib
+#     -r      replace existing or insert new file(s) into the archive
+AFLAGS        := -rcs
+
+# Print final MCU information according to all configurations
 $(info [mcu-model] $(mcu_model) (code=$(CODE_SIZE)B, iram=$(IRAM_SIZE)B, xram=$(XRAM_SIZE)B))
 $(info [mcu-clock] $(shell $(ECHO) $(CLOCK_FREQUENCY) | $(AWK) '{printf("%.6f",$$1/1000000)}') MHz)
 $(info [prescaler] $(PRESCALER_FACTOR)T mode)
-########################################

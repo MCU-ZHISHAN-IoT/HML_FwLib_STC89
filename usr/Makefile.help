@@ -1,26 +1,22 @@
 #!/usr/bin/make
 
-##################################################
+# ------------------------------------------------------------------------
 # Author     : Weilun Fong | wlf@zhishan-iot.tk
-# Date       : 2020-01-18
+# Date       : 2020-02-06
 # Description: help Makefile
 # E-mail     : mcu@zhishan-iot.tk
 # Make-tool  : GNU Make (http://www.gnu.org/software/make/manual/make.html)
-# Page       :
+# Page       : https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
 # Project    : HML_FwLib_STC89
-# Version    : v0.3.0
-##################################################
+# Version    : v0.3.1
+# ------------------------------------------------------------------------
 
-########################################
-##### [*]ENVIRONMENT CONFIGURATION
-########################################
-SHELL := /bin/bash
-ECHO  ?= echo
-EECHO ?= $(ECHO) -e
+# Check run environment
+ifneq ($(MAKELEVEL), 1)
+    $(error It's not allowed to execute this makefile directly!)
+endif
 
-########################################
-##### [1]HELP WORKS
-########################################
+# Print help information
 help:
 	@$(ECHO)  "Build:"
 	@$(ECHO)  "    all        - Build target(include HML library file and user code)"
@@ -39,19 +35,21 @@ help:
 	@$(ECHO)  "+ MCU config variable:"
 	@$(ECHO)  "    MCU        - Specify MCU model(case-insensitive), this variable is required by all \
 compilation target, including all, library and rebuild"
-	@$(ECHO)  "    CLKFRE     - Specify clock frequency manually, user may add releated code into sleep \
-function at the same time. (unit: Hz)"
+	@$(ECHO)  "    CLKFRE     - Specify clock frequency manually(unit: Hz)"
 	@$(ECHO)  "    PRESCALER  - Specify MCU prescaler factor, the value must be 6(6T mode) or 12(12T mode)"
 	@$(ECHO)  "    CODE       - Specify total size of ROM(external+ on-chip) during compilation manually (unit: KB)"
 	@$(ECHO)  "    XRAM       - Specify total size of external RAM during compilation manually (unit: KB)"
 	@$(ECHO)  ""
 	@$(ECHO)  "+ command line variable:"
+	@$(ECHO)  "    CONF       - Specify config Makefile(default: Makefile.config)"
 	@$(ECHO)  "    JOBS       - Specify number of make job(only for make rebuild)"
 	@$(ECHO)  "    MYFILE     - Specify user source file or Makefile will fill it with \"test.c\". It's \
 noticed that once use this option to compile specified .c file, user should add this option during doing \
 other works, such as clean and rebuild."
+	@$(ECHO)  "    VERBOSE    - When the value is 1, Makefile will print more details during build"
 	@$(ECHO)  ""
 	@$(ECHO)  "Examples:"
-	@$(ECHO)  "    (1) make -j MCU=stc89c52rc"
-	@$(ECHO)  "    (2) make rebuild MCU=stc89c52rc JOBS=4"
-	@$(ECHO)  "    (3) make -j library MCU=stc89c52rc"
+	@$(ECHO)  "    (1) make -j"
+	@$(ECHO)  "    (2) make -j MCU=stc89c52rc"
+	@$(ECHO)  "    (3) make rebuild MCU=stc89c52rc JOBS=4"
+	@$(ECHO)  "    (4) make -j library MCU=stc89c52rc"

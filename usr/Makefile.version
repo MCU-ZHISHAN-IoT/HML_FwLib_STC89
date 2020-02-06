@@ -1,24 +1,29 @@
 #!/usr/bin/make
 
-##################################################
+# ------------------------------------------------------------------------
 # Author     : Weilun Fong | wlf@zhishan-iot.tk
-# Date       : 2020-01-18
+# Date       : 2020-02-06
 # Description: version Makefile
 # E-mail     : mcu@zhishan-iot.tk
 # Make-tool  : GNU Make (http://www.gnu.org/software/make/manual/make.html)
-# Page       :
+# Page       : https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
 # Project    : HML_FwLib_STC89
-# Version    : v0.3.0
-##################################################
+# Version    : v0.3.1
+# ------------------------------------------------------------------------
 
-########################################
-##### [*]VARIABLE DEFINE
-########################################
-##### shell command
-ECHO               := echo
-##### version information##
+# Check run environment
+ifneq ($(MAKELEVEL), 1)
+    $(error It's not allowed to execute this makefile directly!)
+endif
+ifneq ($(MAKELEVEL), 1)
+    $(error Execute this makefile directly is not allowed!)
+endif
+
+# Items about version
+# HML
 HML_FWLIB_NAME     := HML_FwLib_STC89
-# [note]: we unify version code from v0.1.0 because of the same makefile template
+# HmlFwlibMakefile
+# [note] we unify version code from v0.1.0 because of the same makefile template
 MAK_VERSION        := v0.3.0
 # author
 AUTHOR_NAME        := Weilun Fong
@@ -26,9 +31,7 @@ AUTHOR_EMAIL       := wlf@zhishan-iot.tk
 # maintainer
 MAINTAINER_EMAIL   := mcu@zhishan-iot.tk
 
-########################################
-##### [1]PRINT VERSION
-########################################
+# Print version information
 version:
 	@$(ECHO) "HmlFwlibMakefile [$(MAK_VERSION)]"
 	@$(ECHO) "General purpose Makefile for HML firmware library."
