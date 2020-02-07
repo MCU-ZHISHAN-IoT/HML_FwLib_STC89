@@ -162,3 +162,4 @@
              - optimize the way to obtain config parameters, add Makefile.config
              - change code comment style
              - support CONF, VERBOSE variable for MCU configuration
+           (5)add exmaple zCLI

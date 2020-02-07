@@ -44,6 +44,8 @@ DIR_OUTPUT         := $(DIR_ROOT)/obj
 DIR_SRC            := $(DIR_ROOT)/src
 
 # Configure all custom parameters
+SPACE              := $(empty) $(empty)
+TITLE_COLOR        := \033[36m
 ifeq ($(findstring $(MAKECMDGOALS), $(PHONY_LIST_IN)),)
     ifneq ($(CONF),)
         include $(CONF)
@@ -54,8 +56,6 @@ ifeq ($(findstring $(MAKECMDGOALS), $(PHONY_LIST_IN)),)
 endif
 
 #  Definition of of print format
-SPACE              := $(empty) $(empty)
-TITLE_COLOR        := \033[36m
 ifeq ("$(VERBOSE)", "1")
     Q :=
     VECHO := @$(TRUE)
