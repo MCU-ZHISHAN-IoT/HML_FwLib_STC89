@@ -9,7 +9,7 @@ UART and supports following functions:
 + multi-parameter command(gap with space)
 + ...
 
-![](./zcli-usage-demo.gif)
+![image](https://github.com/MCU-ZHISHAN-IoT/HML_FwLib_STC89/blob/master/example/zcli/zcli-usage-demo.gif)
 
 zCLI just a toy, and it written by [Weilun Fong](mailto:wlf@zhishan-iot.tk) in 2020. However, it can also help people learn how 
 to achieve a own CLI program on MCU with limited on-chip zone. zCLI is now released as a example file inside HML. Welcome PR or
