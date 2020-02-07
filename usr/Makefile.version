@@ -15,9 +15,6 @@
 ifneq ($(MAKELEVEL), 1)
     $(error It's not allowed to execute this makefile directly!)
 endif
-ifneq ($(MAKELEVEL), 1)
-    $(error Execute this makefile directly is not allowed!)
-endif
 
 # Items about version
 # HML
