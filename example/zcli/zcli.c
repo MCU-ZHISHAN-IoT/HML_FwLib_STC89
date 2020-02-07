@@ -5,7 +5,7 @@
  * \date       2020/02/02
  * \brief      a simple CLI demo file entirely runs on MCU, including basic
  *             information print functions and a I\O control function
- * \note       zCLI just a toy for fun, don't expected rich functions because
+ * \note       zCLI is just a toy for fun, don't expected rich functions because
  *             of limited on-chip resource. However, user can still develop a
  *             new CLI based on it
  *             This demo is inspired by https://github.com/nhivp/msp430-cli
@@ -73,12 +73,12 @@
  *\quote: (sdcc official) sdcc 3.7.0: Changed putchar() prototype from void putchar(char)
  *        to int putchar(int) to improve standard-compliance and allow error reporting.
  */
-#if ((__SDCC_VERSION_MAJOR <= 3) && (__SDCC_VERSION_MINOR < 7))
-typedef void PUTCHAR_T;
-typedef char PUTCHAR_CH_T;
-#else
+#if ((__SDCC_VERSION_MAJOR > 3) || ((__SDCC_VERSION_MAJOR == 3 ) && (__SDCC_VERSION_MINOR >= 7)))
 typedef int PUTCHAR_T;
 typedef int PUTCHAR_CH_T;
+#else
+typedef void PUTCHAR_T;
+typedef char PUTCHAR_CH_T;
 #endif
 
 /**
@@ -249,7 +249,7 @@ PUTCHAR_T putchar(PUTCHAR_CH_T ch)
 {
     UART_sendByte((char)ch);
 
-    #if !((__SDCC_VERSION_MAJOR <= 3) && (__SDCC_VERSION_MINOR < 7))
+    #if ((__SDCC_VERSION_MAJOR > 3) || ((__SDCC_VERSION_MAJOR == 3 ) && (__SDCC_VERSION_MINOR >= 7)))
     return ch;
     #endif
 }
