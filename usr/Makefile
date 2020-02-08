@@ -85,7 +85,7 @@ all: $(DIR_OUTPUT)/$(TARGET).hex
 	@$(ECHO) ===================================================
 	@$(ECHO) Make $(MAKECMDGOALS) done!
 	@$(ECHO) ---------------------------------------------------
-	@$(ECHO) completed at `date "+%Y-%m-%d %H:%M:%S"`
+	@$(ECHO) completed at `$(DATE) "+%Y-%m-%d %H:%M:%S"`
 	@$(ECHO) ===================================================
 
 # Startup

@@ -21,7 +21,7 @@ endif
 HML_FWLIB_NAME     := HML_FwLib_STC89
 # HmlFwlibMakefile
 # [note] we unify version code from v0.1.0 because of the same makefile template
-MAK_VERSION        := v0.3.0
+MAK_VERSION        := v0.3.1
 # author
 AUTHOR_NAME        := Weilun Fong
 AUTHOR_EMAIL       := wlf@zhishan-iot.tk
