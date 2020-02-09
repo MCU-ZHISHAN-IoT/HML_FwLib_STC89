@@ -146,7 +146,7 @@
  *\brief: MCU clock prescaler(6T/12T) check
  */
 #if (MCU_PRESCALER != 6) && (MCU_PRESCALER != 12) 
-    #error HML run-time check: error: value of macro MCU_PRESCALER must be 6 or 12! (ERROR_CODE-0x01)
+    #error HML run-time check: error: value of macro MCU_PRESCALER must be 6 or 12! (ERROR_CODE-0x02)
 #endif
 
 /**
@@ -161,10 +161,10 @@
             #define HML_MCU_MODEL __CONF_MCU_MODEL
         #endif
     #else
-        #error HML run-time check: error: unknow or unsupported MCU model!(ERROR_CODE-0x02)
+        #error HML run-time check: error: unknow or unsupported MCU model!(ERROR_CODE-0x03)
     #endif
 #else
-    #error HML run-time check: error: unspecify MCU model!(ERROR_CODE-0x03)
+    #error HML run-time check: error: unspecify MCU model!(ERROR_CODE-0x04)
 #endif
 
 #if IS_ISP_MODEL(HML_MCU_MODEL)
@@ -177,13 +177,13 @@
 #ifndef HAVE_ISP
     #ifdef COMPILE_ISP
         #error HML run-time check: error: specified MCU model does not suppport \
-ISP function, please disable macro __CONF_COMPILE_ISP in hml/conf.h (ERROR_CODE-0x04)
+ISP function, please disable macro __CONF_COMPILE_ISP in hml/conf.h (ERROR_CODE-0x05)
     #endif
 #endif
 
 #if (defined COMPILE_UART) && ((!defined COMPILE_TIM) || (!defined COMPILE_TIM2))
     #error HML run-time check: error: UART module needs extern support, please enable \
-macro __CONF_COMPILE_TIM and __CONF_COMPILE_TIM2 at the same time in hml/conf.h (ERROR_CODE-0x05)
+macro __CONF_COMPILE_TIM and __CONF_COMPILE_TIM2 at the same time in hml/conf.h (ERROR_CODE-0x06)
 #endif
 
 /**
@@ -191,11 +191,11 @@ macro __CONF_COMPILE_TIM and __CONF_COMPILE_TIM2 at the same time in hml/conf.h 
  */
 #if (__SDCC_VERSION_MAJOR == 3)
     #if (__SDCC_VERSION_MINOR < 6)
-        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x06)
+        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x07)
     #endif
 #else
     #if (__SDCC_VERSION_MAJOR < 3)
-        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x06)
+        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x07)
     #endif
 #endif
 

@@ -438,7 +438,7 @@ int8_t zcli_action_re(void)
 ******************************************************************************/
 int8_t zcli_action_si(void)
 {
-    uint8_t i = sizeof(zcli_str_systemInfo) / 32;
+    uint8_t i = ZCLI_TABLE_LEN(zcli_str_systemInfo);
 
     while (i--)
     {

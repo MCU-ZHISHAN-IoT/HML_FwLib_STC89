@@ -60,7 +60,7 @@ ifeq ("$(VERBOSE)", "1")
     Q :=
     VECHO := @$(TRUE)
 else
-    Q :=  @
+    Q := @
     VECHO := @$(ECHO)
 endif
 
@@ -121,11 +121,11 @@ $(DIR_OUTPUT)/$(TARGET).hex: $(DIR_OUTPUT)/$(TARGET).ihx
 
 # Phony targets
 # [+] clean
-.PHONY:clean
+.PHONY: clean
 clean:
 	$(CD) $(DIR_OUTPUT) && $(LS) | $(GREP) -vE -e ".gitkeep" -e ^$(MYFILE_NAME)* -e *.lib$$ -e *.hex$$ | $(XARGS) $(RM)
 # [+] distclean
-.PHONY:distclean
+.PHONY: distclean
 distclean:
 	$(CD) $(DIR_OUTPUT) && $(LS) | $(GREP) -v ".gitkeep" | $(XARGS) $(RM)
 # [+] help
@@ -143,7 +143,7 @@ library: $(TARGET_FWLIB)
 # [+] rebuild
 .PHONY: rebuild
 rebuild:
-	@$(EECHO) "$(TITLE_COLOR) - Clean all middle or temporary files \033[0m"
+	@$(EECHO) "$(TITLE_COLOR) - Clean previous files \033[0m"
 	@$(MAKE) distclean
 	@$(MAKE) -f Makefile -j$(JOBS) $(MAKEFLAGS)
 # [+] version
