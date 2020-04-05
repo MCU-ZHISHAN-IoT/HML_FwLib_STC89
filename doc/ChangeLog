@@ -154,7 +154,7 @@
 
 >Version : v1.2.1
  Alias   :
- Date    :
+ Date    : 2020-04-05
  Note    : (1)support 6T mode
            (2)add macro __HML_NAME_STRING__ for version mark
            (3)add function UART_getByte and UART_sendHex

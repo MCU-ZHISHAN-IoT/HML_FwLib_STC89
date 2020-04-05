@@ -23,12 +23,12 @@
 /**
  *\ brief: string literal representation of the current library version
  */
-#define __HML_VERSION_STRING__ "1.2.0"
+#define __HML_VERSION_STRING__ "1.2.1"
 
 /**
  *\ @deprecated: these macro will be abolished in next minor version
  */
-#define HML_VERSION_CODE "1.2.0"
+#define HML_VERSION_CODE "1.2.1"
 #define HML_VERSION_NAME "HML_FwLib_STC89"
 
 /**
@@ -45,12 +45,12 @@
 /**
  *\breif: string literal representation of the release date.
  */
-#define __HML_DATE_STRING__ "20200129"
+#define __HML_DATE_STRING__ "20200405"
 
 /**
  *\breif: numerical representation of the release date.
  */
-#define __HML_DATE__ 20200129UL
+#define __HML_DATE__ 20200405UL
 
 /**
  *\breif: library major version number.
@@ -65,7 +65,7 @@
 /**
  *\brief: library patch version number.
  */
-#define __HML_VERSION_PATCH__ 0
+#define __HML_VERSION_PATCH__ 1
 
 /**
  *\@deprecated: following macro will be abolished in next minor version
@@ -83,6 +83,6 @@
 #ifdef HML_VERSION_PATCH
     #undef HML_VERSION_PATCH
 #endif
-#define HML_VERSION_PATCH 0
+#define HML_VERSION_PATCH 1
 
 #endif
