@@ -24,7 +24,7 @@
  *****************************************************************************/
 
 /**
- *\brief: for access target zone directly
+ * \brief for access target zone directly
  */
 #define __CBYTE ((unsigned char volatile __code  *) 0)
 #define __DBYTE ((unsigned char volatile __data  *) 0)

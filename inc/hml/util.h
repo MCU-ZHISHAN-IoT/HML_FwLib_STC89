@@ -22,7 +22,7 @@
  *                           enumeration type                                *
  *****************************************************************************/
 /**
- *\brief: mark interrupt priority, lager number means higher priority
+ * \brief mark interrupt priority, lager number means higher priority
  */
 typedef enum
 {

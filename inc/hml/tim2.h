@@ -26,7 +26,7 @@
  *****************************************************************************/
 
 /**
- *\brief: mark baud clock type
+ * \brief mark baud clock type
  */
 typedef enum
 {
@@ -35,7 +35,7 @@ typedef enum
 } TIM2_baudClock;
 
 /**
- *\brief: mark work function(role) of timer-2
+ * \brief mark work function(role) of timer-2
  */
 typedef enum
 {
@@ -44,7 +44,7 @@ typedef enum
 } TIM2_function;
 
 /**
- *\brief: mark work mode of timer-2
+ * \brief mark work mode of timer-2
  */
 typedef enum
 {
@@ -58,7 +58,7 @@ typedef enum
  *****************************************************************************/
 
 /**
- *\brief: struct for timer-2 configuration
+ * \brief struct for timer-2 configuration
  */
 typedef struct
 {
@@ -85,7 +85,7 @@ void TIM2_setFunction(TIM2_function f);
 void TIM2_setMode(TIM2_mode m);
 void TIM2_setReloadValue(uint16_t val);
 void TIM2_setValue(uint16_t val);
-void TIM2_BAUD_cmd(TIM2_baudClock t,Action a);
+void TIM2_BAUD_cmd(TIM2_baudClock t, Action a);
 void TIM2_INT_cmd(Action a);
 void TIM2_INT_setPriority(UTIL_interruptPriority p);
 void TIM2_T2EX_cmd(Action a);

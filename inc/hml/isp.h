@@ -21,7 +21,7 @@
  *****************************************************************************/
 
 /**
- *\brief: define ISP address
+ * \brief define ISP address
  */
 #if (HML_MCU_MODEL == MCU_MODEL_STC89C51RC)  || \
     (HML_MCU_MODEL == MCU_MODEL_STC89LE51RC) || \
@@ -54,7 +54,7 @@
  *****************************************************************************/
 
 /**
- *\brief: define ISP command
+ * \brief define ISP command
  */
 typedef enum
 {
@@ -74,6 +74,6 @@ byte ISP_readByte(uint16_t addr);
 void ISP_setAddress(uint16_t addr);
 void ISP_setCommand(ISP_command cmd);
 void ISP_trig(void);
-bool ISP_writeByte(uint16_t addr,byte dat);
+bool ISP_writeByte(uint16_t addr, byte dat);
 
 #endif

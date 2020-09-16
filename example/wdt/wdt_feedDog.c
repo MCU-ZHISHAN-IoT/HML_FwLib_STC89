@@ -60,7 +60,7 @@ void main(void)
 
     while(true)
     {
-        /*feed watchdog per 500ms*/
+        /* feed watchdog per 500ms */
         sleep(500);
         WDT_feed();
         UART_sendString("root@localboard:WatchDog has been feed\r\n");

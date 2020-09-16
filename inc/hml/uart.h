@@ -30,7 +30,7 @@ static __code char hexTable[16] = { '0','1','2','3','4','5','6','7','8','9','A',
  *****************************************************************************/
 
 /**
- *\brief: mark work mode of UART
+ * \brief mark work mode of UART
  */
 typedef enum
 {
@@ -45,7 +45,7 @@ typedef enum
  *****************************************************************************/
 
 /**
- *\brief: struct for UART configuration
+ * \brief struct for UART configuration
  */
 typedef struct
 {
@@ -64,7 +64,7 @@ typedef struct
 void UART_cmd_multiBaudrate(Action a);
 void UART_cmd_receive(Action a);
 void UART_config(UART_configTypeDef *uc);
-uint16_t UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim);
+uint16_t UART_getBaudGeneratorInitValue(uint32_t baud, PERIPH_TIM tim);
 byte UART_getByte(void);
 FunctionalState UART_isReceived(void);
 FunctionalState UART_isTransmitted(void);

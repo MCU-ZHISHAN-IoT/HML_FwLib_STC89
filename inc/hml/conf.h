@@ -16,7 +16,7 @@
  *****************************************************************************/
 
 /**
- *\brief: configure clock frequency of MCU
+ * \brief configure clock frequency of MCU
  */
 #ifndef __CONF_FRE_CLKIN
     #warning no specified clock frequency, HML will fill it with 11.0592MHz
@@ -24,9 +24,9 @@
 #endif
 
 /**
- *\brief: configure prescaler of MCU
+ * \brief configure prescaler of MCU
  *
- *\note : in order to switch 6T/12T mode successfully, user must also do related 
+ * \note in order to switch 6T/12T mode successfully, user must also do related 
  *        operations via select option inside official <stc-isp> software and restart 
  *        MCU. Otherwise, user can't observe expected phenomenon.
  */
@@ -36,7 +36,7 @@
 #endif
 
 /**
- *\brief: configure module of MCU
+ * \brief configure module of MCU
  */
 #ifndef __CONF_MCU_MODEL
     #warning no specified MCU model, HML will fill it with STC89C52RC
@@ -44,7 +44,7 @@
 #endif
 
 /**
- *\brief: select HML module which take part in compilation
+ * \brief select HML module which take part in compilation
  */
 #define __CONF_COMPILE_EXTI  1
 #define __CONF_COMPILE_GPIO  1

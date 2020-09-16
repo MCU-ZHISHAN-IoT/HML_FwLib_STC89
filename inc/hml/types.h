@@ -66,7 +66,7 @@ typedef uint16_t   word;
  *****************************************************************************/
 
 /**
- *\brief: mark user action
+ * \brief mark user action
  */
 typedef enum
 {
@@ -75,7 +75,7 @@ typedef enum
 } Action;
 
 /**
- *\brief: mark bit value/state
+ * \brief mark bit value/state
  */
 typedef enum
 {

@@ -52,7 +52,7 @@ void sys_init(void)
  * \ingroup     example
  * \remarks     
 ******************************************************************************/
-void util_byteToHexString(byte src,char *res)
+void util_byteToHexString(byte src, char *res)
 {
     uint8_t i = 2;
     byte tmp = 0x00;
@@ -103,7 +103,7 @@ void main(void)
         {
             ISP_eraseByte(ISP_ADDR_START+i);      /* it's necessary step */
             /* write */
-            if(ISP_writeByte(ISP_ADDR_START+i,test_data[i]))
+            if(ISP_writeByte(ISP_ADDR_START+i, test_data[i]))
             {
                 UART_sendString("Succeeded to write test byte\r\n\0");
             }
@@ -113,7 +113,7 @@ void main(void)
             }
 
             /* read and show access result */
-            util_byteToHexString(ISP_readByte(ISP_ADDR_START+i),accessResult);       
+            util_byteToHexString(ISP_readByte(ISP_ADDR_START+i), accessResult);
             UART_sendString("Access result: 0x");
             UART_sendString(accessResult);
             UART_sendString("\r\n\0");

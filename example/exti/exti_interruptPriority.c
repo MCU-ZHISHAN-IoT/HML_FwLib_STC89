@@ -32,7 +32,7 @@
  *****************************************************************************/
 
 /**
- *\brief: LED define
+ * \brief LED define
  */
 #define PERIPH_LED           PERIPH_GPIO_2
 #define PERIPH_LED_TIM0      PERIPH_GPIO_PIN_0   /* indicator LED for TIM0 */
@@ -40,7 +40,7 @@
 #define PERIPH_LED_EXTI1     PERIPH_GPIO_PIN_2   /* indicator LED for EXTI1 */
 
 /**
- *\brief: key define
+ * \brief key define
  */
 #define PERIPH_KEY           PERIPH_GPIO_3
 #define PERIPH_KEY_EXTI0     PERIPH_GPIO_PIN_2   /* key connected to EXTI1 */
@@ -65,22 +65,22 @@ void sys_init(void)
     tc.interruptState    = ENABLE;
     tc.interruptPriority = UTIL_interruptPriority_0;
     tc.mode              = TIM_mode_1;
-    tc.value             = TIM_calculateValue(50000,TIM_mode_1);
+    tc.value             = TIM_calculateValue(50000, TIM_mode_1);
 
-    TIM_config(PERIPH_TIM_0,&tc);
-    TIM_cmd(PERIPH_TIM_0,ENABLE);
+    TIM_config(PERIPH_TIM_0, &tc);
+    TIM_cmd(PERIPH_TIM_0, ENABLE);
 
     ec.mode     = EXTI_mode_fallEdge;
     ec.priority = UTIL_interruptPriority_1;
-    EXTI_config(PERIPH_EXTI_0,&ec);
-    EXTI_cmd(PERIPH_EXTI_0,ENABLE);
+    EXTI_config(PERIPH_EXTI_0, &ec);
+    EXTI_cmd(PERIPH_EXTI_0, ENABLE);
 
     ec.priority = UTIL_interruptPriority_2;
-    EXTI_config(PERIPH_EXTI_1,&ec);
-    EXTI_cmd(PERIPH_EXTI_1,ENABLE);
+    EXTI_config(PERIPH_EXTI_1, &ec);
+    EXTI_cmd(PERIPH_EXTI_1, ENABLE);
 
     enableAllInterrupts();
-    GPIO_configPortValue(PERIPH_LED,0xFF);
+    GPIO_configPortValue(PERIPH_LED, 0xFF);
 }
 
 /*****************************************************************************/
@@ -117,7 +117,7 @@ void tim0_isr(void) __interrupt TF0_VECTOR
     cnt++;
     if(cnt == 10)
     {
-        GPIO_toggleBitValue(PERIPH_LED,PERIPH_LED_TIM0);
+        GPIO_toggleBitValue(PERIPH_LED, PERIPH_LED_TIM0);
         cnt = 0;
     }
 }
@@ -137,23 +137,23 @@ void exti0_isr(void) __interrupt IE0_VECTOR
     uint8_t i = 10;
 
     /* avoid shake */
-    EXTI_cmd(PERIPH_EXTI_0,DISABLE);
+    EXTI_cmd(PERIPH_EXTI_0, DISABLE);
     sleep(20);
 
     /* make sure the button pressed by P32(INT0) */
-    if(GPIO_getBitValue(PERIPH_KEY,PERIPH_KEY_EXTI0) == RESET)
+    if(GPIO_getBitValue(PERIPH_KEY, PERIPH_KEY_EXTI0) == RESET)
     {
-        GPIO_configPortValue(PERIPH_LED,0xFF);
+        GPIO_configPortValue(PERIPH_LED, 0xFF);
         while(i--)
         {
-            GPIO_toggleBitValue(PERIPH_LED,PERIPH_LED_EXTI0);
+            GPIO_toggleBitValue(PERIPH_LED, PERIPH_LED_EXTI0);
             sleep(250);
         }
     }
 
     /* recover */
-    GPIO_configPortValue(PERIPH_LED,0xFF);
-    EXTI_cmd(PERIPH_EXTI_0,ENABLE);
+    GPIO_configPortValue(PERIPH_LED, 0xFF);
+    EXTI_cmd(PERIPH_EXTI_0, ENABLE);
 }
 
 /*****************************************************************************/
@@ -171,22 +171,22 @@ void exti1_isr(void) __interrupt IE1_VECTOR
     uint8_t j = 10;
 
     /* avoid shake */
-    EXTI_cmd(PERIPH_EXTI_1,DISABLE);
+    EXTI_cmd(PERIPH_EXTI_1, DISABLE);
     sleep(20);
 
     /* make sure the button pressed by P33(INT1) */
-    if(GPIO_getBitValue(PERIPH_KEY,PERIPH_KEY_EXTI1) == RESET)
+    if(GPIO_getBitValue(PERIPH_KEY, PERIPH_KEY_EXTI1) == RESET)
     {
-        GPIO_configPortValue(PERIPH_LED,0xFF);
+        GPIO_configPortValue(PERIPH_LED, 0xFF);
         while(j--)
         {
-            GPIO_toggleBitValue(PERIPH_LED,PERIPH_LED_EXTI1);
+            GPIO_toggleBitValue(PERIPH_LED, PERIPH_LED_EXTI1);
             sleep(150);
         }
     }
 
     /* recover */
-    GPIO_configPortValue(PERIPH_LED,0xFF);
-    EXTI_cmd(PERIPH_EXTI_1,ENABLE);
+    GPIO_configPortValue(PERIPH_LED, 0xFF);
+    EXTI_cmd(PERIPH_EXTI_1, ENABLE);
 }
 

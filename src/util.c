@@ -147,7 +147,7 @@ void sleep(uint16_t t)
     __endasm;
 
     /**
-     * @note: disable SDCC warning
+     * \note disable SDCC warning
      */
     t = 0;
 }

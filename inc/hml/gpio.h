@@ -24,7 +24,7 @@
  *****************************************************************************/
 
 /**
- *\brief: define port
+ * \brief define port
  */
 typedef enum
 {
@@ -36,7 +36,7 @@ typedef enum
 } PERIPH_GPIO;
 
 /**
- *\brief: define pin
+ * \brief define pin
  */
 typedef enum
 {
@@ -53,12 +53,12 @@ typedef enum
 /*****************************************************************************
  *                          function declare                                 *
  *****************************************************************************/
-void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f);
-void GPIO_configPortValue(PERIPH_GPIO gpio,byte val);
-FunctionalState GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
+void GPIO_configBitValue(PERIPH_GPIO gpio, PERIPH_GPIO_PIN pin, FunctionalState f);
+void GPIO_configPortValue(PERIPH_GPIO gpio, byte val);
+FunctionalState GPIO_getBitValue(PERIPH_GPIO gpio, PERIPH_GPIO_PIN pin);
 byte GPIO_getPortValue(PERIPH_GPIO gpio);
-void GPIO_resetBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
-void GPIO_setBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
-void GPIO_toggleBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
+void GPIO_resetBitValue(PERIPH_GPIO gpio, PERIPH_GPIO_PIN pin);
+void GPIO_setBitValue(PERIPH_GPIO gpio, PERIPH_GPIO_PIN pin);
+void GPIO_toggleBitValue(PERIPH_GPIO gpio, PERIPH_GPIO_PIN pin);
 
 #endif

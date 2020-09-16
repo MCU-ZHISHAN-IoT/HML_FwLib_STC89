@@ -25,7 +25,7 @@
  * \ingroup     TIM
  * \remarks     
 ******************************************************************************/
-uint16_t TIM_calculateValue(uint16_t time,TIM_mode m)
+uint16_t TIM_calculateValue(uint16_t time, TIM_mode m)
 {
     /* machine cycle: MCU_FRE_CLK / MCU_PRESCALER */
     uint16_t maxTick = 0x0000;
@@ -83,11 +83,11 @@ void TIM_cmd(PERIPH_TIM tim,Action a)
 ******************************************************************************/
 void TIM_config(PERIPH_TIM tim,TIM_configTypeDef *tc)
 {
-    TIM_setFunction(tim,tc->function);
-    TIM_setMode(tim,tc->mode);
-    TIM_setValue(tim,tc->value);
-    TIM_INT_cmd(tim,tc->interruptState);
-    TIM_INT_setPriority(tim,tc->interruptPriority);
+    TIM_setFunction(tim, tc->function);
+    TIM_setMode(tim, tc->mode);
+    TIM_setValue(tim, tc->value);
+    TIM_INT_cmd(tim, tc->interruptState);
+    TIM_INT_setPriority(tim, tc->interruptPriority);
 }
 
 /*****************************************************************************/
@@ -147,8 +147,8 @@ void TIM_setFunction(PERIPH_TIM tim,TIM_function f)
 {
     switch(tim)
     {
-        case PERIPH_TIM_0: CONFB(TMOD,BIT_NUM_T0_CT,f); break;
-        case PERIPH_TIM_1: CONFB(TMOD,BIT_NUM_T1_CT,f); break;
+        case PERIPH_TIM_0: CONFB(TMOD, BIT_NUM_T0_CT, f); break;
+        case PERIPH_TIM_1: CONFB(TMOD, BIT_NUM_T1_CT, f); break;
         default: break;
     }
 }
@@ -185,7 +185,7 @@ void TIM_setMode(PERIPH_TIM tim,TIM_mode m)
  * \ingroup     TIM
  * \remarks     not for timer2
 ******************************************************************************/
-void TIM_setValue(PERIPH_TIM tim,uint16_t val)
+void TIM_setValue(PERIPH_TIM tim, uint16_t val)
 {
     switch(tim)
     {
@@ -214,7 +214,7 @@ void TIM_setValue(PERIPH_TIM tim,uint16_t val)
  * \ingroup     TIM
  * \remarks     not for timer2
 ******************************************************************************/
-void TIM_INT_cmd(PERIPH_TIM tim,Action a)
+void TIM_INT_cmd(PERIPH_TIM tim, Action a)
 {
     switch(tim)
     {
@@ -235,19 +235,19 @@ void TIM_INT_cmd(PERIPH_TIM tim,Action a)
  * \ingroup     TIM
  * \remarks     not for timer2
 ******************************************************************************/
-void TIM_INT_setPriority(PERIPH_TIM tim,UTIL_interruptPriority p)
+void TIM_INT_setPriority(PERIPH_TIM tim, UTIL_interruptPriority p)
 {
     switch(tim)
     {
         case PERIPH_TIM_0:
         {
-            PT0 = TESTB(p,0);
-            CONFB(IPH,BIT_NUM_PT0H,TESTB(p,1));
+            PT0 = TESTB(p, 0);
+            CONFB(IPH, BIT_NUM_PT0H, TESTB(p, 1));
         } break;
         case PERIPH_TIM_1:
         {
-            PT1 = TESTB(p,0);
-            CONFB(IPH,BIT_NUM_PT1H,TESTB(p,1));
+            PT1 = TESTB(p, 0);
+            CONFB(IPH, BIT_NUM_PT1H, TESTB(p, 1));
         } break;
         default: break;
     }

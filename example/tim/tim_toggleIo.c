@@ -34,7 +34,7 @@ void sys_init(void)
     tc.interruptState    = ENABLE;
     tc.interruptPriority = UTIL_interruptPriority_0;
     tc.mode              = TIM_mode_1;
-    tc.value             = TIM_calculateValue(50000,TIM_mode_1);
+    tc.value             = TIM_calculateValue(50000, TIM_mode_1);
 
     TIM_config(PERIPH_TIM_0,&tc);
     TIM_cmd(PERIPH_TIM_0,ENABLE);
@@ -75,7 +75,7 @@ void tim0_isr(void) __interrupt TF0_VECTOR
     i++;
     if(i == 10)
     {
-        GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
+        GPIO_toggleBitValue(PERIPH_GPIO_1, PERIPH_GPIO_PIN_2);
         i = 0;
     }
 }

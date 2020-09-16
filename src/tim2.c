@@ -220,7 +220,7 @@ void TIM2_setValue(uint16_t val)
  * \remarks     this function is usually used to take place baud clock source
                 of UART from timer-1
 ******************************************************************************/
-void TIM2_BAUD_cmd(TIM2_baudClock t,Action a)
+void TIM2_BAUD_cmd(TIM2_baudClock t, Action a)
 {
     if (t & TIM2_baudClock_receive)
     {
@@ -260,7 +260,7 @@ void TIM2_INT_cmd(Action a)
 void TIM2_INT_setPriority(UTIL_interruptPriority p)
 {
     PT2 = TESTB(p,1);
-    CONFB(IPH,BIT_NUM_PT2H,TESTB(p,1));
+    CONFB(IPH, BIT_NUM_PT2H, TESTB(p, 1));
 }
 
 /*****************************************************************************/

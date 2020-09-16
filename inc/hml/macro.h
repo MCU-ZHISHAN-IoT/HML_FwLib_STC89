@@ -22,7 +22,7 @@
  *****************************************************************************/
 
 /**
- *\brief: mark MCU model of STC89 series(suffix letter 'P' represents '+' )
+ * \brief mark MCU model of STC89 series(suffix letter 'P' represents '+' )
  */
 #define MCU_MODEL_GENERIC         0x01
 #define MCU_MODEL_STC89C51RC      0x02
@@ -45,7 +45,7 @@
 #define MCU_MODEL_STC89LE516RDP   0x13
 
 /**
- *\brief: check macro for MCU model
+ * \brief check macro for MCU model
  */
 #define IS_STC89_MCU_MODEL(model)           \
     (                                       \
@@ -71,7 +71,7 @@
     )
 
 /**
- *\brief: have macro for ISP function
+ * \brief have macro for ISP function
  */
 #define IS_ISP_MODEL(model)                 \
     (                                       \
@@ -92,7 +92,7 @@
     )
 
 /**
- *\brief: compile select
+ * \brief compile select
  */
 #if (__CONF_COMPILE_EXTI == 1)
     #define COMPILE_EXTI
@@ -126,7 +126,7 @@
 #endif
 
 /**
- *\brief: configure prescaler of MCU
+ * \brief configure prescaler of MCU
  */
 #define MCU_PRESCALER __CONF_MCU_PRESCALER
 
@@ -134,7 +134,7 @@
  *                           run-time check                                  *
  *****************************************************************************/
 /**
- *\brief: MCU clock configuration check
+ * \brief MCU clock configuration check
  */
 #if (defined __CONF_FRE_CLKIN)
     #define MCU_FRE_CLK __CONF_FRE_CLKIN
@@ -143,14 +143,14 @@
 #endif
 
 /**
- *\brief: MCU clock prescaler(6T/12T) check
+ * \brief MCU clock prescaler(6T/12T) check
  */
 #if (MCU_PRESCALER != 6) && (MCU_PRESCALER != 12) 
     #error HML run-time check: error: value of macro MCU_PRESCALER must be 6 or 12! (ERROR_CODE-0x02)
 #endif
 
 /**
- *\brief: MCU model check
+ * \brief MCU model check
  */
 #if (defined __CONF_MCU_MODEL)
     #if IS_STC89_MCU_MODEL(__CONF_MCU_MODEL)
@@ -172,7 +172,7 @@
 #endif
 
 /**
- *\brief: HML compile selection check
+ * \brief HML compile selection check
  */
 #ifndef HAVE_ISP
     #ifdef COMPILE_ISP
@@ -187,7 +187,7 @@ macro __CONF_COMPILE_TIM and __CONF_COMPILE_TIM2 at the same time in hml/conf.h 
 #endif
 
 /**
- *\brief: SDCC version check
+ * \brief SDCC version check
  */
 #if (__SDCC_VERSION_MAJOR == 3)
     #if (__SDCC_VERSION_MINOR < 6)

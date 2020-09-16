@@ -23,7 +23,7 @@
  *****************************************************************************/
 
 /**
- *\brief: mark prescale factor
+ * \brief mark prescale factor
  */
 typedef enum
 {

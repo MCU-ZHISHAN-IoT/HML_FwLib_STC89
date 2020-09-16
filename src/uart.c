@@ -73,10 +73,10 @@ void UART_config(UART_configTypeDef *uc)
             tc.interruptState    = DISABLE;
             tc.interruptPriority = DISABLE;
             tc.mode              = TIM_mode_2;
-            tc.value             = UART_getBaudGeneratorInitValue(uc->baudrate,PERIPH_TIM_1);
-            TIM2_BAUD_cmd(TIM2_baudClock_receive | TIM2_baudClock_transmit,DISABLE);
-            TIM_config(PERIPH_TIM_1,&tc);
-            TIM_cmd(PERIPH_TIM_1,ENABLE);
+            tc.value             = UART_getBaudGeneratorInitValue(uc->baudrate, PERIPH_TIM_1);
+            TIM2_BAUD_cmd(TIM2_baudClock_receive | TIM2_baudClock_transmit, DISABLE);
+            TIM_config(PERIPH_TIM_1, &tc);
+            TIM_cmd(PERIPH_TIM_1, ENABLE);
         } break; 
         case PERIPH_TIM_2:
         {
@@ -85,8 +85,8 @@ void UART_config(UART_configTypeDef *uc)
             tc2.interruptPriority = DISABLE;
             tc2.mode              = TIM2_mode_2;
             tc2.value             = 0x00;
-            tc2.reloadValue       = UART_getBaudGeneratorInitValue(uc->baudrate,PERIPH_TIM_2);
-            TIM2_BAUD_cmd(TIM2_baudClock_receive | TIM2_baudClock_transmit,ENABLE);
+            tc2.reloadValue       = UART_getBaudGeneratorInitValue(uc->baudrate, PERIPH_TIM_2);
+            TIM2_BAUD_cmd(TIM2_baudClock_receive | TIM2_baudClock_transmit, ENABLE);
             TIM2_config(&tc2);
             TIM2_cmd(ENABLE);
         } break;  
@@ -317,8 +317,8 @@ void UART_INT_cmd(Action a)
 ******************************************************************************/
 void UART_INT_setPriority(UTIL_interruptPriority p)
 {
-    PS = TESTB(p,0);
-    CONFB(IPH,BIT_NUM_PSH,TESTB(p,1));
+    PS = TESTB(p, 0);
+    CONFB(IPH, BIT_NUM_PSH, TESTB(p, 1));
 }
 
 #else

@@ -22,7 +22,7 @@
  *****************************************************************************/
 
 /**
- *\brief: mark timer module
+ * \brief mark timer module
  */
 typedef enum
 {
@@ -32,7 +32,7 @@ typedef enum
 } PERIPH_TIM;
 
 /**
- *\brief: mark timer work mode
+ * \brief mark timer work mode
  */
 typedef enum
 {
@@ -43,7 +43,7 @@ typedef enum
 } TIM_mode;
 
 /**
- *\brief: mark function of timer
+ * \brief mark function of timer
  */
 typedef enum
 {
@@ -56,7 +56,7 @@ typedef enum
  *****************************************************************************/
 
 /**
- *\brief: struct for timer configuration
+ * \brief struct for timer configuration
  */
 typedef struct
 {
@@ -70,15 +70,15 @@ typedef struct
 /*****************************************************************************
  *                          function declare                                 *
  *****************************************************************************/
-uint16_t TIM_calculateValue(uint16_t time,TIM_mode m);
-void TIM_cmd(PERIPH_TIM tim,Action a);
-void TIM_config(PERIPH_TIM tim,TIM_configTypeDef *tc);
+uint16_t TIM_calculateValue(uint16_t time, TIM_mode m);
+void TIM_cmd(PERIPH_TIM tim, Action a);
+void TIM_config(PERIPH_TIM tim, TIM_configTypeDef *tc);
 uint16_t TIM_getValue(PERIPH_TIM tim);
 bool TIM_isOverflow(PERIPH_TIM tim);
-void TIM_setFunction(PERIPH_TIM tim,TIM_function f);
-void TIM_setMode(PERIPH_TIM tim,TIM_mode m);
+void TIM_setFunction(PERIPH_TIM tim, TIM_function f);
+void TIM_setMode(PERIPH_TIM tim, TIM_mode m);
 void TIM_setValue(PERIPH_TIM tim,uint16_t val);
-void TIM_INT_cmd(PERIPH_TIM tim,Action a);
-void TIM_INT_setPriority(PERIPH_TIM tim,UTIL_interruptPriority p);
+void TIM_INT_cmd(PERIPH_TIM tim, Action a);
+void TIM_INT_setPriority(PERIPH_TIM tim, UTIL_interruptPriority p);
 
 #endif
