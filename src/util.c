@@ -70,7 +70,7 @@ uint16_t _sleep_getInitValue(void)
 void _sleep_1ms(void)
 {
     __asm
-        mov ar5, r6                 ;#1
+        mov ar5, r6                 ;#2
     delay1ms_loop$:
         nop                         ;#1
         nop                         ;#1
@@ -130,8 +130,8 @@ void sleep(uint16_t t)
     ; loop for sleep
     ; loop from (0xFFFF - t) to (0xFFFF)
     LOOP$:
-        lcall __sleep_1ms               ;#8*((frep/12000)-2)+5
-        inc dptr                        ;#1
+        lcall __sleep_1ms               ;#8*(frep/12000) - 10
+        inc dptr                        ;#2
         mov a,dpl                       ;#1
         anl a,dph                       ;#1
         cpl a                           ;#1
