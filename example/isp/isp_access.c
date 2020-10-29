@@ -99,9 +99,9 @@ void main(void)
 
     while(true)
     {
+        ISP_eraseSector(ISP_ADDR_START);        /* it's necessary step */
         for(i = 0;i < 3;i++)
         {
-            ISP_eraseByte(ISP_ADDR_START+i);      /* it's necessary step */
             /* write */
             if(ISP_writeByte(ISP_ADDR_START+i, test_data[i]))
             {

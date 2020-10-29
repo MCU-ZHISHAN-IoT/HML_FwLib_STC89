@@ -166,14 +166,14 @@ void TIM2_setFunction(TIM2_function f)
  * \author      Jiabin Hsu
  * \date        2018/10/08
  * \brief       configure function(timer or counter) of timer-2
- * \param[in]   f: expected function
+ * \param[in]   mode: expected work mode
  * \return      none
  * \ingroup     TIM2
  * \remarks     
 ******************************************************************************/
-void TIM2_setMode(TIM2_mode m)
+void TIM2_setMode(TIM2_mode mode)
 {
-    T2CON = (T2CON & 0xCE) | m;
+    T2CON = (T2CON & 0xCE) | mode;
 }
 
 /*****************************************************************************/

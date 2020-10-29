@@ -82,7 +82,7 @@ uint16_t TIM2_getValue(void);
 bool TIM2_isExternalEvent(void);
 bool TIM2_isOverflow(void);
 void TIM2_setFunction(TIM2_function f);
-void TIM2_setMode(TIM2_mode m);
+void TIM2_setMode(TIM2_mode mode);
 void TIM2_setReloadValue(uint16_t val);
 void TIM2_setValue(uint16_t val);
 void TIM2_BAUD_cmd(TIM2_baudClock t, Action a);

@@ -27,19 +27,26 @@
 void ISP_cmd(Action a)
 {
     CONFB(ISP_CONTR, BIT_NUM_ISPEN, a);
+    ISP_config();
+}
+
+void ISP_config(void)
+{
+    ISP_CONTR = (ISP_CONTR & 0xF8) | ISP_WAITTIME;
 }
 
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
  * \date        
- * \brief       erase all data of specified ISP area
+ * \brief       erase the sector where given address is located
  * \param[in]   addr: address of target area
  * \return      complete to erase(true) or failed to execute operation(false)
  * \ingroup     ISP
- * \remarks     
+ * \remarks     if some data in the sector needs to be retained, it needs to be
+ *              read to RAM first, and write to EEPROM after erase is completed
 ******************************************************************************/
-bool ISP_eraseByte(uint16_t addr)
+bool ISP_eraseSector(uint16_t addr)
 {
     /* check address */
     if((addr < ISP_ADDR_START) || (addr > ISP_ADDR_END))
@@ -47,12 +54,9 @@ bool ISP_eraseByte(uint16_t addr)
         return false;
     }
 
-    ISP_cmd(ENABLE);
     ISP_setAddress(addr);
     ISP_setCommand(ISP_command_erase);
     ISP_trig();
-    sleep(1);
-    ISP_idle();
 
     return true;
 }
@@ -89,13 +93,10 @@ byte ISP_readByte(uint16_t addr)
 {
     byte dat = 0x00;
 
-    ISP_cmd(ENABLE);
     ISP_setAddress(addr);
     ISP_setCommand(ISP_command_read);
     ISP_trig();
-    sleep(1);
     dat = ISP_DATA;
-    ISP_idle();
 
     return dat;
 }
@@ -166,13 +167,10 @@ bool ISP_writeByte(uint16_t addr,byte dat)
     }
     else
     {
-        ISP_cmd(ENABLE);
         ISP_setAddress(addr);
         ISP_setCommand(ISP_command_write);
         ISP_DATA = dat;
         ISP_trig();
-        sleep(1);
-        ISP_idle();
 
         return true;
     }

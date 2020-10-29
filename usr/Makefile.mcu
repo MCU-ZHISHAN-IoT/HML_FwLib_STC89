@@ -144,7 +144,7 @@ endif
 export CFLAGS := -c -I$(DIR_INC) \
 -mmcs51 -D__CONF_MCU_MODEL=$(MCU_MACRO) \
 -D__CONF_FRE_CLKIN=$(CLOCK_FREQUENCY)UL -D__CONF_MCU_PRESCALER=$(PRESCALER_FACTOR) \
---std-sdcc99 --fsigned-char\
+--std-sdcc99 --fsigned-char \
 --opt-code-size \
 --code-loc 0x0000 --code-size $(CODE_SIZE) \
 --iram-size $(IRAM_SIZE) \

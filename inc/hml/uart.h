@@ -71,7 +71,7 @@ FunctionalState UART_isTransmitted(void);
 void UART_sendByte(byte dat);
 void UART_sendHex(uint8_t hex);
 void UART_sendString(char *str);
-void UART_setMode(UART_mode m);
+void UART_setMode(UART_mode mode);
 void UART_switchTim(PERIPH_TIM tim);
 void UART_INT_cmd(Action a);
 void UART_INT_setPriority(UTIL_interruptPriority p);

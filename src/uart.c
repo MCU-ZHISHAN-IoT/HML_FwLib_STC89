@@ -258,14 +258,14 @@ void UART_sendString(char *str)
  * \author      Weilun Fong
  * \date        
  * \brief       set work mode of UART module
- * \param[in]   m: expected work mode
+ * \param[in]   mode: expected work mode
  * \return      none
  * \ingroup     UART
  * \remarks     
 ******************************************************************************/
-void UART_setMode(UART_mode m)
+void UART_setMode(UART_mode mode)
 {
-    SCON = (SCON & 0x3F) | ((uint8_t)m << 0x6);
+    SCON = (SCON & 0x3F) | ((uint8_t)mode << 0x6);
 }
 
 /*****************************************************************************/

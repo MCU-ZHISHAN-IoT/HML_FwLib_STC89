@@ -19,18 +19,18 @@
  * \date        
  * \brief       calculate initial value for THx/TLx register
  * \param[in]   time: expected timing cycle(unit: us)
- * \param[in]   m   : work mode of timer
+ * \param[in]   mode: work mode of timer
  * \return      initial value of timer counter register(if return 0x0000, it 
  *              means that the time has over the limit)
  * \ingroup     TIM
  * \remarks     
 ******************************************************************************/
-uint16_t TIM_calculateValue(uint16_t time, TIM_mode m)
+uint16_t TIM_calculateValue(uint16_t time, TIM_mode mode)
 {
     /* machine cycle: MCU_FRE_CLK / MCU_PRESCALER */
     uint16_t maxTick = 0x0000;
 
-    switch(m)
+    switch(mode)
     {
         case TIM_mode_0: maxTick = 0x1FFF; break;
         case TIM_mode_1: maxTick = 0xFFFF; break;
@@ -138,7 +138,7 @@ bool TIM_isOverflow(PERIPH_TIM tim)
  * \date        
  * \brief       configure function(timer or counter) of target timer
  * \param[in]   tim: target timer module
- * \param[in]   f  : expected function
+ * \param[in]   f: expected function
  * \return      none
  * \ingroup     TIM
  * \remarks     not for timer2
@@ -158,18 +158,18 @@ void TIM_setFunction(PERIPH_TIM tim,TIM_function f)
  * \author      Weilun Fong
  * \date        
  * \brief       configure work mode of target timer
- * \param[in]   tim: target timer module
- * \param[in]   m  : expected work mode
+ * \param[in]   tim : target timer module
+ * \param[in]   mode: expected work mode
  * \return      none
  * \ingroup     TIM
  * \remarks     not for timer2
 ******************************************************************************/
-void TIM_setMode(PERIPH_TIM tim,TIM_mode m)
+void TIM_setMode(PERIPH_TIM tim,TIM_mode mode)
 {
     switch(tim)
     {
-        case PERIPH_TIM_0: TMOD = (TMOD & 0xFC) | m; break;
-        case PERIPH_TIM_1: TMOD = (TMOD & 0xCF) | (m << 0x4); break;
+        case PERIPH_TIM_0: TMOD = (TMOD & 0xFC) | mode; break;
+        case PERIPH_TIM_1: TMOD = (TMOD & 0xCF) | (mode << 0x4); break;
         default: break;
     }
 }

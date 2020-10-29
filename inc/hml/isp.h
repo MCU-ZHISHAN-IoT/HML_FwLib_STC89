@@ -49,6 +49,20 @@
     #endif
 #endif
 
+
+/**
+ * \brief the wait time of ISP command, which is related to clock frequency
+ */
+#if   (__CONF_FRE_CLKIN <=  5000000UL)
+    #define ISP_WAITTIME 0x03
+#elif (__CONF_FRE_CLKIN <= 10000000UL)
+    #define ISP_WAITTIME 0x02
+#elif (__CONF_FRE_CLKIN <= 20000000UL)
+    #define ISP_WAITTIME 0x01
+#else 
+    #define ISP_WAITTIME 0x00
+#endif
+
 /*****************************************************************************
  *                           enumeration type                                *
  *****************************************************************************/
@@ -68,7 +82,8 @@ typedef enum
  *                          function declare                                 *
  *****************************************************************************/
 void ISP_cmd(Action a);
-bool ISP_eraseByte(uint16_t addr);
+void ISP_config(void);
+bool ISP_eraseSector(uint16_t addr);
 void ISP_idle(void);
 byte ISP_readByte(uint16_t addr);
 void ISP_setAddress(uint16_t addr);
