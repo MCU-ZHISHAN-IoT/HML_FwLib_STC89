@@ -17,7 +17,7 @@
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2020/11/01
  * \brief       enable or disable ISP module
  * \param[in]   a : expected action
  * \return      none
@@ -27,9 +27,18 @@
 void ISP_cmd(Action a)
 {
     CONFB(ISP_CONTR, BIT_NUM_ISPEN, a);
-    ISP_config();
 }
 
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        2020/11/01
+ * \brief       set the wait time of cpu after isp model is triggered
+ * \param[in]   none
+ * \return      none
+ * \ingroup     ISP
+ * \remarks     
+******************************************************************************/
 void ISP_config(void)
 {
     ISP_CONTR = (ISP_CONTR & 0xF8) | ISP_WAITTIME;
@@ -38,7 +47,7 @@ void ISP_config(void)
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2020/10/29
  * \brief       erase the sector where given address is located
  * \param[in]   addr: address of target area
  * \return      complete to erase(true) or failed to execute operation(false)
@@ -64,9 +73,9 @@ bool ISP_eraseSector(uint16_t addr)
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2020/10/29
  * \brief       make ISP module be in idle mode
- * \param[in]   
+ * \param[in]   none
  * \return      none
  * \ingroup     ISP
  * \remarks     
@@ -82,7 +91,7 @@ void ISP_idle(void)
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2020/10/29
  * \brief       read one byte of data form specified ISP area
  * \param[in]   addr: address of target area
  * \return      access result
@@ -104,7 +113,7 @@ byte ISP_readByte(uint16_t addr)
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2020/10/29
  * \brief       configure value of ISP address register for access
  * \param[in]   addr: address of target area
  * \return      none
@@ -120,7 +129,7 @@ void ISP_setAddress(uint16_t addr)
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2020/10/29
  * \brief       send command to ISP module by writing ISP_CMD register
  * \param[in]   cmd: ISP command type
  * \return      none
@@ -135,9 +144,9 @@ void ISP_setCommand(ISP_command cmd)
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2020/10/29
  * \brief       trigger instruction
- * \param[in]   
+ * \param[in]   none
  * \return      none
  * \ingroup     ISP
  * \remarks     
@@ -151,7 +160,7 @@ void ISP_trig(void)
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2020/10/29
  * \brief       write data to specified ISP area
  * \param[in]   addr: address of target ISP area
  * \param[in]   dat : one byte of data

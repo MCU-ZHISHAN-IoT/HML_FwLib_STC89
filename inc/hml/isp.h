@@ -52,6 +52,16 @@
 
 /**
  * \brief the wait time of ISP command, which is related to clock frequency
+ *      +-------------------------------------------------------+
+ *      | ISP_CONTR |         CPU wait times(SYSclks)           |
+ *      +-------------------------------------------------------+
+ *      |WT2|WT1|WT0|Read|Program|SectorErase|Recommended CLKFRE|
+ *      +-------------------------------------------------------+
+ *      | 0 | 1 | 1 |  6 |   30  |    5471   |       5MHz       |
+ *      | 0 | 1 | 0 | 11 |   60  |   10942   |      10MHz       |
+ *      | 0 | 0 | 1 | 22 |  120  |   21885   |      20MHz       |
+ *      | 0 | 0 | 0 | 43 |  240  |   43769   |      40MHz       |
+ *      +---+---+---+----+-------+-----------+------------------+
  */
 #if   (__CONF_FRE_CLKIN <=  5000000UL)
     #define ISP_WAITTIME 0x03
