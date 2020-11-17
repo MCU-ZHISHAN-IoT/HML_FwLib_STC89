@@ -115,7 +115,7 @@ void tim0_isr(void) __interrupt TF0_VECTOR
 
     /* per 500ms */
     cnt++;
-    if(cnt == 10)
+    if (cnt == 10)
     {
         GPIO_toggleBitValue(PERIPH_LED, PERIPH_LED_TIM0);
         cnt = 0;
@@ -141,10 +141,10 @@ void exti0_isr(void) __interrupt IE0_VECTOR
     sleep(20);
 
     /* make sure the button pressed by P32(INT0) */
-    if(GPIO_getBitValue(PERIPH_KEY, PERIPH_KEY_EXTI0) == RESET)
+    if (GPIO_getBitValue(PERIPH_KEY, PERIPH_KEY_EXTI0) == RESET)
     {
         GPIO_configPortValue(PERIPH_LED, 0xFF);
-        while(i--)
+        while (i--)
         {
             GPIO_toggleBitValue(PERIPH_LED, PERIPH_LED_EXTI0);
             sleep(250);
@@ -175,10 +175,10 @@ void exti1_isr(void) __interrupt IE1_VECTOR
     sleep(20);
 
     /* make sure the button pressed by P33(INT1) */
-    if(GPIO_getBitValue(PERIPH_KEY, PERIPH_KEY_EXTI1) == RESET)
+    if (GPIO_getBitValue(PERIPH_KEY, PERIPH_KEY_EXTI1) == RESET)
     {
         GPIO_configPortValue(PERIPH_LED, 0xFF);
-        while(j--)
+        while (j--)
         {
             GPIO_toggleBitValue(PERIPH_LED, PERIPH_LED_EXTI1);
             sleep(150);

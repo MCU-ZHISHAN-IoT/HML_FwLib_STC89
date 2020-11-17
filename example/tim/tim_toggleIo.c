@@ -37,7 +37,7 @@ void sys_init(void)
     tc.value             = TIM_calculateValue(50000, TIM_mode_1);
 
     TIM_config(PERIPH_TIM_0,&tc);
-    TIM_cmd(PERIPH_TIM_0,ENABLE);
+    TIM_cmd(PERIPH_TIM_0, ENABLE);
     enableAllInterrupts();
 }
 
@@ -73,7 +73,7 @@ void tim0_isr(void) __interrupt TF0_VECTOR
 
     /* per 500ms */
     i++;
-    if(i == 10)
+    if (i == 10)
     {
         GPIO_toggleBitValue(PERIPH_GPIO_1, PERIPH_GPIO_PIN_2);
         i = 0;

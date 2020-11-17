@@ -36,7 +36,7 @@ Example:
 ******************************************************************************/
 uint16_t TIM2_calculateValue(uint16_t t)
 {
-    if((t*(MCU_FRE_CLK/1000000)/12) >= TIM2_MAXTICK)
+    if ((t*(MCU_FRE_CLK/1000000)/12) >= TIM2_MAXTICK)
     {
         return 0;
     }

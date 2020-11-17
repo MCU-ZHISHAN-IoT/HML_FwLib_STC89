@@ -49,7 +49,7 @@ void sys_init(void)
 void main(void)
 {
     sys_init();
-    while(true)
+    while (true)
     {
         GPIO_configBitValue(PERIPH_GPIO_1, PERIPH_GPIO_PIN_0, RESET);
         sleep(500);
@@ -75,7 +75,7 @@ void exti1_isr(void) __interrupt IE1_VECTOR
     sleep(20);
 
     /* make sure the button connected to P33(INT1) */
-    if(GPIO_getBitValue(PERIPH_GPIO_3, PERIPH_GPIO_PIN_3) == RESET)
+    if (GPIO_getBitValue(PERIPH_GPIO_3, PERIPH_GPIO_PIN_3) == RESET)
     {
         RST_reset(RST_bootarea_ap);
     }

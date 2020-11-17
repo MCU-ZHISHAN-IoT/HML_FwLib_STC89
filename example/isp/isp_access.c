@@ -61,12 +61,12 @@ void util_byteToHexString(byte src, char *res)
     res = res + 2;
     *res = '\0';
     
-    while(i--)
+    while (i--)
     {
         res--;
         tmp = src % 0x10;
         
-        if(tmp < 10)
+        if (tmp < 10)
         {
             *res = '0' + tmp;
         }
@@ -98,13 +98,13 @@ void main(void)
     sys_init();
     UART_sendString("MCU boot...\r\n\0");
 
-    while(true)
+    while (true)
     {
         ISP_eraseSector(ISP_ADDR_START);        /* it's necessary step */
-        for(i = 0;i < 3;i++)
+        for (i = 0;i < 3;i++)
         {
             /* write */
-            if(ISP_writeByte(ISP_ADDR_START+i, test_data[i]))
+            if (ISP_writeByte(ISP_ADDR_START+i, test_data[i]))
             {
                 UART_sendString("Succeeded to write test byte\r\n\0");
             }

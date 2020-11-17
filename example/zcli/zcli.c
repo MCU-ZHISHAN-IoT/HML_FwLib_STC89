@@ -529,7 +529,7 @@ void zcli_getArguments(void)
             aLen++;
         }
 
-        if(aNum > ZCLI_MAX_ARGS)
+        if (aNum > ZCLI_MAX_ARGS)
         {
             break;
         }

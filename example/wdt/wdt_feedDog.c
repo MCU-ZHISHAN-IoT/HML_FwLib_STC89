@@ -58,7 +58,7 @@ void main(void)
     WDT_setPrescale(WDT_prescale_32);
     WDT_cmd(ENABLE);
 
-    while(true)
+    while (true)
     {
         /* feed watchdog per 500ms */
         sleep(500);

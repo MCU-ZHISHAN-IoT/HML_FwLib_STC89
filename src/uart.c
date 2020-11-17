@@ -25,7 +25,7 @@
 ******************************************************************************/
 void UART_cmd_multiBaudrate(Action a)
 {
-    CONFB(PCON,BIT_NUM_SMOD,a);
+    CONFB(PCON, BIT_NUM_SMOD, a);
 }
 
 /*****************************************************************************/
@@ -65,7 +65,7 @@ void UART_config(UART_configTypeDef *uc)
     UART_cmd_receive(uc->receiveState);
     UART_switchTim(uc->baudGenerator);
 
-    switch(uc->baudGenerator)
+    switch (uc->baudGenerator)
     {
         case PERIPH_TIM_1:
         {
@@ -106,18 +106,18 @@ void UART_config(UART_configTypeDef *uc)
  * \ingroup     UART
  * \remarks     
 ******************************************************************************/
-uint16_t UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
+uint16_t UART_getBaudGeneratorInitValue(uint32_t baud, PERIPH_TIM tim)
 {
     uint8_t tmp = 0x00;
 
     /* baud = (2^SMOD/32) * MCU_FRE_CLK/(256-TH1)*12 */
-    switch(tim)
+    switch (tim)
     {
         case PERIPH_TIM_1:
         {
-            if(GET_BIT(PCON,SMOD))     /* multi baud rate mode */
+            if (GET_BIT(PCON, SMOD))     /* multi baud rate mode */
             {
-                if(baud > MCU_FRE_CLK/MCU_PRESCALER/16)
+                if (baud > MCU_FRE_CLK/MCU_PRESCALER/16)
                 {
                     return 0x0000;     /* baud rate over max value */
                 }
@@ -128,7 +128,7 @@ uint16_t UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
             }
             else
             {
-                if(baud > MCU_FRE_CLK/MCU_PRESCALER/32)
+                if (baud > MCU_FRE_CLK/MCU_PRESCALER/32)
                 {
                     return 0x0000;
                 }
@@ -212,7 +212,7 @@ FunctionalState UART_isTransmitted(void)
 void UART_sendByte(byte dat)
 {
     SBUF = dat;
-    while(!TI);
+    while (!TI);
     TI = RESET;
 }
 
@@ -244,10 +244,10 @@ void UART_sendHex(uint8_t hex)
 ******************************************************************************/
 void UART_sendString(char *str)
 {
-    while(*str != '\0')
+    while (*str != '\0')
     {
         SBUF = *str;
-        while(!TI);
+        while (!TI);
         TI = RESET;          /* reset flag */
         str++;
     }
@@ -280,11 +280,11 @@ void UART_setMode(UART_mode mode)
 ******************************************************************************/
 void UART_switchTim(PERIPH_TIM tim)
 {
-    if(tim == PERIPH_TIM_1)
+    if (tim == PERIPH_TIM_1)
     {
         T2CON = T2CON & 0xCF;
     }
-    else if(tim == PERIPH_TIM_2)
+    else if (tim == PERIPH_TIM_2)
     {
         T2CON = (T2CON & 0xCF) | 0x30;
     }

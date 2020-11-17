@@ -54,7 +54,7 @@ void sys_init(void)
 void main(void)
 {
     sys_init();
-    while(true)
+    while (true)
     {
         /* send per 500ms */
         sleep(500);

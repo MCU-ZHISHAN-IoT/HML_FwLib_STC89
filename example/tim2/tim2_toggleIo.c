@@ -74,7 +74,7 @@ void tim2_isr(void) __interrupt TF2_VECTOR
 
     /* per 500ms */
     i++;
-    if(i == 10)
+    if (i == 10)
     {
         GPIO_toggleBitValue(PERIPH_GPIO_1, PERIPH_GPIO_PIN_2);
         i = 0;

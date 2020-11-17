@@ -30,7 +30,7 @@ uint16_t TIM_calculateValue(uint16_t time, TIM_mode mode)
     /* machine cycle: MCU_FRE_CLK / MCU_PRESCALER */
     uint16_t maxTick = 0x0000;
 
-    switch(mode)
+    switch (mode)
     {
         case TIM_mode_0: maxTick = 0x1FFF; break;
         case TIM_mode_1: maxTick = 0xFFFF; break;
@@ -39,7 +39,7 @@ uint16_t TIM_calculateValue(uint16_t time, TIM_mode mode)
         default: break;
     }
 
-    if((time*MCU_PRESCALER)/(MCU_FRE_CLK/1000000) >= maxTick)
+    if ((time*MCU_PRESCALER)/(MCU_FRE_CLK/1000000) >= maxTick)
     {
         return 0x0000;
     }
@@ -60,9 +60,9 @@ uint16_t TIM_calculateValue(uint16_t time, TIM_mode mode)
  * \ingroup     TIM
  * \remarks     not for timer2
 ******************************************************************************/
-void TIM_cmd(PERIPH_TIM tim,Action a)
+void TIM_cmd(PERIPH_TIM tim, Action a)
 {
-    switch(tim)
+    switch (tim)
     {
         case PERIPH_TIM_0: TR0 = a; break;
         case PERIPH_TIM_1: TR1 = a; break;
@@ -81,7 +81,7 @@ void TIM_cmd(PERIPH_TIM tim,Action a)
  * \ingroup     TIM
  * \remarks     not for timer2
 ******************************************************************************/
-void TIM_config(PERIPH_TIM tim,TIM_configTypeDef *tc)
+void TIM_config(PERIPH_TIM tim, TIM_configTypeDef *tc)
 {
     TIM_setFunction(tim, tc->function);
     TIM_setMode(tim, tc->mode);
@@ -103,7 +103,7 @@ void TIM_config(PERIPH_TIM tim,TIM_configTypeDef *tc)
 ******************************************************************************/
 uint16_t TIM_getValue(PERIPH_TIM tim)
 {
-    switch(tim)
+    switch (tim)
     {
         case PERIPH_TIM_0: return ((TH0 << 0x08) | TL0);
         case PERIPH_TIM_1: return ((TH1 << 0x08) | TL1);
@@ -124,7 +124,7 @@ uint16_t TIM_getValue(PERIPH_TIM tim)
 ******************************************************************************/
 bool TIM_isOverflow(PERIPH_TIM tim)
 {
-    switch(tim)
+    switch (tim)
     {
         case PERIPH_TIM_0: return (bool)TF0;
         case PERIPH_TIM_1: return (bool)TF1;
@@ -143,9 +143,9 @@ bool TIM_isOverflow(PERIPH_TIM tim)
  * \ingroup     TIM
  * \remarks     not for timer2
 ******************************************************************************/
-void TIM_setFunction(PERIPH_TIM tim,TIM_function f)
+void TIM_setFunction(PERIPH_TIM tim, TIM_function f)
 {
-    switch(tim)
+    switch (tim)
     {
         case PERIPH_TIM_0: CONFB(TMOD, BIT_NUM_T0_CT, f); break;
         case PERIPH_TIM_1: CONFB(TMOD, BIT_NUM_T1_CT, f); break;
@@ -164,9 +164,9 @@ void TIM_setFunction(PERIPH_TIM tim,TIM_function f)
  * \ingroup     TIM
  * \remarks     not for timer2
 ******************************************************************************/
-void TIM_setMode(PERIPH_TIM tim,TIM_mode mode)
+void TIM_setMode(PERIPH_TIM tim, TIM_mode mode)
 {
-    switch(tim)
+    switch (tim)
     {
         case PERIPH_TIM_0: TMOD = (TMOD & 0xFC) | mode; break;
         case PERIPH_TIM_1: TMOD = (TMOD & 0xCF) | (mode << 0x4); break;
@@ -187,7 +187,7 @@ void TIM_setMode(PERIPH_TIM tim,TIM_mode mode)
 ******************************************************************************/
 void TIM_setValue(PERIPH_TIM tim, uint16_t val)
 {
-    switch(tim)
+    switch (tim)
     {
         case PERIPH_TIM_0:
         {
@@ -216,7 +216,7 @@ void TIM_setValue(PERIPH_TIM tim, uint16_t val)
 ******************************************************************************/
 void TIM_INT_cmd(PERIPH_TIM tim, Action a)
 {
-    switch(tim)
+    switch (tim)
     {
         case PERIPH_TIM_0: ET0 = a; break;
         case PERIPH_TIM_1: ET1 = a; break;
@@ -237,7 +237,7 @@ void TIM_INT_cmd(PERIPH_TIM tim, Action a)
 ******************************************************************************/
 void TIM_INT_setPriority(PERIPH_TIM tim, UTIL_interruptPriority p)
 {
-    switch(tim)
+    switch (tim)
     {
         case PERIPH_TIM_0:
         {
