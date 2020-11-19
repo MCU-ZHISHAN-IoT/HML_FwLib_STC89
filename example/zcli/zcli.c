@@ -15,8 +15,8 @@
 ******************************************************************************/
 
 /**
- *\@note: please disable following HML compile macro because of limited on-chip
- *        zone:
+ * \note please disable following HML compile macro because of limited on-chip
+ *       zone:
  *        (1) __CONF_COMPILE_EXTI
  *        (2) __CONF_COMPILE_ISP
  *        (3) __CONF_COMPILE_WDT
@@ -34,22 +34,22 @@
  *                                macro                                      *
  *****************************************************************************/
 /**
- *\brief: baudrate of zcli
+ * \brief baudrate of zcli
  */
 #define ZCLI_BAUDRANTE      115200
 
 /**
- *\brief: zcli max arguments number support
+ * \brief zcli max arguments number support
  */
 #define ZCLI_MAX_ARGS       3
 
 /**
- *\brief: time stamp
+ * \brief time stamp
  */
 #define ZCLI_TIMESTAMP       "20200202"
 
 /**
- *\brief: length define for zcli
+ * \brief length define for zcli
  */
 #define ZCLI_CMD_LEN         8
 #define ZCLI_ARGS_LEN        8
@@ -57,7 +57,7 @@
 #define ZCLI_TABLE_LEN(x)    sizeof(x)/sizeof(*(&x[0]))
 
 /**
- *\brief: ASCII character mark
+ * \brief ASCII character mark
  */
 #define ASCII_ETX            0x03  /* end of text(ctrl+c) */
 #define ASCII_BS             0x08  /* backspace */
@@ -69,8 +69,8 @@
  *                             type define                                   *
  *****************************************************************************/
 /**
- *\brief: compatible with putchar() function change
- *\quote: (sdcc official) sdcc 3.7.0: Changed putchar() prototype from void putchar(char)
+ * \brief compatible with putchar() function change
+ * \quote (sdcc official) sdcc 3.7.0: Changed putchar() prototype from void putchar(char)
  *        to int putchar(int) to improve standard-compliance and allow error reporting.
  */
 #if ((__SDCC_VERSION_MAJOR > 3) || ((__SDCC_VERSION_MAJOR == 3 ) && (__SDCC_VERSION_MINOR >= 7)))
@@ -82,12 +82,16 @@ typedef char PUTCHAR_CH_T;
 #endif
 
 /**
- *\brief: function pointer for zcli action
+ * \brief function pointer for zcli action
  */
 typedef int8_t (*zcli_action_t)(void);
 
+/*****************************************************************************
+ *                           structure define                                *
+ *****************************************************************************/
+
 /**
- *\brief: command module
+ * \brief command module
  */
 typedef struct
 {
@@ -97,10 +101,10 @@ typedef struct
 } zcli_command;
 
 /*****************************************************************************
- *                             header file                                   *
+ *                           variable define                                 *
  *****************************************************************************/
 /**
- *\brief: command list
+ * \brief command list
  */
 static __code zcli_command zcli_command_table[] =
 {
@@ -115,27 +119,23 @@ static __code zcli_command zcli_command_table[] =
     { "v"       , "v   - Show version information" , zcli_action_v }
 };
 
-/*****************************************************************************
- *                            variable file                                  *
- *****************************************************************************/
-
 /**
- *\brief: ETX flag
+ * \brief ETX flag
  */
 static bool g_isEtx = false;
 
 /**
- *\brief: zcli PS1
+ * \brief zcli PS1
  */
 static const char __code zcli_str_ps1[] = "\r\n> ";
 
 /**
- *\brief: clear one character
+ * \brief clear one character
  */
 static const char __code zcli_str_backspace[] = "\b \b";
 
 /**
- *\brief: other zcli string
+ * \brief other zcli string
  */
 static const char __code terminal_str_clearLine[] = "\33[2K\r\r> ";
 static const char __code zcli_str_authorInfo[] = "\r\nWritten by Weilun Fong \
@@ -159,29 +159,29 @@ static const char __code zcli_str_systemInfo[7][32] = { \
 };
 
 /**
- *\brief: UART receive buffer
+ * \brief UART receive buffer
  */
 char __pdata g_buf[ZCLI_STRING_LEN];
 
 /**
- *\brief: buffer for command keyword and parameters
+ * \brief buffer for command keyword and parameters
  */
 char __pdata g_commandBuffer[ZCLI_CMD_LEN];    /* buffer for read command */
 char __pdata g_lastInput[ZCLI_STRING_LEN];     /* store last input */
 char __pdata g_commandArguments[ZCLI_MAX_ARGS][ZCLI_ARGS_LEN];
 
 /**
- *\brief: buffer index
+ * \brief buffer index
  */
 uint16_t g_index = 0;
 
 /**
- *\brief: invalid command flag
+ * \brief invalid command flag
  */
 bool g_isValidCommand = false;
 
 /**
- *\brief: printf() can't print data in CODE/XRAM area, so use UART_sendString
+ * \brief printf() can't print data in CODE/XRAM area, so use UART_sendString
  *        instead of it
  */
 #define zcli_printString(__VA_STRING__)    UART_sendString(__VA_STRING__)
@@ -568,14 +568,14 @@ void main(void)
     uint8_t i = 0;
 
     /**
-     * zcli startup works
+     * \brief zcli startup works
      */
     sys_init();
     zcli_clearMemory();
     zcli_startup();
 
     /**
-     * zcli main work
+     * \brief zcli main work
      */
     while (true)
     {
@@ -630,13 +630,10 @@ void uart_isr(void) __interrupt SI0_VECTOR
 {
     char rBuf = 0x00;
 
-    /**
-     * avoid disturb
-     */
-    disableAllInterrupts();
+    disableAllInterrupts();  /* avoid disturb */
 
     /**
-     * handle data when MCU receives data
+     * \brief handle data when MCU receives data
      */
     if (RI == SET)
     {
@@ -714,8 +711,5 @@ void uart_isr(void) __interrupt SI0_VECTOR
         }
     }
 
-    /**
-     * recover
-     */
-    enableAllInterrupts();
+    enableAllInterrupts();   /* recover */
 }
