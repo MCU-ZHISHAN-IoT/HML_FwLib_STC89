@@ -62,9 +62,10 @@ There are several parameters with compile macro format need to be configured by 
 *hml/conf.h*.
 #### \_\_CONF\_COMPILE\_xxx (for conditional compilation)
 In order to ensure the projects based on HML_FwLib_STC89 can run on STC89 MCUs with limited on-chip flash space, the developers 
-can modify value of the macro definition named `__CONF_COMPILE_xxx` in *hml/conf.h* as `0` to specify which piece of code will 
+can modify value of the macro definition named `__CONF_COMPILE_xxx` in *hml/conf.h* as `0` to specify which piece of code will not
 take part in compilation, then it will reduce size of .hex file finally. If user only use GPIO module, then user just need to 
-enable `__CONF_COMPILE_GPIO` macro in *hml/conf.h*. Some macros for conditional compilation rely on others. For example, before you enable the macro definition `__CONF_COMPILE_UART`, the macro `__CONF_COMPILE_TIM` and `__CONF_COMPILE_TIM2` should be 
+enable `__CONF_COMPILE_GPIO` macro in *hml/conf.h*. Some macros for conditional compilation rely on others. For example, before 
+you enable the macro definition `__CONF_COMPILE_UART`, the macro `__CONF_COMPILE_TIM` and `__CONF_COMPILE_TIM2` should be 
 enabled, otherwise the compilation would be failed.
 ####  \_\_CONF\_FRE\_CLKIN
 This macro marks frequency of clock source, including extern crystal oscillator or internal RC oscillating circuit, and it's 
