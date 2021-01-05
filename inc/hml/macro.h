@@ -5,7 +5,7 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       HML macro define
  * \note        
- * \version     v1.2
+ * \version     v1.3
  * \ingroup     generic
 ******************************************************************************/
 

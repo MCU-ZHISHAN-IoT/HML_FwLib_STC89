@@ -9,7 +9,7 @@
  *             of limited on-chip resource. However, user can still develop a
  *             new CLI based on it
  *             This demo is inspired by https://github.com/nhivp/msp430-cli
- * \version    v1.2
+ * \version    v1.3
  * \ingroup    generic
  * \remarks    test-board: ZM2.1; test-MCU: STC89C52RC
 ******************************************************************************/

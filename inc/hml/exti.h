@@ -5,7 +5,7 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       operation for on-chip EXTI module
  * \note        
- * \version     v1.2
+ * \version     v1.3
  * \ingroup     EXTI
 ******************************************************************************/
 

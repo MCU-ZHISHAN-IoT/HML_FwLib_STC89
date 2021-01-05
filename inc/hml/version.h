@@ -4,7 +4,7 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       HML version information
  * \note        
- * \version     v1.2
+ * \version     v1.3
  * \ingroup     VERSION
 ******************************************************************************/
 
@@ -23,13 +23,7 @@
 /**
  * \brief string literal representation of the current library version
  */
-#define __HML_VERSION_STRING__ "1.2.1"
-
-/**
- * \deprecated these macro will be abolished in next minor version
- */
-#define HML_VERSION_CODE "1.2.1"
-#define HML_VERSION_NAME "HML_FwLib_STC89"
+#define __HML_VERSION_STRING__ "1.3.0"
 
 /**
  * \brief
@@ -60,29 +54,11 @@
 /**
  * \brief library minor version number.
  */
-#define __HML_VERSION_MINOR__ 2
+#define __HML_VERSION_MINOR__ 3
 
 /**
  * \brief library patch version number.
  */
-#define __HML_VERSION_PATCH__ 1
-
-/**
- * \deprecated following macro will be abolished in next minor version
- */
-#ifdef HML_VERSION_MAJOR
-    #undef HML_VERSION_MAJOR
-#endif
-#define HML_VERSION_MAJOR 1
-
-#ifdef HML_VERSION_MINOR
-    #undef HML_VERSION_MINOR
-#endif
-#define HML_VERSION_MINOR 2
-
-#ifdef HML_VERSION_PATCH
-    #undef HML_VERSION_PATCH
-#endif
-#define HML_VERSION_PATCH 1
+#define __HML_VERSION_PATCH__ 0
 
 #endif

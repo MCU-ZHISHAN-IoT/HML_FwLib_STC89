@@ -6,7 +6,7 @@
  * \brief      example for interrupt priority
  * \note       a example which shows how to use HML_FwLib_STC89 to toggle P12 
  *             state when EXTI is trigged
- * \version    v1.2
+ * \version    v1.3
  * \ingroup    example
  * \remarks    test-board: TS51-V2.0; test-MCU: STC89C52RC
 ******************************************************************************/

@@ -5,7 +5,7 @@
  * \brief       operations for memory zone of MCU
  * \note        allow you to directly access the different memory areas of STC89
  *              series MCU
- * \version     v1.2
+ * \version     v1.3
  * \ingroup     MEM
 ******************************************************************************/
  

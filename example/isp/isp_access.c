@@ -5,7 +5,7 @@
  * \date       
  * \brief      show how to use HML_FwLib_STC89 to execute access operation on ISP
  * \note       
- * \version    v1.2
+ * \version    v1.3
  * \ingroup    example
  * \remarks    test-board: TS51-V2.0; test-MCU: STC89C52RC
 ******************************************************************************/

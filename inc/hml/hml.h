@@ -4,7 +4,7 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       include all needed HML header files
  * \note        
- * \version     v1.2
+ * \version     v1.3
  * \ingroup     generic
 ******************************************************************************/
  

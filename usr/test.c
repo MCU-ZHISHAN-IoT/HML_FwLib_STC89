@@ -5,7 +5,7 @@
  * \date       
  * \brief      a demo file
  * \note       
- * \version    v1.2
+ * \version    v1.3
  * \ingroup    generic
  * \remarks    test-board: TS51-V2.0; test-MCU: STC89C52RC
 ******************************************************************************/

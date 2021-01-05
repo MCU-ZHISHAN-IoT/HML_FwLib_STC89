@@ -4,7 +4,7 @@
  * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
  * \brief       operations for timer-2
  * \note        
- * \version     v1.2
+ * \version     v1.3
  * \ingroup     TIM2
 ******************************************************************************/
 
