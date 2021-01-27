@@ -163,3 +163,10 @@
              - change code comment style
              - support CONF, VERBOSE variable for MCU configuration
            (5)add exmaple zCLI
+
+>Version : v1.3.0
+ Alias   :
+ Date    : 2021-01-27
+ Note    : (1)optimize writing
+           (2)fix fatal bug!!! refactor function ISP_eraseByte and rename it as ISP_eraseSector
+           (3)add macro definition 'ISP_WAITTIME' to select wait time of cpu after trigger of isp
