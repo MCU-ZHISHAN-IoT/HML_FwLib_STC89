@@ -52,22 +52,20 @@
 
 /**
  * \brief the wait time of ISP command, which is related to clock frequency
- *      +-------------------------------------------------------+
- *      | ISP_CONTR |         CPU wait times(SYSclks)           |
- *      +-------------------------------------------------------+
- *      |WT2|WT1|WT0|Read|Program|SectorErase|Recommended CLKFRE|
- *      +-------------------------------------------------------+
- *      | 0 | 1 | 1 |  6 |   30  |    5471   |       5MHz       |
- *      | 0 | 1 | 0 | 11 |   60  |   10942   |      10MHz       |
- *      | 0 | 0 | 1 | 22 |  120  |   21885   |      20MHz       |
- *      | 0 | 0 | 0 | 43 |  240  |   43769   |      40MHz       |
- *      +---+---+---+----+-------+-----------+------------------+
  */
-#if   (__CONF_FRE_CLKIN <=  5000000UL)
+#if   (__CONF_FRE_CLKIN <=  1000000UL)
+    #define ISP_WAITTIME 0x07
+#elif (__CONF_FRE_CLKIN <=  2000000UL)
+    #define ISP_WAITTIME 0x06
+#elif (__CONF_FRE_CLKIN <=  3000000UL)
+    #define ISP_WAITTIME 0x05
+#elif (__CONF_FRE_CLKIN <=  6000000UL)
+    #define ISP_WAITTIME 0x04
+#elif (__CONF_FRE_CLKIN <= 12000000UL)
     #define ISP_WAITTIME 0x03
-#elif (__CONF_FRE_CLKIN <= 10000000UL)
-    #define ISP_WAITTIME 0x02
 #elif (__CONF_FRE_CLKIN <= 20000000UL)
+    #define ISP_WAITTIME 0x02
+#elif (__CONF_FRE_CLKIN <= 24000000UL)
     #define ISP_WAITTIME 0x01
 #else 
     #define ISP_WAITTIME 0x00

@@ -73,7 +73,7 @@ bool ISP_eraseSector(uint16_t addr)
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        2020/10/29
+ * \date        2021/02/20
  * \brief       make ISP module be in idle mode
  * \param[in]   none
  * \return      none
@@ -82,10 +82,11 @@ bool ISP_eraseSector(uint16_t addr)
 ******************************************************************************/
 void ISP_idle(void)
 {
-    ISP_cmd(DISABLE);
-    ISP_setAddress(0x0000);
+    /* 0xFFFF point to non-eeprom area */
+    ISP_setAddress(0xFFFF);
     ISP_setCommand(ISP_command_idle);
     ISP_DATA = 0xFF;
+    ISP_TRIG = 0x00;
 }
 
 /*****************************************************************************/

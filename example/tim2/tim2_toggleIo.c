@@ -35,6 +35,7 @@ void sys_init(void)
     tc.interruptPriority = UTIL_interruptPriority_0;
     tc.mode              = TIM2_mode_0;
     tc.value             = TIM2_calculateValue(50000);
+    tc.reloadValue       = tc.value;
 
     TIM2_config(&tc);
     TIM2_cmd(ENABLE);
