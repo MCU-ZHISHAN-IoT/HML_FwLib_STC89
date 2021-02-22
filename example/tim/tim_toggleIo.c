@@ -71,6 +71,8 @@ void tim0_isr(void) __interrupt TF0_VECTOR
 {
     static uint8_t i = 0;
 
+    TIM_setValue(PERIPH_TIM_0,TIM_calculateValue(50000, TIM_mode_1));
+
     /* per 500ms */
     i++;
     if (i == 10)
