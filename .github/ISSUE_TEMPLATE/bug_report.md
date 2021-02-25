@@ -4,7 +4,6 @@ about: Create a report to help us improve
 title: "[BUG]"
 labels: bug
 assignees: MCU-ZHISHAN-IoT
-
 ---
 
 **Describe the bug**
@@ -23,6 +22,7 @@ If applicable, add screenshots to help explain your problem.
 
 **Environment (please complete the following information):**
  - MCU: [e.g. STC89C52RC]
+ - Compiler version: [e.g. sdcc 4.0.0]
  - Version or abbreviated commit hash [e.g. v1.0.1 or c6fe5ed]
 
 **Additional context**
