@@ -16,7 +16,7 @@
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2021/02/28
  * \brief       calculate initial value for THx/TLx register
  * \param[in]   time: expected timing cycle(unit: us)
  * \param[in]   mode: work mode of timer
@@ -29,6 +29,7 @@ uint16_t TIM_calculateValue(uint16_t time, TIM_mode mode)
 {
     /* machine cycle: MCU_FRE_CLK / MCU_PRESCALER */
     uint16_t maxTick = 0x0000;
+    uint16_t t       = time*(MCU_FRE_CLK/1000000)/MCU_PRESCALER;
 
     switch (mode)
     {
@@ -39,13 +40,13 @@ uint16_t TIM_calculateValue(uint16_t time, TIM_mode mode)
         default: break;
     }
 
-    if ((time*MCU_PRESCALER)/(MCU_FRE_CLK/1000000) >= maxTick)
+    if (t >= maxTick)
     {
         return 0x0000;
     }
     else
     {
-        return (maxTick + 1 - ((time*MCU_PRESCALER)/(MCU_FRE_CLK/1000000)));
+        return (maxTick + 1 - t);
     }
 }
 

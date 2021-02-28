@@ -33,7 +33,7 @@ void ISP_cmd(Action a)
 /** 
  * \author      Jiabin Hsu
  * \date        2020/11/01
- * \brief       set the wait time of cpu after isp model is triggered
+ * \brief       set the wait time of cpu after isp module is triggered
  * \param[in]   none
  * \return      none
  * \ingroup     ISP

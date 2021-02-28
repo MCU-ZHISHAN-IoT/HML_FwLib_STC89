@@ -15,23 +15,25 @@
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        2018/10/08
+ * \date        2021/02/28
  * \brief       calculate initial value for THx/TLx register
- * \param[in]   t: expected timing cycle(unit: us)
+ * \param[in]   time: expected timing cycle(unit: us)
  * \return      initial value of timer-2 counter register(if return 0x0000, it 
  *              means that the time has over the limit)
  * \ingroup     TIM2
  * \remarks     
 ******************************************************************************/
-uint16_t TIM2_calculateValue(uint16_t t)
+uint16_t TIM2_calculateValue(uint16_t time)
 {
-    if ((t*(MCU_FRE_CLK/1000000)/MCU_PRESCALER) >= TIM2_MAXTICK)
+    uint16_t t = time*(MCU_FRE_CLK/1000000)/MCU_PRESCALER;
+    
+    if (t >= TIM2_MAXTICK)
     {
         return 0;
     }
     else
     {
-        return (TIM2_MAXTICK + 1 - (t*(MCU_FRE_CLK/1000000)/MCU_PRESCALER));
+        return (TIM2_MAXTICK + 1 - t);
     }
 }
 
