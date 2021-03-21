@@ -23,7 +23,7 @@
 /**
  * \brief string literal representation of the current library version
  */
-#define __HML_VERSION_STRING__ "1.3.0"
+#define __HML_VERSION_STRING__ "1.3.1"
 
 /**
  * \brief
@@ -34,17 +34,17 @@
  * added.  It is intended to provide a monotonically increasing
  * numerical value that can easily be used in numerical checks.
  */
-#define __HML_VERSION__ 10200UL
+#define __HML_VERSION__ 10301UL
 
 /**
  * \brief string literal representation of the release date.
  */
-#define __HML_DATE_STRING__ "20210127"
+#define __HML_DATE_STRING__ "20210321"
 
 /**
  * \brief numerical representation of the release date.
  */
-#define __HML_DATE__ 20210127UL
+#define __HML_DATE__ 20210321UL
 
 /**
  * \brief library major version number.
@@ -59,6 +59,6 @@
 /**
  * \brief library patch version number.
  */
-#define __HML_VERSION_PATCH__ 0
+#define __HML_VERSION_PATCH__ 1
 
 #endif

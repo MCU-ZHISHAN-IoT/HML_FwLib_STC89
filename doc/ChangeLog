@@ -46,12 +46,16 @@
 >Version : v1.0.1
  Alias   : V1R1
  Date    : 2018-10-08
- Note    : (1)rename function void ISP_writeByte(unsigned int addr,unsigned char dat) as void ISP_writeByte(unsigned int addr,byte dat) in isp.h
-           (2)rename function unsigned int TIM2_calculateValue(unsigned int time) as unsigned int TIM2_calculateValue(unsigned int t) in tim2.h
+ Note    : (1)rename function void ISP_writeByte(unsigned int addr,unsigned char dat) as
+              void ISP_writeByte(unsigned int addr,byte dat) in isp.h
+           (2)rename function unsigned int TIM2_calculateValue(unsigned int time) as unsigned int TIM2_calculateValue(unsigned int t)
+              in tim2.h
            (3)rename tim, member of UART_configTypeDef, as baudGenerator in uart.h
            (4)modify function void UART_sendByte(unsigned char dat) as void UART_sendByte(byte dat) in uart.h
-           (5)rename function unsigned int UART_getTimerInitValue(uint32_t baud,PERIPH_TIM tim) as unsigned int unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim) in uart.h
-           (6)modify function void GPIO_configPortValue(PERIPH_GPIO gpio,unsigned char val) as void GPIO_configPortValue(PERIPH_GPIO gpio,byte val) in gpio.h
+           (5)rename function unsigned int UART_getTimerInitValue(uint32_t baud,PERIPH_TIM tim) as unsigned int unsigned
+              int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim) in uart.h
+           (6)modify function void GPIO_configPortValue(PERIPH_GPIO gpio,unsigned char val) as 
+              void GPIO_configPortValue(PERIPH_GPIO gpio,byte val) in gpio.h
 
 >Version : v1.0.2
  Alias   :
@@ -104,7 +108,9 @@
            (2)delete abolished header file intrasm.h
            (3)move file LICENSE to root path of project
            (4)update Makefile
-             - update Makefile to v0.2.1: refactor all code, optimize effect of print; improve speed of clean operation; fix problem that user can't set job server during execute rebuild operation;  support incremental compilation; support compiling custom source file;
+             - update Makefile to v0.2.1: refactor all code, optimize effect of print; improve speed of clean operation; 
+               fix problem that user can't set job server during execute rebuild operation; 
+               support incremental compilation; support compiling custom source file;
              - update Makefile to v0.2.2: fix bug of rebuild function
              - update Makefile to v0.2.3: fix fatal bug of custom source file
              - update Makefile to v0.2.4: fix fatal bug about build error when pass a absolute path  or relative path
@@ -170,3 +176,12 @@
  Note    : (1)optimize writing
            (2)fix fatal bug!!! refactor function ISP_eraseByte and rename it as ISP_eraseSector
            (3)add macro definition 'ISP_WAITTIME' to select wait time of cpu after trigger of isp
+
+>Version : v1.3.1
+ Alias   :
+ Date    : 2021-03-21
+ Note    : (1)add issue templates
+           (2)fix bug in example of tim2 (see issue #3)
+           (3)fix ISP_WAITTIME error due to terrible datasheet
+           (4)fix bug in example tim_toggleIo.c (see issue #4)
+           (5)fix formula error of function TIM_calculateValue and TIM2_calculateValue
