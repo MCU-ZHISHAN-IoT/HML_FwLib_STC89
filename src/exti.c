@@ -1,7 +1,7 @@
 /*****************************************************************************/
 /** 
  * \file        exti.c
- * \author      Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
+ * \author      Jiabin Hsu  | zsiothsu@zhishan-iot.tk
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       operation for on-chip EXTI module
  * \note        

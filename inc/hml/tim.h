@@ -2,7 +2,7 @@
 /** 
  * \file        tim.h
  * \author      Jiabin Hsu   | zsiothsu@zhishan-iot.tk
- * \author      Weillun Fong | wlf@zhishan-iot.tk
+ * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       operations for timers
  * \note        not for timer-2
  * \version     v1.3

@@ -22,7 +22,7 @@
 
 /**
  * \brief compatible macro of token <complement> / <compl>
- * \note  becauses of change from SDCC compiler at r11619
+ * \note  because of change from SDCC compiler at r11619
  */
 #if ((__SDCC_VERSION_MAJOR >= 4) && (__SDCC_VERSION_MINOR >= 1)) || \
     ((__SDCC_VERSION_MAJOR > 4))
