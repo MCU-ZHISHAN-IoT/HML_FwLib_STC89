@@ -12,6 +12,7 @@
 #ifndef ___HML_STC89_H___
 #define ___HML_STC89_H___
 
+#include <lint.h>
 #include <8051.h>
 #include "hml/bit.h"
 

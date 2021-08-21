@@ -1,0 +1,115 @@
+{
+    "name": "HML_FwLib_STC89",
+    "version": "1.3.1",
+
+    "description": "A lite firmware library for STC micro STC89 series MCU based on SDCC complier",
+    "keywords": [
+        "mcs51",
+        "stc",
+        "stc89"
+    ],
+    "license": "WTFPL",
+    "platforms": "intel_mcs51",
+    "homepage": "https://github.com/MCU-ZHISHAN-IoT/HML_FwLib_STC89",
+    "authors": [
+        {
+            "name": "Weilun Fong",
+            "email": "wlf@zhishan-iot.tk"
+        },
+        {
+            "name": "Jiabin Hsu",
+            "email": "zsiothsu@zhishan-iot.tk",
+            "maintainer": true
+        },
+        {
+            "name": "Amy Chung",
+            "email": "zhongliguo@zhishan-iot.tk"
+        },
+        {
+            "name": "Qiyuan Chen",
+            "email": "nen9ma0@outlook.com"
+        }
+    ],
+
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MCU-ZHISHAN-IoT/HML_FwLib_STC89.git"
+    },
+
+    "build": {
+        "srcDir": "src",
+        "includeDir": "inc",
+        "flags": [
+            "--fsigned-char"
+        ]
+    },
+    
+    "examples": [
+        {
+            "name": "exti",
+            "base": "example/exti",
+            "files": [
+                "exti_interruptPriority.c",
+                "exti_toggleIo.c"
+            ]
+        },
+        {
+            "name": "gpio",
+            "base": "example/gpio",
+            "files": [
+                "gpio_toggleIo.c"
+            ]
+        },
+        {
+            "name": "isp",
+            "base": "example/isp",
+            "files": [
+                "isp_access.c"
+            ]
+        },
+        {
+            "name": "rst",
+            "base": "example/rst",
+            "files": [
+                "rst_softwareReset.c"
+            ]
+        },
+        {
+            "name": "tim",
+            "base": "example/tim",
+            "files": [
+                "tim_toggleIo.c"
+            ]
+        },
+        {
+            "name": "tim2",
+            "base": "example/tim2",
+            "files": [
+                "tim2_toggleIo.c"
+            ]
+        },
+        {
+            "name": "uart",
+            "base": "example/uart",
+            "files": [
+                "uart_sendString.c"
+            ]
+        },
+        {
+            "name": "wdt",
+            "base": "example/wdt",
+            "files": [
+                "wdt_feedDog.c"
+            ]
+        },
+        {
+            "name": "zcli",
+            "base": "example/zcli",
+            "files": [
+                "zcli.c",
+                "zcli-usage-demo.gif",
+                "README.md"
+            ]
+        }
+    ]
+}
