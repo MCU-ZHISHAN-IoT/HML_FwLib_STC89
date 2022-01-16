@@ -130,6 +130,11 @@
  */
 #define MCU_PRESCALER __CONF_MCU_PRESCALER
 
+/**
+ * \brief for unused variable to disable SDCC warning
+ */
+#define UNUSED(x) ((void)(x))
+
 /*****************************************************************************
  *                           run-time check                                  *
  *****************************************************************************/
