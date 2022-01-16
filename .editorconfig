@@ -1,0 +1,37 @@
+# ------------------------------------------------------------------------
+# Author     : Jiabin Hsu | zsiothsu@zhishan-iot.tk
+# Date       : 2022-01-15
+# Description: configure file for EditorConfig
+# E-mail     : mcu@zhishan-iot.tk
+# Page       : https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
+# Project    : HML_FwLib_STC89
+# ------------------------------------------------------------------------
+
+# global settings
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+
+# for C and header files
+[*.{h,c}]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = false
+
+# for makefile
+[{Makefile, Makefile.*}]
+indent_style = tab
+indent_size = 4
+tab_width = 4
+trim_trailing_whitespace = false
+
+# for json files
+[*.json]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+# for markdown
+[*.md]
+trim_trailing_whitespace = false
