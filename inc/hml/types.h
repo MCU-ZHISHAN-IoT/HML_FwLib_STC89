@@ -18,6 +18,8 @@
  *****************************************************************************/
 #include <stdbool.h>
 #include <stdint.h>
+#include <lint.h>
+#include "hml/bit.h"
 
 /**
  *             [ HML BASE DATA TYPE SHEET ]
