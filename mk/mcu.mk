@@ -2,13 +2,13 @@
 
 # ------------------------------------------------------------------------
 # Author     : Weilun Fong | wlf@zhishan-iot.tk
-# Date       : 2020-02-06
+# Date       : 2021-10-24
 # Description: MCU parameters config Makefile
 # E-mail     : mcu@zhishan-iot.tk
 # Make-tool  : GNU Make (http://www.gnu.org/software/make/manual/make.html)
 # Page       : https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
 # Project    : HML_FwLib_STC89
-# Version    : v0.3.1
+# Version    : v0.4.0
 # ------------------------------------------------------------------------
 
 # Print note information
@@ -141,7 +141,7 @@ endif
 #    --code-size        Code Segment size
 #    --iram-size        Internal Ram size
 #    --xram-size        External Ram size
-export CFLAGS := -c -I$(DIR_INC) \
+export CFLAGS := -c -I$(INCDIR) \
 -mmcs51 -D__CONF_MCU_MODEL=$(MCU_MACRO) \
 -D__CONF_FRE_CLKIN=$(CLOCK_FREQUENCY)UL -D__CONF_MCU_PRESCALER=$(PRESCALER_FACTOR) \
 --std-sdcc99 --fsigned-char \
