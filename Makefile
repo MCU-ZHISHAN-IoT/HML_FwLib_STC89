@@ -198,5 +198,5 @@ version:
 	@$(ECHO) "General purpose Makefile for HML firmware library."
 	@$(ECHO) "Copyright(c) 2018-2021 ZHISHAN-IoT, all rights reserved."
 	@$(ECHO) ""
-	@$(ECHO) "Adapted for HML_FwLib_STC89 by Weilun Fong <wlf@zhishan-iot.tk>"
+	@$(ECHO) "Adapted for HML_FwLib_STC89 by Jiabin Hsu <zsiothsu@zhishan-iot.tk>"
 	@$(ECHO) "Report bugs and patches to <wlf@zhishan-iot.tk>"

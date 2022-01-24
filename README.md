@@ -48,14 +48,17 @@ Here is a list of the all on-chip peripheral drivers and examples that need to b
 ### file structure
 ```bash
 HML_FwLib_STC89
-├─doc      # store related documents about HML_FwLib_STC89
-├─example  # provide some example files with *.c format to help users learn about HML_FwLib_STC89
-├─inc      # include all header files(*.h) of HML_FwLib_STC89
-├─obj      # store all output files, including *.hex,*.ihx,*.lk,*.rel and others during compilation
-├─src      # store all source files(*.c) of HML_FwLib_STC89
-├─usr      # store makefile and a source file which includes main function
-├─LICENSE  # license of HML_FwLib_STC89
-└─VERSION  # version code of HML_FwLib_STC89
+├─cmake          # store cmake configure files
+├─doc            # store related documents about HML_FwLib_STC89
+├─example        # provide some example files with *.c format to help users learn about HML_FwLib_STC89
+├─inc            # include all header files(*.h) of HML_FwLib_STC89
+├─obj            # store all output files, including *.hex,*.ihx,*.lk,*.rel and others during compilation
+├─src            # store all source files(*.c) of HML_FwLib_STC89
+├─usr            # store makefile and a source file which includes main function
+├─.editorconfig  # configure file for EditorConfig
+├─CMakeLists.txt # license of HML_FwLib_STC89
+├─LICENSE        # license of HML_FwLib_STC89
+└─VERSION        # version code of HML_FwLib_STC89
 ```
 ### configuration
 There are several parameters with compile macro format need to be configured by user manually. They are all defined in 
@@ -77,13 +80,28 @@ This macro is used to specify MCU prescaler factor. The value must be 6 or 12, a
 
 Above macros can be set via make command line interface variable or a config Makefile (refer to default config file *usr/Makefile.config*).
 
-### code & compile
-There is a source file named *test.c* under *usr* directory, we have put a main function here. User can add and modify own code
-here, then enter <kbd>make -j</kbd> in terminal, the Makefile will work and complete compilation. From version V0R3, you can 
-enter <kbd>make help</kbd> to get all usages, and former version makefile only support <kbd>make</kbd>, <kbd>make clean</kbd>,
-<kbd>make mostlyclean</kbd>(change into <kbd>make distclean</kbd> now)
+### building
+We provide two kinds of build system support:
+* cmake
+* gmake
 
-Certainly, you can just add *inc* and *src* directory into your project, and write your own makefile to build a custom project. 
+#### cmake
+Run this command for initialization. Add option `-GNinja` if you expect to build project via Ninja.
+```
+$ cmake -S . -B build
+```
+Run this command for building project. Add option `--clean-first` if you want to execute clean operation before building.
+```
+$ cmake --build build -j$(nproc)
+```
+You can execute command `cmake --build build -t usage` for usage. If you want to adjust build details, please modify `cmake/config.cmake`.
+
+#### gmake
+There is a source file named *test.c* under *usr* directory, we have put a main function here. Execute this command for building HML_FwLib_STC89 with GNU Make.
+```
+$ make -j$(nproc)
+```
+You can execute command `make help` for usage. If you want to adjust build details, please modify `mk/config.mk`.
 
 ## Contributing
 Welcome PR or issues from you! Please read our [CONTRIBUTING.md](https://github.com/MCU-ZHISHAN-IoT/HML_FwLib_STC89/blob/master/CONTRIBUTING.md)

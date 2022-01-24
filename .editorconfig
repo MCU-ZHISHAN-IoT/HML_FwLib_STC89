@@ -14,17 +14,16 @@ end_of_line = lf
 insert_final_newline = true
 
 # for C and header files
-[*.{h,c}]
+[*.{c,h}]
 indent_style = space
 indent_size = 4
 trim_trailing_whitespace = false
 
-# for makefile
-[{Makefile, Makefile.*}]
-indent_style = tab
+# for cmake
+[*.cmake]
+indent_style = space
 indent_size = 4
-tab_width = 4
-trim_trailing_whitespace = false
+trim_trailing_whitespace = true
 
 # for json files
 [*.json]
@@ -34,4 +33,11 @@ trim_trailing_whitespace = true
 
 # for markdown
 [*.md]
+trim_trailing_whitespace = false
+
+# for makefile
+[{Makefile, *.mk}]
+indent_style = tab
+indent_size = 4
+tab_width = 4
 trim_trailing_whitespace = false
