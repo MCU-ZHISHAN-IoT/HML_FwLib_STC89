@@ -45,40 +45,39 @@ void enableAllInterrupts(void)
 /*****************************************************************************/
 /**
  * \author      Qiyuan Chen & Jiabin Hsu
- * \date        2020/01/28
+ * \date        2022/02/26
  * \brief       get _sleep_1ms initial value
  * \param[in]   none
  * \return      none
  * \ingroup     UTIL
- * \remarks     private function, don' use it
+ * \remarks     private function, don't use it
 ******************************************************************************/
 uint16_t _sleep_getInitValue(void)
 {
-    return (uint16_t)(MCU_FRE_CLK/(float)12000/8) - 2;
+    return (uint16_t)(MCU_FRE_CLK/(float)1000/MCU_PRESCALER/2) - 12;
 }
 
 /*****************************************************************************/
 /**
  * \author      Qiyuan Chen
- * \date        2020/01/28
+ * \date        2022/02/26
  * \brief       sleep 1 ms
  * \param[in]   none
  * \return      none
  * \ingroup     UTIL
- * \remarks     private function, don' use it
+ * \remarks     private function, don't use it
 ******************************************************************************/
 static void _sleep_1ms(void)
 {
     __asm
-        mov ar5, r6                 ;#2
+        push ar6                    ;#2
+        push ar7                    ;#2
+        inc ar7                     ;#1
     delay1ms_loop$:
-        nop                         ;#1
-        nop                         ;#1
-        nop                         ;#1
-        nop                         ;#1
-        nop                         ;#1
-        nop                         ;#1
-        djnz r5, delay1ms_loop$     ;#2
+        djnz ar6,delay1ms_loop$     ;#2
+        djnz ar7,delay1ms_loop$     ;#2
+        pop ar7                     ;#2
+        pop ar6                     ;#2
         ret                         ;#2
     __endasm;
 }
@@ -86,7 +85,7 @@ static void _sleep_1ms(void)
 /*****************************************************************************/
 /**
  * \author      Jiabin Hsu
- * \date        2020/01/28
+ * \date        2022/02/26
  * \brief       software delay according to MCU clock frequency
  * \param[in]   t: how many one ms you want to delay
  * \return      none
@@ -130,14 +129,12 @@ void sleep(uint16_t t)
     ; loop for sleep
     ; loop from (0xFFFF - t) to (0xFFFF)
     LOOP$:
-        lcall __sleep_1ms               ;#8*(frep/12000) - 10
+        lcall __sleep_1ms               ;#2*(frep/1000/prescale) - 11
+                                        ;#2 lcall
         inc dptr                        ;#2
         mov a,dpl                       ;#1
         anl a,dph                       ;#1
         cpl a                           ;#1
-        nop                             ;#1
-        nop                             ;#1
-        nop                             ;#1
         jnz LOOP$                       ;#2
     ENDL$:
         pop ar7
