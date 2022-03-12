@@ -1,11 +1,12 @@
 # ------------------------------------------------------------------------
 # Author     : Weilun Fong | wlf@zhishan-iot.tk
-# Date       : 2022-01-16
+# Date       : 2022-03-12
 # Description: toolchain config
 # E-mail     : mcu@zhishan-iot.tk
 # Make-tool  : CMake
 # Page       : https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
 # Project    : HML_FwLib_STC89
+# Version    : v0.0.2
 # ------------------------------------------------------------------------
 
 # Target description

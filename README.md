@@ -39,53 +39,32 @@ Here is a list of the all on-chip peripheral drivers and examples that need to b
 | UART | universal asynchronous receiver/transmitter | supported |
 | WDT | watchdog | supported |
 
-## Prerequisite
-+ [GNU Make](http://www.gnu.org/software/make/manual/make.html)(recommend)
-+ [SDCC compiler](http://sdcc.sourceforge.net/)
-+ *\[for Windows\]* Unix shell tools([msys](http://www.mingw.org/wiki/MSYS), [Cygwin](http://www.cygwin.com/), [GNUwin32](http://gnuwin32.sourceforge.net/)) needed by makefile for SDCC
-
-## Usage
-### file structure
-```bash
-HML_FwLib_STC89
-├─cmake          # store cmake configure files
-├─doc            # store related documents about HML_FwLib_STC89
-├─example        # provide some example files with *.c format to help users learn about HML_FwLib_STC89
-├─inc            # include all header files(*.h) of HML_FwLib_STC89
-├─obj            # store all output files, including *.hex,*.ihx,*.lk,*.rel and others during compilation
-├─src            # store all source files(*.c) of HML_FwLib_STC89
-├─usr            # store makefile and a source file which includes main function
-├─.editorconfig  # configure file for EditorConfig
-├─CMakeLists.txt # license of HML_FwLib_STC89
-├─LICENSE        # license of HML_FwLib_STC89
-└─VERSION        # version code of HML_FwLib_STC89
-```
-### configuration
+## Config
 There are several parameters with compile macro format need to be configured by user manually. They are all defined in 
 *hml/conf.h*.
-#### \_\_CONF\_COMPILE\_xxx (for conditional compilation)
+### \_\_CONF\_COMPILE\_xxx (for conditional compilation)
 In order to ensure the projects based on HML_FwLib_STC89 can run on STC89 MCUs with limited on-chip flash space, the developers 
 can modify value of the macro definition named `__CONF_COMPILE_xxx` in *hml/conf.h* as `0` to specify which piece of code will not
 take part in compilation, then it will reduce size of .hex file finally. If user only use GPIO module, then user just need to 
 enable `__CONF_COMPILE_GPIO` macro in *hml/conf.h*. Some macros for conditional compilation rely on others. For example, before 
 you enable the macro definition `__CONF_COMPILE_UART`, the macro `__CONF_COMPILE_TIM` and `__CONF_COMPILE_TIM2` should be 
 enabled, otherwise the compilation would be failed.
-####  \_\_CONF\_FRE\_CLKIN
+### \_\_CONF\_FRE\_CLKIN
 This macro marks frequency of clock source, including extern crystal oscillator or internal RC oscillating circuit, and it's 
 defined in *conf.h*.
-#### \_\_CONF\_MCU\_MODEL
+### \_\_CONF\_MCU\_MODEL
 This macro marks the model of target MCU and is defined in *hml/conf.h*.
-#### \_\_CONF\_MCU\_PRESCALER
+### \_\_CONF\_MCU\_PRESCALER
 This macro is used to specify MCU prescaler factor. The value must be 6 or 12, and they stand for 6T mode and 12T mode.
 
 Above macros can be set via make command line interface variable or a config Makefile (refer to default config file *usr/Makefile.config*).
 
-### building
+## Building
 We provide two kinds of build system support:
 * cmake
 * gmake
 
-#### cmake
+### cmake
 Run this command for initialization. Add option `-GNinja` if you expect to build project via Ninja.
 ```
 $ cmake -S . -B build
@@ -96,7 +75,7 @@ $ cmake --build build -j$(nproc)
 ```
 You can execute command `cmake --build build -t usage` for usage. If you want to adjust build details, please modify `cmake/config.cmake`.
 
-#### gmake
+### gmake
 There is a source file named *test.c* under *usr* directory, we have put a main function here. Execute this command for building HML_FwLib_STC89 with GNU Make.
 ```
 $ make -j$(nproc)

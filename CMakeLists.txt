@@ -1,12 +1,12 @@
 # ------------------------------------------------------------------------
 # Author     : Weilun Fong | wlf@zhishan-iot.tk
-# Date       : 2022-01-16
+# Date       : 2022-03-12
 # Description: project Makefile
 # E-mail     : mcu@zhishan-iot.tk
 # Make-tool  : CMake
 # Page       : https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
 # Project    : HML_FwLib_STC89
-# Version    : v0.0.1
+# Version    : v0.0.2
 # ------------------------------------------------------------------------
 
 # CMake require
@@ -38,6 +38,9 @@ aux_source_directory(${CMAKE_SOURCE_DIR}/src SOURCES)
 include(${CMAKEDIR}/config.cmake)
 include(${CMAKEDIR}/version.cmake)
 include(${CMAKEDIR}/cflags.cmake)
+
+# Print control
+set(CMAKE_VERBOSE_MAKEFILE ${VERBOSE})
 
 # Build library
 include_directories(${CMAKE_SOURCE_DIR}/inc)
@@ -99,7 +102,7 @@ add_custom_target(version
     COMMAND
         echo -e "\
 \\n\
-General purpose CMake based Makefile for HML firmware library. \\n\
+General purpose CMakeLists for HML firmware library. \\n\
 Copyright(c) 2021-2022 ZHISHAN-IoT, all rights reserved. \\n\
 \\n\
 Adapted for ${PROJECT_NAME} v${PROJECT_VERSION} by Jiabin Hsu <zsiothsu@zhishan-iot.tk> \\n\

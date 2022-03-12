@@ -1,13 +1,13 @@
 # ------------------------------------------------------------------------
 # Author     : Jiabin Hsu  | zsiothsu@zhishan-iot.tk
 # Author     : Weilun Fong | wlf@zhishan-iot.tk
-# Date       : 2022-01-16
-# Description: project Makefile
+# Date       : 2022-03-12
+# Description: compile parametes define
 # E-mail     : mcu@zhishan-iot.tk
 # Make-tool  : CMake
 # Page       : https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc89.html
 # Project    : HML_FwLib_STC89
-# Version    : v0.0.1
+# Version    : v0.0.2
 # ------------------------------------------------------------------------
 
 # Init variables
